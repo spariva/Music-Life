@@ -22,9 +22,9 @@ db/
   home.sql
 
 
-  OPCIONES QUE TENDRÁ EL USUARIO
+###OPCIONES QUE TENDRÁ EL USUARIO
 
-NUESTRAS IDEAS:
+##NUESTRAS IDEAS:
 	Crear cuenta
 	Conectar a Spotify (Primero gestionamos usuarios propios antes de conectar con Spotify)
 	Análisis de gustos (API)
@@ -35,7 +35,7 @@ NUESTRAS IDEAS:
 	Tus amigos están escuchando
 	Valoraciones de artistas y listas de amigos
 
-LO QUE HEMOS HABLADO CON EL PROFE
+##LO QUE HEMOS HABLADO CON EL PROFE
 	En el perfil del usuario aparecen sus artistas favs y se pueden puntuar y comentar en el foro
 	Primero solo se pueden valorar listas, mas adelante se añaden artistas álbumes etc
 	Comentarios en listas
