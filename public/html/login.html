@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
+            <title>Login - Music Life</title>
+            <link rel="stylesheet" href="../css/login.css">
+            <script src="../js/login.js" defer></script>
+        </head>
+        <body>
+            <div class="contenedor">
+                <span class="contenedor__efectos"></span>
+                <span class="contenedor__efectos"></span>
+                <span class="contenedor__efectos"></span>
+                <form id="inicioSesion">
+                    <h2 class="formulario__titulo">Iniciar sesión</h2>
+                    <div class="inputBox">
+                        <input type="text" placeholder="Usuario" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="inputBox">
+                        <!-- Otra página o está misma página? -->
+                        <a href="#">¿Olvido la contraseña?</a>
+                        <a href="#" id="crearCuenta">Crear cuenta</a>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" class="botonConectarse" value="Conectarse">
+                    </div>
+                </form>
+
+                <form id="registro">
+                    <h2 class="formulario__titulo">Registro</h2>
+                    <div class="inputBox">
+                        <input type="text" placeholder="Nombre de usuario" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" placeholder="Dirección de correo electrónico" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" placeholder="Crear contraseña" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" placeholder="Confirmar contraseña" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" class="botonCrear" value="Crear Cuenta">
+                    </div>
+                    <div class="inputBox">
+                        <a href="#">¿Ya tiene una cuenta? <b id="conectarCuenta">Conectarse</b></a>
+                    </div>
+                </form>
+            </div>
+        </body>
+    </html>
