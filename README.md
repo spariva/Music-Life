@@ -1,6 +1,7 @@
 ## ToDo:
 
 Para el 27 entregar Pagina web y sql
+Las querys, el modelo entidad relación, y las distintas páginas que vamos a mostrar html + css.
 
 # Music-Life
 Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spotify y permite conectar con otras personas a través de creación de playlists y críticas de álbums.
