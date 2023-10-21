@@ -5,13 +5,13 @@
 //    -d "grant_type=client_credentials&client_id=your-client-id&client_secret=your-client-secret"
 
 
+const client_id = '4de4fa87f6bf4fe590898df01899950c'; // Nuestro id para conectar con la API, puede que luego tengamos que hacerlo global.
+//El id secret, ni idea: 'ef5034e62f224d1688b16f4cbabcf894
 
 
 
 
-
-
-//PKCE flow (recomendado para aplicaciones de escritorio y móviles)
+//PKCE flow (recomendado para aplicaciones de escritorio y móviles). Es más seguro que el Authorization Code Flow. Y complicado
 //Code verifier:
 function generateRandomString(length) {
     let text = '';
