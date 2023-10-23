@@ -1,38 +1,83 @@
 <!DOCTYPE html>
-    <html lang="es">
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
-            <title>Music Life - Prueba</title>
-            <link rel="stylesheet" href="../css/pruebas-playlist.css">
-            <script src="../js/BusquedaSpotify.js" defer></script>
-        </head>
-        <body>
-            <div class="main">
-                <h1>Es una prueba para ver los iframes y si se reproducen directamente sin la API:</h1>
-                <iframe class="iframe1" src="https://open.spotify.com/embed/playlist/0zWn5j2DvmAAIIQRCnRvm2?utm_source=generator"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <iframe class="iframe2" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <h2>Hay dos formatos: </h2>
-                <iframe class="iframeFormato2" src="https://open.spotify.com/embed/playlist/6T442Dd7j4FYpP7rtCh4Mp?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <div class="contenedorBuscar">
-                    <h3>Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</h3>
-                    <div class="barraBusqueda">
-                        <input type="text" name="" class="inputBuscador" placeholder="Introduzca la embedida del álbum..." value="">
-                        <div class="barraBusqueda__icono">
-                            <img src="../img/search.png">
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
+    <title>Music Life - Prueba</title>
+    <link rel="stylesheet" href="../css/pruebas-playlist.css">
+    <link rel="stylesheet" href="../css/header-nav.css">
+    <script src="../js/BusquedaSpotify.js" defer></script>
+    <script src="../js/header-nav.js" defer></script>
+</head>
+
+<body>
+    <div class="main">
+        <header class="cabecera">
+            <nav class="contenedor-nav">
+                <img src="../img/logo.png" alt="" class="contenedor-nav__logo">
+                <ul>
+                    <li><a href="#">Listas</a></li>
+                    <li><a href="#">Comunidad</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                </ul>
+                <img src="../img/imagenPerfil.png" alt="" class="contenedor-nav__usuarioImg" onclick="toggleMenu()">
+
+                <div class="contenedor-nav__menu-usuario" id="id-menu-usuario">
+                    <div class="sub-menu">
+                        <div class="sub-menu__datos-usuario">
+                            <img src="../img/imagenPerfil.png">
+                            <h2>Usuario Michi</h2>
+                            <span id="user-linea"></span>
                         </div>
+                        <a href="" class="sub-menu__enlaces">
+                            <img src="../img/perfil.png">
+                            <p>Editar perfil</p>
+                            <span>></span>
+                        </a>
+                        <a href="" class="sub-menu__enlaces">
+                            <img src="../img/engranaje.png">
+                            <p>Configuración</p>
+                            <span>></span>
+                        </a>
+                        <a href="" class="sub-menu__enlaces">
+                            <img src="../img/ayuda.png">
+                            <p>Asistencia y ayuda</p>
+                            <span>></span>
+                        </a>
+                        <a href="" class="sub-menu__enlaces">
+                            <img src="../img/logout.png">
+                            <p>Desconectar / Logout</p>
+                            <span>></span>
+                        </a>
                     </div>
-                    <button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
-                    <div>
-                        <iframe class="iframeBuscador" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div>
-                    
-                    <!-- Segunda forma - utilizando el album para generar un embed. Comentar iframe superior si se quiere probar-->
-                    <!-- <div>
-                        <iframe class="iframeBuscador" src="https://open.spotify.com/embed?uri=spotify:album:3T3EZvtuQKIqFaFmrj9HXP"  frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div> -->
+                </div>
+
+            </nav>
+        </header>
+        <iframe class="iframe__style iframe1" src="https://open.spotify.com/embed/playlist/0zWn5j2DvmAAIIQRCnRvm2?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe class="iframe__style iframe2" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe class="iframe__style iframe3" src="https://open.spotify.com/embed/playlist/6T442Dd7j4FYpP7rtCh4Mp?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe class="iframe__style iframe4" src="https://open.spotify.com/embed/artist/5ZqnEfVdEGmoPxtELhN7ai?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div class="contenedorBuscar">
+            <h3>Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</h3>
+            <div class="barraBusqueda">
+                <input type="text" name="" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..."
+                    value="">
+                <div class="barraBusqueda__icono">
+                    <img src="../img/search.png">
                 </div>
             </div>
-        </body>
-    </html>
+            <button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
+            <iframe class="iframeBuscador" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+            <!-- Segunda forma - utilizando el album para generar un embed. Comentar iframe superior si se quiere probar-->
+            <!-- <div>
+                <iframe class="iframeBuscador" src="https://open.spotify.com/embed?uri=spotify:album:3T3EZvtuQKIqFaFmrj9HXP"  frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
