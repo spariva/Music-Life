@@ -7,9 +7,9 @@ Las querys, el modelo entidad relación, y las distintas páginas que vamos a mo
 Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spotify y permite conectar con otras personas a través de creación de playlists y críticas de álbums.
 
 ## Notas - Apuntes - Observaciones:
-### Zona para incluir cualquier comentario u observación.
--Propuesta para cambiar de nombre el archivo img por media.
--Decidir el nav para poder incluirlo en todas las páginas, o en la mayoria de ellas.
+-Zona para incluir cualquier comentario u observación.  
+-Propuesta para cambiar de nombre el archivo img por media.  
+-Decidir el nav para poder incluirlo en todas las páginas, o en la mayoria de ellas.  
 
 ### Estructura
 config/
