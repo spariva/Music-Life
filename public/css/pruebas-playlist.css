@@ -26,20 +26,6 @@
     margin: 10px;
 }
 
-.enlace__perfil{
-    max-height: 240px;
-    max-width: 240px;
-}
-
-.contenedor__img{
-    max-height: 100%;
-    border-radius: 100%;
-}
-
-.contenedor__img:hover{
-    background-color: var();
-}
-
 .iframe__style{
     border-radius:12px;
     width:100%;
