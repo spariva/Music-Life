@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+
+/* CONTINUAR - INCLUIR EMBED EN EL PERFIL IZQ */
+/* CONTINUAR - DRC Valoraciones (estrellas o media numerica)*/
+/* CONTINUAR - DRC Contenedores a ultimas valoraciones */
+/* REVISAR - Comprobar que los estilos se aplican correctamente y no hay codigo muerto */
+/* CONTINUAR - Border suavizado e incluir uno de los dos nav junto al video */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+:root{
+  --white:#f3f3f3;
+}
+
+body {
+  background-color: var(--white);
+  width: 100%;
+  height: 100%;
+}
+
+.contenedor-principal-menuUsuario {
+  display: grid;
+  grid-template-columns: 5% 30% 60% 5%;
+  grid-template-rows: 10% 80% 10%;
+  height: 100vh;
+}
+
+.menuUsuario__izquierda {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  color: var(--white);
+  /* pensar una funcion para alterar los colores */
+  background: linear-gradient(to right, #01a9ac, #01dbdf);
+  border-top-left-radius: 25%;
+  border-bottom-left-radius: 25%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.menuUsuario__izquierda img {
+  border-radius: 5px;
+}
+
+.menuUsuario__izquierda p {
+  font-size: 12px;
+}
+
+.menuUsuario__derecha {
+  grid-column: 3;
+  grid-row: 2;
+  width: 100%;
+  padding: 30px 25px;
+  background: #fff;
+  border-top-right-radius: 20%;
+  border-bottom-right-radius: 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
+}
+
+.menuUsuario__derecha__info {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 5px;
+  background-color: red;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 1fr;
+}
+
+.menuUsuario__derecha__info h3,
+.menuUsuario__derecha__valoraciones h3 {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+  padding: 15px;
+}
+
+.menuUsuario__info-datos,
+.menuUsuario__valoraciones-datos{
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  margin: 5px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+}
+
+.menuUsuario__info-datos:nth-child(2),
+.menuUsuario__valoraciones-datos:nth-child(2){
+  background-color: grey;
+}
+
+.menuUsuario__info-datos__texto:nth-child(1),
+.menuUsuario__valoraciones-datos__texto:nth-child(1){
+  background-color: green;
+  grid-column: 1;
+  grid-row: 1;
+}
+.menuUsuario__info-datos__texto:nth-child(2){
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.menuUsuario__info-datos__texto:nth-child(3){
+  grid-column: 1;
+  grid-row: 2;
+}
+.menuUsuario__info-datos__texto:nth-child(4){
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.menuUsuario__info-datos h4,
+.menuUsuario__info-datos p{
+  margin: 10%;
+}
+
+.menuUsuario__derecha__valoraciones{
+  grid-column: 2;
+  grid-row: 1;
+  margin: 5px;
+  background-color: yellow;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 90%;
+}
+
+.menuUsuario__derecha__info h3,
+.menuUsuario__derecha__valoraciones h3 {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  text-decoration: underline 5px;
+  color: #353c4e;
+  letter-spacing: 5px;
+}
+
+.datos{
+  width: 100%;
+}
+
+.datos h4{
+  color: #353c4e;
+  margin-bottom: 5px;
+}
+
+.datos p {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+
+.menuUsuario__valoraciones-datos__texto:nth-child(2){
+  grid-column: 1/ span 2;
+  grid-row: 2;
+  background-color: red;
+}
