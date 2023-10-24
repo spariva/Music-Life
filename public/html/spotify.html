@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="stylesheet" type="text/css" href="../css/spotify.css">
+</head>
+
+<body>
+    <header id="header">
+        <a class="textoCabecera" href="index.html" id="logo">Music-Life</a>
+        <nav class="navbar">
+            <a class="textoCabecera" href="#">Cuenta</a>
+            <a class="textoCabecera" href="spotify.html">Spotify</a>
+            <a class="textoCabecera" href="#">Contacto</a>
+            <a class="textoCabecera" href="#">Info</a>
+            <a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
+        </nav>
+    </header>
+    <div class="video-container">
+        <video autoplay loop muted class="video" id="videoFondo">
+            <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
+            <source src="../img/FondoSpotifyClaro.mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+        <div class="content">
+            <div id="contenido">
+                <h2>¿Cómo trabajamos con Spotify?</h2><br>
+                <img id="spotifyApi" src="../img/spotifyAPI.png"
+                    href="https://developer.spotify.com/documentation/web-api.com"><br>
+                <!-- Texto de ChatGPT -->
+                <div id="textoSpotify">
+                    <p>La API de Spotify es una herramienta poderosa que permite a los desarrolladores integrar
+                        funcionalidades de Spotify en sus aplicaciones y servicios.</p><br>
+                    <p>Proporciona acceso a la extensa biblioteca musical de Spotify, permitiendo a las aplicaciones
+                        buscar pistas, álbumes y artistas, así como obtener detalles detallados sobre ellos.</p><br>
+                    <p>Los desarrolladores pueden controlar la reproducción de música, crear y gestionar listas de
+                        reproducción personalizadas, y ofrecer recomendaciones musicales basadas en el historial de
+                        escuchas de los usuarios.</p><br>
+                    <p>Además, la API permite acceder a perfiles de usuario, actividades recientes y características de
+                        audio detalladas de las pistas.</p><br>
+                    <p>También es posible crear experiencias interactivas, como juegos y aplicaciones multimedia que
+                        responden a la música. Los desarrolladores pueden utilizar la API para crear aplicaciones
+                        comerciales, como jukeboxes, y generar ingresos a través del programa de afiliados de Spotify.
+                    </p><br>
+                    <p>En resumen, la API de Spotify abre un mundo de posibilidades creativas para los desarrolladores,
+                        permitiéndoles enriquecer sus aplicaciones con contenido musical, ofrecer experiencias
+                        personalizadas a los usuarios y monetizar sus creaciones mediante la integración de la música de
+                        Spotify.</p><br>
+                </div>
+            </div>
+            <div id="reproductor">
+                <iframe style="border-radius:12px"
+                    src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator"
+                    width="100%" height="352" frameBorder="0" allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"></iframe>
+                <iframe style="border-radius:12px"
+                    src="https://open.spotify.com/embed/playlist/37i9dQZEVXbLesry2Qw2xS?utm_source=generator"
+                    width="100%" height="352" frameBorder="0" allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"></iframe>
+            </div>
+            <!-- Contenido de tu página aquí -->
+        </div>
+    </div>
+    <div class="efecto-agua"></div>
+    <script src="../js/spotify.js" defer></script>
+</body>
+
+</html>
