@@ -22,7 +22,7 @@ function modoOscuro() {
     var textoBotonModoOscuro = document.getElementById("modo-oscuro");
     var elementosNavbar = document.getElementsByClassName('textoCabecera');
     var textoCabecera = document.getElementById('logo');
-    // var navbar = document.querySelector('.navbar'); 
+    //var navbar = document.querySelector('.navbar'); 
 
     // Verifica si el video actual contiene 'FondoIndexClaro.mp4' en su ruta
     if (videoElement.src.includes('FondoIndexClaro.mp4')) {
@@ -30,7 +30,7 @@ function modoOscuro() {
         videoElement.src = '../img/FondoIndexOscuro.mp4';
         textoBotonModoOscuro.textContent = "Modo Claro";
 
-        // navbar.style.backgroundColor = 'white';
+        // navbar.style.background = 'white';
 
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'white';
@@ -41,14 +41,13 @@ function modoOscuro() {
         videoElement.src = '../img/FondoIndexClaro.mp4';
         textoBotonModoOscuro.textContent = "Modo Oscuro";
 
-        // navbar.style.backgroundColor = 'black';
+        // navbar.style.background = 'black';
 
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'black';
         }
         textoCabecera.style.color = 'black';
     }
-
 
 }
 

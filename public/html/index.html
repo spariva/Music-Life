@@ -5,12 +5,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Music-Life</title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script src="../js/script.js" defer></script>
 	</head>
 	<body>
 		<header id="header">
 			<a class="textoCabecera" href="index.html" id="logo">Music-Life</a>
 			<nav class="navbar">
-				<a class="textoCabecera" href="#">Cuenta</a>
+				<a class="textoCabecera" href="login.html">Cuenta</a>
 				<a class="textoCabecera" href="spotify.html">Spotify</a>
 				<a class="textoCabecera" href="#">Contacto</a>
 				<a class="textoCabecera" href="#">Info</a>
@@ -18,16 +19,16 @@
 			</nav>
 		</header>
 		<div class="video-container">
-			<video autoplay loop muted class="video" id="videoFondo" >
-                <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
-				<source src="../img/FondoIndexClaro.mp4">
-				Tu navegador no soporta el elemento de video.
+			 <!-- Añadido atributo src al video. La etiqueta source es para tener otras opciones.
+             Aparte este es el elemento enlazado con la variable en el script -->
+			 <video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+				<!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
+				Tu navegador no soporta el elemento de video mp4.
 			</video>
 			<div class="content">
 				<!-- Contenido de tu página aquí -->
 			</div>
+			<!-- Retirado el div efecto de agua porque el codigo js ya inserta el elemento -->
 		</div>
-		<div class="efecto-agua"></div>
-		<script src="../js/script.js" defer></script>
 	</body>
 </html>

@@ -9,3 +9,5 @@ crearCuenta.onclick = function(){
 conectarCuenta.onclick = function(){
     body.classList.remove('crearCuenta');
 }
+
+

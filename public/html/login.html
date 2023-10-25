@@ -6,9 +6,21 @@
             <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
             <title>Login - Music Life</title>
             <link rel="stylesheet" href="../css/login.css">
+            <link rel="stylesheet" type="text/css" href="../css/style.css">
             <script src="../js/login.js" defer></script>
+            <script src="../js/script.js" defer></script>
         </head>
         <body>
+            <header id="header">
+                <a class="textoCabecera" href="index.html" id="logo">Music-Life</a>
+                <nav class="navbar">
+                    <a class="textoCabecera" href="login.html">Cuenta</a>
+                    <a class="textoCabecera" href="spotify.html">Spotify</a>
+                    <a class="textoCabecera" href="#">Contacto</a>
+                    <a class="textoCabecera" href="#">Info</a>
+                    <a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
+                </nav>
+            </header>
             <div class="contenedor">
                 <span class="contenedor__efectos"></span>
                 <span class="contenedor__efectos"></span>
@@ -52,6 +64,16 @@
                         <a href="#">¿Ya tiene una cuenta? <b id="conectarCuenta">Conectarse</b></a>
                     </div>
                 </form>
+            </div>
+
+            <div class="video-container">
+                <video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+                    <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
+                    Tu navegador no soporta el elemento de video mp4.
+                </video>
+                <div class="content">
+                    <!-- Contenido de tu página aquí -->
+                </div>
             </div>
         </body>
     </html>
