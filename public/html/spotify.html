@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify</title>
     <link rel="stylesheet" type="text/css" href="../css/spotify.css">
+    <script src="../js/spotify.js" defer></script>
 </head>
 
 <body>
@@ -20,10 +21,10 @@
         </nav>
     </header>
     <div class="video-container">
-        <video autoplay loop muted class="video" id="videoFondo">
+        <!-- Cambios realizados explicados en la página de index-->
+        <video autoplay loop muted class="video" id="videoFondo" src="../img/FondoSpotifyClaro.mp4">
             <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
-            <source src="../img/FondoSpotifyClaro.mp4">
-            Tu navegador no soporta el elemento de video.
+            Tu navegador no soporta el elemento de video mp4.
         </video>
         <div class="content">
             <div id="contenido">
@@ -66,8 +67,7 @@
             <!-- Contenido de tu página aquí -->
         </div>
     </div>
-    <div class="efecto-agua"></div>
-    <script src="../js/spotify.js" defer></script>
+    <!-- Retirado este elemento div porque ya se inserta desde los scripts-->
 </body>
 
 </html>
