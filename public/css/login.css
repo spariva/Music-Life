@@ -4,6 +4,15 @@
     box-sizing: content-box;
 }
 
+:root{
+    --white:#fff;
+    --red:#f4242f;
+    --yellow:#ffeb3b;
+    --blue:#2196f3;
+    --blur-grey:#ffffff80;
+    --blur-greySoft:#ffffff40;
+}
+
 body{
     display: flex;
     justify-content: center;
@@ -15,7 +24,6 @@ body::before{
     content: '';
     position: absolute;
     inset: 0;
-    background: url(../img/background-montain.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -25,7 +33,6 @@ body::after{
     content: '';
     position: absolute;
     inset: 0;
-    background: url(../img/background-montain-four.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -91,7 +98,7 @@ body.crearCuenta .contenedor{
     content: '';
     position: absolute;
     inset: 5px;
-    background: url(../img/background-montain.jpg);
+    background: url(../img/FondoIndexClaro.mp4);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -169,7 +176,7 @@ body.crearCuenta form .inputBox{
 }
 
 form .inputBox a{
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
     font-size: 0.85em;
 }
@@ -181,30 +188,30 @@ form .inputBox #crearCuenta{
 form .inputBox input{
     width: 100%;
     outline: none;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid var(--blur-greySoft);
     background: rgba(0, 0, 0, 0.15);
     padding: 6px 15px;
     border-radius: 4px;
     font-size: 0.85em;
-    color: #fff;
+    color: var(--white);
 }
 
 form .inputBox input::placeholder{
-    color: rgba(255, 255,255, 0.5);
+    color: var(--blur-grey);
 }
 
 form .inputBox .botonConectarse {
-    background: #2196f3;
+    background: var(--blue);
     font-weight: 500;
     cursor:pointer;
 }
 
 form#registro .inputBox .botonCrear{
-    background: #f4242f;
+    background: var(--red);
 }
 
 #conectarCuenta{
     font-weight: 500;
-    color:#ffeb3b;
+    color:var(--yellow);
     text-decoration: underline;
 }
