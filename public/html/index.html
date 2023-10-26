@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Music-Life</title>
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
-		<script src="../js/script.js" defer></script>
-	</head>
-	<body>
-		<header id="header">
-			<a class="textoCabecera" href="index.html" id="logo">Music-Life</a>
-			<nav class="navbar">
-				<a class="textoCabecera" href="login.html">Cuenta</a>
-				<a class="textoCabecera" href="spotify.html">Spotify</a>
-				<a class="textoCabecera" href="contacto.html">Contacto</a>
-				<a class="textoCabecera" href="#">Info</a>
-				<a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
-			</nav>
-		</header>
-		<div class="video-container">
-			 <!-- Añadido atributo src al video. La etiqueta source es para tener otras opciones.
-             Aparte este es el elemento enlazado con la variable en el script -->
-			 <video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
-				<!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
-				Tu navegador no soporta el elemento de video mp4.
-			</video>
-			<div class="content">
-				<!-- Contenido de tu página aquí -->
-				
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Music-Life</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script src="../js/script.js" defer></script>
+</head>
+
+<body>
+	<header id="header">
+		<a class="textoCabecera" href="index.html" id="logo">Music-Life</a>
+		<nav class="navbar">
+			<a class="textoCabecera" href="login.html">Cuenta</a>
+			<a class="textoCabecera" href="spotify.html">Spotify</a>
+			<a class="textoCabecera" href="contacto.html">Contacto</a>
+			<a class="textoCabecera" href="#">Info</a>
+			<a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
+		</nav>
+	</header>
+	<div class="video-container">
+		<video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+			Tu navegador no soporta el elemento de video mp4.
+		</video>
+		<div class="content">
+			<!-- Contenido de tu página aquí -->
+
+			<div class="burbuja" id="reproductorAbajo">
+				<iframe style="border-radius:12px"
+					src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator"
+					width="100%" height="152" frameBorder="0" allowfullscreen=""
+					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+					loading="lazy"></iframe>
+				<div class="burbuja" id="burbujaAbajo"></div>
 			</div>
-			<!-- Retirado el div efecto de agua porque el codigo js ya inserta el elemento -->
+
 		</div>
-	</body>
+</body>
+
 </html>

@@ -79,6 +79,7 @@ body,html {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-color: grey;
 }
 
 
@@ -159,8 +160,19 @@ body,html {
 
   .textoContacto{
     transition: 1.0s ease;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 30px;
+    border-radius: 30px;
   }
 
-  .formaSpotify{
+  .textoContacto button{
     transition: 1.0s ease;
+    background-color: rgba(255, 255, 255, 1);
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  .textoContacto button:hover{
+    opacity: 0.7;
   }

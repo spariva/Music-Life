@@ -23,7 +23,6 @@ function modoOscuro() {
     var elementosNavbar = document.getElementsByClassName('textoCabecera');
     var textoCabecera = document.getElementById('logo');
     var textoContacto = document.getElementsByClassName('textoContacto');
-    // var formaSpotify = document.getElementsByClassName('formaSpotify');
 
     // Verifica si el video actual contiene 'FondoIndexClaro.mp4' en su ruta
     if (videoElement.src.includes('FondoIndexClaro.mp4')) {
@@ -33,11 +32,9 @@ function modoOscuro() {
 
         for (var i = 0; i < textoContacto.length; i++) {
          textoContacto[i].style.color = 'white';
-        }
+         textoContacto[i].style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
 
-        // for (var i = 0; i < formaSpotify.length; i++) {
-        //     formaSpotify[i].style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        // }
+        }
 
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'white';
@@ -53,11 +50,8 @@ function modoOscuro() {
 
         for (var i = 0; i < textoContacto.length; i++) {
              textoContacto[i].style.color = 'black';
+         textoContacto[i].style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         }
-
-        // for (var i = 0; i < formaSpotify.length; i++) {
-        //     formaSpotify[i].style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-        // }
 
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'black';

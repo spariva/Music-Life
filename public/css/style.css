@@ -79,6 +79,8 @@ body,html {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-color: grey;
+
 }
 
 
@@ -121,6 +123,32 @@ body,html {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 1;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.burbuja{
+
+}
+
+#reproductorAbajo{
+    padding: 10px;
+    position: relative;
+    width: 1000px;
+    height:400px;
+    margin-top: 95%;
+
+}
+
+#burbujaAbajo{
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 50%; 
+    position: relative;
+    width: 1000px;
+    height:200px;
+    margin-bottom: 900px;
+    z-index: 1;
+
 }
 
 
