@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
-
-/* CONTINUAR - INCLUIR EMBED EN EL PERFIL IZQ */
-/* CONTINUAR - DRC Valoraciones (estrellas o media numerica)*/
 /* CONTINUAR - DRC Contenedores a ultimas valoraciones */
 /* REVISAR - Comprobar que los estilos se aplican correctamente y no hay codigo muerto */
-/* CONTINUAR - Border suavizado e incluir nav de sergio */
-/* CONTINUAR - Border suavizado e incluir nav de sergio */
+/* CONTINUAR - Border suavizado y terminar de pulir el acabado general del perfil */
+/* REVISAR - Solucionar cambio entre oscuro y claro - Hay un instante en que está en blanco
+                al cambiar de pantallas, se puede cambiar el color de fondo para que quede
+                oscuro al intercambiar de videos */
 
 * {
   margin: 0;
@@ -30,6 +29,8 @@ body {
   grid-template-columns: 5% 30% 60% 5%;
   grid-template-rows: 10% 80% 10%;
   height: 100vh;
+  width: 90%;
+  z-index: 1;
 }
 
 .menuUsuario__izquierda {
@@ -38,7 +39,6 @@ body {
   display: flex;
   color: var(--white);
   /* pensar una funcion para alterar los colores */
-  background: linear-gradient(to right, #01a9ac, #01dbdf);
   border-top-left-radius: 25%;
   border-bottom-left-radius: 25%;
   flex-direction: column;
@@ -51,7 +51,7 @@ body {
 }
 
 .menuUsuario__izquierda p {
-  font-size: 12px;
+  font-size: 1.1em;
 }
 
 .menuUsuario__derecha {
@@ -148,6 +148,7 @@ body {
 
 .datos{
   width: 100%;
+  height: 100%;
 }
 
 .datos h4{
@@ -161,8 +162,30 @@ body {
   color: #919aa3;
 }
 
+.menuUsuario__valoraciones-datos{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.menuUsuario__valoraciones-datos__texto:nth-child(1):nth-child(1){
+  grid-column: 1/ span 2;
+  grid-row: 1;
+}
+
+
 .menuUsuario__valoraciones-datos__texto:nth-child(2){
   grid-column: 1/ span 2;
   grid-row: 2;
   background-color: red;
+}
+
+.menuUsuario__izquierda__iframe{
+  width: 350px;
+  height:110px;
+}
+
+.iframes__favoritos{
+  display: flex;
+  flex-direction: column;
 }
