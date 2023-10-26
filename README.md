@@ -9,7 +9,7 @@ Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spo
 ## Notas - Apuntes - Observaciones:
 -Zona para incluir cualquier comentario u observación.  
 -Propuesta para cambiar de nombre el archivo img por media.  
--Decidir el nav para poder incluirlo en todas las páginas, o en la mayoria de ellas.  
+-Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña 
 
 ### Estructura
 config/
