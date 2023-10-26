@@ -156,7 +156,7 @@ body.crearCuenta form#registro{
 
 .formulario__titulo{
     position: relative;
-    color:#fff;
+    color:var(--white);
     font-size: 1.5em;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -175,7 +175,13 @@ body.crearCuenta form .inputBox{
     justify-content: center;
 }
 
-form .inputBox a{
+form .inputBox p{
+    margin-right: 10px;
+    cursor: default;
+}
+
+form .inputBox a,
+form .inputBox p{
     color: var(--white);
     text-decoration: none;
     font-size: 0.85em;
@@ -208,6 +214,7 @@ form .inputBox .botonConectarse {
 
 form#registro .inputBox .botonCrear{
     background: var(--red);
+    cursor: pointer;
 }
 
 #conectarCuenta{
