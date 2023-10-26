@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Music-Life</title>
+	<title>Spotify</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<script src="../js/script.js" defer></script>
 </head>
@@ -21,22 +21,22 @@
 		</nav>
 	</header>
 	<div class="video-container">
+		<!-- Cambios realizados explicados en la página de index-->
 		<video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+			<!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
 			Tu navegador no soporta el elemento de video mp4.
 		</video>
-		<div class="content">
-			<!-- Contenido de tu página aquí -->
+	</div>
+	<div class="content">
+		<div id="zona1"></div>
+		<div id="zona2"></div>
 
-			<div class="burbuja" id="reproductorAbajo">
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
-				<div class="burbuja" id="burbujaAbajo"></div>
-			</div>
-
-		</div>
+		<div id="zona3"><iframe style="border-radius:12px"
+				src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator" width="100%"
+				height="152" frameBorder="0" allowfullscreen=""
+				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+				loading="lazy"></iframe></div>
+	</div>
 </body>
 
 </html>
