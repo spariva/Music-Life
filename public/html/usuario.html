@@ -6,17 +6,35 @@
         <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
         <title>Usuario - Music Life</title>
         <link rel="stylesheet" href="../css/usuario.css">
-        <script src="" defer></script>
+        <script src="../js/usuario.js" defer></script>
+        <link rel="stylesheet" href="../css/style.css">
+        <script src="../js/script.js" defer></script>
     </head>
 
     <body>
+        <header id="header">
+            <a class="textoCabecera" href="index.html" id="logo">Music-Life</a>
+            <nav class="navbar">
+                <a class="textoCabecera" href="spotify.html">Spotify</a>
+                <a class="textoCabecera" href="#">Contacto</a>
+                <a class="textoCabecera" href="#">Info</a>
+                <a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
+            </nav>
+        </header>
         <div class="contenedor-principal-menuUsuario">
-            <div class="menuUsuario__izquierda">
+            <div class="menuUsuario__izquierda" id="menuUsuario__izquierda" >
+
+                <h2>Gato Pan</h2>
                 <img src="../img/imagenPerfil.png" alt="usuario-imagen">
-                <h4>Gato Pan</h4>
-                <p>Gato Developer</p>
-            </div>
-            <div class="menuUsuario__derecha">
+                <p>Listas favoritas</p>
+                <div class="iframes__favoritos">
+                    <iframe class="menuUsuario__izquierda__iframe" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    <iframe class="menuUsuario__izquierda__iframe" src="https://open.spotify.com/embed/playlist/20IwQZIfrykXjnyd4SLHtX?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    <iframe class="menuUsuario__izquierda__iframe" src="https://open.spotify.com/embed/album/3GU8BzFEAdFSRjc8jZkL3S?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+               </div>
+
+            <div class="menuUsuario__derecha"  id="menuUsuario__derecha">
                 <div class="menuUsuario__derecha__info">
                     <h3>INFORMACIÓN</h3>
                     <div class="menuUsuario__info-datos">
@@ -44,7 +62,14 @@
                     <div class="menuUsuario__valoraciones-datos">
                         <div class="menuUsuario__valoraciones-datos__texto datos">
                             <h4>Reciente</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
+                            <p>Aqui está el último mensaje o comentario que ha recibido el usuario. Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                                Soluta, at cum fugiat commodi cumque harum aperiam iusto dignissimos aliquam qui animi numquam ad eaque
+                                 repudiandae expedita atque voluptas non molestias.</p>
+                            <p>Aqui está el penúltimo mensaje o comentario que ha recibido el usuario. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                 Tempore omnis, veritatis consequatur dolorem asperiores voluptatibus adipisci in hic.</p>
+                            <p>Aqui está el antepenúltimo mensaje o comentario que ha recibido el usuario. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                 Voluptates dicta, consequuntur earum ipsum voluptatibus est ab cupiditate laborum illum neque nulla harum,
+                                  quisquam modi tenetur repellat optio. Quas, ut architecto.</p>
                         </div>
                         <div class="menuUsuario__valoraciones-datos__texto datos">
                             <h4>Más visto</h4>
@@ -56,6 +81,12 @@
             </div>
         </div>
 
+        <div class="video-container">
+            <!-- Cambios realizados explicados en la página de index-->
+            <video autoplay loop muted class="video" id="videoFondo" src="../img/FondoSpotifyClaro.mp4">
+                <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
+                Tu navegador no soporta el elemento de video mp4.
+            </video>
+        </div>
     </body>
-
 </html>
