@@ -7,55 +7,20 @@
     <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
     <title>Espacio de NOMBRE_USUARIO</title>
     <link rel="stylesheet" href="../css/pruebas-playlist.css">
-    <link rel="stylesheet" href="../css/header-nav.css">
     <script src="../js/BusquedaSpotify.js" defer></script>
-    <script src="../js/header-nav.js" defer></script>
 </head>
 
 <body>
+    <header id="header">
+        <a class="textoCabecera" href="./index.html" id="logo">Music-Life</a>
+        <nav class="navbar">
+            <a class="textoCabecera" href="./usuario.html">Perfil</a>
+            <a class="textoCabecera" href="./spotify.html">Spotify</a>
+            <a class="textoCabecera" href="./contacto.html">Contacto</a>
+            <a class="textoCabecera" href="#">Info</a>
+        </nav>
+    </header>
     <div class="main">
-        <header class="cabecera">
-            <nav class="contenedor-nav">
-                <img src="../img/logo.png" alt="" class="contenedor-nav__logo">
-                <ul>
-                    <li><a href="#">Listas</a></li>
-                    <li><a href="#">Comunidad</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
-                </ul>
-                <img src="../img/imagenPerfil.png" alt="" class="contenedor-nav__usuarioImg" onclick="toggleMenu()">
-
-                <div class="contenedor-nav__menu-usuario" id="id-menu-usuario">
-                    <div class="sub-menu">
-                        <div class="sub-menu__datos-usuario">
-                            <img src="../img/imagenPerfil.png">
-                            <h2>Usuario Michi</h2>
-                            <span id="user-linea"></span>
-                        </div>
-                        <a href="" class="sub-menu__enlaces">
-                            <img src="../img/perfil.png">
-                            <p>Editar perfil</p>
-                            <span>></span>
-                        </a>
-                        <a href="" class="sub-menu__enlaces">
-                            <img src="../img/engranaje.png">
-                            <p>Configuración</p>
-                            <span>></span>
-                        </a>
-                        <a href="" class="sub-menu__enlaces">
-                            <img src="../img/ayuda.png">
-                            <p>Asistencia y ayuda</p>
-                            <span>></span>
-                        </a>
-                        <a href="" class="sub-menu__enlaces">
-                            <img src="../img/logout.png">
-                            <p>Desconectar / Logout</p>
-                            <span>></span>
-                        </a>
-                    </div>
-                </div>
-
-            </nav>
-        </header>
         <iframe class="iframe__style iframe1" src="https://open.spotify.com/embed/playlist/0zWn5j2DvmAAIIQRCnRvm2?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <iframe class="iframe__style iframe2" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <iframe class="iframe__style iframe3" src="https://open.spotify.com/embed/playlist/6T442Dd7j4FYpP7rtCh4Mp?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -78,6 +43,7 @@
             </div> -->
         </div>
     </div>
+
 </body>
 
 </html>
