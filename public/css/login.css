@@ -121,7 +121,7 @@ body.crearCuenta .contenedor {
 
 body.crearCuenta .contenedor__efectos::before,
 body.crearCuenta .contenedor__efectos::after {
-    background: url(../img/background-montain-four.jpg);
+    background: url(../img/Captura3.PNG);    
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
