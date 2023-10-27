@@ -1,7 +1,10 @@
 console.log("scripts ok");
-
+//ejemplos
+// https://open.spotify.com/embed/playlist/37i9dQZF1DX5Ejj0EkURtP?utm_source=generator
+// https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator
 let consulta = document.querySelector('.inputBuscador');
 let iframeBuscador = document.querySelector('.iframeBuscador');
+//let barraBusqueda = document.getElementById('barraBusqueda');
 
 function buscarLista() {
     let url = consulta.value;

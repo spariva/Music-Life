@@ -67,7 +67,7 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se ha encontrado la playlist con el nombre ' || v_NOMBRE_playlist);
     END;
-
+/
 
 --Para tener seguimiento de usuarios eliminados, actualizados o insertados, se crea una tabla AUDITAR_USUARIOS y un trigger que se ejecuta antes de cada operación de inserción, actualización o eliminación en la tabla USUARIOS.
 DROP TABLE AUDITAR_USUARIOS CASCADE CONSTRAINTS;

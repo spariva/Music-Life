@@ -76,11 +76,11 @@ CREATE OR REPLACE TRIGGER comentarios_insertados
   FOR EACH ROW
 BEGIN
   SELECT comentarios_secuencia.nextval
-  INTO :NEW.ID
+  INTO :NEW.COMENTARIO_ID
   FROM dual;
 END;
 
-REM -- TRIGGER: INCREMENTAR ID COMENTARIOS AUTOMATICAMENTE - si no guardamos fecha-hora, sería la manera d epoder ordenarlos cronoglógicamente
+REM -- TRIGGER: INCREMENTAR ID COMENTARIOS AUTOMATICAMENTE - si no guardamos fecha-hora, sería la manera de poder ordenarlos cronoglógicamente
 CREATE SEQUENCE comentarios_secuencia;
 
 
