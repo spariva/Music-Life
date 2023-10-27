@@ -199,21 +199,43 @@
     font-size: 30px;
   }
   
-#zona1{
+#listener1{
     grid-area: zona1;
-    padding-top: 50px;
+    margin-top: 20%;
 
 }
 
-#zona2{
+#listener2{
     grid-area: zona2;
-    padding-top: 50px;
+    margin-top: 30%;
 
 }
 
-#zona3{
+#listener3{
+  grid-area: zona1;
+  position: absolute;
+  top: 500px;
+
+}
+
+#listener4{
+  grid-area: zona2;
+  position: absolute;
+  top: 500px;
+}
+
+#listener5{
+  position: absolute;
+  top: 10%;
+  left:500px;
+  width: 500px;
+}
+
+
+#listenerEnd{
     padding-top: 90%;
     grid-area: zona3;
+    margin-right: 60px;
 }
   
   .textoSpotify {
