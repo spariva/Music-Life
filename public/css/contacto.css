@@ -1,3 +1,8 @@
+@font-face {
+    font-family: popText;
+    src: url(../img/fonts/PopArt-Regular.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +28,8 @@
 #logo {
     font-size: 32px;
     text-decoration: none;
-    font-weight: 700; 
+    font-weight: 500;
+    font-family: popText;
 }
 
 .textoCabecera{
