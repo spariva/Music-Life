@@ -1,247 +1,246 @@
-
 @font-face {
   font-family: popText;
   src: url(../img/fonts/PopArt-Regular.ttf);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    transition: color 0.5s ease;
-  }
-  
-  /* CABECERA */
-  #header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-    background: transparent;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-  }
-  
-  #logo {
-    font-size: 32px;
-    text-decoration: none;
-    font-weight: 700;
-    font-family: popText;
-  }
-  
-  .textoCabecera {
-    color: black;
-  }
-  
-  .navbar a {
-    position: relative;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-    margin-left: 40px;
-  }
-  
-  .navbar a::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 0;
-    height: 2px;
-    /* Cambiar en modo oscuro tmbn */
-    color: black;
-    background: #fff;
-    transition: 0.3s;
-  }
-  
-  .navbar a:hover::before {
-    width: 100%;
-  }
-  
-  #modo-oscuro {
-    cursor: pointer;
-  }
-  
-  /* 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: color 0.5s ease;
+}
+
+/* CABECERA */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+#logo {
+  font-size: 32px;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: popText;
+}
+
+.textoCabecera {
+  color: black;
+}
+
+.navbar a {
+  position: relative;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  /* Cambiar en modo oscuro tmbn */
+  color: black;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+
+#modo-oscuro {
+  cursor: pointer;
+}
+
+/* 
   #modoOscuro{
       margin-left: 40px;
       height: 20px;
       width: 20px; 
   }	
   */
-  /* CABECERA */
-  
-  
-  
-  /* CUERPO */
-  body,
-  html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background-color: grey;
+/* CABECERA */
+
+
+
+/* CUERPO */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: grey;
+}
+
+
+.efecto-agua {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 80%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.697) 0%, rgba(255, 255, 255, 0) 60%);
+  transform: scale(0);
+  animation: onda-animacion 0.5s linear;
+}
+
+@keyframes onda-animacion {
+  to {
+    transform: scale(1);
+    opacity: 0;
   }
-  
-  
-  .efecto-agua {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-radius: 80%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.697) 0%, rgba(255, 255, 255, 0) 60%);
-    transform: scale(0);
-    animation: onda-animacion 0.5s linear;
+}
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+
+
+.circulo-flotante {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #ffffffc7;
+  position: absolute;
+  /* Establece la posición absoluta para que flote sobre la página */
+  top: 50%;
+  /* Coloca el círculo en la mitad superior de la página */
+  left: 50%;
+  /* Coloca el círculo en el centro horizontal de la página */
+  transform: translate(-50%, -50%);
+  animation: flotar 3s ease-in-out infinite;
+  /* Aplica la animación llamada "flotar" */
+  transition: 1.0s ease;
+}
+
+.circulo-flotante:hover {
+  background-color: #fffffff1;
+  transform: translate(0, 0);
+}
+
+@keyframes flotar {
+  0% {
+    transform: translate(-50%, -50%) translateY(-10px);
+    /* Comienza 10px arriba de su posición original */
   }
-  
-  @keyframes onda-animacion {
-    to {
-      transform: scale(1);
-      opacity: 0;
-    }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(10px);
+    /* Se mueve 10px abajo de su posición original */
   }
-  
-  .video-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+
+  100% {
+    transform: translate(-50%, -50%) translateY(-10px);
+    /* Vuelve a la posición inicial */
   }
-  
-  .video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 1;
-  }
-  
-  
-  
-  .circulo-flotante {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: #ffffffc7;
-    position: absolute;
-    /* Establece la posición absoluta para que flote sobre la página */
-    top: 50%;
-    /* Coloca el círculo en la mitad superior de la página */
-    left: 50%;
-    /* Coloca el círculo en el centro horizontal de la página */
-    transform: translate(-50%, -50%);
-    animation: flotar 3s ease-in-out infinite;
-    /* Aplica la animación llamada "flotar" */
-    transition: 1.0s ease;
-  }
-  
-  .circulo-flotante:hover {
-    background-color: #fffffff1;
-    transform: translate(0, 0);
-  }
-  
-  @keyframes flotar {
-    0% {
-      transform: translate(-50%, -50%) translateY(-10px);
-      /* Comienza 10px arriba de su posición original */
-    }
-  
-    50% {
-      transform: translate(-50%, -50%) translateY(10px);
-      /* Se mueve 10px abajo de su posición original */
-    }
-  
-    100% {
-      transform: translate(-50%, -50%) translateY(-10px);
-      /* Vuelve a la posición inicial */
-    }
-  }
-  
-  /* CUERPO */
-  
-  .content {
-    width: 90%;
-    display: grid;
-    grid-template-areas: "zona1 . zona2" ". zona3 .";
-    /* Porcentajes para las tres columnas */
-    grid-gap: 10px;
-    /* Espacio entre los elementos */
-  }
-  
-  
-  #contenido {
-    padding: 50px;
-    background-color: #ffffff8f;
-    border-radius: 30px;
-    margin: 10px;
-    text-align: center;
-    gap:10px;
-  }
-  
-  #contenido h2 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;
-  }
-  
-#listener1{
-    grid-area: zona1;
-    margin-top: 20%;
+}
+
+/* CUERPO */
+
+.content {
+  width: 90%;
+  display: grid;
+  grid-template-areas: "zona1 . zona2" ". zona3 .";
+  /* Porcentajes para las tres columnas */
+  grid-gap: 10px;
+  /* Espacio entre los elementos */
+}
+
+
+#contenido {
+  padding: 50px;
+  background-color: #ffffff8f;
+  border-radius: 30px;
+  margin: 10px;
+  text-align: center;
+  gap: 10px;
+}
+
+#contenido h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+}
+
+#listener1 {
+  grid-area: zona1;
+  margin-top: 20%;
 
 }
 
-#listener2{
-    grid-area: zona2;
-    margin-top: 30%;
+#listener2 {
+  grid-area: zona2;
+  margin-top: 30%;
 
 }
 
-#listener3{
+#listener3 {
   grid-area: zona1;
   position: absolute;
   top: 500px;
 
 }
 
-#listener4{
+#listener4 {
   grid-area: zona2;
   position: absolute;
   top: 500px;
 }
 
-#listener5{
+#listener5 {
   position: absolute;
   top: 10%;
-  left:500px;
+  left: 500px;
   width: 500px;
 }
 
 
-#listenerEnd{
-    padding-top: 90%;
-    grid-area: zona3;
-    margin-right: 60px;
+#listenerEnd {
+  padding-top: 90%;
+  grid-area: zona3;
+  margin-right: 60px;
 }
-  
-  .textoSpotify {
-    transition: 1.0s ease;
-  }
-  
-  .formaSpotify {
-    transition: 1.0s ease;
-  }
+
+.textoSpotify {
+  transition: 1.0s ease;
+}
+
+.formaSpotify {
+  transition: 1.0s ease;
+}

@@ -1,19 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: content-box;
 }
 
-:root{
-    --white:#fff;
-    --red:#f4242f;
-    --yellow:#ffeb3b;
-    --blue:#2196f3;
-    --blur-grey:#ffffff80;
-    --blur-greySoft:#ffffff40;
+:root {
+    --white: #fff;
+    --red: #f4242f;
+    --yellow: #ffeb3b;
+    --blue: #2196f3;
+    --blur-grey: #ffffff80;
+    --blur-greySoft: #ffffff40;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@ body{
     background-color: grey;
 }
 
-body::before{
+body::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -30,7 +30,7 @@ body::before{
     background-position: center;
 }
 
-body::after{
+body::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -41,11 +41,11 @@ body::after{
     transition: 0.05s;
 }
 
-body.crearCuenta::after{
+body.crearCuenta::after {
     opacity: 1;
 }
 
-.contenedor{
+.contenedor {
     position: relative;
     display: flex;
     justify-content: center;
@@ -59,43 +59,44 @@ body.crearCuenta::after{
     overflow: hidden;
 }
 
-body.crearCuenta .contenedor{
+body.crearCuenta .contenedor {
     height: 430px;
 }
 
-.contenedor::before{
+.contenedor::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
     background: repeating-conic-gradient(from var(--grados), #45f3ff 0%,
-    #45f3ff 10%, transparent 10%, transparent 80%, #45f3ff 100%);
+            #45f3ff 10%, transparent 10%, transparent 80%, #45f3ff 100%);
     animation: animacion 2.5s linear infinite;
 }
 
-@property --grados{
+@property --grados {
     syntax: '<angle>';
-    inherits:false;
+    inherits: false;
     initial-value: 0deg;
 }
 
-@keyframes animacion{
-    0%{
-        --grados:0deg
+@keyframes animacion {
+    0% {
+        --grados: 0deg
     }
-    100%{
-        --grados:360deg
+
+    100% {
+        --grados: 360deg
     }
 }
 
-.contenedor__efectos{
+.contenedor__efectos {
     position: absolute;
     inset: 5px;
     overflow: hidden;
     border-radius: 15px;
 }
 
-.contenedor__efectos::before{
+.contenedor__efectos::before {
     content: '';
     position: absolute;
     inset: 5px;
@@ -107,7 +108,7 @@ body.crearCuenta .contenedor{
     border-radius: 20px;
 }
 
-.contenedor__efectos::after{
+.contenedor__efectos::after {
     content: '';
     position: absolute;
     inset: 5px;
@@ -119,7 +120,7 @@ body.crearCuenta .contenedor{
 }
 
 body.crearCuenta .contenedor__efectos::before,
-body.crearCuenta .contenedor__efectos::after{
+body.crearCuenta .contenedor__efectos::after {
     background: url(../img/background-montain-four.jpg);
     background-attachment: fixed;
     background-size: cover;
@@ -127,11 +128,11 @@ body.crearCuenta .contenedor__efectos::after{
     filter: blur(15px);
 }
 
-body.crearCuenta .contenedor::before{
+body.crearCuenta .contenedor::before {
     filter: hue-rotate(270deg);
 }
 
-form{
+form {
     position: absolute;
     left: 0;
     display: flex;
@@ -143,21 +144,21 @@ form{
     transition: 0.5s;
 }
 
-form#registro{
+form#registro {
     left: 100%;
 }
 
-body.crearCuenta form#inicioSesion{
+body.crearCuenta form#inicioSesion {
     left: -100%;
 }
 
-body.crearCuenta form#registro{
+body.crearCuenta form#registro {
     left: 0;
 }
 
-.formulario__titulo{
+.formulario__titulo {
     position: relative;
-    color:var(--white);
+    color: var(--white);
     font-size: 1.5em;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -165,34 +166,34 @@ body.crearCuenta form#registro{
     margin-bottom: 10px;
 }
 
-form .inputBox{
+form .inputBox {
     position: relative;
     width: 70%;
     display: flex;
     justify-content: space-between;
 }
 
-body.crearCuenta form .inputBox{
+body.crearCuenta form .inputBox {
     justify-content: center;
 }
 
-form .inputBox p{
+form .inputBox p {
     margin-right: 10px;
     cursor: default;
 }
 
 form .inputBox a,
-form .inputBox p{
+form .inputBox p {
     color: var(--white);
     text-decoration: none;
     font-size: 0.85em;
 }
 
-form .inputBox #crearCuenta{
+form .inputBox #crearCuenta {
     text-decoration: underline;
 }
 
-form .inputBox input{
+form .inputBox input {
     width: 100%;
     outline: none;
     border: 1px solid var(--blur-greySoft);
@@ -203,23 +204,23 @@ form .inputBox input{
     color: var(--white);
 }
 
-form .inputBox input::placeholder{
+form .inputBox input::placeholder {
     color: var(--blur-grey);
 }
 
 form .inputBox .botonConectarse {
     background: var(--blue);
     font-weight: 500;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-form#registro .inputBox .botonCrear{
+form#registro .inputBox .botonCrear {
     background: var(--red);
     cursor: pointer;
 }
 
-#conectarCuenta{
+#conectarCuenta {
     font-weight: 500;
-    color:var(--yellow);
+    color: var(--yellow);
     text-decoration: underline;
 }

@@ -18,7 +18,7 @@
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background:transparent;
+    background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,8 +32,8 @@
     font-family: popText;
 }
 
-.textoCabecera{
-    color:black;
+.textoCabecera {
+    color: black;
 }
 
 .navbar a {
@@ -53,7 +53,7 @@
     height: 2px;
     /* Cambiar en modo oscuro tmbn */
     color: black;
-    background:#fff;
+    background: #fff;
     transition: 0.3s;
 }
 
@@ -61,8 +61,8 @@
     width: 100%;
 }
 
-#modo-oscuro{
-	cursor:pointer;
+#modo-oscuro {
+    cursor: pointer;
 }
 
 /* 
@@ -77,7 +77,8 @@
 
 
 /* CUERPO */
-body,html {
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -131,61 +132,70 @@ body,html {
 }
 
 
-  
+
 .circulo-flotante {
     width: 200px;
     height: 200px;
-    border-radius: 50%; 
-    background-color: #ffffffc7; 
-    position: absolute; /* Establece la posición absoluta para que flote sobre la página */
-    top: 50%; /* Coloca el círculo en la mitad superior de la página */
-    left: 50%; /* Coloca el círculo en el centro horizontal de la página */
+    border-radius: 50%;
+    background-color: #ffffffc7;
+    position: absolute;
+    /* Establece la posición absoluta para que flote sobre la página */
+    top: 50%;
+    /* Coloca el círculo en la mitad superior de la página */
+    left: 50%;
+    /* Coloca el círculo en el centro horizontal de la página */
     transform: translate(-50%, -50%);
-    animation: flotar 3s ease-in-out infinite; /* Aplica la animación llamada "flotar" */
+    animation: flotar 3s ease-in-out infinite;
+    /* Aplica la animación llamada "flotar" */
     transition: 1.0s ease;
 }
 
 .circulo-flotante:hover {
-    background-color: #fffffff1; 
+    background-color: #fffffff1;
     transform: translate(0, 0);
 }
-  
-  @keyframes flotar {
+
+@keyframes flotar {
     0% {
-      transform: translate(-50%, -50%) translateY(-10px); /* Comienza 10px arriba de su posición original */
+        transform: translate(-50%, -50%) translateY(-10px);
+        /* Comienza 10px arriba de su posición original */
     }
+
     50% {
-      transform: translate(-50%, -50%) translateY(10px); /* Se mueve 10px abajo de su posición original */
+        transform: translate(-50%, -50%) translateY(10px);
+        /* Se mueve 10px abajo de su posición original */
     }
+
     100% {
-      transform: translate(-50%, -50%) translateY(-10px); /* Vuelve a la posición inicial */
+        transform: translate(-50%, -50%) translateY(-10px);
+        /* Vuelve a la posición inicial */
     }
-  }
+}
 
-  /* CUERPO */
+/* CUERPO */
 
-  .textoContacto{
+.textoContacto {
     transition: 1.0s ease;
     background-color: rgba(255, 255, 255, 0.5);
     padding: 30px;
     border-radius: 30px;
-  }
+}
 
-  .textoContacto button{
+.textoContacto button {
     transition: 1.0s ease;
     background-color: rgba(255, 255, 255, 1);
     font-size: 15px;
     padding: 10px;
     border-radius: 15px;
-  }
+}
 
-  .textoContacto button:hover{
+.textoContacto button:hover {
     opacity: 0.7;
-  }
+}
 
-  #mensaje{
-	  max-height:300px;
-	  min-height:100px;
-	  max-width:370px;
-	  min-width:370px;
-  }
+#mensaje {
+    max-height: 300px;
+    min-height: 100px;
+    max-width: 370px;
+    min-width: 370px;
+}
