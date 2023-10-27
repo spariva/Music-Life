@@ -83,12 +83,5 @@ END;
 REM -- TRIGGER: INCREMENTAR ID COMENTARIOS AUTOMATICAMENTE - si no guardamos fecha-hora, sería la manera d epoder ordenarlos cronoglógicamente
 CREATE SEQUENCE comentarios_secuencia;
 
-REM -- 						CREACION DE FILAS
--- REM DATOS USUARIOS
-INSERT INTO USUARIOS (NOMBRE, EMAIL, CONTRASENA) VALUES('Sergio','email1@mail.es','1234');
-INSERT INTO USUARIOS (NOMBRE, EMAIL, CONTRASENA) VALUES('Maki','email2@mail.es','1234');
-INSERT INTO USUARIOS (NOMBRE, EMAIL, CONTRASENA) VALUES('Miguel','email3@mail.es','1234');
-COMMIT;
-
 
 -- Queda por saber cómo va a funcionar la api, en cuanto a cómo afecta a la base de datos las playlists y canciones, las guardamos en nuestra base o nos la da la api?
