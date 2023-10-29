@@ -1,73 +1,259 @@
+				---------------------------------
+				--	**** PROCEDIMIENTOS  ****  --
+				---------------------------------
+
 -- 1. Crear un usuario (depende si quitamos o no la secuencia, haría falta la línea del max(id) + 1):
-DECLARE
-  v_id NUMBER(6);
+CREATE OR REPLACE PROCEDURE INTRODUCIR_USUARIO(
+	V_NOMBRE USUARIO.NOMBRE%TYPE, V_NICK USUARIO.NICK_NAME%TYPE,
+	V_EMAIL USUARIO.EMAIL%TYPE, V_PASSWORD USUARIO.CONTRASENA%TYPE)
+IS
+  v_id USUARIO.ID%TYPE;
 BEGIN
-  SELECT MAX(ID) + 1 INTO v_id FROM USUARIOS;
+  SELECT MAX(ID) + 1 INTO v_id FROM USUARIO;
   
-  INSERT INTO USUARIOS (ID, NOMBRE, EMAIL, CONTRASENA)
-  VALUES (v_id, 'NombreUsuario', 'correo@example.com', 'contrasena123');
+  INSERT INTO USUARIO (ID, NOMBRE, NICK_NAME, EMAIL, CONTRASENA)
+  VALUES (v_id, V_NOMBRE, V_NICK, V_EMAIL, V_PASSWORD);
   
   COMMIT;
 END;
 /
 
 -- 2. Actualizar el nombre de un usuario en la tabla USUARIOS:
-DECLARE
-  v_usuario_id NUMBER(6) := 1; -- ID del usuario a actualizar
-  v_nuevo_nombre VARCHAR2(26) := 'NuevoNombre';
+CREATE OR REPLACE PROCEDURE CAMBIO_NOMBRE_USUARIO(
+	v_usuario_id ID.NOMBRE%TYPE,
+	v_nuevo_nombre USUARIO.NOMBRE%TYPE)
+IS
 BEGIN
-  UPDATE USUARIOS
+  UPDATE USUARIO
   SET NOMBRE = v_nuevo_nombre
   WHERE ID = v_usuario_id;
-  
+  DBMS_OUTPUT.PUT_LINE('Usuario con identificador ' || v_usuario_id || ' cambiado su nombre por' || v_nuevo_nombre);
   COMMIT;
 END;
 /
 
---Eliminar un usuario de la tabla USUARIOS y sus playlists relacionadas:
-DECLARE
-  v_usuario_id NUMBER(6) := 1; -- ID del usuario a eliminar
+-- 3. Eliminar un usuario de la tabla USUARIOS y sus playlists relacionadas:
+CREATE OR REPLACE PROCEDURE ELIMINAR_USUARIO-PLAYLIST(
+	v_usuario_id ID.NOMBRE%TYPE)
+IS
 BEGIN
-  DELETE FROM PLAYLISTS
+  DELETE FROM PLAYLIST
   WHERE CREADOR_ID = v_usuario_id;
   
-  DELETE FROM USUARIOS
+  DELETE FROM USUARIO
   WHERE ID = v_usuario_id;
+  DBMS_OUTPUT.PUT_LINE('Listas del usuario con identificador ' || v_usuario_id || ' eliminado junto a sus listas asocidas.');
   
   COMMIT;
 END;
 /
 
---Insertar un nuevo comentario en la tabla COMENTARIOS:
-DECLARE
-  v_comentario_id NUMBER(6);
+-- 4. Crear una playlist en la tabla PLAYLIST:
+CREATE OR REPLACE PROCEDURE INTRODUCIR_PLAYLIST(
+	V_NOMBRE PLAYLIST.NOMBRE%TYPE, V_CREADOR PLAYLIST.CREADOR_ID%TYPE)
+IS
+  v_id PLAYLIST.ID_PL%TYPE;
 BEGIN
-  SELECT MAX(COMENTARIO_ID) + 1 INTO v_comentario_id FROM COMENTARIOS;
+  SELECT MAX(ID_PL) + 1 INTO v_id FROM PLAYLIST;
   
-  INSERT INTO COMENTARIOS (COMENTARIO_ID, COMENTARIO, USUARIO_ID, PLAYLIST_ID)
-  VALUES (v_comentario_id, 'Este es un comentario', 1, 1); -- Usuario_ID y Playlist_ID de ejemplo
+  INSERT INTO PLAYLIST (ID_PL, NOMBRE, CREADOR_ID)
+  VALUES (v_id, V_NOMBRE, V_CREADOR);
+  DBMS_OUTPUT.PUT_LINE('La lista: ' || V_NOMBRE || ' es creada con identificador ' v_id);
   
   COMMIT;
 END;
 /
 
---Crea una consulta para buscar una playlist por su nombre, si no existe, genera una excepción, NO_DATA_FOUND. Si la encuentra te devuelve el ID de la playlist.
-DECLARE
-  v_NOMBRE_playlist VARCHAR2(26) := 'NombrePlaylist';
-  v_playlist_id NUMBER(6); 
+-- 5. Eliminar una playlist en la tabla PLAYLIST:
+CREATE OR REPLACE PROCEDURE ELIMINAR_PLAYLIST(
+	V_CREADOR PLAYLIST.CREADOR_ID%TYPE, V_PLAYLIST PLAYLIST.ID_PL%TYPE)
+IS
+  V_NOMBRE PLAYLIST.NOMBRE%TYPE;
 BEGIN
-    SELECT PLAYLIST_ID INTO v_playlist_id
-    FROM PLAYLISTS
-    WHERE NOMBRE = v_NOMBRE_playlist;
+  SELECT NOMBRE INTO V_NOMBRE FROM PLAYLIST
+  WHERE V_PLAYLIST = ID_PL
+  AND V_CREADOR = CREADOR_ID;
+  DBMS_OUTPUT.PUT_LINE('La lista con identificador:  '|| V_PLAYLIST||' y nombre: ' || V_NOMBRE || ' seleccionada para eliminacion.');
+  
+  DELETE FROM PLAYLIST
+  WHERE CREADOR_ID = V_CREADOR
+  AND V_PLAYLIST = ID_PL;
+  DBMS_OUTPUT.PUT_LINE('Lista ' || V_NOMBRE ||'  eliminada.');
+  
+  COMMIT;
+END;
+/
+
+
+-- 6. Insertar un nuevo comentario en la tabla COMENTARIOS:
+CREATE OR REPLACE PROCEDURE INTRODUCIR_COMENTARIO-PLAYLIST(
+	V_COMENTARIO COMENTARIO.CADENA_TEXTO%TYPE, V_USUARIO COMENTARIO.USUARIO_ID%TYPE,
+	V_PLAYLIST COMENTARIO.PLAYLIST_ID%TYPE)
+IS
+  v_comentario_id COMENTARIO.COMENTARIO_ID%TYPE;
+BEGIN
+  SELECT MAX(COMENTARIO_ID) + 1 INTO v_comentario_id FROM COMENTARIO;
+  
+  INSERT INTO COMENTARIO (COMENTARIO_ID, COMENTARIO, USUARIO_ID, PLAYLIST_ID)
+  VALUES (v_comentario_id, V_COMENTARIO, V_USUARIO, V_PLAYLIST); -- Usuario_ID y Playlist_ID de ejemplo
+  
+  COMMIT;
+END;
+/
+
+-- 7. Eliminar un comentario de la tabla COMENTARIOS:
+CREATE OR REPLACE PROCEDURE ELIMINAR_COMENTARIO(
+	V_USUARIO COMENTARIO.USUARIO_ID%TYPE, V_PLAYLIST COMENTARIO.PLAYLIST_ID%TYPE)
+IS
+	V_COMENTARIO COMENTARIO.COMENTARIO_ID%TYPE;
+BEGIN
+  SELECT COMENTARIO_ID INTO V_COMENTARIO FROM COMENTARIO
+  WHERE PLAYLIST_ID = V_PLAYLIST
+  AND USUARIO_ID = V_USUARIO;
+  
+  DELETE FROM COMENTARIO
+  WHERE USUARIO_ID = V_USUARIO
+  AND PLAYLIST_ID = V_PLAYLIST;
+  DBMS_OUTPUT.PUT_LINE('Comentario con identificador: ' || V_COMENTARIO ||' eliminado.');
+  
+  COMMIT;
+END;
+/
+
+--8. Moderar/editar un comentario de la tabla COMENTARIOS:
+CREATE OR REPLACE PROCEDURE MODERAR_COMENTARIO(
+	V_PLAYLIST COMENTARIO.PLAYLIST_ID%TYPE, V_USUARIO COMENTARIO.USUARIO_ID%TYPE,
+	V_TEXTO_NUEVO COMENTARIO.CADENA_TEXTO%TYPE)
+IS
+--V_CONTENIDO_MODERADO VARCHAR2(40);
+BEGIN
+
+  UPDATE COMENTARIO
+  SET CADENA_TEXTO = V_TEXTO_NUEVO
+  WHERE PLAYLIST_ID = V_PLAYLIST
+  AND USUARIO_ID = V_USUARIO;
+
+  DBMS_OUTPUT.PUT_LINE('Comentario del usuario con identificador ' || V_USUARIO || ' modificado.');
+  COMMIT;
+--		*** otra opcion ***
+--  V_CONTENIDO_MODERADO := 'El mensaje ha sido moderado.';
+--
+--  UPDATE COMENTARIO
+--  SET CADENA_TEXTO = V_CONTENIDO_MODERADO
+--  WHERE PLAYLIST_ID = V_PLAYLIST
+--  AND USUARIO_ID = V_USUARIO;
+--  DBMS_OUTPUT.PUT_LINE('El usuario: ' || V_USUARIO || ' ha sido moderado en la playlist: ' || V_PLAYLIST);
+
+END;
+  
+--9. Calcular la media de una lista
+CREATE OR REPLACE PROCEDURE MEDIA_PLAYLIST(
+	V_PLAYLIST PLAYLIST.ID_PL%TYPE)
+IS
+PROMEDIO_PUNTUACION NUMBER(2,1);
+BEGIN
+	SELECT AVG(PUNTUACION) INTO PROMEDIO_PUNTUACION
+	FROM VALORACION
+	WHERE VALORACION.PLAYLIST_ID = V_PLAYLIST;
+  COMMIT;
+END;
+/
+
+--X. Realizamos una media a los usuarios? Preguntar a los compis, requerira algun cambio enlos create TABLE
+
+--10. Todos los comentarios de una playlist específica listados por usuario
+CREATE OR REPLACE PROCEDURE OBTENER_COMENTARIOS_POR_USUARIO(
+  V_USUARIO_ID USUARIO.ID%TYPE)
+IS
+  V_NICK_NAME USUARIO.NICK_NAME%TYPE;
+  V_CADENA_TEXTO COMENTARIO.CADENA_TEXTO%TYPE;
+  V_CONTADOR NUMBER(1) := 1;
+BEGIN
+  -- Obtener el nombre de usuario
+  SELECT NICK_NAME INTO V_NICK_NAME
+  FROM USUARIO
+  WHERE ID = V_USUARIO_ID;
+  
+  DBMS_OUTPUT.PUT_LINE('Usuario: ' || V_NICK_NAME);
+  
+  -- Obtener y mostrar todos los comentarios del usuario
+  FOR FILA_COMENTARIO IN (
+    SELECT CADENA_TEXTO
+    FROM COMENTARIO
+    WHERE USUARIO_ID = V_USUARIO_ID
+  )
+  LOOP
+    V_CADENA_TEXTO := FILA_COMENTARIO.CADENA_TEXTO;
+    DBMS_OUTPUT.PUT_LINE('Comentario ' || V_CONTADOR || ': ' || V_CADENA_TEXTO);
+    V_CONTADOR := V_CONTADOR + 1; -- Incrementa el contador
+  END LOOP;
+END;
+/
+
+--11. Filtrar comentarios por fecha
+CREATE OR REPLACE PROCEDURE FILTRAR_COMENTARIOS_POR_FECHA(
+  V_FECHA_INICIO DATE
+)
+IS
+BEGIN
+  FOR FILAS_COMENTARIO IN (
+    SELECT
+      COMENTARIO.FECHA_COMENTARIO,
+      (SELECT NOMBRE FROM PLAYLIST WHERE ID_PL = COMENTARIO.PLAYLIST_ID),
+      (SELECT NICK_NAME FROM USUARIO WHERE ID = COMENTARIO.USUARIO_ID),
+      COMENTARIO.CADENA_TEXTO
+    FROM COMENTARIO
+    WHERE COMENTARIO.FECHA_COMENTARIO >= V_FECHA_INICIO
+    ORDER BY COMENTARIO.FECHA_COMENTARIO, PLAYLIST.NOMBRE, USUARIO.NICK_NAME
+  )
+  LOOP
+    IF FILAS_COMENTARIO.FECHA_COMENTARIO != OLD_FECHA_COMENTARIO THEN
+      DBMS_OUTPUT.PUT_LINE('Fecha: ' || FILAS_COMENTARIO.FECHA_COMENTARIO);
+      DBMS_OUTPUT.PUT_LINE('  Playlist: ' || FILAS_COMENTARIO.NOMBRE);
+      DBMS_OUTPUT.PUT_LINE('    Usuario: ' || FILAS_COMENTARIO.NICK_NAME);
+      DBMS_OUTPUT.PUT_LINE('      Comentario: ' || FILAS_COMENTARIO.CADENA_TEXTO);
+    ELSIF FILAS_COMENTARIO.NOMBRE != OLD_NOMBRE THEN
+      DBMS_OUTPUT.PUT_LINE('  Playlist: ' || FILAS_COMENTARIO.NOMBRE);
+      DBMS_OUTPUT.PUT_LINE('    Usuario: ' || FILAS_COMENTARIO.NICK_NAME);
+      DBMS_OUTPUT.PUT_LINE('      Comentario: ' || FILAS_COMENTARIO.CADENA_TEXTO);
+    ELSIF FILAS_COMENTARIO.NICK_NAME != OLD_NICK_NAME THEN
+      DBMS_OUTPUT.PUT_LINE('    Usuario: ' || FILAS_COMENTARIO.NICK_NAME);
+      DBMS_OUTPUT.PUT_LINE('      Comentario: ' || FILAS_COMENTARIO.CADENA_TEXTO);
+    ELSE
+      DBMS_OUTPUT.PUT_LINE('      Comentario: ' || FILAS_COMENTARIO.CADENA_TEXTO);
+    END IF;
+    OLD_FECHA_COMENTARIO := FILAS_COMENTARIO.FECHA_COMENTARIO;
+    OLD_NOMBRE := FILAS_COMENTARIO.NOMBRE;
+    OLD_NICK_NAME := FILAS_COMENTARIO.NICK_NAME;
+  END LOOP;
+END;
+/
+				----------------------------
+				--	**** FUNCIONES  ****  --
+				----------------------------
+
+--1. Funcion que consulta para buscar una playlist por su ID, si no existe, genera una excepción, NO_DATA_FOUND. Si la encuentra te devuelve el nombre de la playlist.
+CREATE OR REPLACE FUNCTION BUSCAR_PLAYLIST(
+	V_PLAYLIST PLAYLIST.ID_PL%TYPE)
+RETURN VARCHAR2
+DECLARE
+  v_NOMBRE_playlist PLAYLIST.NOMBRE%TYPE;
+BEGIN
+    SELECT PLAYLIST_ID INTO v_NOMBRE_playlist
+    FROM PLAYLIST
+    WHERE ID_PL = V_PLAYLIST;
     
-    DBMS_OUTPUT.PUT_LINE('La playlist con nombre ' || v_NOMBRE_playlist || ' tiene el ID ' || v_playlist_id);
-    RETURN v_playlist_id;
+    DBMS_OUTPUT.PUT_LINE('La playlist con ID ' || V_PLAYLIST || ' tiene el nombre: ' || v_NOMBRE_playlist);
+    RETURN v_NOMBRE_playlist;
 
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
-        DBMS_OUTPUT.PUT_LINE('No se ha encontrado la playlist con el nombre ' || v_NOMBRE_playlist);
-    END;
+        DBMS_OUTPUT.PUT_LINE('No se ha encontrado la playlist con el ID ' || V_PLAYLIST);
+END;
 /
+				---------------------------
+				--	**** TRIGGERS  ****  --
+				---------------------------
 
 --Para tener seguimiento de usuarios eliminados, actualizados o insertados, se crea una tabla AUDITAR_USUARIOS y un trigger que se ejecuta antes de cada operación de inserción, actualización o eliminación en la tabla USUARIOS.
 DROP TABLE AUDITAR_USUARIOS CASCADE CONSTRAINTS;
@@ -76,7 +262,7 @@ CREATE TABLE AUDITAR_USUARIOS(
 );
 
 CREATE OR REPLACE TRIGGER AUDITAR_USUARIOS
-   BEFORE INSERT OR UPDATE OR DELETE ON USUARIOS
+   BEFORE INSERT OR UPDATE OR DELETE ON USUARIO
    FOR EACH ROW
 BEGIN
    IF INSERTING OR UPDATING THEN
@@ -94,7 +280,7 @@ CREATE TABLE AUDITAR_COMENTARIOS(
 );
 
 CREATE OR REPLACE TRIGGER AUDITAR_COMENTARIOS
-   BEFORE INSERT OR UPDATE OR DELETE ON COMENTARIOS
+   BEFORE INSERT OR UPDATE OR DELETE ON COMENTARIO
    FOR EACH ROW
 BEGIN
     IF INSERTING OR UPDATING THEN
