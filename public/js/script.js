@@ -1,4 +1,4 @@
-
+//Efecto ratón animación onda.
 document.addEventListener('mousemove', function (e) {
     const onda = document.createElement('div');
     onda.className = 'efecto-agua';
@@ -16,6 +16,7 @@ document.addEventListener('mousemove', function (e) {
     });
 });
 
+//Modo oscuro universal a todas las páginas:
 function modoOscuro() {
     // La idea es que cambie el video y texto a modo oscuro o claro 
     var videoElement = document.getElementById('videoFondo');

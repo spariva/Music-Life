@@ -1,21 +1,3 @@
-
-document.addEventListener('mousemove', function (e) {
-    const onda = document.createElement('div');
-    onda.className = 'efecto-agua';
-    document.body.appendChild(onda);
-
-    const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    onda.style.left = x + 'px';
-    onda.style.top = y + 'px';
-
-    onda.addEventListener('animationend', function () {
-        onda.remove();
-    });
-});
-
 function modoOscuro() {
     // La idea es que cambie el video y texto a modo oscuro o claro 
     var videoElement = document.getElementById('videoFondo');
@@ -33,7 +15,6 @@ function modoOscuro() {
         for (var i = 0; i < textoContacto.length; i++) {
          textoContacto[i].style.color = 'white';
          textoContacto[i].style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-
         }
 
         for (var i = 0; i < elementosNavbar.length; i++) {

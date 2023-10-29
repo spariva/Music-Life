@@ -1,25 +1,7 @@
-
-document.addEventListener('mousemove', function (e) {
-    const onda = document.createElement('div');
-    onda.className = 'efecto-agua';
-    document.body.appendChild(onda);
-
-    const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    onda.style.left = x + 'px';
-    onda.style.top = y + 'px';
-
-    onda.addEventListener('animationend', function () {
-        onda.remove();
-    });
-});
-
 function modoOscuro() {
     // La idea es que cambie el video y texto a modo oscuro o claro 
     var videoElement = document.getElementById('videoFondo');
-    var textoBotonModoOscuro = document.getElementById("modo-oscuro");
+    var textoBotonModoOscuro = document.getElementById('modo-oscuro');
     var elementosNavbar = document.getElementsByClassName('textoCabecera');
     var textoCabecera = document.getElementById('logo');
     var textoSpotify = document.getElementsByClassName('textoSpotify');
