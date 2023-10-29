@@ -112,7 +112,7 @@ body.crearCuenta .contenedor {
     content: '';
     position: absolute;
     inset: 5px;
-    background: url(../img/background-montain.jpg);
+    background: url(../img/background-blue.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -121,7 +121,7 @@ body.crearCuenta .contenedor {
 
 body.crearCuenta .contenedor__efectos::before,
 body.crearCuenta .contenedor__efectos::after {
-    background: url(../img/Captura3.PNG);    
+    background: url(../img/background-green.PNG);    
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
