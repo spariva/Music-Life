@@ -15,11 +15,6 @@
     translate: (50%, 50%);
 }
 
-iframe {
-    width: 300px;
-    height: 152px;
-}
-
 
 .ratingBlock {
     border: 1px solid grey;

@@ -12,6 +12,8 @@ const commentInput = document.getElementById('comment');
 const submitButton = document.getElementById('submit-button');
 const ratingValue = document.getElementById('rating-value');
 const botonDesplegable = document.getElementById('botonDesplegable');
+var sectorComentarios = document.getElementById('listaComentarios');
+const comment = commentInput.value;
 
 var selectedRating = null;
 
@@ -66,7 +68,8 @@ submitButton.addEventListener('click', () => {
         // Guardamos la puntuacion y el comentario
         ratingValue.textContent = ('¡Gracias por tu puntuación y comentario!');
         botonDesplegable.textContent = selectedRating + "/5 " + '\u2605';
-
+        var textoComentario = comment.value;
+        sectorComentarios.textContent = textoComentario;
     } else {
         ratingValue.textContent = ('Por favor, selecciona una puntuación y escribe un comentario antes de enviar.');
     }

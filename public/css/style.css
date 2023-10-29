@@ -131,8 +131,6 @@ html {
   z-index: 1;
 }
 
-
-
 .circulo-flotante {
   width: 200px;
   height: 200px;
@@ -185,10 +183,8 @@ html {
 
 
 #contenido {
-  padding: 50px;
   background-color: #ffffff8f;
   border-radius: 30px;
-  margin: 10px;
   text-align: center;
   gap: 10px;
 }
@@ -201,7 +197,6 @@ html {
 #listener1 {
   grid-area: zona1;
   margin-top: 20%;
-
 }
 
 #listener2 {
