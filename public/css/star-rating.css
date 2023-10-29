@@ -1,0 +1,46 @@
+.contenedorSoporteParaValoraciones {
+    /* border: 2px solid grey; */
+    padding: 10px;
+    width: 300px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.cuadrado {
+    /* border: 2px solid grey; */
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    translate: (50%, 50%);
+}
+
+iframe {
+    width: 300px;
+    height: 152px;
+}
+
+
+.ratingBlock {
+    border: 1px solid grey;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.522);
+}
+
+.star-rating {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.star {
+    width: 20px;
+    transition: filter 0.3s ease;
+}
+
+.star:hover,
+.star.active {
+    filter: brightness(20%);
+}
