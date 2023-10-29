@@ -28,8 +28,8 @@
 #logo {
     font-size: 32px;
     text-decoration: none;
-    font-weight: 500;
-    font-family: popText;
+    font-weight: 550;
+    font-family: popText, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .textoCabecera {

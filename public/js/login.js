@@ -1,7 +1,5 @@
-let crearCuenta = document.querySelector('#crearCuenta');
-let conectarCuenta = document.querySelector('#conectarCuenta');
-let body = document.querySelector('body');
-let videoFondo = document.getElementById('videoFondo');
+const crearCuenta = document.getElementById('crearCuenta');
+const conectarCuenta = document.getElementById('conectarCuenta');
 
 crearCuenta.onclick = function(){
     body.classList.add('crearCuenta');
