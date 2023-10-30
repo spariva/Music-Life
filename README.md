@@ -1,10 +1,9 @@
 ## ToDo:
 
-Para el 27 entregar Pagina web y sql
-Las querys, el modelo entidad relación, y las distintas páginas que vamos a mostrar html + css.
+Pasar barra de búsqueda de Playlist a Index.
 ```
 Juan Miguel: Retirar shadow-box del login  
-Maki: Terminar wireframe hasta donde estamos.  
+Maki: Después de la presentación de hoy me pongo con el usuario a dejarlo como en el wireframe.  
 Sergio: I love 😋 discord =)
 ```
 # Music-Life
@@ -18,8 +17,8 @@ Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spo
 >(Maki: O podría ser el mismo mecanismo que el cambio entre crear cuenta/registrarse ?)
 >(Miguel: Sí, queda como pendiente.)
 
-3. Deudas tecnológicas: Código idéntico reutilizado en diferentes .js y .css  
->(Maki: No es el fin del Mundo, pero por miedo a Jorge he empezado a ponerme con ello, me he hecho mi propia rama para no romper nada 😧)<
+3. Deudas tecnológicas: Casi resueltas. 
+
 
 ## Cosas a arreglar:
 2. Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
