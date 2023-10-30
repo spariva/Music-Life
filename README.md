@@ -1,11 +1,3 @@
-## ToDo:
-
-Pasar barra de búsqueda de Playlist a Index.
-```
-Juan Miguel: Retirar shadow-box del login  
-Maki: Después de la presentación de hoy me pongo con el usuario a dejarlo como en el wireframe.  
-Sergio: I love 😋 discord =)
-```
 # Music-Life
 Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spotify y permite conectar con otras personas a través de creación de playlists y críticas de álbums.
 https://wireframepro.mockflow.com/view/MCiXAAvrNpb
