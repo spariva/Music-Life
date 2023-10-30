@@ -6,23 +6,16 @@ https://wireframepro.mockflow.com/view/MCiXAAvrNpb
 1. Propuesta para cambiar de nombre el archivo img por media.  
 >(Maki: Genial, aunque habría que cambiar todas las rutas entonces)
 
-2. Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña  
->(Maki: O podría ser el mismo mecanismo que el cambio entre crear cuenta/registrarse ?)
->(Miguel: Sí, queda como pendiente.)
 
 3. Deudas tecnológicas: Casi resueltas. 
 
 
 ## Cosas a arreglar:
 1. Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
-1. Responsive  
-1. Puntero animación  
 >(Maki: Creo que he encontrado la respuesta, pero aún no he logrado que funcione)
 
 
 4. Vídeo que pese menos  
-5. Crear un project  
->(Miguel: Yo no puedo hacerlo en esta rama. Creo que el mejor es Team backlog o el que controla )  
 ### Estructura
 - config/
   - init.php
