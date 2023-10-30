@@ -7,6 +7,7 @@
     <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
     <title>Espacio de NOMBRE_USUARIO</title>
     <link rel="stylesheet" href="../css/pruebas-playlist.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <script src="../js/BusquedaSpotify.js" defer></script>
     <script src="../js/script.js" defer></script>
 </head>
@@ -22,7 +23,7 @@
             <a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
         </nav>
     </header>
-    <div class="main">
+    <div class="main content">  
         <iframe class="iframe__style iframe1"
             src="https://open.spotify.com/embed/playlist/0zWn5j2DvmAAIIQRCnRvm2?utm_source=generator" frameBorder="0"
             allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -59,6 +60,13 @@
             </div> -->
         </div>
     </div>
+    <div class="video-container">
+		<!-- Cambios realizados explicados en la página de index-->
+		<video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+			<!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
+			Tu navegador no soporta el elemento de video mp4.
+		</video>
+	</div>
 
 </body>
 

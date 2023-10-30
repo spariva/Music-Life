@@ -14,14 +14,14 @@
     --grey-light: #ccc;
 }
 
-/* CABECERA */
+CABECERA
 #header {
     position: fixed;
     top: 0;
     left: 0;
     width: 90%;
     padding: 20px 100px;
-    background: var(--grey);
+    /* background: var(--grey); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -74,9 +74,9 @@
 
 body {
 
-    background-image: url(../img/music-background-multicolored.jpg);
+    /* background-image: url(../img/music-background-multicolored.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     height: 100%;
     width: 100%;
 }
@@ -148,7 +148,7 @@ body {
     width: 80%;
     margin: 10px;
     padding: 10px 40px 10px 60px;
-    border: 1px solid var(--grey-light);
+    /* border: 1px solid var(--grey-light); */
     outline: none;
     font-size: 1.1em;
     border-radius: 30px;
