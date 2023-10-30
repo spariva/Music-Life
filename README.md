@@ -11,16 +11,16 @@ Sergio: I love 😋 discord =)
 Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spotify y permite conectar con otras personas a través de creación de playlists y críticas de álbums.
 
 ## Notas - Apuntes - Observaciones:
-1.Propuesta para cambiar de nombre el archivo img por media.  
+1. Propuesta para cambiar de nombre el archivo img por media.  
 >(Maki: Genial, aunque habría que cambiar todas las rutas entonces)
 
->[!NOTE]
->
->This is a standard NOTE block.
 
-1.Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña  
+1. Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña  
 >(Maki: O podría ser el mismo mecanismo que el cambio entre crear cuenta/registrarse ?)<
-1.Deudas tecnológicas: Código idéntico reutilizado en diferentes .js y .css  
+
+
+
+1. Deudas tecnológicas: Código idéntico reutilizado en diferentes .js y .css  
 >(Maki: No es el fin del Mundo, pero por miedo a Jorge he empezado a ponerme con ello, me he hecho mi propia rama para no romper nada 😧)<
 
 ## Cosas a arreglar:
