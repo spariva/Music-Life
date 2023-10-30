@@ -129,6 +129,14 @@ html {
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 10% 1.5fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 20% 1fr 1fr 20% 1fr;
+  /* Porcentajes para las tres columnas */
+  grid-gap: 10px;
+  /* Espacio entre los elementos */
 }
 
 .circulo-flotante {
@@ -172,16 +180,6 @@ html {
 
 /* CUERPO */
 
-.content {
-  width: 90%;
-  display: grid;
-  grid-template-areas: "zona1 . zona2" ". zona3 .";
-  /* Porcentajes para las tres columnas */
-  grid-gap: 10px;
-  /* Espacio entre los elementos */
-}
-
-
 #contenido {
   background-color: #ffffff8f;
   border-radius: 30px;
@@ -194,42 +192,45 @@ html {
   font-size: 30px;
 }
 
+/* Sin utilizar
 #listener1 {
-  grid-area: zona1;
-  margin-top: 20%;
-}
+  
+} */
 
 #listener2 {
-  grid-area: zona2;
-  margin-top: 30%;
+  grid-column: 5;
+  grid-row: 2;
+  position: relative;
+  top: 50%;
+  left: 50%;
 }
 
 #listener3 {
-  grid-area: zona1;
-  position: absolute;
-  top: 500px;
+  grid-column: 2;
+  grid-row: 4;
+  position: relative;
+  right: 5vh;
+  top: 5vh;
 }
 
 #listener4 {
-  grid-area: zona2;
-  position: absolute;
-  top: 500px;
+  grid-column: 5;
+  grid-row: 4;
+  position: relative;
+  left: 3vh;
 }
 
-#listener5 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-}
+/* Sin utilizar */
+/* #listener5 {
+} */
 
 
 #listenerEnd {
-  padding-top: 75%;
-  grid-area: zona3;
-  margin-right: 60px;
-  width: 100%;
+  grid-column: 3 / span 2;
+  grid-row: 5;
+  position: relative;
+  top: 30%;
+  left: 15%;
 }
 
 .textoSpotify {
@@ -244,4 +245,66 @@ html {
   .hidden{
     visibility: hidden;
     }
+}
+
+
+/* Bloque del iframe para busquedas embed */
+
+.contenedorBuscar {
+  grid-column: 3 / span 2;
+  grid-row: 2 / span 4;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedorBuscar>h3 {
+  color: white;
+}
+
+.barraBusqueda {
+  position: relative;
+  width: 100%;
+}
+
+.barraBusqueda .inputBuscador {
+  width: 80%;
+  margin: 10px;
+  padding: 10px 40px 10px 60px;
+  border: 1px solid var(--grey-light);
+  outline: none;
+  font-size: 1.1em;
+  border-radius: 30px;
+}
+
+.barraBusqueda .barraBusqueda__icono {
+  position: absolute;
+  top: 0;
+  width: 80%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 23px 30px;
+  pointer-events: none;
+}
+
+.boton__buscar {
+  margin: 10px;
+  padding: 12px 20px;
+  color: var(--grey);
+  font-size: 1.1em;
+  border: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.boton__buscar:hover {
+  border: 1px solid var(--grey-light);
+  transition: 1.5s;
+}
+
+.iframeBuscador {
+    width: 100%;
+    height: 50%;
 }

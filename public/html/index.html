@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/star-rating.css">
 	<script src="../js/script.js" defer></script>
+	<script src="../js/BusquedaSpotify.js" defer></script>
 </head>
 
 <body>
@@ -53,10 +54,10 @@
 
 
 		<div id="listener2"><iframe style="border-radius:12px"
-			src="https://open.spotify.com/embed/artist/1WgXqy2Dd70QQOU7Ay074N?utm_source=generator" width="300px"
-			height="152" frameBorder="0" allowfullscreen=""
-			allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-			loading="lazy"></iframe></div>
+				src="https://open.spotify.com/embed/artist/1WgXqy2Dd70QQOU7Ay074N?utm_source=generator" width="300px"
+				height="152" frameBorder="0" allowfullscreen=""
+				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+				loading="lazy"></iframe></div>
 		<div class="hidden" id="listener3"><iframe style="border-radius:12px"
 				src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator" width="100%"
 				height="152" frameBorder="0" allowfullscreen=""
@@ -67,16 +68,31 @@
 				height="152" frameBorder="0" allowfullscreen=""
 				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 				loading="lazy"></iframe></div>
-		<div id="listener5"><iframe style="border-radius:12px"
-				src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator" width="100%"
-				height="500" frameBorder="0" allowfullscreen=""
-				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-				loading="lazy"></iframe></div>
+
 		<div class="hidden" id="listenerEnd"><iframe style="border-radius:12px"
 				src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNFJfN1Vw8d9?utm_source=generator" width="100%"
 				height="152" frameBorder="0" allowfullscreen=""
 				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 				loading="lazy"></iframe></div>
+		<div class="contenedorBuscar">
+			<h3>Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</h3>
+			<div id="barraBusqueda" class="barraBusqueda">
+				<input type="text" name="" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..."
+					value="">
+				<div id="barraBusqueda__icono" class="barraBusqueda__icono">
+					<img src="../img/search.png">
+				</div>
+			</div>
+			<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
+			<iframe class="iframeBuscador"
+				src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator"
+				frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+			<!-- Segunda forma - utilizando el album para generar un embed. Comentar iframe superior si se quiere probar-->
+			<!-- <div>
+						<iframe class="iframeBuscador" src="https://open.spotify.com/embed?uri=spotify:album:3T3EZvtuQKIqFaFmrj9HXP"  frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+					</div> -->
+		</div>
 	</div>
 
 	<div class="video-container">
