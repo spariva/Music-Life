@@ -173,6 +173,13 @@ html {
 }
 
 /* CUERPO */
+/* #formContacto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+} */
 
 .textoContacto {
     transition: 1.0s ease;

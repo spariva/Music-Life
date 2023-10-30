@@ -102,9 +102,9 @@ body {
   border-bottom-right-radius: 20%;
   display: grid;
   grid-template-columns: 40% 2fr;
-  background: url(../img/music-background-multicolored.jpg);
+  /* background: url(../img/music-background-multicolored.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   grid-template-rows: 1fr 2fr 1fr;
   border: 2px solid black;
   border-left: none;
@@ -152,7 +152,8 @@ body {
 .menuUsuario__info-datos:nth-child(2),
 .menuUsuario__valoraciones-datos:nth-child(2) {
   background: url(../img/background_user.jpg);
-  ;
+  /* opacity: 0.8;
+  filter: blur(3px); TODO */
 }
 
 .menuUsuario__info-datos__texto:nth-child(1),
