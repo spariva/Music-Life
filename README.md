@@ -28,7 +28,10 @@ Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spo
 >(Maki: Creo que he encontrado la respuesta, pero aún no he logrado que funcione)
 
 4. Vídeo que pese menos
-
+- Item 1
+  - Subitem 1
+  - Subitem 2
+- Item 2
 ### Estructura
 config/
         init.php
