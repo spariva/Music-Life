@@ -12,11 +12,11 @@ Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spo
 
 ## Notas - Apuntes - Observaciones:
 -Propuesta para cambiar de nombre el archivo img por media.  
->(Maki: Genial, aunque habría que cambiar todas las rutas entonces)
+>(Maki: Genial, aunque habría que cambiar todas las rutas entonces)<
 -Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña  
->(Maki: O podría ser el mismo mecanismo que el cambio entre crear cuenta/registrarse ?)
+>(Maki: O podría ser el mismo mecanismo que el cambio entre crear cuenta/registrarse ?)<
 -Deudas tecnológicas: Código idéntico reutilizado en diferentes .js y .css  
->(Maki: No es el fin del Mundo, pero por miedo a Jorge he empezado a ponerme con ello, me he hecho mi propia rama para no romper nada 😧)
+>(Maki: No es el fin del Mundo, pero por miedo a Jorge he empezado a ponerme con ello, me he hecho mi propia rama para no romper nada 😧)<
 
 ## Cosas a arreglar:
 -Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
