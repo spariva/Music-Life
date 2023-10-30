@@ -11,11 +11,11 @@ Sergio: I love 😋 discord =)
 Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spotify y permite conectar con otras personas a través de creación de playlists y críticas de álbums.
 
 ## Notas - Apuntes - Observaciones:
-* Propuesta para cambiar de nombre el archivo img por media.  
+1. Propuesta para cambiar de nombre el archivo img por media.  
 >(Maki: Genial, aunque habría que cambiar todas las rutas entonces)
 
-1. James Madison
-1. James Monroe
+2. James Madison
+2. James Monroe
 1. John Quincy Adams
 * Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña  
 >(Maki: O podría ser el mismo mecanismo que el cambio entre crear cuenta/registrarse ?)
