@@ -202,14 +202,12 @@ html {
 #listener2 {
   grid-area: zona2;
   margin-top: 30%;
-
 }
 
 #listener3 {
   grid-area: zona1;
   position: absolute;
   top: 500px;
-
 }
 
 #listener4 {
@@ -231,6 +229,7 @@ html {
   padding-top: 75%;
   grid-area: zona3;
   margin-right: 60px;
+  width: 100%;
 }
 
 .textoSpotify {
