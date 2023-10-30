@@ -28,30 +28,26 @@ Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spo
 >(Maki: Creo que he encontrado la respuesta, pero aún no he logrado que funcione)
 
 4. Vídeo que pese menos
-- Item 1
-  - Subitem 1
-  - Subitem 2
-- Item 2
-### Estructura
-config/
-        init.php
-public/ 
-        index.php
-        styles.css
-        main.js
-        resto.html
-src/    
-        clases.php
-        data.php
-doc/
-bin/
-    runserver.sh
-db/
-  create_db.sql
-  initial_load.sql
-  test_data.sql
-  home.sql
 
+### Estructura
+- config/
+  - init.php
+- public/
+  - index.php
+  - styles.css
+  - main.js
+  - resto.html
+- src/
+  - clases.php
+  - data.php
+- doc/
+- bin/
+  - unserver.sh
+- db/
+  - create_db.sql
+  - initial_load.sql
+  - est_data.sql
+  - home.sql
 
 ## USUARIO - NUESTRAS IDEAS:
 	Crear cuenta
