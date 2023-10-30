@@ -131,8 +131,6 @@ html {
   z-index: 1;
 }
 
-
-
 .circulo-flotante {
   width: 200px;
   height: 200px;
@@ -185,10 +183,8 @@ html {
 
 
 #contenido {
-  padding: 50px;
   background-color: #ffffff8f;
   border-radius: 30px;
-  margin: 10px;
   text-align: center;
   gap: 10px;
 }
@@ -201,20 +197,17 @@ html {
 #listener1 {
   grid-area: zona1;
   margin-top: 20%;
-
 }
 
 #listener2 {
   grid-area: zona2;
   margin-top: 30%;
-
 }
 
 #listener3 {
   grid-area: zona1;
   position: absolute;
   top: 500px;
-
 }
 
 #listener4 {
@@ -236,6 +229,7 @@ html {
   padding-top: 75%;
   grid-area: zona3;
   margin-right: 60px;
+  width: 100%;
 }
 
 .textoSpotify {

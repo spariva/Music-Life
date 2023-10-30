@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntuar</title>
+    <link rel="stylesheet" type="text/css" href="../css/star-rating.css">
+</head>
+
+<body>
+    <a class="textoCabecera" href="./index.html" target="blank">Volver a Index</a><br><br><br>
+
+    <div class="contenedorSoporteParaValoraciones">
+        <iframe style="border-radius:12px"
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1ngEVM0lKrb?utm_source=generator" 
+            height="152" frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div class="cuadrado" id="botonDesplegable" onclick="toggleRating()">Sin Valoración</div>
+
+        <div id="ratingDropdown" class="dropdown" style="display: none;">
+            <div class="ratingBlock">
+                <div class="star-rating">
+                    <img class="star" data-rating="1" src="../img/star/EstrellaVacia.png" alt="Estrella 1">
+                    <img class="star" data-rating="2" src="../img/star/EstrellaVacia.png" alt="Estrella 2">
+                    <img class="star" data-rating="3" src="../img/star/EstrellaVacia.png" alt="Estrella 3">
+                    <img class="star" data-rating="4" src="../img/star/EstrellaVacia.png" alt="Estrella 4">
+                    <img class="star" data-rating="5" src="../img/star/EstrellaVacia.png" alt="Estrella 5">
+                </div>
+                <p></p><textarea id="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+                <p><button id="submit-button">Enviar</button></p>
+                <p id="rating-value"></p>
+                <p id="listaComentarios"></p>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/star-rating.js"></script>
+
+</body>
+
+</html>

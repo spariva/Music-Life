@@ -7,6 +7,7 @@
 	<link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
 	<title>Music-Life</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/star-rating.css">
 	<script src="../js/script.js" defer></script>
 </head>
 
@@ -21,24 +22,41 @@
 			<a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
 		</nav>
 	</header>
-	<div class="video-container">
-		<!-- Cambios realizados explicados en la página de index-->
-		<video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
-			<!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
-			Tu navegador no soporta el elemento de video mp4.
-		</video>
-	</div>
+
 	<div class="content">
-		<div class="hidden" id="listener1"><iframe style="border-radius:12px"
-				src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4lAAFJ?utm_source=generator" width="50%"
-				height="152" frameBorder="0" allowfullscreen=""
-				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-				loading="lazy"></iframe></div>
-		<div class="hidden" id="listener2"><iframe style="border-radius:12px"
-				src="https://open.spotify.com/embed/artist/1WgXqy2Dd70QQOU7Ay074N?utm_source=generator" width="50%"
-				height="152" frameBorder="0" allowfullscreen=""
-				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-				loading="lazy"></iframe></div>
+
+		<div class="contenedorSoporteParaValoraciones">
+			<div class="hidden" id="listener1"><iframe style="border-radius:12px"
+					src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4lAAFJ?utm_source=generator"
+					width="300px" height="152" frameBorder="0" allowfullscreen=""
+					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+					loading="lazy"></iframe></div>
+
+			<div class="cuadrado" id="botonDesplegable" onclick="toggleRating()">Sin Valoración</div>
+			<div id="ratingDropdown" class="dropdown" style="display: none;">
+				<div class="ratingBlock">
+					<div class="star-rating">
+						<img class="star" data-rating="1" src="../img/star/EstrellaVacia.png" alt="Estrella 1">
+						<img class="star" data-rating="2" src="../img/star/EstrellaVacia.png" alt="Estrella 2">
+						<img class="star" data-rating="3" src="../img/star/EstrellaVacia.png" alt="Estrella 3">
+						<img class="star" data-rating="4" src="../img/star/EstrellaVacia.png" alt="Estrella 4">
+						<img class="star" data-rating="5" src="../img/star/EstrellaVacia.png" alt="Estrella 5">
+					</div>
+					<p></p><textarea id="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+					<p><button id="submit-button">Enviar</button></p>
+					<p id="rating-value"></p>
+					<p id="listaComentarios"></p>
+
+				</div>
+			</div>
+		</div>
+
+
+		<div id="listener2"><iframe style="border-radius:12px"
+			src="https://open.spotify.com/embed/artist/1WgXqy2Dd70QQOU7Ay074N?utm_source=generator" width="300px"
+			height="152" frameBorder="0" allowfullscreen=""
+			allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+			loading="lazy"></iframe></div>
 		<div class="hidden" id="listener3"><iframe style="border-radius:12px"
 				src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator" width="100%"
 				height="152" frameBorder="0" allowfullscreen=""
@@ -60,6 +78,17 @@
 				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 				loading="lazy"></iframe></div>
 	</div>
+
+	<div class="video-container">
+		<!-- Cambios realizados explicados en la página de index-->
+		<video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+			<!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
+			Tu navegador no soporta el elemento de video mp4.
+		</video>
+	</div>
+	<script src="../js/star-rating.js"></script>
+
+
 </body>
 
 </html>
