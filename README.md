@@ -14,22 +14,20 @@ Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spo
 1. Propuesta para cambiar de nombre el archivo img por media.  
 >(Maki: Genial, aunque habría que cambiar todas las rutas entonces)
 
-2. James Madison
-2. James Monroe
-1. John Quincy Adams
-* Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña  
+2. Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña  
 >(Maki: O podría ser el mismo mecanismo que el cambio entre crear cuenta/registrarse ?)
 >(Miguel: Sí, queda como pendiente.)
 
-1. Deudas tecnológicas: Código idéntico reutilizado en diferentes .js y .css  
+3. Deudas tecnológicas: Código idéntico reutilizado en diferentes .js y .css  
 >(Maki: No es el fin del Mundo, pero por miedo a Jorge he empezado a ponerme con ello, me he hecho mi propia rama para no romper nada 😧)<
 
 ## Cosas a arreglar:
-2.Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
-2.Responsive  
-2.Puntero animación  
->(Maki: Creo que he encontrado la respuesta, pero aún no he logrado que funcione)  
-2.Vídeo que pese menos
+2. Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
+2. Responsive  
+2. Puntero animación  
+>(Maki: Creo que he encontrado la respuesta, pero aún no he logrado que funcione)
+
+4. Vídeo que pese menos
 
 ### Estructura
 config/
