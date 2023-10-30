@@ -14,13 +14,15 @@ https://wireframepro.mockflow.com/view/MCiXAAvrNpb
 
 
 ## Cosas a arreglar:
-2. Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
-2. Responsive  
-2. Puntero animación  
+1. Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
+1. Responsive  
+1. Puntero animación  
 >(Maki: Creo que he encontrado la respuesta, pero aún no he logrado que funcione)
 
-4. Vídeo que pese menos
 
+4. Vídeo que pese menos  
+5. Crear un project  
+>(Miguel: Yo no puedo hacerlo en esta rama. Creo que el mejor es Team backlog o el que controla )  
 ### Estructura
 - config/
   - init.php
