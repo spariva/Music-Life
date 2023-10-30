@@ -5,9 +5,10 @@ const videoFondo = document.getElementById('videoFondo');
 const textoEnlaceModoOscuro = document.getElementById('modo-oscuro');
 const elementosNavbar = document.getElementsByClassName('textoCabecera');
 const textoCabecera = document.getElementById('logo');
+const formaSpotify = document.getElementsByClassName('formaSpotify');
 var textoContacto = document.getElementsByClassName('textoContacto');
 var textoSpotify = document.getElementsByClassName('textoSpotify');
-var formaSpotify = document.getElementsByClassName('formaSpotify');
+
 
 //Efecto ratón animación onda.
 document.addEventListener('mousemove', function (e) {
@@ -41,6 +42,10 @@ function modoOscuro() {
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'white';
         }
+        for (var i = 0; i < textoContacto.length; i++) {
+            textoContacto[i].style.color = 'white';
+            textoContacto[i].style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        }
     } else if (videoFondo.src.includes('FondoSpotifyClaro.mp4')) {
         videoFondo.src = '../img/FondoSpotifyOscuro.mp4';
         textoEnlaceModoOscuro.textContent = "Modo Claro";
@@ -60,6 +65,10 @@ function modoOscuro() {
         // navbar.style.background = 'black';
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'black';
+        }
+        for (var i = 0; i < textoContacto.length; i++) {
+            textoContacto[i].style.color = 'black';
+            textoContacto[i].style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         }
     } else if (videoFondo.src.includes('FondoSpotifyOscuro.mp4')) {
         videoFondo.src = '../img/FondoSpotifyClaro.mp4';
