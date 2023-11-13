@@ -143,7 +143,7 @@ video {
 }
 
 iframe {
-  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .iframeBuscador {
@@ -152,7 +152,7 @@ iframe {
 }
 
 .contenedor {
-  margin: 35px;
+  margin: 45px;
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
@@ -176,7 +176,7 @@ iframe {
 
 #contenido {
   display: grid;
-  grid-template-areas: "recomendado restoPagina";
+  grid-template-areas: "recomendado restoPagina" ;
   grid-template-columns: 1fr 3fr;
 }
 
@@ -184,12 +184,30 @@ iframe {
   grid-area: recomendado;
 }
 
+
+
 #restoPagina {
   grid-area: restoPagina;
   display: grid;
-  grid-template-areas: "buscador buscador" "tendencia zonaAmigos";
+  grid-template-areas: "buscador buscador" "tendencia zonaAmigos" "valoraciones valoraciones";
   grid-template-columns: 1fr 1fr;
 
+}
+
+#valoraciones {
+  grid-area: valoraciones;
+  display: grid;
+  grid-template-areas: "valoracionesListas valoracionesValoraciones";
+  grid-template-columns: 1fr 2fr;
+
+}
+
+#valoracionesListas{
+  grid-area: valoracionesListas;
+}
+
+#valoracionesValoraciones{
+  grid-area: valoracionesValoraciones;
 }
 
 #buscador {
@@ -207,7 +225,7 @@ iframe {
 }
 
 #tendencia iframe {
-  height: 450px;
+  height: 400px;
 }
 
 #zonaAmigos {
@@ -215,5 +233,13 @@ iframe {
 }
 
 #zonaAmigos iframe {
-  height: 450px;
+  height: 400px;
 }
+
+#textoValoraciones{
+  padding: 30px;
+  margin: 20px;
+  background-color: #ffffff79;
+  border-radius: 20px;
+}
+
