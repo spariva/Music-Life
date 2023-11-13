@@ -7,11 +7,13 @@
 	<link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
 	<title>Music-Life</title>
 	<link rel="stylesheet" type="text/css" href="../css/nuevocss.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="../js/BusquedaSpotify.js" defer></script>
 
 </head>
 
 <body>
+	<video src="../img/FondoIndexClaro.mp4" autoplay="true" muted="true" loop="true"></video>
 	<header id="header">
 		<a class="textoCabecera" href="./index.html" id="logo">Music-Life</a>
 		<nav class="navbar">
@@ -24,7 +26,8 @@
 	</header>
 
 	<div id="contenido">
-		<div class="contenedor" id="recomendado">Recomendado
+		<div class="contenedor" id="recomendado">
+			<div id="apartado">Recomendado</div>
 			<iframe style="border-radius:12px"
 				src="https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator" width="100%"
 				height="152" frameBorder="0" allowfullscreen=""
@@ -52,61 +55,89 @@
 				loading="lazy"></iframe>
 
 		</div>
-		<div class="contendor" id="restoPagina">Resto Pagina
+		<div class="contendor" id="restoPagina">
 			<div class="contenedor" id="buscador">
-				<div class="contenedorBuscar">
-					<h3>Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</h3>
-					<div id="barraBusqueda" class="barraBusqueda">
-						<input type="text" name="" class="inputBuscador"
-							placeholder="Introduzca la ruta embedida del álbum..." value="">
-						<div id="barraBusqueda__icono" class="barraBusqueda__icono">
+				<p>Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</p>
+				<div id="barraBusqueda" class="barraBusqueda">
+					<input type="text" name="" class="inputBuscador"
+						placeholder="Introduzca la ruta embedida del álbum..." value="">
+					<!-- <div id="barraBusqueda__icono" class="barraBusqueda__icono">
 							<img src="../img/search.png">
+						</div> -->
+					<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
+				</div>
+				<br>
+				<iframe class="iframeBuscador"
+					src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator"
+					frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+			</div>
+			<div class="contenedor" id="tendencia">
+				<div id="apartado">Tendencia</div>
+				<div id="iframeCarouselTendencia" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<iframe style="border-radius:12px"
+									src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator"
+									width="100%" height="152" frameBorder="0" allowfullscreen=""
+									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+									loading="lazy"></iframe>
+						</div>
+						<div class="carousel-item">
+							<iframe style="border-radius:12px"
+									src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNFJfN1Vw8d9?utm_source=generator"
+									width="100%" height="152" frameBorder="0" allowfullscreen=""
+									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+									loading="lazy"></iframe>
 						</div>
 					</div>
-					<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
-					<iframe class="iframeBuscador"
-						src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator"
-						frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+					<a class="carousel-control-prev" href="#iframeCarouselTendencia" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Anterior</span>
+					</a>
+					<a class="carousel-control-next" href="#iframeCarouselTendencia" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Siguiente</span>
+					</a>
 				</div>
-
-
-				<!-- Buscador
-				<div class="contenedor" id="barraBuscar">
-					
-					<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
+			</div>
+			
+			<div class="contenedor" id="zonaAmigos">
+				<div id="apartado">Amigos</div>
+				<div id="iframeCarouselAmigos" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<iframe style="border-radius:12px"
+									src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator"
+									width="100%" height="152" frameBorder="0" allowfullscreen=""
+									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+									loading="lazy"></iframe>
+						</div>
+						<div class="carousel-item">
+							<iframe style="border-radius:12px"
+									src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1PfYnYcpw8w?utm_source=generator"
+									width="100%" height="152" frameBorder="0" allowfullscreen=""
+									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+									loading="lazy"></iframe>
+						</div>
+					</div>
+					<a class="carousel-control-prev" href="#iframeCarouselAmigos" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Anterior</span>
+					</a>
+					<a class="carousel-control-next" href="#iframeCarouselAmigos" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Siguiente</span>
+					</a>
 				</div>
-				<div class="contenedor" id="playlistBuscada">
-					<iframe class="iframeBuscador"
-						src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO2JsOr8?utm_source=generator"
-						frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-				</div> -->
 			</div>
-			<div class="contenedor" id="tendencia">Tendencia
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe> <iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNFJfN1Vw8d9?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
-			</div>
-			<div class="contenedor" id="zonaAmigos">Amigos
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1PfYnYcpw8w?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
-			</div>
-		</div>
+			
 	</div>
 
+	<!-- Enlaces a Bootstrap JS (jQuery y Popper.js son necesarios para Bootstrap) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
