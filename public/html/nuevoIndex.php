@@ -1,28 +1,62 @@
-<?php
-$servername = "localhost";
-$username = "SERGIO@ADMIN";
-$password = 123456;
-$dbname = "MUSIC_LIFE";
+<?php 
+define('NUM_COLUMNS',3);
+define('NUM_ELEM_POR_PAG',5);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+if(isset($_GET['orderby'])&&is_numeric($_GET['orderby'])&& 1<= $_GET['orderby']&& $_GET['orderby']<= NUM_COLUMNS){
+    $orderby = $_GET['orderby'];
+}else{
+    //LOGGEAR
+    $orderby = 1;
 }
 
-$sql = "SELECT id, nombre, email FROM usuario";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "ID: " . $row["id"]. " - Nombre: " . $row["nombre"]. " - Email: " . $row["email"]. "<br>";
+//Revisa si le hemos especificado el tipo de orden y asi lo asigna
+if(isset($_GET['order'])){
+    if($_GET['order']=="ASC"){
+        $order = 'ASC';
+    }else{
+        $order = 'DESC';
     }
-} else {
-    echo "0 resultados";
+}else{//En caso contrario ordenará por defecto en orden ascendente
+    $order = 'ASC';
 }
 
-$conn->close();
+//Revisa la pagina y comprueba si es nu,erica para asignar
+if(isset($_GET['page'])&& is_numeric($_GET['page'])){
+    $page = $_GET['page']; //Si se cumple asigna esa pagina
+}else{
+    $page = 1;//Si no establece una por defecto
+}
+
+try{
+    $db = new PDO('mysql:host=localhost; dbname=sergio', 'sergio', '1234');
+	
+    $consulta = $db ->prepare("SELECT id, nombre, calorias FROM Comida ORDER BY :orderby $order LIMIT :limite OFFSET :o"); //falta??
+    $consulta->bindParam(':orderby',$orderby, PDO::PARAM_INT);
+    $consulta->bindValue(':limite', NUM_ELEM_POR_PAG, PDO::PARAM_INT);
+    $consulta->bindValue(':offset', NUM_ELEM_POR_PAG*($page-1), PDO::PARAM_INT);
+    $results = $consulta->execute();
+    $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+    $consulta_count = $DB->query("SELECT Count(id) AS N From Comida");
+    $count = $consulta_count->fetch();
+    $count = $count[0];
+    $num_pages= ceil($count/NUM_ELEM_POR_PAG);
+
+}catch(PDOException $e){
+    echo "ERROR:" .$e->getMessage();
+    die();
+}
+
+function generateQueryString($orderapintar, $orderby, $order){
+    if($orderapintar == $orderby){//Invertir orden
+        $neworder = ($order=="ASC")?"DESC":"ASC";
+        return "?orderby=$orderapintar&order=$neworder";
+    }else{
+        return "?orderby=$orderapintar&order=ASC";
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
