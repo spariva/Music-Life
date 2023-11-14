@@ -1,3 +1,29 @@
+<?php
+$servername = "localhost";
+$username = "SERGIO@ADMIN";
+$password = 123456;
+$dbname = "MUSIC_LIFE";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, nombre, email FROM usuario";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "ID: " . $row["id"]. " - Nombre: " . $row["nombre"]. " - Email: " . $row["email"]. "<br>";
+    }
+} else {
+    echo "0 resultados";
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -26,11 +52,12 @@
 	</header>
 
 	<div id="contenido">
+		<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
 		<div class="contenedor" id="recomendado">
 			<div id="apartado">Recomendado</div>
 			<iframe style="border-radius:12px"
-				src="https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator" width="100%"
-				height="152" frameBorder="0" allowfullscreen=""
+				src="" width="100%"
+				height="152" frameBorder="0" allowfullscreen="https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator"
 				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 				loading="lazy"></iframe>
 			<iframe style="border-radius:12px"
