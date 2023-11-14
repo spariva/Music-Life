@@ -1,59 +1,29 @@
-<?php 
-define('NUM_COLUMNS',3);
-define('NUM_ELEM_POR_PAG',5);
+<?php
+// Configuración de la base de datos
+$servername = "";
+$username = "";
+$password = "";
+$dbname = "";
 
-if(isset($_GET['orderby'])&&is_numeric($_GET['orderby'])&& 1<= $_GET['orderby']&& $_GET['orderby']<= NUM_COLUMNS){
-    $orderby = $_GET['orderby'];
-}else{
-    //LOGGEAR
-    $orderby = 1;
-}
+try {
+    // Creamos una conexión PDO
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
-//Revisa si le hemos especificado el tipo de orden y asi lo asigna
-if(isset($_GET['order'])){
-    if($_GET['order']=="ASC"){
-        $order = 'ASC';
-    }else{
-        $order = 'DESC';
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Consulta SELECT
+    $sql = "SELECT * FROM PLAYLIST";
+    $result = $conn->query($sql);
+
+    if ($result->rowCount() > 0) {
+        foreach ($result as $data) {
+            echo "Columna1: " . $data['columna1'] . " - Columna2: " . $data['columna2'] . " - Columna3: " . $data['columna3'] . "<br>";
+        }
+    } else {
+        echo "No se encontraron resultados";
     }
-}else{//En caso contrario ordenará por defecto en orden ascendente
-    $order = 'ASC';
-}
-
-//Revisa la pagina y comprueba si es nu,erica para asignar
-if(isset($_GET['page'])&& is_numeric($_GET['page'])){
-    $page = $_GET['page']; //Si se cumple asigna esa pagina
-}else{
-    $page = 1;//Si no establece una por defecto
-}
-
-try{
-    $db = new PDO('mysql:host=localhost; dbname=sergio', 'sergio', '1234');
-	
-    $consulta = $db ->prepare("SELECT id, nombre, calorias FROM Comida ORDER BY :orderby $order LIMIT :limite OFFSET :o"); //falta??
-    $consulta->bindParam(':orderby',$orderby, PDO::PARAM_INT);
-    $consulta->bindValue(':limite', NUM_ELEM_POR_PAG, PDO::PARAM_INT);
-    $consulta->bindValue(':offset', NUM_ELEM_POR_PAG*($page-1), PDO::PARAM_INT);
-    $results = $consulta->execute();
-    $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
-
-    $consulta_count = $DB->query("SELECT Count(id) AS N From Comida");
-    $count = $consulta_count->fetch();
-    $count = $count[0];
-    $num_pages= ceil($count/NUM_ELEM_POR_PAG);
-
-}catch(PDOException $e){
-    echo "ERROR:" .$e->getMessage();
-    die();
-}
-
-function generateQueryString($orderapintar, $orderby, $order){
-    if($orderapintar == $orderby){//Invertir orden
-        $neworder = ($order=="ASC")?"DESC":"ASC";
-        return "?orderby=$orderapintar&order=$neworder";
-    }else{
-        return "?orderby=$orderapintar&order=ASC";
-    }
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
 ?>
 
