@@ -1,34 +1,21 @@
-## ToDo:
-
-Para el 27 entregar Pagina web y sql
-Las querys, el modelo entidad relación, y las distintas páginas que vamos a mostrar html + css.
-```
-Juan Miguel: Retirar shadow-box del login  
-Maki: Terminar wireframe hasta donde estamos.  
-Sergio: I love 😋 discord =)
-```
 # Music-Life
 Proyecto de DAW2, Entorno servidor. Una red social que conecta con la API de Spotify y permite conectar con otras personas a través de creación de playlists y críticas de álbums.
+https://wireframepro.mockflow.com/view/MCiXAAvrNpb
 
 ## Notas - Apuntes - Observaciones:
 1. Propuesta para cambiar de nombre el archivo img por media.  
 >(Maki: Genial, aunque habría que cambiar todas las rutas entonces)
 
-2. Cuando conozcamos como comprobar los usuarios de la web vamos a necesitar otra página para la recuperacion de cuenta/contraseña  
->(Maki: O podría ser el mismo mecanismo que el cambio entre crear cuenta/registrarse ?)
->(Miguel: Sí, queda como pendiente.)
 
-3. Deudas tecnológicas: Código idéntico reutilizado en diferentes .js y .css  
->(Maki: No es el fin del Mundo, pero por miedo a Jorge he empezado a ponerme con ello, me he hecho mi propia rama para no romper nada 😧)<
+3. Deudas tecnológicas: Casi resueltas. 
+
 
 ## Cosas a arreglar:
-2. Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
-2. Responsive  
-2. Puntero animación  
+1. Base de datos problabemente (Qué datos de la API guardamos y cuáles no? y Mejorar Querys)  
 >(Maki: Creo que he encontrado la respuesta, pero aún no he logrado que funcione)
 
-4. Vídeo que pese menos
 
+4. Vídeo que pese menos  
 ### Estructura
 - config/
   - init.php
