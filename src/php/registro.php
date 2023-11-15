@@ -1,6 +1,12 @@
 <?php
 include('../config/init.php');
 
+class LoginForm{
+
+    //user exist ();
+    //user is valid();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST["nombre_usuario"];
     $email = $_POST["email"];
@@ -20,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Hacemos uso del singleton para obtener una instancia de la base de datos
-    $db = Database::getInstance();
+    $db = Db::getInstance();
 
     $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (?, ?, ?)";
     $stmt = $db->prepare($sql);
