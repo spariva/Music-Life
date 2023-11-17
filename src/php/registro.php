@@ -1,5 +1,9 @@
 <?php
 include('../config/init.php');
+class Registro{
+
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST["nombre_usuario"];
@@ -20,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Hacemos uso del singleton para obtener una instancia de la base de datos
-    $db = Database::getInstance();
+    $db = Db::getInstance();
 
     $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (?, ?, ?)";
     $stmt = $db->prepare($sql);
