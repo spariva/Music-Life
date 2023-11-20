@@ -1,8 +1,21 @@
 <?php 
 
 require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
+//Errores, validate data, sanitize data ¿?
+// if the user submited the form
+// if there are form errors
+//     fill errors array
+// else
+//     record data to database
+//     302 regirect, as it required by HTTP standard
+//     exit
+// if we have some errors
+// display errors
+// fill form field values
+// display the form
 
-if(isset($_POST["enviar"])){
+//Si le has dado a enviar y no hay errores:
+if(isset($_POST["enviar"]) && (empty($errores))){ 
         $mailer = MailerSingleton::obtenerInstancia();
         $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
 }
@@ -52,12 +65,14 @@ if(isset($_POST["enviar"])){
                     <option value="fallo_spotify">Fallo al conectar con Spotify</option>
                     <option value="consulta">Consulta</option>
                     <option value="otro">Otro</option>
-                </select><br><br>
+                </select>
+                <br><br>
 
                 <div id="otroMotivo" style="display: none;">
                     <label for="otroMotivoTexto">Por favor, especifica:</label>
                     <input type="text" id="otroMotivoTexto" name="otroMotivoTexto">
-                </div><br><br>
+                </div>
+                <br><br>
 
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" value= "<?= $nombre ?>" placeholder="Nombre" required><br>
@@ -65,7 +80,8 @@ if(isset($_POST["enviar"])){
                     <span class="error">
                         <?= $errores['nombre'] ?>
                     </span>
-                <?php } ?><br><br>
+                <?php } ?>
+                <br><br>
 
                 <label for="userMail">Correo Electrónico:</label>
                 <input type="email" id="email" name="userMail" value= "<?= $userMail ?>" required><br>
@@ -73,11 +89,12 @@ if(isset($_POST["enviar"])){
                     <span class="error">
                         <?= $errores['nombre'] ?>
                     </span>
-                <?php } ?><br><br>
+                <?php } ?>
+                <br><br>
 
 
                 <label for="mensaje">Mensaje:</label><br><br>
-                <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea><br><br>
+                <textarea id="mensaje" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
 
                 <button type="submit">Enviar</button>
             </form>
@@ -96,7 +113,6 @@ if(isset($_POST["enviar"])){
             </script>
 
         </div>
-        <!-- Retirado el div efecto de agua porque el codigo js ya inserta el elemento -->
     </div>
 </body>
 
