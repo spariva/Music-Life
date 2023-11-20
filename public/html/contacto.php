@@ -1,3 +1,15 @@
+<?php 
+
+require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
+
+if(isset($_POST["enviar"])){
+        $mailer = MailerSingleton::obtenerInstancia();
+        $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -31,7 +43,7 @@
         <div class="content" id="formContacto">
             <h2 class="textoContacto">Formulario de Contacto</h2><br>
 
-            <form class="textoContacto" action="tu_script_para_enviar_correo.php" method="POST">
+            <form class="textoContacto" action="" method="POST">
                 <label for="motivo">Motivo de Contacto:</label>
                 <select id="motivo" name="motivo" required>
                     <option value="" disabled selected>Selecciona un motivo</option>
@@ -48,11 +60,20 @@
                 </div><br><br>
 
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required><br><br>
+                <input type="text" id="nombre" name="nombre" value= "<?= $nombre ?>" placeholder="Nombre" required><br>
+                <?php if (isset($errores['nombre'])) { ?>
+                    <span class="error">
+                        <?= $errores['nombre'] ?>
+                    </span>
+                <?php } ?><br><br>
 
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required><br><br>
-
+                <label for="userMail">Correo Electrónico:</label>
+                <input type="email" id="email" name="userMail" value= "<?= $userMail ?>" required><br>
+                <?php if (isset($errores['nombre'])) { ?>
+                    <span class="error">
+                        <?= $errores['nombre'] ?>
+                    </span>
+                <?php } ?><br><br>
 
 
                 <label for="mensaje">Mensaje:</label><br><br>
@@ -62,8 +83,8 @@
             </form>
 
             <script>
-                var motivoSelect = document.getElementById('motivo');
-                var otroMotivoDiv = document.getElementById('otroMotivo');
+                const motivoSelect = document.getElementById('motivo');
+                const otroMotivoDiv = document.getElementById('otroMotivo');
 
                 motivoSelect.addEventListener('change', function () {
                     if (motivoSelect.value === 'otro') {
