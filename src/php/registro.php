@@ -37,8 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->execute();
 
-    $db->cerrarConexion();
+    $db->closeConnection();
 
-    header("Location: ../public/html/userName.html");
+    header("Location: ../public/html/ususario.html");
     exit();
 }

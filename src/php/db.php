@@ -3,7 +3,7 @@
 class Db
 {
     private static $instance; 
-    private $connect;
+    private $databaseConnect;
     private const CONFIG_FILE = '../config/db.json';
 
     private function __construct()
@@ -11,14 +11,15 @@ class Db
         // Cargar las configuraciones desde el archivo JSON en el constructor
         $this->loadConfig();
 
-        try {
+        try 
+        {
             // Utilizar las constantes en lugar de acceder a la configuración directamente. De momento el host está en local.
-            $this->connect = new PDO(
+            $this->databaseConnect = new PDO(
                 "mysql:host=" . $this->config['host'] . ";database=" . $this->config['db'] . ";charset=" . $this->config['charset'],
                 $this->config['username'],
                 $this->config['password']
             );
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->databaseConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             throw new Exception("Error de conexión: " . $e->getMessage());
         }
@@ -36,7 +37,7 @@ class Db
 
     private function loadConfig()
     {
-        // Cargar configuración desde el archivo JSON. No sería mejor ponerlo a capón?
+        //! Cargar configuración desde el archivo JSON. No sería mejor ponerlo a capón?
         $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
 
         if ($this->config === null) {
@@ -47,16 +48,11 @@ class Db
 
     public function closeConnection()
     {
-        $this->databaseConection = null;
-    }
-
-    public function lastInsertId()
-    {
-        return $this->connect->lastInsertId();
+        $this->databaseConnect = null;
     }
     
     public function prepare($sql)
     {
-        return $this->connect->prepare($sql);
+        return $this->databaseConnect->prepare($sql);
     }
 }
