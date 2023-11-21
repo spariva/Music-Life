@@ -3,7 +3,7 @@
 class Db
 {
     private static $instance; 
-    private $conect;
+    private $databaseConnect;
     private const CONFIG_FILE = '../config/db.json';
 
     private function __construct()
@@ -11,14 +11,15 @@ class Db
         // Cargar las configuraciones desde el archivo JSON en el constructor
         $this->loadConfig();
 
-        try {
-            // Utilizar las constantes en lugar de acceder a la configuración directamente
-            $this->conect = new PDO(
-                "mysql:host=" . $this->config['host'] . ";dbname=" . $this->config['db'] . ";charset=" . $this->config['charset'],
-                $this->config['user'],
-                $this->config['pass']
+        try 
+        {
+            // Utilizar las constantes en lugar de acceder a la configuración directamente. De momento el host está en local.
+            $this->databaseConnect = new PDO(
+                "mysql:host=" . $this->config['host'] . ";database=" . $this->config['db'] . ";charset=" . $this->config['charset'],
+                $this->config['username'],
+                $this->config['password']
             );
-            $this->conect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->databaseConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             throw new Exception("Error de conexión: " . $e->getMessage());
         }
@@ -36,7 +37,7 @@ class Db
 
     private function loadConfig()
     {
-        // Cargar configuración desde el archivo JSON
+        //! Cargar configuración desde el archivo JSON. No sería mejor ponerlo a capón?
         $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
 
         if ($this->config === null) {
@@ -45,18 +46,13 @@ class Db
     }
 
 
-    public function cerrarConexion()
+    public function closeConnection()
     {
-        $this->conect = null;
-    }
-
-    public function lastInsertId()
-    {
-        return $this->conect->lastInsertId();
+        $this->databaseConnect = null;
     }
     
     public function prepare($sql)
     {
-        return $this->conect->prepare($sql);
+        return $this->databaseConnect->prepare($sql);
     }
 }

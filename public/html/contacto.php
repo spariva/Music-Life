@@ -1,3 +1,28 @@
+<?php 
+
+require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
+//Errores, validate data, sanitize data ¿?
+// if the user submited the form
+// if there are form errors
+//     fill errors array
+// else
+//     record data to database
+//     302 regirect, as it required by HTTP standard
+//     exit
+// if we have some errors
+// display errors
+// fill form field values
+// display the form
+
+//Si le has dado a enviar y no hay errores:
+if(isset($_POST["enviar"]) && (empty($errores))){ 
+        $mailer = MailerSingleton::obtenerInstancia();
+        $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -31,7 +56,7 @@
         <div class="content" id="formContacto">
             <h2 class="textoContacto">Formulario de Contacto</h2><br>
 
-            <form class="textoContacto" action="tu_script_para_enviar_correo.php" method="POST">
+            <form class="textoContacto" action="" method="POST">
                 <label for="motivo">Motivo de Contacto:</label>
                 <select id="motivo" name="motivo" required>
                     <option value="" disabled selected>Selecciona un motivo</option>
@@ -40,30 +65,43 @@
                     <option value="fallo_spotify">Fallo al conectar con Spotify</option>
                     <option value="consulta">Consulta</option>
                     <option value="otro">Otro</option>
-                </select><br><br>
+                </select>
+                <br><br>
 
                 <div id="otroMotivo" style="display: none;">
                     <label for="otroMotivoTexto">Por favor, especifica:</label>
                     <input type="text" id="otroMotivoTexto" name="otroMotivoTexto">
-                </div><br><br>
+                </div>
+                <br><br>
 
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required><br><br>
+                <input type="text" id="nombre" name="nombre" value= "<?= $nombre ?>" placeholder="Nombre" required><br>
+                <?php if (isset($errores['nombre'])) { ?>
+                    <span class="error">
+                        <?= $errores['nombre'] ?>
+                    </span>
+                <?php } ?>
+                <br><br>
 
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required><br><br>
-
+                <label for="userMail">Correo Electrónico:</label>
+                <input type="email" id="email" name="userMail" value= "<?= $userMail ?>" required><br>
+                <?php if (isset($errores['nombre'])) { ?>
+                    <span class="error">
+                        <?= $errores['nombre'] ?>
+                    </span>
+                <?php } ?>
+                <br><br>
 
 
                 <label for="mensaje">Mensaje:</label><br><br>
-                <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea><br><br>
+                <textarea id="mensaje" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
 
                 <button type="submit">Enviar</button>
             </form>
 
             <script>
-                var motivoSelect = document.getElementById('motivo');
-                var otroMotivoDiv = document.getElementById('otroMotivo');
+                const motivoSelect = document.getElementById('motivo');
+                const otroMotivoDiv = document.getElementById('otroMotivo');
 
                 motivoSelect.addEventListener('change', function () {
                     if (motivoSelect.value === 'otro') {
@@ -75,7 +113,6 @@
             </script>
 
         </div>
-        <!-- Retirado el div efecto de agua porque el codigo js ya inserta el elemento -->
     </div>
 </body>
 

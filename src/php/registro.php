@@ -5,33 +5,44 @@ class Registro{
 }
 
 
+class LoginForm{
+
+    //user exist ();
+    //user is valid();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST["nombre_usuario"];
-    $email = $_POST["email"];
-    $contrasena = $_POST["contrasena"];
+    $userName = $_POST["userName"];
+    $userMail = $_POST["userMail"];
+    $userPassword = $_POST["userPassword"];
 
 
-    if (empty($usuario)) {
-        echo "El nombre de usuario es requerido.";
+    if (empty($userName)) {
+        echo "El nombre de userName es requerido.";
     } 
 
-    if (empty($email)) {
+    if (empty($userMail)) {
         echo "El correo electrónico es requerido.";
     }
-    //la contrasena debería ser encriptada?
-    if (empty($contrasena)) {
+    //la userPassword debería ser encriptada?
+    if (empty($userPassword)) {
         echo "La contraseña es requerida.";
     }
 
     // Hacemos uso del singleton para obtener una instancia de la base de datos
     $db = Db::getInstance();
 
-    $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO usuarios (nombre, email, conrasena) VALUES (:userName, :userMail, :userPassword)";
     $stmt = $db->prepare($sql);
-    $stmt->execute([$usuario, $email, $contrasena]);
+    
+    $stmt->bindValue(':nombre', $userName, PDO::PARAM_STR);
+    $stmt->bindValue(':email', $userMail, PDO::PARAM_STR);
+    $stmt->bindValue(':nombre', $userPassword, PDO::PARAM_STR);
 
-    $db->cerrarConexion();
+    $stmt->execute();
 
-    header("Location: ../public/html/usuario.html");
+    $db->closeConnection();
+
+    header("Location: ../public/html/ususario.html");
     exit();
 }
