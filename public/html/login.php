@@ -1,3 +1,8 @@
+<?php
+
+$comprobator = new LoginManager($_POST);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -48,13 +53,13 @@
         <form id="registro">
             <h2 class="formulario__titulo">Registro</h2>
             <div class="inputBox">
-                <input type="text" placeholder="Nombre de usuario" required>
+                <input type="text" placeholder="Nombre de usuario" name="name" value="<?= $userName ?>" required>
             </div>
             <div class="inputBox">
                 <input type="text" placeholder="Dirección de correo electrónico" required>
             </div>
             <div class="inputBox">
-                <input type="password" placeholder="Crear contraseña" required>
+                <input type="password" placeholder="Crear contraseña" name="password" required>
             </div>
             <div class="inputBox">
                 <input type="password" placeholder="Confirmar contraseña" required>
