@@ -1,0 +1,9 @@
+{
+"host": "127.0.0.1",
+"username": "admin",
+"password": "0123456789",
+"database": "create_db",
+"dialect": "mysql",
+"seederStorage": "sequelize",
+"charset": "utf8mb4"
+}
