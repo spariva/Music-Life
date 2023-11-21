@@ -54,7 +54,8 @@ class MailerSingleton {
             </body>
             </html>";
             return $this->mail->send();
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
+            throw new PHPMailerException("Error al mandar el mail de formulario de contacto.");
             return false;
         }
     }
