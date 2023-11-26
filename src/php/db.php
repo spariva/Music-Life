@@ -9,7 +9,7 @@ class Db
     private function __construct()
     {
         // Cargar las configuraciones desde el archivo JSON en el constructor
-        $this->loadConfig();
+        $this->config = $this->loadConfig();
 
         try 
         {
@@ -38,7 +38,7 @@ class Db
     private function loadConfig()
     {
         //! Cargar configuración desde el archivo JSON. No sería mejor ponerlo a capón?
-        $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
+        return $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
 
         if ($this->config === null) {
             throw new JsonException("Error al cargar el archivo de configuración JSON.");
