@@ -1,19 +1,11 @@
 <?php
-// Configuración de la base de datos
-$servername = "";
-$username = "";
-$password = "";
-$dbname = "";
-
-try {
-    // Creamos una conexión PDO
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	require '../config/init.php';
+    //Creamos una instancia a la conexión con la database.
+    $db = Db::getInstance();
 
     // Consulta SELECT
     $sql = "SELECT * FROM PLAYLIST";
-    $result = $conn->query($sql);
+    $result = $db->prepare($sql);
 
     if ($result->rowCount() > 0) {
         foreach ($result as $data) {
@@ -22,9 +14,7 @@ try {
     } else {
         echo "No se encontraron resultados";
     }
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
+
 ?>
 
 
@@ -39,6 +29,10 @@ try {
 	<link rel="stylesheet" type="text/css" href="../css/nuevocss.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="../js/BusquedaSpotify.js" defer></script>
+	<!-- Enlaces a Bootstrap JS (jQuery y Popper.js son necesarios para Bootstrap) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 
 </head>
 
@@ -59,11 +53,6 @@ try {
 		<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
 		<div class="contenedor" id="recomendado">
 			<div id="apartado">Recomendado</div>
-			<iframe style="border-radius:12px"
-				src="" width="100%"
-				height="152" frameBorder="0" allowfullscreen="https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator"
-				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-				loading="lazy"></iframe>
 			<iframe style="border-radius:12px"
 				src="https://open.spotify.com/embed/album/64LU4c1nfjz1t4VnGhagcg?utm_source=generator" width="100%"
 				height="152" frameBorder="0" allowfullscreen=""
@@ -97,7 +86,6 @@ try {
 		</div>
 		<div class="contendor" id="restoPagina">
 			<div class="contenedor" id="buscador">
-				<p>Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</p>
 				<div id="barraBusqueda" class="barraBusqueda">
 					<input type="text" name="" class="inputBuscador"
 						placeholder="Introduzca la ruta embedida del álbum..." value="">
@@ -105,6 +93,7 @@ try {
 							<img src="../img/search.png">
 						</div> -->
 					<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
+					<p class="mx-5">Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</p>
 				</div>
 				<br>
 				<iframe class="iframeBuscador"
@@ -217,10 +206,7 @@ try {
 
 		</div>
 
-		<!-- Enlaces a Bootstrap JS (jQuery y Popper.js son necesarios para Bootstrap) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </body>
 
