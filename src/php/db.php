@@ -37,7 +37,6 @@ class Db
 
     private function loadConfig()
     {
-        //! Cargar configuración desde el archivo JSON. No sería mejor ponerlo a capón?
         return $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
 
         if ($this->config === null) {
