@@ -1,8 +1,8 @@
 {
-"host": "127.0.0.1",
-"username": "admin",
-"password": "0123456789",
-"database": "create_db",
+"host": "vps-ef2a0032.vps.ovh.net",
+"username": "root",
+"password": "root",
+"database": "musicLifeProd",
 "dialect": "mysql",
 "seederStorage": "sequelize",
 "charset": "utf8mb4"
