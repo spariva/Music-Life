@@ -1,5 +1,6 @@
 <?php 
 
+require '../config/init.php';
 require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
 //Errores, validate data, sanitize data ¿?
 // if the user submited the form

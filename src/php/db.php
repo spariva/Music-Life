@@ -3,7 +3,7 @@
 class Db
 {
     private static $instance; 
-    private $databaseConnect;
+    private $db;
     private const CONFIG_FILE = '../config/db.json';
 
     private function __construct()
@@ -14,12 +14,12 @@ class Db
         try 
         {
             // Utilizar las constantes en lugar de acceder a la configuración directamente. De momento el host está en local.
-            $this->databaseConnect = new PDO(
-                "mysql:host=" . $this->config['host'] . ";database=" . $this->config['db'] . ";charset=" . $this->config['charset'],
+            $this->db = new PDO(
+                "mysql:host=" . $this->config['host'] . ";db=" . $this->config['db'] . ";charset=" . $this->config['charset'],
                 $this->config['username'],
                 $this->config['password']
             );
-            $this->databaseConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             throw new Exception("Error de conexión: " . $e->getMessage());
         }
@@ -47,11 +47,11 @@ class Db
 
     public function closeConnection()
     {
-        $this->databaseConnect = null;
+        $this->db = null;
     }
     
     public function prepare($sql)
     {
-        return $this->databaseConnect->prepare($sql);
+        return $this->db->prepare($sql);
     }
 }

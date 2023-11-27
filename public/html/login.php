@@ -1,5 +1,5 @@
 <?php
-
+require '../config/init.php';
 
 $comprobator = new LoginManager($_POST);
 

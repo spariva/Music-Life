@@ -25,12 +25,6 @@
   src: url(../img/fonts/neon2.ttf);
 }
 
-/* REVISAR - Hay mucha linea de codigo CSS y JavaScript a depurar en el proyecto. Aun es
-              manejable, pero dará problemas si no se ataja antes*/
-/* REVISAR - Solucionar cambio entre oscuro y claro - Hay un instante en que está en blanco
-                al cambiar de pantallas, se puede cambiar el color de fondo para que quede
-                oscuro al intercambiar de videos */
-/* REVISAR -  modo oscuro no se está manteniendo entre cambios de página. Esto no es complicado ni prioritario */
 * {
   margin: 0;
   padding: 0;
