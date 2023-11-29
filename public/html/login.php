@@ -4,6 +4,11 @@ require '../config/init.php';
 $comprobator = new LoginManager($_POST);
 
 
+if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
+    $mailer = MailerSingleton::obtenerInstancia();
+    $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +39,7 @@ $comprobator = new LoginManager($_POST);
         <span class="contenedor__efectos"></span>
         <span class="contenedor__efectos"></span>
         <span class="contenedor__efectos"></span>
-        <form id="inicioSesion">
+        <form id="inicioSesion" action="" method="GET">
             <h2 class="formulario__titulo">Iniciar sesión</h2>
             <div class="inputBox">
                 <input type="text" placeholder="Usuario" required>
@@ -48,14 +53,14 @@ $comprobator = new LoginManager($_POST);
                 <a href="#" id="crearCuenta">Crear cuenta</a>
             </div>
             <div class="inputBox">
-                <input type="submit" class="botonConectarse" value="Conectarse">
+                <input type="submit" class="botonConectarse" value="Conectarse" name="send">
             </div>
         </form>
 
         <form id="registro" action="" method="POST">
             <h2 class="formulario__titulo">Registro</h2>
             <div class="inputBox">
-                <input type="text" placeholder="Nombre de usuario" name="name" value="<?= $userName ?>" required>
+                <input type="text" placeholder="Nombre de usuario" name="name" value="<?= $userName ?>" method="GET" required>
             </div>
             <div class="inputBox">
                 <input type="text" placeholder="Dirección de correo electrónico" required>
@@ -67,7 +72,7 @@ $comprobator = new LoginManager($_POST);
                 <input type="password" placeholder="Confirmar contraseña" required>
             </div>
             <div class="inputBox">
-                <input type="submit" class="botonCrear" value="Crear Cuenta">
+                <input type="submit" class="botonCrear" value="Crear Cuenta" name="send">
             </div>
             <div class="inputBox">
                 <p>¿Ya tiene una cuenta?</p><a href="#" id="conectarCuenta">Conectarse</a>

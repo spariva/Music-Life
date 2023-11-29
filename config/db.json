@@ -1,8 +1,8 @@
 {
-"host": "vps-ef2a0032.vps.ovh.net",
-"username": "root",
-"password": "root",
-"database": "musicLifeProd",
+"host": "localhost",
+"username": "musicLifeProd",
+"password": "musicLifeProd1234",
+"database": "musicLifeDatabase",
 "dialect": "mysql",
 "seederStorage": "sequelize",
 "charset": "utf8mb4"

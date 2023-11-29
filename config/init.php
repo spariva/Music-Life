@@ -10,6 +10,7 @@ spl_autoload_register(function($class) {
     }
 });
 
+session_start();
 
 // Meter donde carguemos nuevos objetos si queremos se gestione la excepción en caso de no encontrat la clase.
 // try {
