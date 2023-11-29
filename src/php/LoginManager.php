@@ -1,7 +1,7 @@
 <?php
 
 class LoginManager{
-    public $errors;
+    public $errors = [];
 
     public function __construct($datos){
         $this->errors = [];

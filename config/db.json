@@ -1,8 +1,8 @@
 {
 "host": "localhost",
-"username": "root",
-"password": "root",
-"database": "musicLifeProd",
+"username": "musicLifeProd",
+"password": "musicLifeProd1234",
+"database": "musicLifeDatabase",
 "dialect": "mysql",
 "seederStorage": "sequelize",
 "charset": "utf8mb4"
