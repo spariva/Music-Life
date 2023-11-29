@@ -1,5 +1,5 @@
 {
-"host": "vps-ef2a0032.vps.ovh.net",
+"host": "localhost",
 "username": "root",
 "password": "root",
 "database": "musicLifeProd",

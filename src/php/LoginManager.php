@@ -1,5 +1,4 @@
 <?php
-include('../config/init.php');
 
 class LoginManager{
     public $errors;
@@ -10,9 +9,9 @@ class LoginManager{
         $this->password = Sanitizer::sanitizeString($datos['password'], $this->errors['password']);
     }
 
-    public function login(): bool{
+    public function validateLogin(): bool{
         $db = Db::getInstance();
-        $sql = "SELECT * FROM usuarios WHERE email = :email";
+        $sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
         $stmt->execute();
@@ -30,6 +29,7 @@ class LoginManager{
         }
 
         return true;
+
     }
     //user exist ();
     //user is valid();
@@ -67,6 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $db->closeConnection();
 
-    header("Location: ../public/html/ususario.html");
+    header("Location: ../public/html/ususario.html"); //cambiar el doc root a que sea public 
     exit();
 }

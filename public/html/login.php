@@ -4,6 +4,11 @@ require '../config/init.php';
 $comprobator = new LoginManager($_POST);
 
 
+if(isset($_POST["enviar"]) && (empty($comprobator.errores[]))){ 
+    $mailer = MailerSingleton::obtenerInstancia();
+    $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
