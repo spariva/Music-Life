@@ -1,11 +1,13 @@
 <?php
-require 'vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
+
+require 'vendor/autoload.php'; 
+composer: require phpmailer/phpmailer;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class MailerSingleton {
-    private static $mailerSingleton;
+class Mailer {
+    private static $mailer;
     private $mail;
 
     private function __construct() {
@@ -22,10 +24,10 @@ class MailerSingleton {
     }
 
     public static function obtenerInstancia() {
-        if (self::$mailerSingleton === null) {
-            self::$mailerSingleton = new self();
+        if (self::$mailer === null) {
+            self::$mailer = new self();
         }
-        return self::$mailerSingleton;
+        return self::$mailer;
     }
 
     public function enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra) {

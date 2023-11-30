@@ -6,7 +6,8 @@
 
 :root {
     --white: #fff;
-    --red: #f4242f;
+    --red: rgb(66, 153, 215);
+    /* --red: #f4242f; */
     --yellow: #ffeb3b;
     --blue: #2196f3;
     --blur-grey: #ffffff80;

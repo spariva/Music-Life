@@ -2,6 +2,8 @@
 
 class LoginManager{
     public $errors = [];
+    public $email;
+    private $password;
 
     public function __construct($datos){
         $this->errors = [];
@@ -9,6 +11,8 @@ class LoginManager{
         $this->password = Sanitizer::sanitizeString($datos['password'], $this->errors['password']);
     }
 
+    //user exist ();
+    //user is valid();
     public function validateLogin(): bool{
         $db = Db::getInstance();
         $sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
@@ -18,12 +22,13 @@ class LoginManager{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         $db->closeConnection();
 
+        //user no exite:
         if ($user === false) {
             $this->errors['email'] = 'El email no es valido.';
             return false;
         }
 
-        if (!password_verify($this->password, $user['password'])) {
+        if (!password_verify($this->getPassword(), $user['password'])) {
             $this->errors['password'] = 'La contraseña no es correcta.';
             return false;
         }
@@ -31,8 +36,11 @@ class LoginManager{
         return true;
 
     }
-    //user exist ();
-    //user is valid();
+
+    public function getPassword(): string{
+        return $this->password;
+    }
+
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -56,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hacemos uso del singleton para obtener una instancia de la base de datos
     $db = Db::getInstance();
 
-    $sql = "INSERT INTO usuarios (nombre, email, conrasena) VALUES (:userName, :userMail, :userPassword)";
+    $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (:userName, :userMail, :userPassword)";
     $stmt = $db->prepare($sql);
     
     $stmt->bindValue(':nombre', $userName, PDO::PARAM_STR);
