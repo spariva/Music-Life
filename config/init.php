@@ -8,7 +8,7 @@ spl_autoload_register(function($class) {
     if (file_exists($path)) {
         require $path;
     } else {
-        throw new Exception("Cannot load class: $class. File not found at $path"");
+        throw new Exception("Cannot load class: $class. File not found at $path");
     }
 });
 
