@@ -1,13 +1,15 @@
 <?php
 require '../config/init.php';
 
-$comprobator = new LoginManager($_POST);
+$comprobator = new LoginManager($_GET);
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
-    $mailer = MailerSingleton::obtenerInstancia();
-    $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
-}
+// if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
+//     $mailer = MailerSingleton::obtenerInstancia();
+//     $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
+// }
 
 ?>
 <!DOCTYPE html>
@@ -42,15 +44,14 @@ if(isset($_POST["enviar"]) && (empty($comprobator->errors))){
         <form id="inicioSesion" action="" method="GET">
             <h2 class="formulario__titulo">Iniciar sesión</h2>
             <div class="inputBox">
-                <input type="text" placeholder="Usuario" required>
+                <input type="text" placeholder="Usuario" value="<?= $userName ?>" required>
             </div>
             <div class="inputBox">
+                <!--No pongo el value, porque si se equivoca da sensación de inseguridad que se quede la contraseña. -->
                 <input type="password" placeholder="Contraseña" required>
             </div>
             <div class="inputBox">
-                <!-- Son dos enlaces porque uno deberia llevar a una página aparte para recuperar contraseña -->
-                <a href="#">¿Olvido la contraseña?</a>
-                <a href="#" id="crearCuenta">Crear cuenta</a>
+                <p>¿Primera vez aquí?</p><a href="#" id="crearCuenta">Crear cuenta</a>
             </div>
             <div class="inputBox">
                 <input type="submit" class="botonConectarse" value="Conectarse" name="send">
@@ -60,13 +61,14 @@ if(isset($_POST["enviar"]) && (empty($comprobator->errors))){
         <form id="registro" action="" method="POST">
             <h2 class="formulario__titulo">Registro</h2>
             <div class="inputBox">
-                <input type="text" placeholder="Nombre de usuario" name="name" value="<?= $userName ?>" method="GET" required>
+                <input type="text" placeholder="Nombre de usuario" name="name" value="<?= $userName ?>" method="POST" required>
             </div>
             <div class="inputBox">
-                <input type="text" placeholder="Dirección de correo electrónico" required>
+                <input type="text" placeholder="Dirección de correo electrónico" value="<?= $userMail ?>" required>
             </div>
             <div class="inputBox">
-                <input type="password" placeholder="Crear contraseña" name="password" required>
+                <!--! TODO: Si se equivoca repitiendo la contraseña se lo dejo, aunque esto debería ser con Js!-->
+                <input type="password" placeholder="Crear contraseña" name="password" value="<?= isset($registrator->errors['repPwd']) ? $userPassword : '' ?>" required>
             </div>
             <div class="inputBox">
                 <input type="password" placeholder="Confirmar contraseña" required>

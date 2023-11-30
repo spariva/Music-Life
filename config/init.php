@@ -7,6 +7,8 @@ spl_autoload_register(function($class) {
     $path = DOC_ROOT . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . $file . ".php";
     if (file_exists($path)) {
         require $path;
+    } else {
+        throw new Exception("Cannot load class: $class");
     }
 });
 
