@@ -14,6 +14,7 @@ class Db
         try 
         {
             // Utilizar las constantes en lugar de acceder a la configuración directamente. De momento el host está en local.
+            
             $this->db = new PDO(
                 "mysql:host=" . $this->config['host'] . ";db=" . $this->config['db'] . ";charset=" . $this->config['charset'],
                 $this->config['username'],
@@ -37,11 +38,10 @@ class Db
 
     private function loadConfig()
     {
-        return $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
-
         if ($this->config === null) {
             throw new JsonException("Error al cargar el archivo de configuración JSON.");
         }
+        return $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
     }
 
 
