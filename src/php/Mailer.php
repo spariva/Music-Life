@@ -1,7 +1,9 @@
 <?php
 
 require 'vendor/autoload.php'; 
-composer: require phpmailer/phpmailer;
+//Comentada esta linea porque utilizando el archivo composer.json y al introducir
+//    el comando composer install instalara las librerias indicadas en el .json
+//composer: require phpmailer/phpmailer;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
