@@ -75,6 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $db->closeConnection();
 
-    header("Location: ../public/html/ususario.html"); //cambiar el doc root a que sea public 
+    header("Location: ../../public/usuario.html"); //cambiar el doc root a que sea public
     exit();
 }
