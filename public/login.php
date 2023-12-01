@@ -1,7 +1,7 @@
 <?php
-require '../config/init.php';
+// require '../config/init.php';
 
-$comprobator = new LoginManager($_GET);
+// $comprobator = new LoginManager($_GET);
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);

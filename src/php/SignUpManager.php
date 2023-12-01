@@ -1,35 +1,30 @@
-<?php
-include_once '../config/init.php';
-class LoginManager{
+<?php 
+
+class SignUpManager{
     public $errors = [];
-    public $email;
-    private $password;
+    public $userName;
+    public $userMail;
+    private $userPassword;
 
     public function __construct($datos){
         $this->errors = [];
-        $this->email = Sanitizer::sanitizeEmail($datos['email'], $this->errors['email']);
-        $this->password = Sanitizer::sanitizeString($datos['password'], $this->errors['password']);
+        $this->userName = Sanitizer::sanitizeString($datos['userName']);
+        $this->userMail = Sanitizer::sanitizeEmail($datos['userMail'], $this->errors['userMail']);
+        $this->userPassword = Sanitizer::sanitizeString($datos['userPassword']);
     }
 
-    //user exist ();
-    //user is valid();
-    public function validateLogin(): bool{
+    public function validateSignUp(): bool{
         $db = Db::getInstance();
         $sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $this->userMail, PDO::PARAM_STR);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         $db->closeConnection();
 
         //user no exite:
-        if ($user === false) {
-            $this->errors['email'] = 'El email no es valido.';
-            return false;
-        }
-
-        if (!password_verify($this->getPassword(), $user['password'])) {
-            $this->errors['password'] = 'La contraseña no es correcta.';
+        if ($user !== false) {
+            $this->errors['email'] = 'El email ya está registrado.';
             return false;
         }
 
@@ -38,16 +33,16 @@ class LoginManager{
     }
 
     public function getPassword(): string{
-        return $this->password;
+        return $this->userPassword;
     }
+
 
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $userName = $_POST["userName"]?? "";
     $userMail = $_POST["userMail"]?? "";
     $userPassword = $_POST["userPassword"]?? "";
-
 
     if (empty($userName)) {
         echo "El nombre de userName es requerido.";
@@ -57,8 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "El correo electrónico es requerido.";
     }
     //la userPassword debería ser encriptada?
-    if (empty($userPassword)) {
-        echo "La contraseña es requerida.";
+    if (empty($userPassword) || strlen($userPassword) < 8) {
+        echo "La contraseña es requerida y mayor a 8 carácteres.";
     }
 
     // Hacemos uso del singleton para obtener una instancia de la base de datos

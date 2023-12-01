@@ -39,7 +39,7 @@ function modoOscuro() {
     // Verifica si el video actual contiene 'FondoIndexClaro.mp4' en su ruta
     if (videoFondo.src.includes('FondoIndexClaro.mp4')) {
         // Cambia el video a FondoIndexOscuro.mp4 si el modo claro está activo
-        videoFondo.src = '../img/FondoIndexOscuro.mp4';
+        videoFondo.src = './img/FondoIndexOscuro.mp4';
         textoEnlaceModoOscuro.textContent = "Modo Claro";
         // navbar.style.background = 'white';
         for (var i = 0; i < elementosNavbar.length; i++) {
@@ -50,7 +50,7 @@ function modoOscuro() {
             textoContacto[i].style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
         }
     } else if (videoFondo.src.includes('FondoSpotifyClaro.mp4')) {
-        videoFondo.src = '../img/FondoSpotifyOscuro.mp4';
+        videoFondo.src = './img/FondoSpotifyOscuro.mp4';
         textoEnlaceModoOscuro.textContent = "Modo Claro";
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'white';
@@ -63,7 +63,7 @@ function modoOscuro() {
             formaSpotify[i].style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
         }
     } else if (videoFondo.src.includes('FondoIndexOscuro.mp4')) {
-        videoFondo.src = '../img/FondoIndexClaro.mp4';
+        videoFondo.src = './img/FondoIndexClaro.mp4';
         textoEnlaceModoOscuro.textContent = "Modo Oscuro";
         // navbar.style.background = 'black';
         for (var i = 0; i < elementosNavbar.length; i++) {
@@ -74,7 +74,7 @@ function modoOscuro() {
             textoContacto[i].style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         }
     } else if (videoFondo.src.includes('FondoSpotifyOscuro.mp4')) {
-        videoFondo.src = '../img/FondoSpotifyClaro.mp4';
+        videoFondo.src = './img/FondoSpotifyClaro.mp4';
         textoEnlaceModoOscuro.textContent = "Modo Oscuro";
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'black';
