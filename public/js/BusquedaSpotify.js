@@ -6,7 +6,7 @@ console.log("scripts ok");
 
 let consulta = document.querySelector('.inputBuscador');
 let iframeBuscador = document.querySelector('.iframeBuscador');
-let botonBuscar = document.querySelector('.botonBuscar');
+let botonBuscar = document.querySelector('.boton__buscar');
 
 // Manejo de Eventos
 botonBuscar.addEventListener('click', buscarLista);

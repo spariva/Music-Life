@@ -75,3 +75,5 @@ submitButton.addEventListener('click', () => {
     }
 });
 
+botonDesplegable.addEventListener('click', toggleRating);
+
