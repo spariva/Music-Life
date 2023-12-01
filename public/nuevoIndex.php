@@ -1,5 +1,5 @@
 <?php
-	include '../config/init.php';
+	require '../config/init.php';
     //Creamos una instancia a la conexión con la database.
     $db = Db::getInstance();
 
@@ -45,7 +45,7 @@
 			<a class="textoCabecera" href="./spotify.html">Spotify</a>
 			<a class="textoCabecera" href="./contacto.html">Contacto</a>
 			<a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
-			<a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
+			<a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
 		</nav>
 	</header>
 
@@ -92,7 +92,7 @@
 					<!-- <div id="barraBusqueda__icono" class="barraBusqueda__icono">
 							<img src="./img/search.png">
 						</div> -->
-					<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
+					<button class="boton__buscar">Buscar en Spotify</button>
 					<p class="mx-5">Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</p>
 				</div>
 				<br>

@@ -34,7 +34,7 @@ ini_set('display_errors', 1);
             <a class="textoCabecera" href="./spotify.html">Spotify</a>
             <a class="textoCabecera" href="./contacto.html">Contacto</a>
             <a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
-            <a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
+            <a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
         </nav>
     </header>
     <div class="contenedor">

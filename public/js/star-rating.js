@@ -1,11 +1,4 @@
-function toggleRating() {
-    const ratingDropdown = document.getElementById('ratingDropdown');
-    if (ratingDropdown.style.display === 'none' || ratingDropdown.style.display === '') {
-        ratingDropdown.style.display = 'block';
-    } else {
-        ratingDropdown.style.display = 'none';
-    }
-}
+
 
 const stars = document.querySelectorAll('.star');
 const commentInput = document.getElementById('comment');
@@ -16,6 +9,19 @@ var sectorComentarios = document.getElementById('listaComentarios');
 const comment = commentInput.value;
 
 var selectedRating = null;
+
+botonDesplegable.addEventListener('click', toggleRating);
+
+
+function toggleRating() {
+    const ratingDropdown = document.getElementById('ratingDropdown');
+    if (ratingDropdown.style.display === 'none' || ratingDropdown.style.display === '') {
+        ratingDropdown.style.display = 'block';
+    } else {
+        ratingDropdown.style.display = 'none';
+    }
+}
+
 
 stars.forEach((star, index) => {
     star.addEventListener('mouseover', () => {
@@ -75,15 +81,3 @@ submitButton.addEventListener('click', () => {
     }
 });
 
-
-const input2 = document.getElementById("miInput2");
-const div2 = document.getElementById("miDiv2");
-const draggable = document.getElementById("draggable");
-const droppable = document.getElementById("droppable");
-
-input2.addEventListener("focus", () => {
-  input2.style.backgroundColor = "lightblue";
-});
-input2.addEventListener("blur", () => {
-  input2.style.backgroundColor = "white";
-});
