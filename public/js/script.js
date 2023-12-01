@@ -57,7 +57,7 @@ function modoOscuro() {
         videoFondo.src = './img/FondoSpotifyOscuro.mp4';
         textoEnlaceModoOscuro.textContent = "Modo Claro";
         for (var i = 0; i < apartado.length; i++) {
-            apartado[i].style.color = 'blsck';
+            apartado[i].style.color = 'black';
         }  
         for (var i = 0; i < elementosNavbar.length; i++) {
             elementosNavbar[i].style.color = 'white';

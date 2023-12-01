@@ -25,10 +25,16 @@
 	<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 	<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="./js/BusquedaSpotify.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+	<script src="./js/star-rating.js" defer></script>
+	<script src="./js/script.js" defer></script>
 </head>
 
 <body>
-	<script>
+	<!-- <script>
 		function buscarPlaylist() {
 			// Solicitar al usuario que ingrese un nombre para la playlist
 			var nombrePlaylist = prompt("Por favor, ingrese un nombre para la playlist:");
@@ -50,7 +56,7 @@
 						data: {
 							id_pl: matches, // Agrega el valor correcto para id_pl (puede ser vacío por ahora)
 							playlistName: nombrePlaylist,
-							creator: <?php echo $_SESSION['user']; ?> // Asumiendo que 'id_usuario' es la clave correcta para el ID del usuario
+							creator:  // Asumiendo que 'id_usuario' es la clave correcta para el ID del usuario
 						},
 						success: function(response) {
 							alert(response); // Muestra la respuesta del servidor (puedes personalizar el mensaje)
@@ -64,7 +70,7 @@
 
 			}
 		}
-	</script>
+	</script> -->
 	<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"></video>
 	<header id="header">
 		<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
@@ -97,7 +103,7 @@
 						<input type="text" id="nombrePlaylist" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
 						<button id="botonBuscar">Buscar</button>
 						<br><br><br>
-						<iframe class="boton__buscar w-100" onclick="buscarPlaylist()" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+						<iframe class="boton__buscar w-100" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 					</div>
 				</div>
 
@@ -202,12 +208,7 @@
 				</div>
 			</div>
 		</div>
-		<script src="./js/BusquedaSpotify.js" defer></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-		<script src="./js/star-rating.js"></script>
-		<script src="./js/script.js"></script>
+
 
 
 </body>

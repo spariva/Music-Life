@@ -6,10 +6,9 @@ console.log("scripts ok");
 
 let consulta = document.querySelector('.inputBuscador');
 let iframeBuscador = document.querySelector('.iframeBuscador');
-let botonBuscar = document.querySelector('.boton__buscar');
+let botonBuscar = document.getDocumentById('botonBuscar');
 
-// Manejo de Eventos
-botonBuscar.addEventListener('click', buscarLista);
+
 
 function buscarLista() {
     try {
@@ -34,3 +33,6 @@ function buscarLista() {
         console.error('Error al buscar la lista:', error.message);
     }
 }
+
+// Manejo de Eventos
+botonBuscar.addEventListener('click', buscarLista);
