@@ -75,3 +75,15 @@ submitButton.addEventListener('click', () => {
     }
 });
 
+
+const input2 = document.getElementById("miInput2");
+const div2 = document.getElementById("miDiv2");
+const draggable = document.getElementById("draggable");
+const droppable = document.getElementById("droppable");
+
+input2.addEventListener("focus", () => {
+  input2.style.backgroundColor = "lightblue";
+});
+input2.addEventListener("blur", () => {
+  input2.style.backgroundColor = "white";
+});

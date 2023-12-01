@@ -1,6 +1,6 @@
 <?php
 
-define('DOC_ROOT', dirname(dirname(__FILE__)));
+define('DOC_ROOT', dirname(__DIR__));
 
 spl_autoload_register(function($class) {
     $file = str_replace("\\", DIRECTORY_SEPARATOR, $class);
