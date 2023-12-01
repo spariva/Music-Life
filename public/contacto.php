@@ -32,8 +32,8 @@ if(isset($_POST["enviar"]) && (empty($errores))){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
     <title>Music-Life</title>
-    <link rel="stylesheet" type="text/css" href="../css/contacto.css">
-    <script src="../js/script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="./css/contacto.css">
+    <script src="./js/script.js" defer></script>
 </head>
 
 <body>
@@ -50,7 +50,7 @@ if(isset($_POST["enviar"]) && (empty($errores))){
     <div class="video-container">
         <!-- Añadido atributo src al video. La etiqueta source es para tener otras opciones.
              Aparte este es el elemento enlazado con la variable en el script -->
-        <video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+        <video autoplay loop muted class="video" id="videoFondo" src="./img/FondoIndexClaro.mp4">
             <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
             Tu navegador no soporta el elemento de video mp4.
         </video>

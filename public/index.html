@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
 	<title>Music-Life</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../css/star-rating.css">
-	<script src="../js/script.js" defer></script>
-	<script src="../js/BusquedaSpotify.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
+	<script src="./js/script.js" defer></script>
+	<script src="./js/BusquedaSpotify.js" defer></script>
 </head>
 
 <body>
@@ -37,11 +37,11 @@
 			<div id="ratingDropdown" class="dropdown" style="display: none;">
 				<div class="ratingBlock">
 					<div class="star-rating">
-						<img class="star" data-rating="1" src="../img/star/EstrellaVacia.png" alt="Estrella 1">
-						<img class="star" data-rating="2" src="../img/star/EstrellaVacia.png" alt="Estrella 2">
-						<img class="star" data-rating="3" src="../img/star/EstrellaVacia.png" alt="Estrella 3">
-						<img class="star" data-rating="4" src="../img/star/EstrellaVacia.png" alt="Estrella 4">
-						<img class="star" data-rating="5" src="../img/star/EstrellaVacia.png" alt="Estrella 5">
+						<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
+						<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
+						<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
+						<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
+						<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
 					</div>
 					<p></p><textarea id="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
 					<p><button id="submit-button">Enviar</button></p>
@@ -80,7 +80,7 @@
 				<input type="text" name="" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..."
 					value="">
 				<div id="barraBusqueda__icono" class="barraBusqueda__icono">
-					<img src="../img/search.png">
+					<img src="./img/search.png">
 				</div>
 			</div>
 			<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
@@ -91,18 +91,18 @@
 			<!-- Segunda forma - utilizando el album para generar un embed. Comentar iframe superior si se quiere probar-->
 			<!-- <div>
 						<iframe class="iframeBuscador" src="https://open.spotify.com/embed?uri=spotify:album:3T3EZvtuQKIqFaFmrj9HXP"  frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-					</div> -->
+			</div> -->
 		</div>
 	</div>
 
 	<div class="video-container">
 		<!-- Cambios realizados explicados en la página de index-->
-		<video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+		<video autoplay loop muted class="video" id="videoFondo" src="./img/FondoIndexClaro.mp4">
 			<!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
 			Tu navegador no soporta el elemento de video mp4.
 		</video>
 	</div>
-	<script src="../js/star-rating.js"></script>
+	<script src="./js/star-rating.js"></script>
 
 
 </body>

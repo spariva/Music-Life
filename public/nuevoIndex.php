@@ -26,9 +26,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
 	<title>Music-Life</title>
-	<link rel="stylesheet" type="text/css" href="../css/nuevocss.css">
+	<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="../js/BusquedaSpotify.js" defer></script>
+	<script src="./js/BusquedaSpotify.js" defer></script>
 	<!-- Enlaces a Bootstrap JS (jQuery y Popper.js son necesarios para Bootstrap) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
@@ -37,7 +37,7 @@
 </head>
 
 <body>
-	<video src="../img/FondoIndexClaro.mp4" autoplay="true" muted="true" loop="true"></video>
+	<video src="./img/FondoIndexClaro.mp4" autoplay="true" muted="true" loop="true"></video>
 	<header id="header">
 		<a class="textoCabecera" href="./index.html" id="logo">Music-Life</a>
 		<nav class="navbar">
@@ -90,7 +90,7 @@
 					<input type="text" name="" class="inputBuscador"
 						placeholder="Introduzca la ruta embedida del álbum..." value="">
 					<!-- <div id="barraBusqueda__icono" class="barraBusqueda__icono">
-							<img src="../img/search.png">
+							<img src="./img/search.png">
 						</div> -->
 					<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
 					<p class="mx-5">Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</p>
