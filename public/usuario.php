@@ -1,49 +1,49 @@
 <?php
-// Conexión a la base de datos (asegúrate de reemplazar los valores según tu configuración)
-$servername = "tu_servidor";
-$username = "tu_usuario";
-$password = "tu_contraseña";
-$dbname = "tu_base_de_datos";
+// // Conexión a la base de datos (asegúrate de reemplazar los valores según tu configuración)
+// $servername = "tu_servidor";
+// $username = "tu_usuario";
+// $password = "tu_contraseña";
+// $dbname = "tu_base_de_datos";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+// // Verificar la conexión
+// if ($conn->connect_error) {
+//     die("Conexión fallida: " . $conn->connect_error);
+// }
 
-// Obtener el ID del usuario (puedes obtenerlo de tu sistema de autenticación)
-$usuario_id = 1; // Reemplaza con el ID del usuario actual
+// // Obtener el ID del usuario (puedes obtenerlo de tu sistema de autenticación)
+// $usuario_id = 1; // Reemplaza con el ID del usuario actual
 
-// Consulta SQL para obtener las valoraciones de las playlists del usuario
-$sql = "SELECT v.PUNTUACION, v.COMENTARIO, v.FECHA, p.NOMBRE AS NOMBRE_PLAYLIST
-        FROM VALORACION v
-        JOIN PLAYLIST p ON v.PLAYLIST_ID = p.ID_PL
-        WHERE p.CREADOR_ID = $usuario_id";
+// // Consulta SQL para obtener las valoraciones de las playlists del usuario
+// $sql = "SELECT v.PUNTUACION, v.COMENTARIO, v.FECHA, p.NOMBRE AS NOMBRE_PLAYLIST
+//         FROM VALORACION v
+//         JOIN PLAYLIST p ON v.PLAYLIST_ID = p.ID_PL
+//         WHERE p.CREADOR_ID = $usuario_id";
 
-$result = $conn->query($sql);
+// $result = $conn->query($sql);
 
-// Inicializar un array para almacenar las valoraciones
-$valoraciones = array();
+// // Inicializar un array para almacenar las valoraciones
+// $valoraciones = array();
 
-// Verificar si hay resultados
-if ($result->num_rows > 0) {
-    // Almacenar los resultados en el array
-    while ($row = $result->fetch_assoc()) {
-        $valoracion = array(
-            'playlist' => $row["NOMBRE_PLAYLIST"],
-            'puntuacion' => $row["PUNTUACION"],
-            'comentario' => $row["COMENTARIO"],
-            'fecha' => $row["FECHA"]
-        );
-        $valoraciones[] = $valoracion;
-    }
-} else {
-    echo "<p>Este usuario no tiene valoraciones de playlists.</p>";
-}
+// // Verificar si hay resultados
+// if ($result->num_rows > 0) {
+//     // Almacenar los resultados en el array
+//     while ($row = $result->fetch_assoc()) {
+//         $valoracion = array(
+//             'playlist' => $row["NOMBRE_PLAYLIST"],
+//             'puntuacion' => $row["PUNTUACION"],
+//             'comentario' => $row["COMENTARIO"],
+//             'fecha' => $row["FECHA"]
+//         );
+//         $valoraciones[] = $valoracion;
+//     }
+// } else {
+//     echo "<p>Este usuario no tiene valoraciones de playlists.</p>";
+// }
 
 // Cerrar la conexión
-$conn->close();
+// $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +53,7 @@ $conn->close();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
-    <title>NOMBRE_USUARIO - Music Life</title>
+    <title>User - Music Life</title>
     <link rel="stylesheet" href="./css/usuario.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/usuario.js" defer></script>
@@ -103,14 +103,16 @@ $conn->close();
 
                 </div>
             </div>
-
-            <div class="video-container">
-                <!-- Cambios realizados explicados en la página de index-->
-                <video autoplay loop muted class="video" id="videoFondo" src="./img/FondoSpotifyClaro.mp4">
-                    <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
-                    Tu navegador no soporta el elemento de video mp4.
-                </video>
-            </div>
+        </div>
+        
+        <div class="video-container">
+            <!-- Cambios realizados explicados en la página de index-->
+            <video autoplay loop muted class="video" id="videoFondo" src="./img/FondoSpotifyClaro.mp4">
+                <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
+                Tu navegador no soporta el elemento de video mp4.
+            </video>
+        </div>
+        
 </body>
 
 </html>

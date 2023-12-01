@@ -1,6 +1,6 @@
 <?php
 
-require '../config/init.php';
+// require '../config/init.php';
 // require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
 //Errores, validate data, sanitize data ¿?
 // if the user submited the form
@@ -16,10 +16,10 @@ require '../config/init.php';
 // display the form
 
 //Si le has dado a enviar y no hay errores:
-if (isset($_POST["enviar"]) && (empty($errores))) {
-    $mailer = MailerSingleton::obtenerInstancia();
-    $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
-}
+// if (isset($_POST["enviar"]) && (empty($errores))) {
+//     $mailer = MailerSingleton::obtenerInstancia();
+//     $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
+// }
 
 
 ?>

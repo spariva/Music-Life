@@ -3,8 +3,8 @@
 
 // $comprobator = new LoginManager($_GET);
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
 //     $mailer = MailerSingleton::obtenerInstancia();
