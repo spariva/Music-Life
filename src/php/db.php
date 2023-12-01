@@ -54,4 +54,38 @@ class Db
     {
         return $this->db->prepare($sql);
     }
+
+    public function getUsernameById($userId) {
+        $consulta = $this->db->prepare("SELECT NOMBRE FROM USUARIO WHERE ID = userId");
+            
+        $consulta->bindParam(":userId", $userId, PDO::PARAM_INT);
+
+        $consulta->execute();
+        $data = $consulta->fetch(PDO::FETCH_NUM);
+        return $data[0];
+    }
+
+    public function checkUserExists($userName){
+        $consulta = $this->db->prepare("SELECT NombreUsuario FROM Usuario WHERE NombreUsuario=:userName");
+        $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $usuario = $consulta->fetch(PDO::FETCH_NUM);
+        return $usuario;
+    }
+
+    public function checkMailExists($mail){
+        $consulta = $this->db->prepare("SELECT email FROM Usuario WHERE email=:email");
+        $consulta->bindParam(":email", $mail, PDO::PARAM_STR);
+        $consulta->execute();
+        $email = $consulta->fetch(PDO::FETCH_NUM);
+        return $email;
+    }
+
+    public function obtenerContraDeUsuario($userName){
+        $consulta = $this->db->prepare("SELECT Contrasena FROM Usuario WHERE Nombre=:userName");
+        $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $userPwd = $consulta->fetch(PDO::FETCH_NUM);
+        return $userPwd;
+    }
 }
