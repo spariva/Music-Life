@@ -15,7 +15,7 @@ function buscarLista1() {
 botonBusqueda.addEventListener('click', buscarLista1);
 
 
-
+//Esta nos funcionaba perfecta con el evento etc, y en el último merge se ha roto todo =()
 function buscarLista() {
     try {
         // Obtener el valor del input
