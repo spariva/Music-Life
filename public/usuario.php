@@ -79,8 +79,8 @@
             <img src="./img/imagenPerfil.png" alt="usuario-imagen">
             <div id="correo">correoelectronico@email.com</div>
             <div class="iframes__favoritos">
-                <iframe class="menuUsuario__izquierda__iframe" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                <iframe class="menuUsuario__izquierda__iframe" src="https://open.spotify.com/embed/playlist/20IwQZIfrykXjnyd4SLHtX?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe class="menuUsuario_izquierda_iframe" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe class="menuUsuario_izquierda_iframe" src="https://open.spotify.com/embed/playlist/20IwQZIfrykXjnyd4SLHtX?utm_source=generator" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             </div>
         </div>
 
@@ -92,17 +92,16 @@
                 </div>
                 <div class="valoracion" id="val2">
                     <p><?php echo $valoraciones[1] ?></p>
-                    <div class="valoracion" id="val3">
+                </div>
+                <div class="valoracion" id="val3">
                         <p><?php echo $valoraciones[2] ?></p>
                     </div>
-
-                    <div class="musica">
+                    
+            </div>
+            <div class="musica">
                         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4lAAFJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1QmCJj?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
-
-                </div>
-            </div>
         </div>
     </div>
         

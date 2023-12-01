@@ -6,9 +6,7 @@ console.log("scripts ok");
 
 let consulta = document.querySelector('.inputBuscador');
 let iframeBuscador = document.querySelector('.iframeBuscador');
-let botonBuscar = document.getDocumentById('botonBuscar');
-
-
+const botonBuscar = document.getDocumentById('botonBuscar');
 
 function buscarLista() {
     try {

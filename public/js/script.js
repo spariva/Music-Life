@@ -1,6 +1,4 @@
-//var login
 const body = document.querySelector('body');
-// var modo oscuro:
 const videoFondo = document.getElementById('videoFondo');
 const textoEnlaceModoOscuro = document.getElementById('modo-oscuro');
 const elementosNavbar = document.getElementsByClassName('textoCabecera');
