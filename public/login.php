@@ -20,10 +20,10 @@ ini_set('display_errors', 1);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
     <title>Login - Music Life</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <script src="../js/login.js" defer></script>
-    <script src="../js/script.js" defer></script>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="./js/login.js" defer></script>
+    <script src="./js/script.js" defer></script>
 </head>
 
 <body>
@@ -83,7 +83,7 @@ ini_set('display_errors', 1);
     </div>
 
     <div class="video-container">
-        <video autoplay loop muted class="video" id="videoFondo" src="../img/FondoIndexClaro.mp4">
+        <video autoplay loop muted class="video" id="videoFondo" src="./img/FondoIndexClaro.mp4">
             <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
             Tu navegador no soporta el elemento de video mp4.
         </video>
