@@ -32,7 +32,7 @@ ini_set('display_errors', 1);
         <nav class="navbar">
             <a class="textoCabecera" href="./usuario.html">Mi perfil</a>
             <a class="textoCabecera" href="./spotify.html">Spotify</a>
-            <a class="textoCabecera" href="./contacto.html">Contacto</a>
+            <a class="textoCabecera" href="./contacto.php">Contacto</a>
             <a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
             <a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
         </nav>

@@ -39,9 +39,9 @@
 	<header id="header">
 		<a class="textoCabecera" href="./index.html" id="logo">Music-Life</a>
 		<nav class="navbar">
-			<a class="textoCabecera" href="./login.html">Cuenta</a>
+			<a class="textoCabecera" href="./login.php">Cuenta</a>
 			<a class="textoCabecera" href="./spotify.html">Spotify</a>
-			<a class="textoCabecera" href="./contacto.html">Contacto</a>
+			<a class="textoCabecera" href="./contacto.php">Contacto</a>
 			<a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
 			<a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
 		</nav>
