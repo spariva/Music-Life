@@ -32,14 +32,11 @@ class LoginManager{
             $this->errors['password'] = 'La contraseña no es correcta.';
             return false;
         }
-
         return true;
-
     }
-
+    
     public function getPassword(): string{
         return $this->password;
     }
-
 }
 
