@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
 	<script src="./js/script.js" defer></script>
 	<script src="./js/BusquedaSpotify.js" defer></script>
+	<script src="./js/star-rating.js" defer></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
 			<a class="textoCabecera" href="./spotify.html">Spotify</a>
 			<a class="textoCabecera" href="./contacto.html">Contacto</a>
 			<a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
-			<a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
+			<a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
 		</nav>
 	</header>
 
@@ -33,7 +34,7 @@
 					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 					loading="lazy"></iframe></div>
 
-			<div class="cuadrado" id="botonDesplegable" onclick="toggleRating()">Sin Valoración</div>
+			<div class="cuadrado" id="botonDesplegable">Sin Valoración</div>
 			<div id="ratingDropdown" class="dropdown" style="display: none;">
 				<div class="ratingBlock">
 					<div class="star-rating">
@@ -83,7 +84,7 @@
 					<img src="./img/search.png">
 				</div>
 			</div>
-			<button class="boton__buscar" onclick="buscarLista()">Buscar en Spotify</button>
+			<button class="boton__buscar">Buscar en Spotify</button>
 			<iframe class="iframeBuscador"
 				src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator"
 				frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -102,7 +103,7 @@
 			Tu navegador no soporta el elemento de video mp4.
 		</video>
 	</div>
-	<script src="./js/star-rating.js"></script>
+	
 
 
 </body>
