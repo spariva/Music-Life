@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require '../config/init.php';
 // require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
@@ -16,9 +16,9 @@ require '../config/init.php';
 // display the form
 
 //Si le has dado a enviar y no hay errores:
-if(isset($_POST["enviar"]) && (empty($errores))){ 
-        $mailer = MailerSingleton::obtenerInstancia();
-        $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
+if (isset($_POST["enviar"]) && (empty($errores))) {
+    $mailer = MailerSingleton::obtenerInstancia();
+    $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
 }
 
 
@@ -38,11 +38,12 @@ if(isset($_POST["enviar"]) && (empty($errores))){
 
 <body>
     <header id="header">
-        <a class="textoCabecera" href="index.php" id="logo">Music-Life</a>
+        <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
         <nav class="navbar">
-            <a class="textoCabecera" href="login.html">Cuenta</a>
-            <a class="textoCabecera" href="spotify.html">Spotify</a>
-            <a class="textoCabecera" href="contacto.html">Contacto</a>
+            <a class="textoCabecera" href="./login.php">Cuenta</a>
+            <a class="textoCabecera" href="./usuario.php">Usuario</a>
+            <a class="textoCabecera" href="./spotify.html">Spotify</a>
+            <a class="textoCabecera" href="./contacto.php">Contacto</a>
             <a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
             <a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
         </nav>
@@ -73,25 +74,25 @@ if(isset($_POST["enviar"]) && (empty($errores))){
                     <label for="otroMotivoTexto">Por favor, especifica:</label>
                     <input type="text" id="otroMotivoTexto" name="otroMotivoTexto">
                 </div>
-                
+
 
                 <label for="nombre">Nombre:</label><br>
-                <input type="text" id="nombre" name="nombre" value= "<?= $nombre ?>" placeholder="Nombre" required><br>
+                <input type="text" id="nombre" name="nombre" value="<?= $nombre ?>" placeholder="Nombre" required><br>
                 <?php if (isset($errores['nombre'])) { ?>
                     <span class="error">
                         <?= $errores['nombre'] ?>
                     </span>
                 <?php } ?>
-                
+
 
                 <label for="userMail">Correo Electrónico:</label><br>
-                <input type="email" id="email" name="userMail" value= "<?= $userMail ?>" required><br>
+                <input type="email" id="email" name="userMail" value="<?= $userMail ?>" required><br>
                 <?php if (isset($errores['nombre'])) { ?>
                     <span class="error">
                         <?= $errores['nombre'] ?>
                     </span>
                 <?php } ?>
-                
+
 
 
                 <label for="mensaje">Mensaje:</label><br>
@@ -104,7 +105,7 @@ if(isset($_POST["enviar"]) && (empty($errores))){
                 const motivoSelect = document.getElementById('motivo');
                 const otroMotivoDiv = document.getElementById('otroMotivo');
 
-                motivoSelect.addEventListener('change', function () {
+                motivoSelect.addEventListener('change', function() {
                     if (motivoSelect.value === 'otro') {
                         otroMotivoDiv.style.display = 'block';
                     } else {

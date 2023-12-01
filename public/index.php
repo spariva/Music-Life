@@ -1,5 +1,4 @@
-
-	<!-- require '../config/init.php';
+<!-- require '../config/init.php';
     //Creamos una instancia a la conexión con la database.
     $db = Db::getInstance();
 
@@ -15,7 +14,7 @@
         echo "No se encontraron resultados";
     } -->
 
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -26,71 +25,98 @@
 	<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 	<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="./js/BusquedaSpotify.js" defer></script>
-	<!-- Enlaces a Bootstrap JS (jQuery y Popper.js son necesarios para Bootstrap) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-
 </head>
 
 <body>
 	<video src="./img/FondoIndexClaro.mp4" autoplay="true" muted="true" loop="true"></video>
 	<header id="header">
-		<a class="textoCabecera" href="./index.html" id="logo">Music-Life</a>
+		<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
 		<nav class="navbar">
 			<a class="textoCabecera" href="./login.php">Cuenta</a>
+			<a class="textoCabecera" href="./usuario.php">Usuario</a>
 			<a class="textoCabecera" href="./spotify.html">Spotify</a>
 			<a class="textoCabecera" href="./contacto.php">Contacto</a>
 			<a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
-			<a class="textoCabecera" id="modo-oscuro" onclick="modoOscuro()">Modo Oscuro</a>
+			<a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
 		</nav>
 	</header>
 
 	<div id="contenido">
 		<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
 		<div class="contenedor" id="recomendado">
-			<div id="apartado">Recomendado</div>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/64LU4c1nfjz1t4VnGhagcg?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/151w1FgRZfnKZA9FEcg9Z3?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/6kZ42qRrzov54LcAk4onW9?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/4hDok0OAJd57SGIT8xuWJH?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/5AEDGbliTTfjOB8TSm1sxt?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/2Xoteh7uEpea4TohMxjtaq?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
+			<div id="apartado">Top Artistas 2023</div>
+			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX6bnzK9KPvrz?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1LUyBs1uGpN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4e5iLu?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 		</div>
 
 
 		<div class="contendor" id="restoPagina">
-			<div  id="buscador">
-				<div id="barraBusqueda" class="barraBusqueda">
-					<input type="text" name="" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
-					<!-- <div id="barraBusqueda__icono" class="barraBusqueda__icono">
-							<img src="./img/search.png">
-						</div> -->
-					<button class="boton__buscar" >Buscar en Spotify</button>
-					<p class="mx-5">Escucha tu lista favorita. Introduce un enlace embed de tu lista en el buscador</p>
-				</div>
-				<br>
-				<div class="contenedorSoporteParaValoraciones w-50"> //to do poner vlorsin al lado
-					<div class="hidden" id="listener1"> <iframe class="iframeBuscador w-100 "  src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" 
-						width="100%" height="352"" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+			<div id="buscador">
+				<div id="lupaBuscador">
+					<div id="barraBusqueda" class="barraBusqueda">
+						<input type="text" id="nombrePlaylist" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
+						<button onclick="buscarPlaylist()">Buscar</button>
+						<br><br><br>
+						<iframe class="iframeBuscador w-100" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 					</div>
+				</div>
 
-					<div class="cuadrado" id="botonDesplegable" >Sin Valoración</div>
-					<div id="ratingDropdown" class="dropdown" style="display: none;">
-						<div class="ratingBlock">
-							<div class="star-rating">
-								<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
-								<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
-								<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
-								<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
-								<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+				<script>
+					function buscarPlaylist() {
+						// Solicitar al usuario que ingrese un nombre para la playlist
+						var nombrePlaylist = prompt("Por favor, ingrese un nombre para la playlist:");
+
+						// Verificar si el usuario ingresó un nombre
+						if (nombrePlaylist !== null && nombrePlaylist !== "") {
+							// Obtener la URL del iframe
+							var iframeCode = document.querySelector('.iframeBuscador').outerHTML;
+							var pattern = /src="(.*?)"/;
+							var matches = iframeCode.match(pattern);
+
+							if (matches && matches.length > 1) {
+								var enlacePlaylist = matches[1];
+
+								// Enviar la información al servidor (puedes usar AJAX aquí)
+								// Supongamos que estás usando jQuery para AJAX
+								$.ajax({
+									type: "POST",
+									url: "guardar_playlist.php", // Reemplaza con la URL correcta del servidor
+									data: {
+										nombre: nombrePlaylist,
+										enlace: enlacePlaylist
+									},
+									success: function(response) {
+										alert(response); // Muestra la respuesta del servidor (puedes personalizar el mensaje)
+									}
+								});
+							} else {
+								alert("No se pudo encontrar la URL del iframe.");
+							}
+						} else {
+							alert("Debe ingresar un nombre para la playlist.");
+						}
+					}
+				</script>
+				<div id="valoracionesBuscador">
+					<div class="contenedorSoporteParaValoraciones w-100">
+						<div class="cuadrado" id="botonDesplegable">Sin Valoración</div>
+						<div id="ratingDropdown" class="dropdown" style="display: none;">
+							<div class="ratingBlock">
+								<div class="star-rating">
+									<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
+									<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
+									<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
+									<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
+									<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+								</div>
+								<p></p><textarea id="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+								<p><button id="submit-button">Enviar</button></p>
+								<p id="rating-value"></p>
+								<p id="listaComentarios"></p>
 							</div>
-							<p></p><textarea id="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
-							<p><button id="submit-button">Enviar</button></p>
-							<p id="rating-value"></p>
-							<p id="listaComentarios"></p>
 						</div>
 					</div>
 				</div>
@@ -106,6 +132,9 @@
 						<div class="carousel-item">
 							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNFJfN1Vw8d9?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 						</div>
+						<div class="carousel-item">
+							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+						</div>
 					</div>
 					<a class="carousel-control-prev" href="#iframeCarouselTendencia" role="button" data-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -118,8 +147,8 @@
 				</div>
 			</div>
 
-			<div class="contenedor" id="zonaAmigos">
-				<div id="apartado">Amigos</div>
+			<!-- <div class="contenedor" id="valoraciones">
+				<div id="apartado">Valoraciones</div>
 				<div id="iframeCarouselAmigos" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
@@ -138,7 +167,7 @@
 						<span class="sr-only">Siguiente</span>
 					</a>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="contenedor" id="valoraciones">
 				<div id="valoracionesListas">
@@ -172,6 +201,13 @@
 				</div>
 			</div>
 		</div>
+		<script src="./js/BusquedaSpotify.js" defer></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 		<script src="./js/star-rating.js"></script>
+		<script src="./js/script.js"></script>
+
 </body>
+
 </html>

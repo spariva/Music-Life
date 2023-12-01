@@ -121,11 +121,10 @@ video {
 .barraBusqueda .barraBusqueda__icono {
   position: absolute;
   top: 0;
-  width: 80%;
-  display: flex;
+  width: 100%;
   justify-content: end;
   align-items: center;
-  padding: 23px 30px;
+  padding: 10px;
   pointer-events: none;
 }
 
@@ -186,23 +185,23 @@ iframe {
   grid-area: recomendado;
 }
 
-
-
 #restoPagina {
   grid-area: restoPagina;
   display: grid;
-  grid-template-areas: "buscador buscador" "tendencia zonaAmigos" "valoraciones valoraciones";
+  grid-template-areas: "buscador buscador" "tendencia valoraciones";
   grid-template-columns: 1fr 1fr;
 
 }
 
-#valoraciones {
+/* #valoraciones {
   grid-area: valoraciones;
   display: grid;
-  grid-template-areas: "valoracionesListas valoracionesValoraciones";
-  grid-template-columns: 1fr 2fr;
-
+  grid-template-areas: 
+    "valoracionesListas"
+    "valoracionesValoraciones";
+  grid-template-rows: auto auto; /* Ajusta la altura de las filas según sea necesario 
 }
+
 
 #valoracionesListas{
   grid-area: valoracionesListas;
@@ -210,17 +209,33 @@ iframe {
 
 #valoracionesValoraciones{
   grid-area: valoracionesValoraciones;
-}
+} */
 
 #buscador {
   grid-area: buscador;
-  height: 300px;
-  width: 100%;
+  display: grid;
+  grid-template-areas: "lupaBuscador valoracionesBuscador";
+  grid-template-columns: 1fr 1fr;
 }
 
-#buscador iframe {
-  height: 70%;
+#lupaBuscador {
+  grid-area: lupaBuscador;
+  margin: 45px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  animation: animacionColorFondo 6s linear infinite alternate;
 }
+
+#valoracionesBuscador {
+  grid-area: valoracionesBuscador;
+  margin: 45px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  animation: animacionColorFondo 6s linear infinite alternate;
+}
+
 
 #tendencia {
   grid-area: tendencia;

@@ -15,24 +15,26 @@ ini_set('display_errors', 1);
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
-    <title>Login - Music Life</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script src="./js/login.js" defer></script>
-    <script src="./js/script.js" defer></script>
-</head>
+<header id="header">
+    <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+    <nav class="navbar">
+        <a class="textoCabecera" href="./login.php">Cuenta</a>
+        <a class="textoCabecera" href="./usuario.php">Usuario</a>
+        <a class="textoCabecera" href="./spotify.html">Spotify</a>
+        <a class="textoCabecera" href="./contacto.php">Contacto</a>
+        <a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
+        <a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
+    </nav>
+</header>
 
 <body>
     <header id="header">
-        <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+        <a class="textoCabecera" href="./index.html" id="logo">Music-Life</a>
         <nav class="navbar">
-            <a class="textoCabecera" href="./usuario.html">Mi perfil</a>
+            <a class="textoCabecera" href="./login.html">Cuenta</a>
+            <a class="textoCabecera" href="./usuario.php">Usuario</a>
             <a class="textoCabecera" href="./spotify.html">Spotify</a>
-            <a class="textoCabecera" href="./contacto.php">Contacto</a>
+            <a class="textoCabecera" href="./contacto.html">Contacto</a>
             <a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
             <a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
         </nav>
