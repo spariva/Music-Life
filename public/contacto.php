@@ -1,7 +1,7 @@
 <?php 
 
 require '../config/init.php';
-require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
+// require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
 //Errores, validate data, sanitize data ¿?
 // if the user submited the form
 // if there are form errors
@@ -58,7 +58,7 @@ if(isset($_POST["enviar"]) && (empty($errores))){
             <h2 class="textoContacto">Formulario de Contacto</h2><br>
 
             <form class="textoContacto" action="" method="POST">
-                <label for="motivo">Motivo de Contacto:</label>
+                <label for="motivo">Motivo de Contacto:</label><br>
                 <select id="motivo" name="motivo" required>
                     <option value="" disabled selected>Selecciona un motivo</option>
                     <option value="sugerencia">Sugerencia</option>
@@ -67,34 +67,34 @@ if(isset($_POST["enviar"]) && (empty($errores))){
                     <option value="consulta">Consulta</option>
                     <option value="otro">Otro</option>
                 </select>
-                <br><br>
+                <br>
 
                 <div id="otroMotivo" style="display: none;">
                     <label for="otroMotivoTexto">Por favor, especifica:</label>
                     <input type="text" id="otroMotivoTexto" name="otroMotivoTexto">
                 </div>
-                <br><br>
+                
 
-                <label for="nombre">Nombre:</label>
+                <label for="nombre">Nombre:</label><br>
                 <input type="text" id="nombre" name="nombre" value= "<?= $nombre ?>" placeholder="Nombre" required><br>
                 <?php if (isset($errores['nombre'])) { ?>
                     <span class="error">
                         <?= $errores['nombre'] ?>
                     </span>
                 <?php } ?>
-                <br><br>
+                
 
-                <label for="userMail">Correo Electrónico:</label>
+                <label for="userMail">Correo Electrónico:</label><br>
                 <input type="email" id="email" name="userMail" value= "<?= $userMail ?>" required><br>
                 <?php if (isset($errores['nombre'])) { ?>
                     <span class="error">
                         <?= $errores['nombre'] ?>
                     </span>
                 <?php } ?>
-                <br><br>
+                
 
 
-                <label for="mensaje">Mensaje:</label><br><br>
+                <label for="mensaje">Mensaje:</label><br>
                 <textarea id="mensaje" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
 
                 <button type="submit">Enviar</button>
