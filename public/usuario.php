@@ -88,18 +88,18 @@
             <div class="valoraciones">
                 <h2>VALORACIONES</h2>
                 <div class="valoracion" id="val1">
-                    <p><?php echo $valoraciones[0] ?></p>
+                    <p><?php echo $valoraciones[0] ?><b>This is Lola Indigo: 5 estrellas</b> La mejor playlist del mundo, me ha encantado</p>
                 </div>
                 <div class="valoracion" id="val2">
-                    <p><?php echo $valoraciones[1] ?></p>
+                    <p><?php echo $valoraciones[1] ?><b>Sand + Maksocrames: 4 estrellas</b> La escucho sin parar</p></p>
                 </div>
                 <div class="valoracion" id="val3">
-                        <p><?php echo $valoraciones[2] ?></p>
+                        <p><?php echo $valoraciones[2] ?><b>Pain: 3 estrellas</b> Tiene canciones geniales pero otras tengo que saltarlas </p></p>
                     </div>
                     
             </div>
             <div class="musica">
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4lAAFJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/159xmAdSIVlkemrogVpts1?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1QmCJj?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
         </div>

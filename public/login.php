@@ -22,8 +22,8 @@
     <title>Login - Music Life</title>
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script src="./js/login.js" defer></script>
-    <script src="./js/script.js" defer></script>
+    <script src="js/login.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <header id="header">
@@ -44,7 +44,7 @@
         <form id="inicioSesion" action="" method="GET">
             <h2 class="formulario__titulo">Iniciar sesión</h2>
             <div class="inputBox">
-                <input type="text" placeholder="Usuario" value="<?= $userName ?>" required>
+                <input type="text" placeholder="Usuario" value="" required>
             </div>
             <div class="inputBox">
                 <!--No pongo el value, porque si se equivoca da sensación de inseguridad que se quede la contraseña. -->

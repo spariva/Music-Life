@@ -12,3 +12,17 @@ conectarCuenta.onclick = function(){
 }
 
 
+const input2 = document.getElementById("miInput2");
+const div2 = document.getElementById("miDiv2");
+
+
+const inputs = document.querySelectorAll("input");
+
+inputs.forEach(input => {
+    input.addEventListener("focus", () => {
+        input.style.backgroundColor = "lightblue";
+    });
+    input.addEventListener("blur", () => {
+        input.style.backgroundColor = "white";
+    });
+});
