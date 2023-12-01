@@ -3,19 +3,27 @@ console.log("scripts ok");
 // Ejemplos
 // https://open.spotify.com/embed/playlist/37i9dQZF1DX5Ejj0EkURtP?utm_source=generator
 // https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator
+let consulta = document.getElementById('nombrePlaylist');
+let iframeBuscador = document.getElementById('iframeBusqueda');
+const botonBusqueda = document.getElementById('botonBusqueda');
 
-let consulta = document.querySelector('.inputBuscador');
-let iframeBuscador = document.querySelector('.iframeBuscador');
-const botonBusqueda = document.getDocumentById('botonBusqueda');
+function buscarLista1() {
+    let url = consulta.value;
+    iframeBuscador.src = url;
+}
+
+botonBusqueda.addEventListener('click', buscarLista1);
+
+
 
 function buscarLista() {
     try {
         // Obtener el valor del input
-        var iframeCode = consulta.value;
+        var url = consulta.value;
 
         // Patrón de expresión regular para extraer la URL entre src=" y "
         var pattern = /src="(.*?)"/;
-        var matches = iframeCode.match(pattern);
+        var matches = url.match(pattern);
 
         // Extraer la URL y almacenarla en la variable txt
         if (matches && matches[1]) {
@@ -33,4 +41,4 @@ function buscarLista() {
 }
 
 // Manejo de Eventos
-botonBuscar.addEventListener('click', buscarLista);
+// botonBuscar.addEventListener('click', buscarLista);

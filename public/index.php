@@ -25,7 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 	<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="./js/BusquedaSpotify.js" defer></script>
+	<script src="js/BusquedaSpotify.js" defer></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
@@ -34,43 +34,6 @@
 </head>
 
 <body>
-	<!-- <script>
-		function buscarPlaylist() {
-			// Solicitar al usuario que ingrese un nombre para la playlist
-			var nombrePlaylist = prompt("Por favor, ingrese un nombre para la playlist:");
-
-			// Verificar si el usuario ingresó un nombre
-			if (nombrePlaylist !== null && nombrePlaylist !== "") {
-				// Obtener la URL del iframe
-				var iframeCode = document.querySelector('.iframeBuscador').outerHTML;
-				var pattern = /src="(.*?)"/;
-				var matches = iframeCode.match(pattern);
-
-				if (matches && matches.length > 1) {
-					var enlacePlaylist = matches[1];
-
-					// Enviar la información al servidor (usando AJAX con jQuery)
-					$.ajax({
-						type: "POST",
-						url: "guardar_playlist.php",
-						data: {
-							id_pl: matches, // Agrega el valor correcto para id_pl (puede ser vacío por ahora)
-							playlistName: nombrePlaylist,
-							creator:  // Asumiendo que 'id_usuario' es la clave correcta para el ID del usuario
-						},
-						success: function(response) {
-							alert(response); // Muestra la respuesta del servidor (puedes personalizar el mensaje)
-						}
-					});
-				} else {
-					alert("No se pudo encontrar la URL del iframe.");
-				}
-			} else {
-				alert("Debe ingresar un nombre para la playlist.");
-
-			}
-		}
-	</script> -->
 	<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"></video>
 	<header id="header">
 		<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
@@ -101,9 +64,9 @@
 				<div id="lupaBuscador">
 					<div id="barraBusqueda" class="barraBusqueda">
 						<input type="text" id="nombrePlaylist" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
-						<button id="botonBusqueda">Buscar</button>
+						<button id="botonBusqueda" onclick="buscarLista">Buscar</button>
 						<br><br><br>
-						<iframe class="boton__buscar w-100" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+						<iframe id="iframeBusqueda" class="iframeBuscador w-100" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 					</div>
 				</div>
 
