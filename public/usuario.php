@@ -104,6 +104,7 @@
                 </div>
             </div>
         </div>
+    </div>
         
             <div class="video-container">
                 <!-- Cambios realizados explicados en la página de index-->

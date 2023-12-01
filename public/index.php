@@ -97,7 +97,7 @@
 						<input type="text" id="nombrePlaylist" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
 						<button id="botonBuscar">Buscar</button>
 						<br><br><br>
-						<iframe class="boton__buscar w-100" onclick="buscarPlaylist()" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+						<iframe class="boton__buscar w-100" onclick="buscarPlaylist()" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 					</div>
 				</div>
 

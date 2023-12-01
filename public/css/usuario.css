@@ -47,6 +47,7 @@ body {
 }
 
 .contenedor-principal-menuUsuario {
+  position: absolute;
   margin: 5%;
   display: grid;
   grid-template-areas: "usuario listas";
@@ -54,7 +55,7 @@ body {
   grid-gap: 30px;
   height: 80vh;
   width: 100%;
-
+  z-index: 1;
 }
 
 .usuario {
