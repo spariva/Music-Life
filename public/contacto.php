@@ -38,7 +38,7 @@ if(isset($_POST["enviar"]) && (empty($errores))){
 
 <body>
     <header id="header">
-        <a class="textoCabecera" href="index.html" id="logo">Music-Life</a>
+        <a class="textoCabecera" href="index.php" id="logo">Music-Life</a>
         <nav class="navbar">
             <a class="textoCabecera" href="login.html">Cuenta</a>
             <a class="textoCabecera" href="spotify.html">Spotify</a>

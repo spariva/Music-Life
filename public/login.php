@@ -28,7 +28,7 @@ ini_set('display_errors', 1);
 
 <body>
     <header id="header">
-        <a class="textoCabecera" href="./nuevoIndex.html" id="logo">Music-Life</a>
+        <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
         <nav class="navbar">
             <a class="textoCabecera" href="./usuario.html">Mi perfil</a>
             <a class="textoCabecera" href="./spotify.html">Spotify</a>
