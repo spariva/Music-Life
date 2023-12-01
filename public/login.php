@@ -61,14 +61,14 @@
         <form id="registro" action="" method="POST">
             <h2 class="formulario__titulo">Registro</h2>
             <div class="inputBox">
-                <input type="text" placeholder="Nombre de usuario" name="name" value="<?= $userName ?>" method="POST" required>
+                <input type="text" placeholder="Nombre de usuario" name="name" value="" method="POST" required>
             </div>
             <div class="inputBox">
-                <input type="text" placeholder="Dirección de correo electrónico" value="<?= $userMail ?>" required>
+                <input type="text" placeholder="Dirección de correo electrónico" value="" required>
             </div>
             <div class="inputBox">
                 <!--! TODO: Si se equivoca repitiendo la contraseña se lo dejo, aunque esto debería ser con Js!-->
-                <input type="password" placeholder="Crear contraseña" name="password" value="<?= isset($registrator->errors['repPwd']) ? $userPassword : '' ?>" required>
+                <input type="password" placeholder="Crear contraseña" name="password" value="" required>
             </div>
             <div class="inputBox">
                 <input type="password" placeholder="Confirmar contraseña" required>

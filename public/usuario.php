@@ -105,13 +105,13 @@
             </div>
         </div>
         
-        <div class="video-container">
-            <!-- Cambios realizados explicados en la página de index-->
-            <video autoplay loop muted class="video" id="videoFondo" src="./img/FondoSpotifyClaro.mp4">
-                <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
-                Tu navegador no soporta el elemento de video mp4.
-            </video>
-        </div>
+            <div class="video-container">
+                <!-- Cambios realizados explicados en la página de index-->
+                <video autoplay loop muted class="video" id="videoFondo" src="./img/FondoSpotifyClaro.mp4">
+                    <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
+                    Tu navegador no soporta el elemento de video mp4.
+                </video>
+            </div>
         
 </body>
 
