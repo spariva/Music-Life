@@ -90,14 +90,14 @@
 		</div>
 
 
-		<div class="contendor" id="restoPagina">
+		<div id="restoPagina">
 			<div id="buscador">
 				<div id="lupaBuscador">
 					<div id="barraBusqueda" class="barraBusqueda">
 						<input type="text" id="nombrePlaylist" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
 						<button id="botonBuscar">Buscar</button>
 						<br><br><br>
-						<iframe class="boton__buscar w-100" onclick="buscarPlaylist()" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+						<iframe class="boton__buscar w-100" onclick="buscarPlaylist()" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" width="100%" height="152" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 					</div>
 				</div>
 
@@ -148,28 +148,6 @@
 				</div>
 			</div>
 
-			<!-- <div class="contenedor" id="valoraciones">
-				<div id="apartado">Valoraciones</div>
-				<div id="iframeCarouselAmigos" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-						</div>
-						<div class="carousel-item">
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1PfYnYcpw8w?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-						</div>
-					</div>
-					<a class="carousel-control-prev" href="#iframeCarouselAmigos" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Anterior</span>
-					</a>
-					<a class="carousel-control-next" href="#iframeCarouselAmigos" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Siguiente</span>
-					</a>
-				</div>
-			</div> -->
-
 			<div class="contenedor" id="valoraciones">
 				<div id="valoracionesListas">
 					<div id="apartado">Valoraciones</div>
@@ -208,7 +186,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 		<script src="./js/star-rating.js"></script>
 		<script src="./js/script.js"></script>
-
 
 </body>
 

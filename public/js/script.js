@@ -12,22 +12,22 @@ var apartado = document.querySelectorAll('#apartado');
 
 
 //Efecto ratón animación onda.
-document.addEventListener('mousemove', function (e) {
-    const onda = document.createElement('div');
-    onda.className = 'efecto-agua';
-    document.body.appendChild(onda);
+// document.addEventListener('mousemove', function (e) {
+//     const onda = document.createElement('div');
+//     onda.className = 'efecto-agua';
+//     document.body.appendChild(onda);
 
-    const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+//     const rect = e.target.getBoundingClientRect();
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
 
-    onda.style.left = x + 'px';
-    onda.style.top = y + 'px';
+//     onda.style.left = x + 'px';
+//     onda.style.top = y + 'px';
 
-    onda.addEventListener('animationend', function () {
-        onda.remove();
-    });
-});
+//     onda.addEventListener('animationend', function () {
+//         onda.remove();
+//     });
+// });
 
 textoEnlaceModoOscuro.addEventListener("click", modoOscuro);
 
@@ -96,4 +96,3 @@ function modoOscuro() {
     }
 
 }
-
