@@ -2,23 +2,21 @@
   font-family: popText;
   src: url(../img/fonts/PopArt-Regular.ttf);
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  transition: color 0.5s ease;
+video {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 /* CABECERA */
 #header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   padding: 20px 100px;
-  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,11 +34,17 @@
   color: black;
 }
 
+/* Para poder hacer el navbar de bootstrap transparente */
+.navbar {
+  background-color: transparent !important;
+}
+
 .navbar a {
+  color:black !important;
   position: relative;
   font-size: 18px;
   font-weight: 500;
-  text-decoration: none;
+  text-decoration: none ;
   margin-left: 40px;
 }
 
@@ -65,126 +69,22 @@
   cursor: pointer;
 }
 
-/* 
-#modoOscuro{
-    margin-left: 40px;
-	height: 20px;
-	width: 20px; 
-}	
-*/
-/* CABECERA */
-
-
-
-/* CUERPO */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+body {
   background-color: grey;
 }
 
-
-.efecto-agua {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 80%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.697) 0%, rgba(255, 255, 255, 0) 60%);
-  transform: scale(0);
-  animation: onda-animacion 0.5s linear;
-}
-
-@keyframes onda-animacion {
-  to {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
-
-.video-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 1;
-}
-
-
-
-.circulo-flotante {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: #ffffffc7;
-  position: absolute;
-  /* Establece la posición absoluta para que flote sobre la página */
-  top: 50%;
-  /* Coloca el círculo en la mitad superior de la página */
-  left: 50%;
-  /* Coloca el círculo en el centro horizontal de la página */
-  transform: translate(-50%, -50%);
-  animation: flotar 3s ease-in-out infinite;
-  /* Aplica la animación llamada "flotar" */
-  transition: 1.0s ease;
-}
-
-.circulo-flotante:hover {
-  background-color: #fffffff1;
-  transform: translate(0, 0);
-}
-
-@keyframes flotar {
-  0% {
-    transform: translate(-50%, -50%) translateY(-10px);
-    /* Comienza 10px arriba de su posición original */
-  }
-
-  50% {
-    transform: translate(-50%, -50%) translateY(10px);
-    /* Se mueve 10px abajo de su posición original */
-  }
-
-  100% {
-    transform: translate(-50%, -50%) translateY(-10px);
-    /* Vuelve a la posición inicial */
-  }
-}
-
 /* CUERPO */
 
-.content {
-  width: 90%;
+.contenedor{
+  margin: 50px;
   display: grid;
-  grid-template-columns: 60% 40%;
-  /* Porcentajes para las tres columnas */
-  grid-gap: 10px;
-  /* Espacio entre los elementos */
+  grid-template-areas: "contenido reproductor";
+  grid-template-columns: 3fr 1fr;
+  gap: 40px;
 }
 
-
 #contenido {
+  grid-area: contenido;
   padding: 50px;
   background-color: #ffffff8f;
   border-radius: 30px;
@@ -195,6 +95,10 @@ html {
 #contenido h2 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 30px;
+}
+
+#reproductor{
+  grid-area: reproductor;
 }
 
 #spotifyApi {
@@ -212,4 +116,70 @@ html {
 
 .formaSpotify {
   transition: 1.0s ease;
+}
+
+@media screen and (max-width: 1200px) {
+
+  #logo {
+  font-size: 25px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #header {
+    padding: 20px 10px;
+  }
+
+  .navbar {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .navbar a {
+    margin: 0 10px;
+  }
+  .contenedor{
+    display: grid;
+    grid-template-areas: "contenido" "reproductor";
+    grid-template-columns: 1fr;
+    margin: 10px;
+    gap: 10px;
+  }
+  
+  #contenido {
+    grid-area: contenido;
+    padding: 20px;
+    background-color: #ffffff8f;
+    border-radius: 30px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  #contenido h2 {
+    font-size: 25px;
+  }
+  
+  #reproductor {
+    grid-area: reproductor;
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  #reproductor iframe {
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+  }
+
+
+  #spotifyApi {
+    max-width: 200px;
+    padding: 10px;
+    background-color: #ffffff8f;
+    border-radius: 30px;
+    margin: 15px;
+    opacity: 1;
+  }
+
 }

@@ -36,11 +36,17 @@ video {
   color: black;
 }
 
+/* Para poder hacer el navbar de bootstrap transparente */
+.navbar {
+  background-color: transparent !important;
+}
+
 .navbar a {
+  color:black !important;
   position: relative;
   font-size: 18px;
   font-weight: 500;
-  text-decoration: none;
+  text-decoration: none ;
   margin-left: 40px;
 }
 
@@ -63,6 +69,10 @@ video {
 
 #modo-oscuro {
   cursor: pointer;
+}
+
+body {
+  background-color: grey;
 }
 
 /* CUERPO */
@@ -112,21 +122,6 @@ video {
   align-items: center;
   padding: 10px;
   pointer-events: none;
-}
-
-.boton__buscar {
-  margin: 10px;
-  padding: 10px;
-  color: var(--grey);
-  font-size: 1.1em;
-  border: transparent;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.boton__buscar:hover {
-  border: 1px solid var(--grey-light);
-  transition: 1.5s;
 }
 
 iframe {
@@ -194,6 +189,10 @@ iframe {
 
 #valoracionesValoraciones{
   grid-area: valoracionesValoraciones;
+  padding: 30px;
+  margin: 20px;
+  background-color: #ffffff79;
+  border-radius: 20px;
 } 
 
 #buscador {
@@ -230,13 +229,6 @@ iframe {
   height: 400px;
 }
 
-#textoValoraciones{
-  padding: 30px;
-  margin: 20px;
-  background-color: #ffffff79;
-  border-radius: 20px;
-}
-
 
 /*Modo para moviles*//* Media query para pantallas pequeñas */
 @media screen and (max-width: 1200px) {
@@ -250,6 +242,7 @@ iframe {
   }
   
   #logo {
+  font-size: 25px;
     text-align: center;
     width: 100%;
     margin-bottom: 10px;
@@ -274,8 +267,10 @@ iframe {
     grid-template-columns: 1fr;
   }
 
-  #recomendado{
+  #recomendado {
     grid-area: recomendado;
+    height: 400px; /* Altura específica para la sección recomendada */
+    overflow-y: auto; /* Agrega un desbordamiento vertical con barra de desplazamiento si es necesario */
   }
 
   #restoPagina {
@@ -285,9 +280,6 @@ iframe {
     grid-template-columns: 1fr;
   
   }
-  #recomendado iframe {
-    width: 48%; /* Ocupa todo el ancho disponible */
-  }
 
   #buscador {
     grid-area: buscador;
@@ -295,15 +287,19 @@ iframe {
     grid-template-areas: 
       "lupaBuscador"
       "valoracionesBuscador";
-    grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
+      width: 100%;
   }
 
-  #lupaBuscador,
+  #lupaBuscador{
+    grid-area: lupaBuscador;
+    margin: 15px;
+
+  }
   #valoracionesBuscador {
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    animation: animacionColorFondo 6s linear infinite alternate;
+    grid-area: valoracionesBuscador;
+    margin: 15px;
+
   }
 
   #tendencia {
@@ -319,12 +315,16 @@ iframe {
     grid-template-rows: auto auto; /* Ajusta la altura de las filas según sea necesario*/
   }
 
-  #valoracionesListas,
-  #valoracionesValoraciones {
-    margin: 15px;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    animation: animacionColorFondo 6s linear infinite alternate;
-  } 
+  #valoracionesListas{
+    grid-area: valoracionesListas;
+  }
+
+  #valoracionesValoraciones{
+    grid-area: valoracionesValoraciones;
+    padding: 10px;
+    margin: 5px;
+    background-color: #ffffff79;
+    border-radius: 15px;
+    font-size: 10px;
+  }
 }

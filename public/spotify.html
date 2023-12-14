@@ -6,54 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
     <title>Spotify - Music Life</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/spotify.css">
-    <script src="./js/script.js" defer></script>
 </head>
 
 <body>
-    <header id="header">
-        <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
-        <nav class="navbar">
-            <a class="textoCabecera" href="./login.php">Cuenta</a>
-            <a class="textoCabecera" href="./usuario.php">Usuario</a>
-            <a class="textoCabecera" href="./spotify.html">Spotify</a>
-            <a class="textoCabecera" href="./contacto.php">Contacto</a>
-            <a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
-            <a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
+	<video src="./img/FondoSpotifyClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"></video>
+	<header id="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="d-flex align-items-center">
+                <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+
+                <!-- desplegable para pantallas pequeñas -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank">Info</a></li>
+                    <li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
-    <div class="video-container">
-        <!-- Cambios realizados explicados en la página de index-->
-        <video autoplay loop muted class="video" id="videoFondo" src="./img/FondoSpotifyClaro.mp4">
-            <!-- Quiero que al hacer click en el modo oscuro cambie este video tmbn -->
-            Tu navegador no soporta el elemento de video mp4.
-        </video>
-    </div>
-    <div class="content">
+    <div class="contenedor">
         <div class="formaSpotify" id="contenido">
             <h2 class="textoSpotify">¿Cómo trabajamos con Spotify?</h2>
-            <br>
             <img id="spotifyApi" class="formaSpotify" src="./img/spotifyAPI.png"
                 href="https://developer.spotify.com/documentation/web-api.com"><br>
             <!-- Texto de ChatGPT -->
-            <div class="textoSpotify">
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var textosAnimados = document.querySelectorAll(".texto-animado");
+        
+                    textosAnimados.forEach(function (texto) {
+                        var parrafos = texto.querySelectorAll("p");
+                        texto.innerHTML = "";
+        
+                        function escribirParrafo(i) {
+                            if (i < parrafos.length) {
+                                var nuevoParrafo = document.createElement("p");
+                                texto.appendChild(nuevoParrafo);
+        
+                                var contenido = parrafos[i].innerHTML;
+                                var j = 0;
+                                var velocidadEscritura = 20; // Ajusta la velocidad según tus preferencias (menor valor = más rápido)
+        
+                                function escribirTexto() {
+                                    if (j < contenido.length) {
+                                        nuevoParrafo.innerHTML += contenido.charAt(j);
+                                        j++;
+                                        setTimeout(escribirTexto, velocidadEscritura);
+                                    } else {
+                                        escribirParrafo(i + 1); // Llama al siguiente párrafo
+                                    }
+                                }
+        
+                                escribirTexto();
+                            }
+                        }
+        
+                        escribirParrafo(0); // Comienza con el primer párrafo
+                    });
+                });
+            </script>
+        
+            <div class="textoSpotify texto-animado">
                 <p>La API de Spotify es una herramienta poderosa que permite a los desarrolladores integrar
-                    funcionalidades de Spotify en sus aplicaciones y servicios.</p><br>
+                    funcionalidades de Spotify en sus aplicaciones y servicios.</p>
                 <p>Proporciona acceso a la extensa biblioteca musical de Spotify, permitiendo a las aplicaciones
-                    buscar pistas, álbumes y artistas, así como obtener detalles detallados sobre ellos.</p><br>
+                    buscar pistas, álbumes y artistas, así como obtener detalles detallados sobre ellos.</p>
                 <p>Los desarrolladores pueden controlar la reproducción de música, crear y gestionar listas de
                     reproducción personalizadas, y ofrecer recomendaciones musicales basadas en el historial de
-                    escuchas de los usuarios.</p><br>
+                    escuchas de los usuarios.</p>
                 <p>Además, la API permite acceder a perfiles de usuario, actividades recientes y características de
-                    audio detalladas de las pistas.</p><br>
+                    audio detalladas de las pistas.</p>
                 <p>También es posible crear experiencias interactivas, como juegos y aplicaciones multimedia que
                     responden a la música. Los desarrolladores pueden utilizar la API para crear aplicaciones
                     comerciales, como jukeboxes, y generar ingresos a través del programa de afiliados de Spotify.
-                </p><br>
+                </p>
                 <p>En resumen, la API de Spotify abre un mundo de posibilidades creativas para los desarrolladores,
                     permitiéndoles enriquecer sus aplicaciones con contenido musical, ofrecer experiencias
                     personalizadas a los usuarios y monetizar sus creaciones mediante la integración de la música de
-                    Spotify.</p><br>
+                    Spotify.</p>
                 <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow" target="_blank">Api
                     Spotify</a>
             </div>
@@ -70,9 +112,13 @@
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"></iframe>
         </div>
-        <!-- Contenido de tu página aquí -->
+        
     </div>
     <!-- Retirado este elemento div porque ya se inserta desde los scripts-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+	<script src="./js/script.js"></script>
 </body>
 
 </html>
