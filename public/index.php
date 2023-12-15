@@ -20,7 +20,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta property="og:image" content="./img/logo.png"> <!-- Intento poner logo no va -->
+    <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
 	<title>Music-Life</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
@@ -66,19 +66,7 @@
 			}
 		}
 	</script> -->
-	<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"></video>
-	<!-- <header id="header">
-		<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
-		<nav class="navbar">
-			<a class="textoCabecera" href="./login.php">Cuenta</a>
-			<a class="textoCabecera" href="./usuario.php">Usuario</a>
-			<a class="textoCabecera" href="./spotify.html">Spotify</a>
-			<a class="textoCabecera" href="./contacto.php">Contacto</a>
-			<a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
-			<a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
-		</nav>
-	</header> -->
-
+	<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
 	<header id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="d-flex align-items-center">

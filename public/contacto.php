@@ -39,7 +39,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 </head>
 
 <body>
-    <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"></video>
+<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="d-flex align-items-center">

@@ -129,6 +129,12 @@ iframe {
   grid-template-columns: 1fr 1fr;
 }
 
+#botonBuscar{
+  border-radius: 15px;
+  background-color: whitesmoke;
+  transition: 0.5s ease;
+}
+
 #lupaBuscador {
   grid-area: lupaBuscador;
   margin: 45px;
@@ -196,17 +202,28 @@ iframe {
       "valoracionesBuscador";
       grid-template-columns: 1fr;
       width: 100%;
+      align-items: center;
+      justify-content: center;
   }
 
   #lupaBuscador{
     grid-area: lupaBuscador;
     margin: 15px;
-
   }
+
+  .barraBusqueda .inputBuscador {
+    width: 70%;
+    margin-right: 0;
+    padding: 10px;
+    border: 1px solid var(--grey-light);
+    outline: none;
+    font-size: 1.1em;
+    border-radius: 30px;
+  }
+
   #valoracionesBuscador {
     grid-area: valoracionesBuscador;
     margin: 15px;
-
   }
 
   #tendencia {
