@@ -20,7 +20,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
+	<meta property="og:image" content="./img/logo.png"> <!-- Intento poner logo no va -->
 	<title>Music-Life</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
@@ -103,7 +103,7 @@
             </div>
         </nav>
     </header>
-	
+
 
 	<div id="contenido">
 		<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
