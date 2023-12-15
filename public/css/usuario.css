@@ -47,13 +47,14 @@ body {
 }
 
 .contenedor-principal-menuUsuario {
+  position: absolute;
   margin: 5%;
   display: grid;
   grid-template-areas: "usuario listas";
-  grid-template-columns: 1fr 3fr;
-  grid-gap: 30px;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 50px;
   height: 80vh;
-  width: 100%;
+  width: 90%;
   z-index: 1;
 }
 
@@ -92,15 +93,16 @@ body {
 
 .listas {
   display: grid;
+  grid-area: listas;
   grid-template-areas: "valoraciones musica";
   grid-gap: 50px;
   grid-template-columns: 1fr 1fr;
   text-align: center;
   color: black;
-  align-items: center;
   background-color: rgba(255, 255, 255, 0.239);
   border-radius: 200px 200px 100px 100px;
   padding: 40px;
+  padding: 100px;
 }
 
 .valoraciones {

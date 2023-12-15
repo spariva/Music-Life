@@ -211,6 +211,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 		<script src="./js/star-rating.js"></script>
 		<script src="./js/script.js"></script>
+	</div>
 </body>
 
 </html>

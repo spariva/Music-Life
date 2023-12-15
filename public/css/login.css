@@ -1,8 +1,81 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: content-box;
-}
+@font-face {
+    font-family: popText;
+    src: url(../img/fonts/PopArt-Regular.ttf);
+  }
+  video {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  /* CABECERA */
+  #header {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 100px;
+    /* background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 40px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  #logo {
+    font-size: 32px;
+    text-decoration: none;
+    font-weight: 550;
+    font-family: popText, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  
+  .textoCabecera {
+    color: black;
+  }
+  
+  /* Para poder hacer el navbar de bootstrap transparente */
+  .navbar {
+    background-color: transparent !important;
+  }
+  
+  .navbar a {
+    color:black !important;
+    position: relative;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none ;
+    margin-left: 40px;
+  }
+  
+  .navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    /* Cambiar en modo oscuro tmbn */
+    color: black;
+    background: #fff;
+    transition: 0.3s;
+  }
+  
+  .navbar a:hover::before {
+    width: 100%;
+  }
+  
+  #modo-oscuro {
+    cursor: pointer;
+  }
+  
+  body {
+    background-color: grey;
+  }
+  
+  /* CUERPO */
 
 :root {
     --white: #fff;
@@ -14,32 +87,12 @@
     --blur-greySoft: #ffffff40;
 }
 
-body {
+#ubicador{
     display: flex;
+    padding: 10px;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: grey;
-}
-
-body::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-
-body::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: 0.05s;
+    margin-top: 15%;
 }
 
 body.crearCuenta::after {
@@ -59,9 +112,10 @@ body.crearCuenta::after {
     overflow: hidden;
 }
 
-body.crearCuenta .contenedor {
+.crearCuenta .contenedor{
     height: 430px;
 }
+
 
 .contenedor::before {
     content: '';
@@ -90,6 +144,7 @@ body.crearCuenta .contenedor {
 }
 
 .contenedor__efectos {
+    height: 100%;
     position: absolute;
     inset: 5px;
     overflow: hidden;
@@ -223,4 +278,38 @@ form#registro .inputBox .botonCrear {
     font-weight: 500;
     color: var(--yellow);
     text-decoration: underline;
+}
+
+
+/*Modo para moviles*//* Media query para pantallas pequeñas */
+@media screen and (max-width: 1200px) {
+
+    .contenedor {
+      margin: 15px;
+      padding: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      animation: animacionColorFondo 6s linear infinite alternate;
+    }
+    
+    #logo {
+    font-size: 25px;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    #header {
+      padding: 20px 10px;
+    }
+  
+    .navbar {
+      justify-content: center;
+      width: 100%;
+    }
+  
+    .navbar a {
+      margin: 0 10px;
+    }
+
 }
