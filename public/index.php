@@ -123,7 +123,7 @@
 					<div id="barraBusqueda" class="barraBusqueda">
 						<input type="text" id="nombrePlaylist" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
 						<button id="botonBuscar">Buscar</button>
-						<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+						<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 					</div>
 				</div>
 
