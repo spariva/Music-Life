@@ -23,12 +23,13 @@
 	<link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
 	<title>Music-Life</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 	<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
 </head>
 
 <body>
-	<script>
+	<!-- <script>
 		function buscarPlaylist() {
 			// Solicitar al usuario que ingrese un nombre para la playlist
 			var nombrePlaylist = prompt("Por favor, ingrese un nombre para la playlist:");
@@ -64,7 +65,7 @@
 
 			}
 		}
-	</script>
+	</script> -->
 	<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"></video>
 	<!-- <header id="header">
 		<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
@@ -122,7 +123,7 @@
 					<div id="barraBusqueda" class="barraBusqueda">
 						<input type="text" id="nombrePlaylist" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
 						<button id="botonBuscar">Buscar</button>
-						<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+						<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 					</div>
 				</div>
 
@@ -205,13 +206,13 @@
 				</div>
 			</div>
 		</div>
-		<script src="./js/BusquedaSpotify.js" defer></script>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-		<script src="./js/star-rating.js"></script>
-		<script src="./js/script.js"></script>
 	</div>
+	<script src="./js/BusquedaSpotify.js" defer></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+	<script src="./js/star-rating.js"></script>
+	<script src="./js/script.js"></script>
 </body>
 
 </html>

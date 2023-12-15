@@ -25,13 +25,6 @@
   src: url(../img/fonts/neon2.ttf);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
 :root {
   --white: #f3f3f3;
   --yellow: #ffff00;
@@ -59,7 +52,6 @@ body {
 }
 
 .usuario {
-  height: 80vh;
   text-align: center;
   grid-area: usuario;
   color: var(--white);
@@ -70,8 +62,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  margin: 0; 
+  padding: 20px;
 }
 
 .usuario h2 {
@@ -92,17 +83,16 @@ body {
 }
 
 .listas {
-  display: grid;
   grid-area: listas;
+  display: grid;
   grid-template-areas: "valoraciones musica";
-  grid-gap: 50px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 3fr;
+  grid-gap: 20px;
   text-align: center;
   color: black;
   background-color: rgba(255, 255, 255, 0.239);
   border-radius: 200px 200px 100px 100px;
   padding: 40px;
-  padding: 100px;
 }
 
 .valoraciones {
@@ -124,4 +114,73 @@ body {
 
 .musica iframe{
 margin: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+
+  .contenedor-principal-menuUsuario {
+    display: grid;
+    grid-template-areas: "usuario" "listas" ;
+    grid-template-columns: 1fr;
+  }
+
+  .usuario {
+    text-align: center;
+    grid-area: usuario;
+    padding: 20px;
+    border-radius: 300px 300px 40px 40px;
+  }
+
+  .usuario h2 {
+  margin-top: 0;
+    color: black;
+  }
+  
+  .usuario img {
+    border-radius: 100%;
+    width: 170px;
+  }
+  
+  .usuario #correo {
+    color:#0f2832;
+  }
+
+  .usuario iframe {
+    margin-top: 10px;
+  }
+
+  .listas {
+    grid-area: listas;
+    display: grid;
+    grid-template-areas: "valoraciones"  "musica";
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    text-align: center;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.239);
+    border-radius: 200px 200px 100px 100px;
+    padding: 40px;
+  }
+  
+  .valoraciones {
+    grid-area: valoraciones;
+  }
+  
+  .valoracion {
+    width: 100%; /* Hacer que la valoración ocupe todo el ancho disponible en su área */
+    height: 200px;
+    margin: 20px;
+    border-radius: 200px;
+    background-color: rgba(255, 255, 255, 0.211);
+    padding: 80px;
+  }
+  
+  .musica {
+    grid-area: musica;
+  }
+  
+  .musica iframe{
+  margin: 10px;
+  }
+
 }

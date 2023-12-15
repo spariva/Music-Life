@@ -33,6 +33,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
     <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
     <title>Music-Life</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
     <link rel="stylesheet" type="text/css" href="./css/contacto.css">
     <script src="./js/script.js" defer></script>
 </head>

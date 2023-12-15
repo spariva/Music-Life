@@ -1,0 +1,98 @@
+@font-face {
+    font-family: popText;
+    src: url(../img/fonts/PopArt-Regular.ttf);
+  }
+  video {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  /* CABECERA */
+  #header {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 100px;
+    /* background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 40px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  #logo {
+    font-size: 32px;
+    text-decoration: none;
+    font-weight: 550;
+    font-family: popText, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  
+  .textoCabecera {
+    color: black;
+  }
+  
+  /* Para poder hacer el navbar de bootstrap transparente */
+  .navbar {
+    background-color: transparent !important;
+  }
+  
+  .navbar a {
+    color:black !important;
+    position: relative;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none ;
+    margin-left: 40px;
+  }
+  
+  .navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    /* Cambiar en modo oscuro tmbn */
+    color: black;
+    background: #fff;
+    transition: 0.3s;
+  }
+  
+  .navbar a:hover::before {
+    width: 100%;
+  }
+  
+  #modo-oscuro {
+    cursor: pointer;
+  }
+
+  /*Modo para moviles*//* Media query para pantallas pequeñas */
+@media screen and (max-width: 1200px) {
+ 
+    #logo {
+    font-size: 25px;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    #header {
+      padding: 20px 10px;
+    }
+  
+    .navbar {
+      justify-content: center;
+      width: 100%;
+    }
+  
+    .navbar a {
+      margin: 0 10px;
+    }
+  
+}
+  
