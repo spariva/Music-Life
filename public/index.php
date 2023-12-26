@@ -20,15 +20,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
+    <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
 	<title>Music-Life</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 	<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-	<script>
+	<!-- <script>
 		function buscarPlaylist() {
 			// Solicitar al usuario que ingrese un nombre para la playlist
 			var nombrePlaylist = prompt("Por favor, ingrese un nombre para la playlist:");
@@ -64,19 +65,33 @@
 
 			}
 		}
-	</script>
-	<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"></video>
+	</script> -->
+	<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
 	<header id="header">
-		<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
-		<nav class="navbar">
-			<a class="textoCabecera" href="./login.php">Cuenta</a>
-			<a class="textoCabecera" href="./usuario.php">Usuario</a>
-			<a class="textoCabecera" href="./spotify.html">Spotify</a>
-			<a class="textoCabecera" href="./contacto.php">Contacto</a>
-			<a class="textoCabecera" href="https://github.com/spariva/Music-Life" target="blank">Info</a>
-			<a class="textoCabecera" id="modo-oscuro">Modo Oscuro</a>
-		</nav>
-	</header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="d-flex align-items-center">
+                <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+
+                <!-- desplegable para pantallas pequeñas -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank">Info</a></li>
+                    <li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
 
 	<div id="contenido">
 		<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
@@ -90,14 +105,13 @@
 		</div>
 
 
-		<div class="contendor" id="restoPagina">
+		<div id="restoPagina">
 			<div id="buscador">
 				<div id="lupaBuscador">
 					<div id="barraBusqueda" class="barraBusqueda">
 						<input type="text" id="nombrePlaylist" class="inputBuscador" placeholder="Introduzca la ruta embedida del álbum..." value="">
 						<button id="botonBuscar">Buscar</button>
-						<br><br><br>
-						<iframe class="boton__buscar w-100" onclick="buscarPlaylist()" src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator" width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+						<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 					</div>
 				</div>
 
@@ -148,28 +162,6 @@
 				</div>
 			</div>
 
-			<!-- <div class="contenedor" id="valoraciones">
-				<div id="apartado">Valoraciones</div>
-				<div id="iframeCarouselAmigos" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-						</div>
-						<div class="carousel-item">
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1PfYnYcpw8w?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-						</div>
-					</div>
-					<a class="carousel-control-prev" href="#iframeCarouselAmigos" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Anterior</span>
-					</a>
-					<a class="carousel-control-next" href="#iframeCarouselAmigos" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Siguiente</span>
-					</a>
-				</div>
-			</div> -->
-
 			<div class="contenedor" id="valoraciones">
 				<div id="valoracionesListas">
 					<div id="apartado">Valoraciones</div>
@@ -202,14 +194,13 @@
 				</div>
 			</div>
 		</div>
-		<script src="./js/BusquedaSpotify.js" defer></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-		<script src="./js/star-rating.js"></script>
-		<script src="./js/script.js"></script>
-
-
+	</div>
+	<script src="./js/BusquedaSpotify.js" defer></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+	<script src="./js/star-rating.js"></script>
+	<script src="./js/script.js"></script>
 </body>
 
 </html>

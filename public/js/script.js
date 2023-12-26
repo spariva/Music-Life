@@ -10,27 +10,7 @@ var textoContacto = document.getElementsByClassName('textoContacto');
 var textoSpotify = document.getElementsByClassName('textoSpotify');
 var apartado = document.querySelectorAll('#apartado');
 
-
-//Efecto ratón animación onda.
-document.addEventListener('mousemove', function (e) {
-    const onda = document.createElement('div');
-    onda.className = 'efecto-agua';
-    document.body.appendChild(onda);
-
-    const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    onda.style.left = x + 'px';
-    onda.style.top = y + 'px';
-
-    onda.addEventListener('animationend', function () {
-        onda.remove();
-    });
-});
-
 textoEnlaceModoOscuro.addEventListener("click", modoOscuro);
-
 
 //*¿Sería mejor que fuera una clase que se aplica al body? 
 //oscuro_azul, claro_azul, oscuro_verde y claro_verde. Y que el modo oscuro solo fuera un toggle de la clase.
@@ -94,6 +74,4 @@ function modoOscuro() {
             formaSpotify[i].style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         }
     }
-
 }
-
