@@ -1,10 +1,12 @@
 <?php
 
-class Db
+class DbConnection
 {
     private static $instance; 
     private $db;
     private const CONFIG_FILE = '../config/db.json';
+
+    private $config;
 
     private function __construct()
     {
@@ -13,8 +15,6 @@ class Db
 
         try 
         {
-            // Utilizar las constantes en lugar de acceder a la configuración directamente. De momento el host está en local.
-            
             $this->db = new PDO(
                 "mysql:host=" . $this->config['host'] . ";db=" . $this->config['db'] . ";charset=" . $this->config['charset'],
                 $this->config['username'],
