@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["playlistId"]) && isset
     $rating = $_POST["rating"];
     $comment = $_POST["comment"] ?? null;
 
-    $db = Db::getInstance();
+    $db = DbConnection::getInstance();
 
     // Insert rating data into the VALORACION table
     $sql = "INSERT INTO VALORACION (PLAYLIST_ID, USUARIO_ID, PUNTUACION, COMENTARIO) VALUES (:playlistId, :userId, :rating, :comment)";

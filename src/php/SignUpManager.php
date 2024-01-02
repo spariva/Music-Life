@@ -14,7 +14,7 @@ class SignUpManager{
     }
 
     public function validateSignUp(): bool{
-        $db = Db::getInstance();
+        $db = DbConnection::getInstance();
         $sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $this->userMail, PDO::PARAM_STR);
@@ -23,13 +23,11 @@ class SignUpManager{
         $db->closeConnection();
 
         //user no exite:
-        if ($user == false) {
+        if ($user != false) {
             $this->errors['email'] = 'El email ya está registrado.';
             return false;
         }
-
         return true;
-
     }
 
     public function getPassword(): string{

@@ -1,6 +1,6 @@
 <?php
 include '../config/init.php';
-include './Db.php';
+include './DbConnection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $userName = $_POST["userName"]?? "";
