@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $userMail = $_POST["userMail"]?? "";
     $userPassword = $_POST["userPassword"]?? "";
 
-    $registrator = new SignUpManager($_POST);
+    $registrator = new SignUpManager($userName, $userMail, $userPassword);
 
     if ($registrator->validateSignUp()) {
         $registrator->saveUser();
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     }
 
     // Hacemos uso del singleton para obtener una instancia de la base de datos
-    $db = Db::getInstance();
+    $db = DbConnection::getInstance();
 
     $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (:userName, :userMail, :userPassword)";
     $stmt = $db->prepare($sql);

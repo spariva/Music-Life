@@ -6,11 +6,11 @@ class SignUpManager{
     public $userMail;
     private $userPassword;
 
-    public function __construct($datos){
+    public function __construct($username, $usermail, $userpassword){
         $this->errors = [];
-        $this->userName = Sanitizer::sanitizeString($datos['userName']);
-        $this->userMail = Sanitizer::sanitizeEmail($datos['userMail'], $this->errors['userMail']);
-        $this->userPassword = Sanitizer::sanitizeString($datos['userPassword']);
+        $this->userName = Sanitizer::sanitizeString($username);
+        $this->userMail = Sanitizer::sanitizeEmail($usermail, $this->errors['userMail']);
+        $this->userPassword = Sanitizer::sanitizeString($userpassword);
     }
 
     public function validateSignUp(): bool{
