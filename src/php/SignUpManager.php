@@ -34,5 +34,14 @@ class SignUpManager{
         return $this->userPassword;
     }
 
-
+    public function saveUser(){
+        $db = DbConnection::getInstance();
+        $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (:userName, :userMail, :userPassword)";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':nombre', $this->userName, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $this->userMail, PDO::PARAM_STR);
+        $stmt->bindValue(':contrasena', $this->userPassword, PDO::PARAM_STR);
+        $stmt->execute();
+        $db->closeConnection();
+    }
 }
