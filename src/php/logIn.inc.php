@@ -1,6 +1,6 @@
 <?php
 include '../config/init.php';
-include './Db.php';
+include './DbConnection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $userName = $_POST["userName"]?? "";
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     }
 
     // Hacemos uso del singleton para obtener una instancia de la base de datos
-    $db = Db::getInstance();
+    $db = DbConnection::getInstance();
 
     $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (:userName, :userMail, :userPassword)";
     $stmt = $db->prepare($sql);

@@ -14,7 +14,7 @@ class LoginManager{
     //user exist ();
     //user is valid();
     public function validateLogin(): bool{
-        $db = Db::getInstance();
+        $db = DbConnection::getInstance();
         $sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);

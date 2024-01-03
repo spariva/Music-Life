@@ -1,10 +1,11 @@
 <?php
 
-class Db
+class DbConnection
 {
     private static $instance; 
     private $db;
     private const CONFIG_FILE = '../config/db.json';
+    private $config;
 
     private function __construct()
     {
@@ -13,8 +14,6 @@ class Db
 
         try 
         {
-            // Utilizar las constantes en lugar de acceder a la configuración directamente. De momento el host está en local.
-            
             $this->db = new PDO(
                 "mysql:host=" . $this->config['host'] . ";db=" . $this->config['db'] . ";charset=" . $this->config['charset'],
                 $this->config['username'],
@@ -38,10 +37,12 @@ class Db
 
     private function loadConfig()
     {
-        if ($this->config === null) {
-            throw new JsonException("Error al cargar el archivo de configuración JSON.");
+        if (file_exists(self::CONFIG_FILE)) {
+            $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
+        } else {
+            throw new JsonException("Error loading the JSON configuration file.");
         }
-        return $this->config = json_decode(file_get_contents(self::CONFIG_FILE), true);
+        return $this->config;
     }
 
 
@@ -56,7 +57,7 @@ class Db
     }
 
     public function getUsernameById($userId) {
-        $consulta = $this->db->prepare("SELECT NOMBRE FROM USUARIO WHERE ID = userId");
+        $consulta = $this->db->prepare("SELECT NOMBRE FROM USUARIO WHERE ID = userId LIMIT 1");
             
         $consulta->bindParam(":userId", $userId, PDO::PARAM_INT);
 
@@ -74,7 +75,7 @@ class Db
     }
 
     public function checkMailExists($mail){
-        $consulta = $this->db->prepare("SELECT email FROM Usuario WHERE email=:email");
+        $consulta = $this->db->prepare("SELECT email FROM Usuario WHERE email=:email LIMIT 1");
         $consulta->bindParam(":email", $mail, PDO::PARAM_STR);
         $consulta->execute();
         $email = $consulta->fetch(PDO::FETCH_NUM);
