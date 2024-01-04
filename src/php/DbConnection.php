@@ -4,7 +4,7 @@ class DbConnection
 {
     private static $instance; 
     private $db;
-    private const CONFIG_FILE = '../config/db.json';
+    private const CONFIG_FILE = '../../config/db.json';
     private $config;
 
     private function __construct()
@@ -20,7 +20,7 @@ class DbConnection
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Para traer los datos como array asociativo
             ];
             $this->db = new PDO(
-                "mysql:host=" . $this->config['host'] . ";db=" . $this->config['db'] . ";charset=" . $this->config['charset'],
+                "mysql:host=" . $this->config['host'] . ";dbname=" . $this->config['database'] . ";charset=" . $this->config['charset'],
                 $this->config['username'],
                 $this->config['password'], $options
             );

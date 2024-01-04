@@ -1,7 +1,7 @@
 <?php
 include '../config/init.php';
-include 'DbConnection.php';
-include 'SignUpManager.php';
+include './DbConnection.php';
+include './SignUpManager.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $userName = $_POST["userName"]?? "";

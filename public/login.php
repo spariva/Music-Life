@@ -70,7 +70,7 @@ include '../config/init.php';
                 <p>¿Primera vez aquí?</p><a href="#" id="crearCuenta">Crear cuenta</a>
             </div>
             <div class="inputBox">
-                <input type="submit" class="botonConectarse" value="Conectarse" name="send">
+                <input type="submit" class="botonConectarse" value="Conectarse" name="submit">
             </div>
         </form>
 
@@ -90,7 +90,7 @@ include '../config/init.php';
                 <input type="password" placeholder="Confirmar contraseña" required>
             </div>
             <div class="inputBox">
-                <input type="submit" class="botonCrear" value="Crear Cuenta" name="send">
+                <input type="submit" class="botonCrear" value="Crear Cuenta" name="submit">
             </div>
             <div class="inputBox">
                 <p>¿Ya tiene una cuenta?</p><a href="#" id="conectarCuenta">Conectarse</a>
