@@ -8,7 +8,7 @@ class LoginManager{
     public function __construct($datos){
         $this->errors = [];
         $this->email = Sanitizer::sanitizeEmail($datos['email'], $this->errors['email']);
-        $this->password = Sanitizer::sanitizeString($datos['password'], $this->errors['password']);
+        $this->password = Sanitizer::sanitizeString($datos['password']);
     }
 
     //user exist ();

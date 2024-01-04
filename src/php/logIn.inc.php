@@ -1,5 +1,5 @@
 <?php
-include '../config/init.php';
+require '../config/init.php';
 include './DbConnection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
@@ -14,11 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         echo "El correo electrónico es requerido.";
     }
     //la userPassword debería ser encriptada?
-
     if (empty($userPassword) || strlen($userPassword) < 8) {
         echo "La contraseña es requerida y mayor a 8 carácteres.";
     }
 
-    header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
+    header("Location: ../../public/usuario.php"); 
     exit();
 }

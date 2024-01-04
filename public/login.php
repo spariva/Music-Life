@@ -1,10 +1,8 @@
 <?php
-// require '../config/init.php';
+include '../config/init.php';
 
 // $comprobator = new LoginManager($_GET);
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
 //     $mailer = MailerSingleton::obtenerInstancia();
@@ -25,6 +23,9 @@ ini_set('display_errors', 1);
     <link rel="stylesheet" href="./css/login.css">
     <script src="./js/login.js" defer></script>
     <script src="./js/script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 </head>
 
 <body>
@@ -57,13 +58,12 @@ ini_set('display_errors', 1);
     <div id="ubicador">
     <div class="contenedor">
         <span class="contenedor__efectos"></span>
-        <form id="inicioSesion" action="" method="GET">
+        <form id="inicioSesion" action="" method="POST">
             <h2 class="formulario__titulo">Iniciar sesión</h2>
             <div class="inputBox">
                 <input type="text" placeholder="Usuario" value="" required>
             </div>
             <div class="inputBox">
-                <!--No pongo el value, porque si se equivoca da sensación de inseguridad que se quede la contraseña. -->
                 <input type="password" placeholder="Contraseña" required>
             </div>
             <div class="inputBox">
@@ -84,7 +84,6 @@ ini_set('display_errors', 1);
                 <input type="text" placeholder="Dirección de correo electrónico" value="" required>
             </div>
             <div class="inputBox">
-                <!--! TODO: Si se equivoca repitiendo la contraseña se lo dejo, aunque esto debería ser con Js!-->
                 <input type="password" placeholder="Crear contraseña" name="password" value="" required>
             </div>
             <div class="inputBox">
@@ -99,10 +98,6 @@ ini_set('display_errors', 1);
         </form>
     </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-	<script src="./js/script.js"></script>
 </body>
 
 </html>

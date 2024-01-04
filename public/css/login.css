@@ -43,6 +43,12 @@
     height: 430px;
   }
 
+  .error{
+    color: rgb(238, 44, 44);
+    margin: 0px;
+    padding: 0px;
+}
+
 
   .contenedor::before {
     content: '';
