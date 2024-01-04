@@ -10,14 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     $registrator = new SignUpManager($userName, $userMail, $userPassword);
 
-    if ($registrator->validateSignUp()) {
-        $registrator->saveUser();
-        $_SESSION['user'] = $userName;
-        $_SESSION['email'] = $userMail;
-        header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
-        exit();
-    }
-
+    //array errors registrator, o directamente métodos en registrator?
     if (empty($userName)) {
         echo "El nombre de userName es requerido.";
     } 
@@ -31,22 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         echo "La contraseña es requerida y mayor a 8 carácteres.";
     }
 
-    // Hacemos uso del singleton para obtener una instancia de la base de datos
-    $db = DbConnection::getInstance();
-
-    $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (:userName, :userMail, :userPassword)";
-    $stmt = $db->prepare($sql);
-    
-    $stmt->bindValue(':nombre', $userName, PDO::PARAM_STR);
-    $stmt->bindValue(':email', $userMail, PDO::PARAM_STR);
-    $stmt->bindValue(':nombre', $userPassword, PDO::PARAM_STR);
-
-    $stmt->execute();
-
-    $db->closeConnection();
-
-    $_SESSION['user'] = $userName;
-    $_SESSION['email'] = $userMail;
+    if ($registrator->validateSignUp()) {
+        $registrator->saveUser();
+        $_SESSION['user'] = $userName;
+        $_SESSION['email'] = $userMail;
+        header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
+        exit();
+    }
 
     header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
     exit();

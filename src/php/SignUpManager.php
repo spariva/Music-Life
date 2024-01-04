@@ -22,8 +22,8 @@ class SignUpManager{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         $db->closeConnection();
 
-        //user no exite:
-        if ($user != false) {
+        //user ya exite:
+        if ($user == true) {
             $this->errors['email'] = 'El email ya está registrado.';
             return false;
         }

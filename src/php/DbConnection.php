@@ -13,13 +13,17 @@ class DbConnection
         $this->config = $this->loadConfig();
 
         try 
-        {
+        {   
+            $options = [
+                PDO::ATTR_EMULATE_PREPARES => false, // Para evitar inyección de SQL, usar siempre prepare()
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Para manejar errores
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Para traer los datos como array asociativo
+            ];
             $this->db = new PDO(
                 "mysql:host=" . $this->config['host'] . ";db=" . $this->config['db'] . ";charset=" . $this->config['charset'],
                 $this->config['username'],
-                $this->config['password']
+                $this->config['password'], $options
             );
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             throw new Exception("Error de conexión: " . $e->getMessage());
         }
@@ -57,7 +61,7 @@ class DbConnection
     }
 
     public function getUsernameById($userId) {
-        $consulta = $this->db->prepare("SELECT NOMBRE FROM USUARIO WHERE ID = userId LIMIT 1");
+        $consulta = $this->db->prepare("SELECT NAME FROM USUARIO WHERE ID = userId LIMIT 1");
             
         $consulta->bindParam(":userId", $userId, PDO::PARAM_INT);
 
@@ -67,7 +71,7 @@ class DbConnection
     }
 
     public function checkUserExists($userName){
-        $consulta = $this->db->prepare("SELECT NombreUsuario FROM Usuario WHERE NombreUsuario=:userName");
+        $consulta = $this->db->prepare("SELECT NombreUsuario FROM USER WHERE NombreUsuario=:userName");
         $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
         $consulta->execute();
         $usuario = $consulta->fetch(PDO::FETCH_NUM);
@@ -75,15 +79,15 @@ class DbConnection
     }
 
     public function checkMailExists($mail){
-        $consulta = $this->db->prepare("SELECT email FROM Usuario WHERE email=:email LIMIT 1");
+        $consulta = $this->db->prepare("SELECT email FROM USER WHERE email=:email LIMIT 1");
         $consulta->bindParam(":email", $mail, PDO::PARAM_STR);
         $consulta->execute();
         $email = $consulta->fetch(PDO::FETCH_NUM);
         return $email;
     }
 
-    public function obtenerContraDeUsuario($userName){
-        $consulta = $this->db->prepare("SELECT Contrasena FROM Usuario WHERE Nombre=:userName");
+    public function getUserPassword($userName){
+        $consulta = $this->db->prepare("SELECT PASSWORD FROM USER WHERE Nombre=:userName");
         $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
         $consulta->execute();
         $userPwd = $consulta->fetch(PDO::FETCH_NUM);

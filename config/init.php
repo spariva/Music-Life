@@ -1,4 +1,5 @@
 <?php
+require './config.php';
 
 define('DOC_ROOT', dirname(__DIR__));
 

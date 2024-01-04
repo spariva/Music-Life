@@ -19,6 +19,18 @@ class Sanitizer{
         return $email;
     }
 
+    // function that validates an email
+    public static function validateEmail(string $email): bool {
+        $email = Sanitizer::sanitize($email);
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+
+        return true;
+    }
+
     public static function sanitizeString(string $string): string {
         $string = Sanitizer::sanitize($string);
         $string = filter_var($string, FILTER_SANITIZE_STRING);
