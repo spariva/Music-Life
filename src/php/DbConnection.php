@@ -2,7 +2,7 @@
 
 class DbConnection
 {
-    private static $instance; 
+    private static $instance;
     private $db;
     private const CONFIG_FILE = '../../config/db.json';
     private $config;
@@ -12,17 +12,14 @@ class DbConnection
         // Cargar las configuraciones desde el archivo JSON en el constructor
         $this->config = $this->loadConfig();
 
-        try 
-        {   
+        try {
             $dsn = "{$this->config['dialect']}:host={$this->config['host']};dbname={$this->config['database']};charset={$this->config['charset']}";
             $options = [
                 PDO::ATTR_EMULATE_PREPARES => false, // Para evitar inyección de SQL, usar siempre prepare()
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Para manejar errores
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Para traer los datos como array asociativo
             ];
-            // $this->db = new PDO($dsn, $this->config['username'], $this->config['password'], $options);
-            $this->db = new PDO("mysql:host=localhost;dbname=musicLifeDatabase;charset=utf8mb4", "musicLifeProd", "musicLifeProd1234");
-
+            $this->db = new PDO($dsn, $this->config['username'], $this->config['password'], $options);
         } catch (PDOException $e) {
             throw new Exception("Error de conexión: " . $e->getMessage());
         }
@@ -57,18 +54,11 @@ class DbConnection
     {
         $this->db = null;
     }
-    
-    // public function prepare($query) {
-    //     if ($this->db !== null) {
-    //         return $this->db->prepare($query);
-    //     } else {
-    //         throw new Exception('Database connection is not established');
-    //     }
-    // }
 
-    public function getUsernameById($userId) {
+    public function getUsernameById($userId)
+    {
         $consulta = $this->db->prepare("SELECT NAME FROM USUARIO WHERE ID = userId LIMIT 1");
-            
+
         $consulta->bindParam(":userId", $userId, PDO::PARAM_INT);
 
         $consulta->execute();
@@ -76,23 +66,8 @@ class DbConnection
         return $data[0];
     }
 
-    public function checkUserExists($userName){
-        $consulta = $this->db->prepare("SELECT NombreUsuario FROM USER WHERE NombreUsuario=:userName");
-        $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
-        $consulta->execute();
-        $usuario = $consulta->fetch(PDO::FETCH_NUM);
-        return $usuario;
-    }
-
-    public function checkMailExists($mail){
-        $consulta = $this->db->prepare("SELECT email FROM USER WHERE email=:email LIMIT 1");
-        $consulta->bindParam(":email", $mail, PDO::PARAM_STR);
-        $consulta->execute();
-        $email = $consulta->fetch(PDO::FETCH_NUM);
-        return $email;
-    }
-
-    public function getUserPassword($userName){
+    public function getUserPassword($userName)
+    {
         $consulta = $this->db->prepare("SELECT PASSWORD FROM USER WHERE Nombre=:userName");
         $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
         $consulta->execute();

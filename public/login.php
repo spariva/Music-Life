@@ -1,7 +1,14 @@
 <?php
 //include '../config/init.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+session_start();
 
-// $comprobator = new LoginManager($_GET);
+$errorsLogin = $_SESSION['errorsLogin'] ?? [];
+unset($_SESSION['errorsLogin']);
+
+$errorsSignUp = $_SESSION['errorsSignUp'] ?? [];
+unset($_SESSION['errorsSignUp']);
 
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
@@ -71,6 +78,16 @@
                     <div class="inputBox">
                         <p>¿Primera vez aquí?</p><a href="#" id="crearCuenta">Crear cuenta</a>
                     </div>
+                    <!--Login errors display-->
+                    <?php if (count($errorsLogin) > 0): ?>
+                        <div class="alert alert-danger">
+                            <?php foreach ($errorsLogin as $error): ?>
+                                <li>
+                                    <?php echo $error; ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="inputBox">
                         <input type="submit" class="botonConectarse" value="Conectarse" name="submit">
                     </div>
@@ -93,6 +110,16 @@
                     <div class="inputBox">
                         <input type="password" placeholder="Confirmar contraseña" name="confirmPassword" required>
                     </div>
+                    <!--SignUp errors display-->
+                    <?php if (count($errorsSignUp) > 0): ?>
+                        <div class="alert alert-danger">
+                            <?php foreach ($errorsSignUp as $error): ?>
+                                <li>
+                                    <?php echo $error; ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="inputBox">
                         <input type="submit" class="botonCrear" value="Crear Cuenta" name="submit">
                     </div>

@@ -23,35 +23,54 @@ class SignUpManager
         $this->userPassword = Sanitizer::sanitizeString($this->userPassword);
     }
 
-    //function to validate the user inputs, name, email and password. The password must be the same as the confirmation password, and at least 2 characters long. 
-    public function validateSignUpManager(): bool
+    public function validateSignUpManager($db): bool
+    {
+        if (!$this->validateData()) {
+            return false;
+        }
+
+        if (count($this->errors) > 0) {
+            return false;
+        }
+
+        if ($this->checkMailExist($db)) {
+            return false;
+        }
+        
+        return true;
+    }
+
+    public function validateData(): bool
     {
         if (empty($this->userName)) {
             $this->errors['userName'] = 'El nombre de usuario es requerido.';
+            return false;
         }
 
         if (empty($this->userMail)) {
             $this->errors['userMail'] = 'El correo electrónico es requerido.';
-        } else if (!filter_var($this->userMail, FILTER_VALIDATE_EMAIL)) {
-            $this->errors['userMail'] = 'El email no es válido.';
-        }
+            return false;
+        } 
 
+        if (!filter_var($this->userMail, FILTER_VALIDATE_EMAIL)) {
+            $this->errors['userMail'] = 'El email no es válido.';
+            return false;
+        }
 
         if (empty($this->userPassword) || strlen($this->userPassword) < 2) {
             $this->errors['userPassword'] = 'La contraseña es requerida y mayor a 2 carácteres.';
-        }
-
-        //check if the password is the same as the confirmation password
-        if ($this->userPassword != $_POST['confirmPassword']) {
-            $this->errors['confirmPassword'] = 'Las contraseñas no coinciden.';
-        }
-        if (count($this->errors) > 0) {
             return false;
         }
+
+        if ($this->userPassword != $_POST['confirmPassword']) {
+            $this->errors['confirmPassword'] = 'Las contraseñas no coinciden.';
+            return false;
+        }
+
         return true;
     }
 
-    public function checkEmailExist($db): bool
+    public function checkMailExist($db): bool
     {
         $sql = "SELECT * FROM USER WHERE EMAIL = :EMAIL LIMIT 1";
         $stmt = $db->prepare($sql);
@@ -73,6 +92,7 @@ class SignUpManager
 
     public function saveUser($db)
     {
+        $this->userPassword = password_hash($this->userPassword, PASSWORD_DEFAULT);
         $sql = "INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES (:NAME, :EMAIL, :PASSWORD)";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':NAME', $this->userName, PDO::PARAM_STR);
@@ -81,3 +101,4 @@ class SignUpManager
         $stmt->execute();
     }
 }
+

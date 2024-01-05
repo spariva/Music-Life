@@ -25,5 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
     exit();
 }
-?>
+
 

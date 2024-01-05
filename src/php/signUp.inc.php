@@ -18,27 +18,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $registrator = new SignUpManager($userName, $userMail, $userPassword);
     $registrator->sanitizeSignUpManager();
 
-    if (!$registrator->validateSignUpManager()) {
-        echo "Error en los datos ingresados.";
-        print_r($registrator->errors);
-        exit();
-    }
-
-    if (!$registrator->checkEmailExist($db)) {
+    if ($registrator->validateSignUpManager($db)) {
         $registrator->saveUser($db);
         $_SESSION['user'] = $userName;
         $_SESSION['email'] = $userMail;
         header("Location: ../../public/usuario.php");
         die();
-    } else {
-        $registrator->saveUser($db);
-        echo "El correo electrónico ya está registrado.";
     }
-}
-$db = new PDO("mysql:host=localhost;dbname=musicLifeDatabase;charset=utf8mb4", "musicLifeProd", "musicLifeProd1234");
-$sql = "SELECT * FROM USER WHERE EMAIL = :EMAIL LIMIT 1";
-$stmt = $db->prepare($sql);
-$stmt->bindValue(':EMAIL', $userMail, PDO::PARAM_STR);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-print_r($user);
+
+    } else {
+        //se envían los errores del $registrator al login 
+        $_SESSION['errorsSignUp'] = $registrator->errors;
+//$dir = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/main.php?success=$loginEmail";
+// header("Location:$dir", true, 302);    
+        header("Location: ../../public/login.php");
+        die();
+    }

@@ -1,6 +1,5 @@
 const crearCuenta = document.getElementById('crearCuenta');
 const conectarCuenta = document.getElementById('conectarCuenta');
-const videoFondo = document.getElementById('videoFondo');
 
 crearCuenta.onclick = function(){
     body.classList.add('crearCuenta');
