@@ -14,16 +14,15 @@ class DbConnection
 
         try 
         {   
+            $dsn = "{$this->config['dialect']}:host={$this->config['host']};dbname={$this->config['database']};charset={$this->config['charset']}";
             $options = [
                 PDO::ATTR_EMULATE_PREPARES => false, // Para evitar inyección de SQL, usar siempre prepare()
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Para manejar errores
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Para traer los datos como array asociativo
             ];
-            $this->db = new PDO(
-                "mysql:host=" . $this->config['host'] . ";dbname=" . $this->config['database'] . ";charset=" . $this->config['charset'],
-                $this->config['username'],
-                $this->config['password'], $options
-            );
+            // $this->db = new PDO($dsn, $this->config['username'], $this->config['password'], $options);
+            $this->db = new PDO("mysql:host=localhost;dbname=musicLifeDatabase;charset=utf8mb4", "musicLifeProd", "musicLifeProd1234");
+
         } catch (PDOException $e) {
             throw new Exception("Error de conexión: " . $e->getMessage());
         }
@@ -32,7 +31,7 @@ class DbConnection
     // Método estático para obtener la instancia de la clase
     public static function getInstance()
     {
-        if (!self::$instance) {
+        if (!isset(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -49,16 +48,23 @@ class DbConnection
         return $this->config;
     }
 
+    public function getConnection()
+    {
+        return $this->db;
+    }
 
     public function closeConnection()
     {
         $this->db = null;
     }
     
-    public function prepare($sql)
-    {
-        return $this->db->prepare($sql);
-    }
+    // public function prepare($query) {
+    //     if ($this->db !== null) {
+    //         return $this->db->prepare($query);
+    //     } else {
+    //         throw new Exception('Database connection is not established');
+    //     }
+    // }
 
     public function getUsernameById($userId) {
         $consulta = $this->db->prepare("SELECT NAME FROM USUARIO WHERE ID = userId LIMIT 1");

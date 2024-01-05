@@ -1,37 +1,44 @@
 <?php
-include '../config/init.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+//include '../config/init.php';
 include './DbConnection.php';
 include './SignUpManager.php';
 
+session_start();
+$mdb = DbConnection::getInstance();
+$db = $mdb->getConnection();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $userName = $_POST["userName"]?? "";
-    $userMail = $_POST["userMail"]?? "";
-    $userPassword = $_POST["userPassword"]?? "";
+
+    $userName = $_POST["userName"] ?? "";
+    $userMail = $_POST["userMail"] ?? "";
+    $userPassword = $_POST["userPassword"] ?? "";
 
     $registrator = new SignUpManager($userName, $userMail, $userPassword);
+    $registrator->sanitizeSignUpManager();
 
-    //array errors registrator, o directamente métodos en registrator?
-    if (empty($userName)) {
-        echo "El nombre de userName es requerido.";
-    } 
-
-    if (empty($userMail)) {
-        echo "El correo electrónico es requerido.";
-    }
-    //la userPassword debería ser encriptada?
-
-    if (empty($userPassword) || strlen($userPassword) < 8) {
-        echo "La contraseña es requerida y mayor a 8 carácteres.";
-    }
-
-    if ($registrator->validateSignUp()) {
-        $registrator->saveUser();
-        $_SESSION['user'] = $userName;
-        $_SESSION['email'] = $userMail;
-        header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
+    if (!$registrator->validateSignUpManager()) {
+        echo "Error en los datos ingresados.";
+        print_r($registrator->errors);
         exit();
     }
 
-    header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
-    exit();
+    if (!$registrator->checkEmailExist($db)) {
+        $registrator->saveUser($db);
+        $_SESSION['user'] = $userName;
+        $_SESSION['email'] = $userMail;
+        header("Location: ../../public/usuario.php");
+        die();
+    } else {
+        $registrator->saveUser($db);
+        echo "El correo electrónico ya está registrado.";
+    }
 }
+$db = new PDO("mysql:host=localhost;dbname=musicLifeDatabase;charset=utf8mb4", "musicLifeProd", "musicLifeProd1234");
+$sql = "SELECT * FROM USER WHERE EMAIL = :EMAIL LIMIT 1";
+$stmt = $db->prepare($sql);
+$stmt->bindValue(':EMAIL', $userMail, PDO::PARAM_STR);
+$stmt->execute();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+print_r($user);
