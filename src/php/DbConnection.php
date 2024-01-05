@@ -2,9 +2,9 @@
 
 class DbConnection
 {
-    private static $instance; 
+    private static $instance;
     private $db;
-    private const CONFIG_FILE = '../config/db.json';
+    private const CONFIG_FILE = '../../config/db.json';
     private $config;
 
     private function __construct()
@@ -12,14 +12,14 @@ class DbConnection
         // Cargar las configuraciones desde el archivo JSON en el constructor
         $this->config = $this->loadConfig();
 
-        try 
-        {
-            $this->db = new PDO(
-                "mysql:host=" . $this->config['host'] . ";db=" . $this->config['db'] . ";charset=" . $this->config['charset'],
-                $this->config['username'],
-                $this->config['password']
-            );
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $dsn = "{$this->config['dialect']}:host={$this->config['host']};dbname={$this->config['database']};charset={$this->config['charset']}";
+            $options = [
+                PDO::ATTR_EMULATE_PREPARES => false, // Para evitar inyección de SQL, usar siempre prepare()
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Para manejar errores
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Para traer los datos como array asociativo
+            ];
+            $this->db = new PDO($dsn, $this->config['username'], $this->config['password'], $options);
         } catch (PDOException $e) {
             throw new Exception("Error de conexión: " . $e->getMessage());
         }
@@ -28,7 +28,7 @@ class DbConnection
     // Método estático para obtener la instancia de la clase
     public static function getInstance()
     {
-        if (!self::$instance) {
+        if (!isset(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -45,20 +45,20 @@ class DbConnection
         return $this->config;
     }
 
+    public function getConnection()
+    {
+        return $this->db;
+    }
 
     public function closeConnection()
     {
         $this->db = null;
     }
-    
-    public function prepare($sql)
-    {
-        return $this->db->prepare($sql);
-    }
 
-    public function getUsernameById($userId) {
-        $consulta = $this->db->prepare("SELECT NOMBRE FROM USUARIO WHERE ID = userId LIMIT 1");
-            
+    public function getUsernameById($userId)
+    {
+        $consulta = $this->db->prepare("SELECT NAME FROM USUARIO WHERE ID = userId LIMIT 1");
+
         $consulta->bindParam(":userId", $userId, PDO::PARAM_INT);
 
         $consulta->execute();
@@ -66,24 +66,9 @@ class DbConnection
         return $data[0];
     }
 
-    public function checkUserExists($userName){
-        $consulta = $this->db->prepare("SELECT NombreUsuario FROM Usuario WHERE NombreUsuario=:userName");
-        $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
-        $consulta->execute();
-        $usuario = $consulta->fetch(PDO::FETCH_NUM);
-        return $usuario;
-    }
-
-    public function checkMailExists($mail){
-        $consulta = $this->db->prepare("SELECT email FROM Usuario WHERE email=:email LIMIT 1");
-        $consulta->bindParam(":email", $mail, PDO::PARAM_STR);
-        $consulta->execute();
-        $email = $consulta->fetch(PDO::FETCH_NUM);
-        return $email;
-    }
-
-    public function obtenerContraDeUsuario($userName){
-        $consulta = $this->db->prepare("SELECT Contrasena FROM Usuario WHERE Nombre=:userName");
+    public function getUserPassword($userName)
+    {
+        $consulta = $this->db->prepare("SELECT PASSWORD FROM USER WHERE Nombre=:userName");
         $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
         $consulta->execute();
         $userPwd = $consulta->fetch(PDO::FETCH_NUM);

@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "El nombre de Playlist es requerido.";
     } 
 
-    // Hacemos uso del singleton para obtener una instancia de la base de datos
-    $db = Db::getInstance();
+
+    $db = DbConnection::getInstance();
 
     $sql = "INSERT INTO PLAYLIST (id_pl, nombre, creador_id) VALUES (:id_pl, :playlistName, :creator)";
     $stmt = $db->prepare($sql);
@@ -25,5 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
     exit();
 }
-?>
+
 

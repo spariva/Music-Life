@@ -1,38 +1,31 @@
 <?php
-include '../config/init.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+// require '../config/init.php';
 include './DbConnection.php';
+include './LoginManager.php';
+
+session_start();
+$mdb = DbConnection::getInstance();
+$db = $mdb->getConnection();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $userName = $_POST["userName"]?? "";
     $userPassword = $_POST["userPassword"]?? "";
 
-    if (empty($userName)) {
-        echo "El nombre de userName es requerido.";
-    } 
+    $registrator = new LoginManager($userName, $userPassword);
+    $registrator->sanitizeLoginManager();
 
-    if (empty($userMail)) {
-        echo "El correo electrónico es requerido.";
+    if ($registrator->validateLogin($db)) {
+        $_SESSION['user'] = $userName;
+        header("Location: ../../public/usuario.php");
+        die();
     }
-    //la userPassword debería ser encriptada?
-
-    if (empty($userPassword) || strlen($userPassword) < 8) {
-        echo "La contraseña es requerida y mayor a 8 carácteres.";
+    else {
+        //se envían los errores del $registrator al login 
+        $_SESSION['errorsLogin'] = $registrator->errors;
+        header("Location: ../../public/login.php");
+        die();
     }
-
-    // Hacemos uso del singleton para obtener una instancia de la base de datos
-    $db = DbConnection::getInstance();
-
-    $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (:userName, :userMail, :userPassword)";
-    $stmt = $db->prepare($sql);
-    
-    $stmt->bindValue(':nombre', $userName, PDO::PARAM_STR);
-    $stmt->bindValue(':email', $userMail, PDO::PARAM_STR);
-    $stmt->bindValue(':nombre', $userPassword, PDO::PARAM_STR);
-
-    $stmt->execute();
-
-    $db->closeConnection();
-
-    header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
-    exit();
 }

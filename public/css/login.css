@@ -19,7 +19,7 @@
     padding: 10px;
     justify-content: center;
     align-items: center;
-    margin-top: 15%;
+    margin-top: 9%;
   }
 
   body.crearCuenta::after {
@@ -42,6 +42,12 @@
   .crearCuenta .contenedor {
     height: 430px;
   }
+
+  .error{
+    color: rgb(238, 44, 44);
+    margin: 0px;
+    padding: 0px;
+}
 
 
   .contenedor::before {
