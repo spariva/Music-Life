@@ -10,6 +10,28 @@ unset($_SESSION['errorsLogin']);
 $errorsSignUp = $_SESSION['errorsSignUp'] ?? [];
 unset($_SESSION['errorsSignUp']);
 
+//esto es para OAuth de google FALTA GUARDAR EN LA DB LOS DATOS Y ALE 
+require_once('google-login-api.php');
+
+$login_url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=' . urlencode('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email') . '&redirect_uri=' . urlencode(CLIENT_REDIRECT_URL) . '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online';
+
+// Google passes a parameter 'code' in the Redirect Url
+if(isset($_GET['code'])) {
+   try {
+       // Get the access token
+       $data = GetAccessToken(CLIENT_ID, CLIENT_REDIRECT_URL, CLIENT_SECRET, $_GET['code']);
+
+       // Access Token
+       $access_token = $data['access_token'];
+      
+       // Get user information
+       $user_info = GetUserProfileInfo($access_token);
+   }
+   catch(Exception $e) {
+       echo $e->getMessage();
+       exit();
+   }
+}
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
 //     $mailer = MailerSingleton::obtenerInstancia();
@@ -77,6 +99,8 @@ unset($_SESSION['errorsSignUp']);
                     </div>
                     <div class="inputBox">
                         <p>¿Primera vez aquí?</p><a href="#" id="crearCuenta">Crear cuenta</a>
+                        <p><a href="<?= $login_url ?>">Inicia sesión con Google</a></p>
+
                     </div>
                     <!--Login errors display-->
                     <?php if (count($errorsLogin) > 0): ?>
