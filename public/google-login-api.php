@@ -7,7 +7,7 @@ define('CLIENT_ID', '960764573173-dg7tc3ue39cpk16fu74qi2t5t2cgllqc.apps.googleus
 define('CLIENT_SECRET', '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');
 
 /* Google App Redirect Url */
-define('CLIENT_REDIRECT_URL', 'http://recovery.es/public/code/login.php');
+define('CLIENT_REDIRECT_URL', 'http://music-life.es/login.php');
 
 // $client_id, $redirect_uri & $client_secret come from the settings
 // $code is the code passed to the redirect url
