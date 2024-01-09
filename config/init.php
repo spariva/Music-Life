@@ -5,7 +5,7 @@ session_start();
 
 define('DOC_ROOT', dirname(__DIR__));
 
-require DOC_ROOT.'/config/config.php';
+require DOC_ROOT. DIRECTORY_SEPARATOR .'config'. DIRECTORY_SEPARATOR .'config.php';
 
 spl_autoload_register(function($class) {
     $file = str_replace("\\", DIRECTORY_SEPARATOR, $class);

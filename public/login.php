@@ -1,8 +1,6 @@
 <?php
 require '../config/init.php';
 
-$a = new LoginManager('a', 'a');
-
 $errorsLogin = $_SESSION['errorsLogin'] ?? [];
 unset($_SESSION['errorsLogin']);
 
