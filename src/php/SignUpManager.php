@@ -36,7 +36,7 @@ class SignUpManager
         if ($this->checkMailExist($db)) {
             return false;
         }
-        
+
         return true;
     }
 
@@ -50,7 +50,7 @@ class SignUpManager
         if (empty($this->userMail)) {
             $this->errors['userMail'] = 'El correo electrónico es requerido.';
             return false;
-        } 
+        }
 
         if (!filter_var($this->userMail, FILTER_VALIDATE_EMAIL)) {
             $this->errors['userMail'] = 'El email no es válido.';
@@ -71,7 +71,7 @@ class SignUpManager
     }
 
     public function checkMailExist($db): bool
-    {
+    {   
         $sql = "SELECT * FROM USER WHERE EMAIL = :EMAIL LIMIT 1";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':EMAIL', $this->userMail, PDO::PARAM_STR);

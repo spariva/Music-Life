@@ -4,10 +4,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
-$errorsLogin = $_SESSION['errorsLogin'] ?? [];
+$errorsLogin = isset($_SESSION['errorsLogin']) ?? []; 
 unset($_SESSION['errorsLogin']);
 
-$errorsSignUp = $_SESSION['errorsSignUp'] ?? [];
+$errorsSignUp = isset($_SESSION['errorsSignUp']) ?? [];
 unset($_SESSION['errorsSignUp']);
 
 //esto es para OAuth de google FALTA GUARDAR EN LA DB LOS DATOS Y ALE 
