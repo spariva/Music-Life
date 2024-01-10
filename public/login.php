@@ -1,8 +1,5 @@
 <?php
-//include '../config/init.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-session_start();
+require '../config/init.php';
 
 $errorsLogin = isset($_SESSION['errorsLogin']) ?? []; 
 unset($_SESSION['errorsLogin']);
