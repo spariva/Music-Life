@@ -48,19 +48,19 @@ class LoginManager{
         }
     }
 
-    public function checkUserNameExists($db)
+    public function checkUserNameExists($db): bool
     {
         $sql = "SELECT * FROM user WHERE name = :name LIMIT 1";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':name', $this->userName, PDO::PARAM_STR);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        //user no exite:
-        if ($user === false) {
-            $this->errors['userName'] = 'Nadie se ha registrado con ese nombre.';
-            return false;
+
+        if ($user) {
+            return true;
         }
-        return $user;
+        $this->errors['userName'] = 'Nadie se ha registrado con ese nombre.';
+        return false;
     }
  
     public function checkPassword($db)
@@ -72,12 +72,12 @@ class LoginManager{
         $userPwd = $stmt->fetch(PDO::FETCH_NUM);
         //user no exite:
         if ($userPwd === false) {
-            $this->errors['userPassword'] = 'La contraseña no es valida.';
+            $this->errors['userPassword'] = 'User inexistente.';
             return false;
         }
         //user existe pero la contraseña no es correcta:
         if (!password_verify($this->userPassword, $userPwd[0])) {
-            $this->errors['userPassword'] = 'La contraseña no es valida.';
+            $this->errors['userPassword'] = 'La contraseña no es válida.';
             return false;
         }
         return true;

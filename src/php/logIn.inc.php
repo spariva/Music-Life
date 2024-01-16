@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     $registrator = new LoginManager($userName, $userPassword);
     $registrator->sanitizeLoginManager();
-
+    
     if ($registrator->validateLoginManager($db)) {
         $_SESSION['user'] = $userName;
         header("Location: ../../public/usuario.php");
@@ -26,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $_SESSION['errorsLogin'] = $registrator->errors;
         //se envían los datos del formulario al login
         $_SESSION['userNameLogin'] = $userName;
-        $_SESSION['userMailLogin'] = $userMail;
         header("Location: ../../public/login.php");
         die();
     }

@@ -117,7 +117,6 @@ unset($_SESSION['userNameLogin']);
                         <input type="text" placeholder="Nombre de usuario" name="userName"
                             value="<?= htmlspecialchars($userNameSignUp) ?>" method="POST" required>
                     </div>
-                    <?= $userNameSignUp ?>
                     <div class="inputBox">
                         <input type="text" placeholder="Dirección de correo electrónico" name="userMail"
                             value="<?= htmlspecialchars($userMailSignUp) ?>" required>
@@ -129,16 +128,7 @@ unset($_SESSION['userNameLogin']);
                     <div class="inputBox">
                         <input type="password" placeholder="Confirmar contraseña" name="confirmPassword" required>
                     </div>
-                    <!--SignUp errors display-->
-                    <?php if (count($errorsSignUp) > 0): ?>
-                        <div class="alert alert-danger">
-                            <?php foreach ($errorsSignUp as $error): ?>
-                                <li>
-                                    <?php echo $error; ?>
-                                </li>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+
                     <div class="inputBox">
                         <input type="submit" class="botonCrear" value="Crear Cuenta" name="submit">
                     </div>
@@ -147,6 +137,19 @@ unset($_SESSION['userNameLogin']);
                     </div>
                 </form>
             </div>
+            <!--Hay que usar js para quitarlo del login-->
+            <?php if (isset($_GET['errorSignUp'])): ?>
+                <!--SignUp errors display-->
+                <?php if (count($errorsSignUp) > 0): ?>
+                    <div class="alert alert-danger">
+                        <?php foreach ($errorsSignUp as $error): ?>
+                            <li>
+                                <?php echo $error; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </body>
 
