@@ -19,16 +19,10 @@ class LoginManager{
         $this->password = Sanitizer::sanitizeString($this->userPassword);
     }
 
-    public function validateLogin($db): bool{
-        if (!$this->validateData()) {
-            return false;
-        }
+    public function validateLoginManager($db): bool{
+        $this->validateData();
 
-        if (count($this->errors) > 0) {
-            return false;
-        }
-
-        if (!$this->checkUserExists($db)) {
+        if (!$this->checkUserNameExists($db)) {
             return false;
         }
 
@@ -36,25 +30,25 @@ class LoginManager{
             return false;
         }
 
+        if (count($this->errors) > 0) {
+            return false;
+        }
+
         return true;
     }
 
-    public function validateData(): bool
+    public function validateData(): void
     {
         if (empty($this->userName)) {
             $this->errors['userName'] = 'El nombre de usuario es requerido.';
-            return false;
         }
 
         if (empty($this->userPassword)) {
             $this->errors['userPassword'] = 'La contraseña es requerida.';
-            return false;
         }
-
-        return true;
     }
 
-    public function checkUserExists($db)
+    public function checkUserNameExists($db)
     {
         $sql = "SELECT * FROM user WHERE name = :name LIMIT 1";
         $stmt = $db->prepare($sql);
@@ -63,7 +57,7 @@ class LoginManager{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         //user no exite:
         if ($user === false) {
-            $this->errors['userName'] = 'El nombre no es valido.';
+            $this->errors['userName'] = 'Nadie se ha registrado con ese nombre.';
             return false;
         }
         return $user;
