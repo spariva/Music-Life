@@ -21,16 +21,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     if ($registrator->validateSignUpManager($db)) {
         $registrator->saveUser($db);
         $_SESSION['user'] = $userName;
-        $_SESSION['email'] = $userMail;
+        $_SESSION['mail'] = $userMail;
         header("Location: ../../public/usuario.php");
         die();
-    }
-
     } else {
         //se envían los errores del $registrator al login 
         $_SESSION['errorsSignUp'] = $registrator->errors;
-//$dir = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/main.php?success=$loginEmail";
-// header("Location:$dir", true, 302);    
-        header("Location: ../../public/login.php");
+        //se envían los datos del formulario al login
+        $_SESSION['userNameSignUp'] = $userName;
+        $_SESSION['userMailSignUp'] = $userMail;
+        //lo hago con session porque el js y el php se llevan mal
+        $_SESSION['bodyClass'] = 'crearCuenta';
+        header("Location: ../../public/login.php?errorSignUp=true");
         die();
     }
+} else {
+    //Si intentan meterse en esta página sin pasar por el login, se les redirige al login y les dice que son unos hackers malos =D
+    header("Location: ../../public/login.php?Hacker=bad");
+    die();
+}

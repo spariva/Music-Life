@@ -1,4 +1,9 @@
-<!-- require '../config/init.php';
+<?php
+
+require '../config/init.php';
+
+?>
+<!-- 
     //Creamos una instancia a la conexión con la database.
     $db = Db::getInstance();
 

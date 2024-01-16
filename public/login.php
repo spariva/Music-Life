@@ -1,15 +1,28 @@
 <?php
-//include '../config/init.php';
+//require_once '../config/init.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
 $errorsLogin = $_SESSION['errorsLogin'] ?? [];
+// es lo mismo que isset($_SESSION['errorsLogin']) ? $_SESSION['errorsLogin'] : [];
 unset($_SESSION['errorsLogin']);
 
 $errorsSignUp = $_SESSION['errorsSignUp'] ?? [];
 unset($_SESSION['errorsSignUp']);
 
+//Si hay errores en el SignUp para que se cargue el Registro en vez del Login
+$bodyClass = $_SESSION['bodyClass'] ?? "";
+unset($_SESSION['bodyClass']);
+//Recupera los datos del formulario de registro
+$userNameSignUp = $_SESSION['userNameSignUp'] ?? "";
+$userMailSignUp = $_SESSION['userMailSignUp'] ?? "";
+unset($_SESSION['userNameSignUp']);
+unset($_SESSION['userMailSignUp']);
+
+//Recupera los datos del formulario de crear cuenta
+$userNameLogin = $_SESSION['userNameLogin'] ?? "";
+unset($_SESSION['userNameLogin']);
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
 //     $mailer = MailerSingleton::obtenerInstancia();
@@ -35,9 +48,14 @@ unset($_SESSION['errorsSignUp']);
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
     </head>
 
-    <body>
-        <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
-            disablePictureInPicture></video>
+    <body class="<?= $bodyClass ?>">
+        <?php if ($bodyClass == "crearCuenta"): ?>
+            <video src="./img/FondoSpotifyClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
+                disablePictureInPicture></video>
+        <?php else: ?>
+            <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
+                disablePictureInPicture></video>
+        <?php endif ?>
         <header id="header">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="d-flex align-items-center">
@@ -96,12 +114,12 @@ unset($_SESSION['errorsSignUp']);
                 <form id="registro" action="../src/php/signUp.inc.php" method="POST">
                     <h2 class="formulario__titulo">Registro</h2>
                     <div class="inputBox">
-                        <input type="text" placeholder="Nombre de usuario" name="userName" value="" method="POST"
-                            required>
+                        <input type="text" placeholder="Nombre de usuario" name="userName"
+                            value="<?= htmlspecialchars($userNameSignUp) ?>" method="POST" required>
                     </div>
                     <div class="inputBox">
-                        <input type="text" placeholder="Dirección de correo electrónico" name="userMail" value=""
-                            required>
+                        <input type="text" placeholder="Dirección de correo electrónico" name="userMail"
+                            value="<?= htmlspecialchars($userMailSignUp) ?>" required>
                     </div>
                     <div class="inputBox">
                         <input type="password" placeholder="Crear contraseña" name="userPassword" name="userPassword"
@@ -110,16 +128,7 @@ unset($_SESSION['errorsSignUp']);
                     <div class="inputBox">
                         <input type="password" placeholder="Confirmar contraseña" name="confirmPassword" required>
                     </div>
-                    <!--SignUp errors display-->
-                    <?php if (count($errorsSignUp) > 0): ?>
-                        <div class="alert alert-danger">
-                            <?php foreach ($errorsSignUp as $error): ?>
-                                <li>
-                                    <?php echo $error; ?>
-                                </li>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+
                     <div class="inputBox">
                         <input type="submit" class="botonCrear" value="Crear Cuenta" name="submit">
                     </div>
@@ -128,6 +137,19 @@ unset($_SESSION['errorsSignUp']);
                     </div>
                 </form>
             </div>
+            <!--Hay que usar js para quitarlo del login-->
+            <?php if (isset($_GET['errorSignUp'])): ?>
+                <!--SignUp errors display-->
+                <?php if (count($errorsSignUp) > 0): ?>
+                    <div class="alert alert-danger">
+                        <?php foreach ($errorsSignUp as $error): ?>
+                            <li>
+                                <?php echo $error; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </body>
 
