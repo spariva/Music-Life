@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require '../config/init.php';
+//include '../config/init.php';
 include './DbConnection.php';
 include './SignUpManager.php';
 
@@ -24,8 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $_SESSION['email'] = $userMail;
         header("Location: ../../public/usuario.php");
         die();
-    }
-
     } else {
         //se envían los errores del $registrator al login 
         $_SESSION['errorsSignUp'] = $registrator->errors;
@@ -34,3 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         header("Location: ../../public/login.php");
         die();
     }
+} else {
+    header("Location: ../../public/login.php?Hacker=bad");
+    die();
+}

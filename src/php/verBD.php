@@ -3,7 +3,7 @@ include './DbConnection.php';
 
 
     $conn = DbConnection::getInstance();
-    $conn = $conn->getConnection();
+
     $sql = "SELECT * FROM USER";
     $stmt = $conn->prepare($sql);
     $stmt->execute();

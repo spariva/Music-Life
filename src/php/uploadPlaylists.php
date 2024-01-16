@@ -1,7 +1,4 @@
 <?php
-
-require_once '../config/init.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_pl = $_POST["id_pl"]?? "";
     $playlistName = $_POST["playlistName"]?? "";

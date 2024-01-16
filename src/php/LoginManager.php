@@ -1,6 +1,5 @@
 <?php
-
-include_once '../config/init.php';
+// include_once '../config/init.php';
 include_once './Sanitizer.php';
 class LoginManager{
     public $errors = [];
