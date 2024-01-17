@@ -33,7 +33,6 @@ class Sanitizer
     public static function sanitizeString(string $string): string
     {
         $string = Sanitizer::sanitize($string);
-        $string = htmlspecialchars($string);
         return $string;
     }
 
