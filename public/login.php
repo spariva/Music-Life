@@ -4,6 +4,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
+//If there's a msg in the url, it's because the user tried to access the user page without logging in
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+    unset($_GET['msg']);
+}
+
 $errorsLogin = $_SESSION['errorsLogin'] ?? [];
 // es lo mismo que isset($_SESSION['errorsLogin']) ? $_SESSION['errorsLogin'] : [];
 unset($_SESSION['errorsLogin']);
@@ -81,7 +87,13 @@ unset($_SESSION['userNameLogin']);
                 </div>
             </nav>
         </header>
-
+        <?php if (isset($msg)): ?>
+            <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
+                <?php echo $msg;
+                unset($msg);
+                ?>
+            </div>
+        <?php endif; ?>
         <div id="ubicador">
             <div class="contenedor">
                 <span class="contenedor__efectos"></span>
