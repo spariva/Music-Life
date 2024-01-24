@@ -25,9 +25,11 @@ class SignUpManager
 
     public function validateSignUpManager($db): bool
     {
-        if (!$this->validateData()) {
-            return false;
-        }
+        $this->checkUserNameExists($db);
+
+        $this->checkMailExist($db);
+
+        $this->validateData();
 
         if (count($this->errors) > 0) {
             return false;
@@ -44,27 +46,24 @@ class SignUpManager
     {
         if (empty($this->userName)) {
             $this->errors['userName'] = 'El nombre de usuario es requerido.';
-            return false;
         }
 
         if (empty($this->userMail)) {
-            $this->errors['userMail'] = 'El correo electrónico es requerido.';
-            return false;
+            //lo agrego en vez de asignarlo porque si no, se sobreescribe el posible error de email ya registrdo o vacío.
+            $this->errors['userMail'] .= 'El correo electrónico es requerido.';
         }
 
         if (!filter_var($this->userMail, FILTER_VALIDATE_EMAIL)) {
-            $this->errors['userMail'] = 'El email no es válido.';
-            return false;
+            //lo agrego en vez de asignarlo porque si no, se sobreescribe el posible error de email ya registrdo o vacío.
+            $this->errors['userMail'] .= ' El email no es válido.';
         }
 
         if (empty($this->userPassword) || strlen($this->userPassword) < 2) {
             $this->errors['userPassword'] = 'La contraseña es requerida y mayor a 2 carácteres.';
-            return false;
         }
 
         if ($this->userPassword != $_POST['confirmPassword']) {
             $this->errors['confirmPassword'] = 'Las contraseñas no coinciden.';
-            return false;
         }
 
         return true;
@@ -80,6 +79,21 @@ class SignUpManager
 
         if ($user) {
             $this->errors['userMail'] = 'El email ya está registrado.';
+            return true;
+        }
+        return false;
+    }
+
+    public function checkUserNameExists($db): bool
+    {
+        $sql = "SELECT * FROM user WHERE name = :name LIMIT 1";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':name', $this->userName, PDO::PARAM_STR);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            $this->errors['userName'] = 'El nombre ya está registrado.';
             return true;
         }
         return false;

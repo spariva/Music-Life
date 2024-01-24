@@ -1,34 +1,34 @@
 <?php
-require '../config/init.php';
+//require_once '../config/init.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+session_start();
 
-$errorsLogin = isset($_SESSION['errorsLogin']) ?? []; 
+//If there's a msg in the url, it's because the user tried to access the user page without logging in
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+    unset($_GET['msg']);
+}
+
+$errorsLogin = $_SESSION['errorsLogin'] ?? [];
+// es lo mismo que isset($_SESSION['errorsLogin']) ? $_SESSION['errorsLogin'] : [];
 unset($_SESSION['errorsLogin']);
 
 $errorsSignUp = isset($_SESSION['errorsSignUp']) ?? [];
 unset($_SESSION['errorsSignUp']);
 
-//esto es para OAuth de google FALTA GUARDAR EN LA DB LOS DATOS Y ALE 
-require_once('google-login-api.php');
+//Si hay errores en el SignUp para que se cargue el Registro en vez del Login
+$bodyClass = $_SESSION['bodyClass'] ?? "";
+unset($_SESSION['bodyClass']);
+//Recupera los datos del formulario de registro
+$userNameSignUp = $_SESSION['userNameSignUp'] ?? "";
+$userMailSignUp = $_SESSION['userMailSignUp'] ?? "";
+unset($_SESSION['userNameSignUp']);
+unset($_SESSION['userMailSignUp']);
 
-$login_url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=' . urlencode('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email') . '&redirect_uri=' . urlencode(CLIENT_REDIRECT_URL) . '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online';
-
-// Google passes a parameter 'code' in the Redirect Url
-if(isset($_GET['code'])) {
-   try {
-       // Get the access token
-       $data = GetAccessToken(CLIENT_ID, CLIENT_REDIRECT_URL, CLIENT_SECRET, $_GET['code']);
-
-       // Access Token
-       $access_token = $data['access_token'];
-      
-       // Get user information
-       $user_info = GetUserProfileInfo($access_token);
-   }
-   catch(Exception $e) {
-       echo $e->getMessage();
-       exit();
-   }
-}
+//Recupera los datos del formulario de crear cuenta
+$userNameLogin = $_SESSION['userNameLogin'] ?? "";
+unset($_SESSION['userNameLogin']);
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
 //     $mailer = MailerSingleton::obtenerInstancia();
@@ -54,9 +54,14 @@ if(isset($_GET['code'])) {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
     </head>
 
-    <body>
-        <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
-            disablePictureInPicture></video>
+    <body class="<?= $bodyClass ?>">
+        <?php if ($bodyClass == "crearCuenta"): ?>
+            <video src="./img/FondoSpotifyClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
+                disablePictureInPicture></video>
+        <?php else: ?>
+            <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
+                disablePictureInPicture></video>
+        <?php endif ?>
         <header id="header">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="d-flex align-items-center">
@@ -82,7 +87,13 @@ if(isset($_GET['code'])) {
                 </div>
             </nav>
         </header>
-
+        <?php if (isset($msg)): ?>
+            <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
+                <?php echo $msg;
+                unset($msg);
+                ?>
+            </div>
+        <?php endif; ?>
         <div id="ubicador">
             <div class="contenedor">
                 <span class="contenedor__efectos"></span>
@@ -96,8 +107,6 @@ if(isset($_GET['code'])) {
                     </div>
                     <div class="inputBox">
                         <p>¿Primera vez aquí?</p><a href="#" id="crearCuenta">Crear cuenta</a>
-                        <p><a href="<?= $login_url ?>">Inicia sesión con Google</a></p>
-
                     </div>
                     <!--Login errors display-->
                     <?php if (count($errorsLogin) > 0): ?>
@@ -117,12 +126,12 @@ if(isset($_GET['code'])) {
                 <form id="registro" action="../src/php/signUp.inc.php" method="POST">
                     <h2 class="formulario__titulo">Registro</h2>
                     <div class="inputBox">
-                        <input type="text" placeholder="Nombre de usuario" name="userName" value="" method="POST"
-                            required>
+                        <input type="text" placeholder="Nombre de usuario" name="userName"
+                            value="<?= htmlspecialchars($userNameSignUp) ?>" method="POST" required>
                     </div>
                     <div class="inputBox">
-                        <input type="text" placeholder="Dirección de correo electrónico" name="userMail" value=""
-                            required>
+                        <input type="text" placeholder="Dirección de correo electrónico" name="userMail"
+                            value="<?= htmlspecialchars($userMailSignUp) ?>" required>
                     </div>
                     <div class="inputBox">
                         <input type="password" placeholder="Crear contraseña" name="userPassword" name="userPassword"
@@ -131,16 +140,7 @@ if(isset($_GET['code'])) {
                     <div class="inputBox">
                         <input type="password" placeholder="Confirmar contraseña" name="confirmPassword" required>
                     </div>
-                    <!--SignUp errors display-->
-                    <?php if (count($errorsSignUp) > 0): ?>
-                        <div class="alert alert-danger">
-                            <?php foreach ($errorsSignUp as $error): ?>
-                                <li>
-                                    <?php echo $error; ?>
-                                </li>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+
                     <div class="inputBox">
                         <input type="submit" class="botonCrear" value="Crear Cuenta" name="submit">
                     </div>
@@ -149,6 +149,19 @@ if(isset($_GET['code'])) {
                     </div>
                 </form>
             </div>
+            <!--Hay que usar js para quitarlo del login-->
+            <?php if (isset($_GET['errorSignUp'])): ?>
+                <!--SignUp errors display-->
+                <?php if (count($errorsSignUp) > 0): ?>
+                    <div class="alert alert-danger">
+                        <?php foreach ($errorsSignUp as $error): ?>
+                            <li>
+                                <?php echo $error; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </body>
 

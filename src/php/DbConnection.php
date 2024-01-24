@@ -1,5 +1,18 @@
 <?php
 
+//require_once __DIR__ . '/vendor/autoload.php'; // Path may vary based on your project structure
+
+//$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+//$dotenv->load();
+
+// $dbHost = $_ENV['DB_HOST'];
+// $dbUsername = $_ENV['DB_USERNAME'];
+// $dbPassword = $_ENV['DB_PASSWORD'];
+// $dbDatabase = $_ENV['DB_DATABASE'];
+// $dbDialect = $_ENV['DB_DIALECT'];
+// $dbSeederStorage = $_ENV['DB_SEEDER_STORAGE'];
+// $dbCharset = $_ENV['DB_CHARSET'];
+
 class DbConnection
 {
     private static $instance;
