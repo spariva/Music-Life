@@ -2,6 +2,23 @@
 
 require '../config/init.php';
 
+
+//Gestion de la ventana flotante con el aviso sobre las cookies
+$mostrarWarning = true;
+if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
+    $mostrarWarning = false;
+    setcookie('aceptadas', true, time() + (60 * 60 * 24 * 7), "/");
+}else {
+  if(isset($_GET['aceptadas']) && ($_GET['aceptadas']) == true){
+    $mostrarWarning = false;
+    setcookie('aceptadas', true, time() + (60 * 60 * 24 * 7), "/");
+  }else{
+    setcookie('aceptadas', false);
+    $mostrarWarning = true;
+  echo '<style>#contenido, #header { filter: blur(5px); }</style>';
+  }
+}
+
 ?>
 <!-- 
     //Creamos una instancia a la conexión con la database.
@@ -71,7 +88,7 @@ require '../config/init.php';
 			}
 		}
 	</script> -->
-	<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
+	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
 	<header id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="d-flex align-items-center">
@@ -200,6 +217,18 @@ require '../config/init.php';
 			</div>
 		</div>
 	</div>
+
+	<?php if($mostrarWarning==true) {?>
+		<div class="bloque" id="avisoCookies">
+		<b>Aviso de Cookies:</b>
+		Este sitio web utiliza cookies para mejorar la experiencia del usuario, analizar el tráfico y personalizar contenido. 
+		Al aceptar, consientes el uso de cookies. Puedes gestionarlas en la configuración del navegador. Utilizamos cookies esenciales, 
+		de rendimiento, funcionalidad y publicidad. Compartimos datos con socios de redes sociales, publicidad y análisis. 
+		Visita nuestras políticas de privacidad y cookies para más detalles. 
+		<a href="index.php?aceptadas=true">Aceptar Cookies</a>
+		</div>
+  	<?php } ?>
+
 	<script src="./js/BusquedaSpotify.js" defer></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
