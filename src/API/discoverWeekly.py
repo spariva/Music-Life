@@ -7,21 +7,21 @@ from flask import Flask, request, url_for, session, redirect
 # initialize Flask app
 app = Flask(__name__)
 
-# set the name of the session cookie
+# set the name of the session cookie (aquí guardamos el token en una session para que el user siga "logeade" en spoti)
 app.config['SESSION_COOKIE_NAME'] = 'Spotify Cookie'
 
-# set a random secret key to sign the cookie
+# set a random secret key to sign the cookie (para que no se pueda acceder a la cookie desde fuera, un string random que se usa para encriptar la cookie)
 app.secret_key = 'YOUR_SECRET_KEY'
 
 # set the key for the token info in the session dictionary
 TOKEN_INFO = 'token_info'
 
-# route to handle logging in
-@app.route('/')
+# route to handle logging in. Lo de las rutas: si pones / y nada más es la ruta principal, y llama a la función de debajo. En este caso login()
+@app.route('/') 
 def login():
-    # create a SpotifyOAuth instance and get the authorization URL
+    # create a SpotifyOAuth instance and get the authorization URL, obtener la url a la que va el user a logearse en spotify
     auth_url = create_spotify_oauth().get_authorize_url()
-    # redirect the user to the authorization URL
+    # redirect the user to the authorization URL. un redirect para que el user vaya a la url de spotify a logearse
     return redirect(auth_url)
 
 # route to handle the redirect URI after authorization
@@ -98,6 +98,8 @@ def get_token():
 
     return token_info
 
+# function to create a SpotifyOAuth instance, genera los parámetros que le vamos a pasar al OAuth. Hay que meterle los dos tokens que te da spotify en su dashboard
+# el scope es para decirle que permisos le das a tu app, crear playlists etc    
 def create_spotify_oauth():
     return SpotifyOAuth(
         client_id = 'YOUR_CLIENT_ID',
