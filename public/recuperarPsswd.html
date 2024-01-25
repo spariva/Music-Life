@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña</title>
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+</head>
+<body>
+
+    <!--Pagina temporal ya pondremos para que el form salga desde la pagina del login pero de momento esta-->
+
+    <div id="pagina">
+        <div class="bloque">
+            <form action="../src/php/recuperarPsswd.php" method="post">
+                <h3>Recupera tu contraseña</h3>
+                <br>
+                <p> Email: <input type="email" id="email" name="email" required></p>
+                <br>
+                <button type="submit">Enviar email de recuperación</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
