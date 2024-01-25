@@ -61,7 +61,7 @@ try {
 if ($creacionToken == true) {
     // Si todo ha ido bien, mandamos los datos al mailer
     $link = "Buenas, ya que ha psolicitado un cambio de contrasenna tendra disponible durante 1 dia este link para poder hacerlo \n <br> \n <br>";
-    $link .= "http://recovery.es/public/code/cambiarPsswd.php?token=$token";
+    $link .= "http://music-life.es/public/cambiarPsswd.php?token=$token";
     $redirection = "index.php";
 
     // Crear un formulario dinámicamente con campos ocultos
