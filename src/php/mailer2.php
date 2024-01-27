@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host       = 'ssl0.ovh.net:993'; // Set the SMTP server to send through
         $mail->SMTPAuth   = true;   // Enable SMTP authentication
         $mail->Username   = 'support@music-life.es';     // SMTP username
-        $mail->Password   = '2Ohse=\EROuOl:l';  // SMTP password
+        $mail->Password   = 'xxxxx';  // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 587;   // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
