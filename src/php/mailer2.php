@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Server settings
         $mail->SMTPDebug = false; // or $mail->SMTPDebug = 0;
         $mail->isSMTP();     // Send using SMTP
-        $mail->Host       = 'smtp-relay.brevo.com'; // Set the SMTP server to send through
+        $mail->Host       = 'ssl0.ovh.net:993'; // Set the SMTP server to send through
         $mail->SMTPAuth   = true;   // Enable SMTP authentication
-        $mail->Username   = 'sergiosahi25@gmail.com';     // SMTP username
-        $mail->Password   = 'CDLYQwFST8gPJa32';  // SMTP password
+        $mail->Username   = 'support@music-life.es';     // SMTP username
+        $mail->Password   = '2Ohse=\EROuOl:l';  // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 587;   // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
