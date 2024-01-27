@@ -65,7 +65,7 @@ class LoginManager{
  
     public function checkPassword($db)
     {
-        $sql = "SELECT password FROM user WHERE name = :name LIMIT 1";
+        $sql = "SELECT password FROM user WHERE name = :name LIMIT 1"; //Diria de cambiar el name por email q es mas dificil q se repita
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':name', $this->userName, PDO::PARAM_STR);
         $stmt->execute();
