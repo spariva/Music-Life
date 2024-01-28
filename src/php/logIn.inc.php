@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     $registrator = new LoginManager($userName, $userPassword);
     $registrator->sanitizeLoginManager();
-    
     if ($registrator->validateLoginManager($db)) {
         $_SESSION['user'] = $userName;
         header("Location: ../../public/usuario.php");

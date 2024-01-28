@@ -6,7 +6,7 @@ class SignUpManager
     public $errors = [];
     public $userName;
     public $userMail;
-    private $userPassword;
+    public $userPassword;
 
     public function __construct($username, $usermail, $userpassword)
     {
@@ -99,13 +99,8 @@ class SignUpManager
         return false;
     }
 
-    public function getPassword(): string
-    {
-        return $this->userPassword;
-    }
-
     public function saveUser($db)
-    {
+    {   
         $this->userPassword = password_hash($this->userPassword, PASSWORD_DEFAULT);
         $sql = "INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES (:NAME, :EMAIL, :PASSWORD)";
         $stmt = $db->prepare($sql);
