@@ -1,6 +1,6 @@
 <?php
-
 session_start();
+
 if (!isset($_SESSION['user'])) {
     $msg = "No hay usuario logueado";
     header("Location: ./login.php?msg=$msg");
@@ -61,14 +61,14 @@ if (!isset($_SESSION['user'])) {
                 </h2>
                 <img src="./img/imagenPerfil.png" alt="usuario-imagen">
                 <div id="correo">correoelectronico@email.com</div>
-                <div class="iframes__favoritos">
-                    <iframe class="menuUsuario_izquierda_iframe" style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/0XJs446xvZpKhz3pglrOlX?utm_source=generator"
+                <div class="usuarioListasFavs">
+                    <iframe style="border-radius:12px"
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5trt9i14X7j?utm_source=generator&theme=0"
                         width="100%" height="152" frameBorder="0" allowfullscreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"></iframe>
-                    <iframe class="menuUsuario_izquierda_iframe" style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/20IwQZIfrykXjnyd4SLHtX?utm_source=generator"
+                    <iframe style="border-radius:12px"
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1EIY4GfKsEmuO0?utm_source=generator"
                         width="100%" height="152" frameBorder="0" allowfullscreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"></iframe>
@@ -82,7 +82,7 @@ if (!isset($_SESSION['user'])) {
                         <p><b>This is Lola Indigo: 5 estrellas</b> La mejor playlist del mundo, me ha encantado</p>
                     </div>
                     <div class="valoracion" id="val2">
-                        <p><!-- <?php echo $valoraciones[1] ?> --><b>Sand + Maksocrames: 4 estrellas</b> La escucho sin
+                        <p><b>Sand + Maksocrames: 4 estrellas</b> La escucho sin
                             parar</p>
                         </p>
                     </div>
@@ -94,12 +94,12 @@ if (!isset($_SESSION['user'])) {
                 </div>
                 <div class="musica">
                     <iframe style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/159xmAdSIVlkemrogVpts1?utm_source=generator"
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1QmCJj?utm_source=generator"
                         width="100%" height="352" frameBorder="0" allowfullscreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"></iframe>
                     <iframe style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1QmCJj?utm_source=generator"
+                        src="https://open.spotify.com/embed/playlist/159xmAdSIVlkemrogVpts1?utm_source=generator"
                         width="100%" height="352" frameBorder="0" allowfullscreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"></iframe>

@@ -85,7 +85,7 @@ iframe {
 
 #contenido {
   display: grid;
-  grid-template-areas: "recomendado restoPagina" ;
+  grid-template-areas: "recomendado restoPagina";
   grid-template-columns: 1fr 3fr;
 }
 
@@ -104,23 +104,24 @@ iframe {
 #valoraciones {
   grid-area: valoraciones;
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "valoracionesListas"
     "valoracionesValoraciones";
-  grid-template-rows: auto auto; /* Ajusta la altura de las filas según sea necesario*/
+  grid-template-rows: auto auto;
+  /* Ajusta la altura de las filas según sea necesario*/
 }
 
-#valoracionesListas{
+#valoracionesListas {
   grid-area: valoracionesListas;
 }
 
-#valoracionesValoraciones{
+#valoracionesValoraciones {
   grid-area: valoracionesValoraciones;
   padding: 30px;
   margin: 20px;
   background-color: #ffffff79;
   border-radius: 20px;
-} 
+}
 
 #buscador {
   grid-area: buscador;
@@ -129,7 +130,7 @@ iframe {
   grid-template-columns: 1fr 1fr;
 }
 
-#botonBuscar{
+#botonBuscar {
   border-radius: 15px;
   background-color: whitesmoke;
   transition: 0.5s ease;
@@ -163,7 +164,8 @@ iframe {
 }
 
 
-/*Modo para moviles*//* Media query para pantallas pequeñas */
+/*Modo para moviles*/
+/* Media query para pantallas pequeñas */
 @media screen and (max-width: 1200px) {
 
   .contenedor {
@@ -176,14 +178,16 @@ iframe {
 
   #contenido {
     display: grid;
-    grid-template-areas: "recomendado" "restoPagina" ;
+    grid-template-areas: "recomendado" "restoPagina";
     grid-template-columns: 1fr;
   }
 
   #recomendado {
     grid-area: recomendado;
-    height: 400px; /* Altura específica para la sección recomendada */
-    overflow-y: auto; /* Agrega un desbordamiento vertical con barra de desplazamiento si es necesario */
+    height: 400px;
+    /* Altura específica para la sección recomendada */
+    overflow-y: auto;
+    /* Agrega un desbordamiento vertical con barra de desplazamiento si es necesario */
   }
 
   #restoPagina {
@@ -191,22 +195,22 @@ iframe {
     display: grid;
     grid-template-areas: "buscador" "tendencia" "valoraciones";
     grid-template-columns: 1fr;
-  
+
   }
 
   #buscador {
     grid-area: buscador;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
       "lupaBuscador"
       "valoracionesBuscador";
-      grid-template-columns: 1fr;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
+    grid-template-columns: 1fr;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 
-  #lupaBuscador{
+  #lupaBuscador {
     grid-area: lupaBuscador;
     margin: 15px;
   }
@@ -233,17 +237,18 @@ iframe {
   #valoraciones {
     grid-area: valoraciones;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
       "valoracionesListas"
       "valoracionesValoraciones";
-    grid-template-rows: auto auto; /* Ajusta la altura de las filas según sea necesario*/
+    grid-template-rows: auto auto;
+    /* Ajusta la altura de las filas según sea necesario*/
   }
 
-  #valoracionesListas{
+  #valoracionesListas {
     grid-area: valoracionesListas;
   }
 
-  #valoracionesValoraciones{
+  #valoracionesValoraciones {
     grid-area: valoracionesValoraciones;
     padding: 10px;
     margin: 5px;

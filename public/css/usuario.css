@@ -41,12 +41,12 @@ body {
 
 .contenedor-principal-menuUsuario {
   position: absolute;
-  margin: 4%;
+  margin: 2% 5% 4%;
   display: grid;
   grid-template-areas: "usuario listas";
   grid-template-columns: 1fr 4fr;
   grid-gap: 50px;
-  height: 80vh;
+  height: 75vh;
   width: 90%;
   z-index: 1;
 }
@@ -57,8 +57,8 @@ body {
   color: var(--white);
   flex-direction: column;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.239);
-  border-radius: 200px 200px 100px 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +79,7 @@ body {
 
 .usuario #correo {
   margin-bottom: 20px;
-  color:#0f2832;
+  color: #000000;
 }
 
 .listas {
@@ -87,11 +87,11 @@ body {
   display: grid;
   grid-template-areas: "valoraciones musica";
   grid-template-columns: 2fr 3fr;
-  grid-gap: 20px;
+  grid-gap: 80px;
   text-align: center;
   color: black;
-  background-color: rgba(255, 255, 255, 0.239);
-  border-radius: 200px 200px 100px 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 80px;
   padding: 40px;
 }
 
@@ -100,7 +100,8 @@ body {
 }
 
 .valoracion {
-  width: 100%; /* Hacer que la valoración ocupe todo el ancho disponible en su área */
+  width: 100%;
+  /* Hacer que la valoración ocupe todo el ancho disponible en su área */
   height: 200px;
   margin: 20px;
   border-radius: 200px;
@@ -112,15 +113,15 @@ body {
   grid-area: musica;
 }
 
-.musica iframe{
-margin: 10px;
+.musica iframe {
+  margin: 10px;
 }
 
 @media screen and (max-width: 1200px) {
 
   .contenedor-principal-menuUsuario {
     display: grid;
-    grid-template-areas: "usuario" "listas" ;
+    grid-template-areas: "usuario" "listas";
     grid-template-columns: 1fr;
   }
 
@@ -132,17 +133,17 @@ margin: 10px;
   }
 
   .usuario h2 {
-  margin-top: 0;
+    margin-top: 0;
     color: black;
   }
-  
+
   .usuario img {
     border-radius: 100%;
     width: 170px;
   }
-  
+
   .usuario #correo {
-    color:#0f2832;
+    color: #0f2832;
   }
 
   .usuario iframe {
@@ -152,7 +153,7 @@ margin: 10px;
   .listas {
     grid-area: listas;
     display: grid;
-    grid-template-areas: "valoraciones"  "musica";
+    grid-template-areas: "valoraciones" "musica";
     grid-template-columns: 1fr;
     grid-gap: 20px;
     text-align: center;
@@ -161,26 +162,27 @@ margin: 10px;
     border-radius: 200px 200px 100px 100px;
     padding: 40px;
   }
-  
+
   .valoraciones {
     grid-area: valoraciones;
   }
-  
+
   .valoracion {
-    width: 100%; /* Hacer que la valoración ocupe todo el ancho disponible en su área */
+    width: 100%;
+    /* Hacer que la valoración ocupe todo el ancho disponible en su área */
     height: 200px;
     margin: 20px;
     border-radius: 200px;
     background-color: rgba(255, 255, 255, 0.211);
     padding: 80px;
   }
-  
+
   .musica {
     grid-area: musica;
   }
-  
-  .musica iframe{
-  margin: 10px;
+
+  .musica iframe {
+    margin: 10px;
   }
 
 }
