@@ -17,7 +17,7 @@ require '../config/init.php';
 
 //Si le has dado a enviar y no hay errores:
 if (isset($_POST["enviar"]) && (empty($errores))) {
-    $mailer = MailerSingleton::obtenerInstancia();
+    $mailer = Mailer::obtenerInstancia();
     $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
 }
 
