@@ -1,13 +1,11 @@
 <?php
-require '../config/init.php';
 
 session_start();
 if (!isset($_SESSION['user'])) {
-    echo "No hay usuario logueado";
-    // header("Location: ./login.php");
-    // exit();
+    $msg = "No hay usuario logueado";
+    header("Location: ./login.php?msg=$msg");
+    exit();
 }
-
 ?>
 
 

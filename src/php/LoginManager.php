@@ -4,7 +4,7 @@ include_once './Sanitizer.php';
 class LoginManager{
     public $errors = [];
     public $userName;
-    private $userPassword;
+    public $userPassword;
 
     public function __construct($username, $userpassword)
     {
@@ -16,7 +16,7 @@ class LoginManager{
     public function sanitizeLoginManager(): void
     {
         $this->userName = Sanitizer::sanitizeString($this->userName);
-        $this->password = Sanitizer::sanitizeString($this->userPassword);
+        $this->userPassword = Sanitizer::sanitizeString($this->userPassword);
     }
 
     public function validateLoginManager($db): bool{
@@ -65,26 +65,30 @@ class LoginManager{
  
     public function checkPassword($db)
     {
-        $sql = "SELECT password FROM user WHERE name = :name LIMIT 1";
+        $sql = "SELECT password FROM user WHERE name = :name LIMIT 1"; //Diria de cambiar el name por email q es mas dificil q se repita
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':name', $this->userName, PDO::PARAM_STR);
         $stmt->execute();
-        $userPwd = $stmt->fetch(PDO::FETCH_NUM);
-        //user no exite:
-        if ($userPwd === false) {
+        $userPwd = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$userPwd) {
             $this->errors['userPassword'] = 'User inexistente.';
             return false;
         }
-        //user existe pero la contraseña no es correcta:
-        if (!password_verify($this->userPassword, $userPwd[0])) {
-            $this->errors['userPassword'] = 'La contraseña no es válida.';
+
+        $hashedPassword = $userPwd['password'];
+        if (!password_verify($this->userPassword, $hashedPassword)) {
+            $this->errors['userPassword'] = ' La contraseña no es válida.';
+
             return false;
         }
-        return true;
-    }
 
-    public function getPassword(): string{
-        return $this->userPassword;
+        // if($userPwd['password'] != $this->userPassword){
+        //     $this->errors['userPassword'] = 'La contraseña no es válida.';
+        //     return false;
+        // }
+
+        return true;
     }
 }
 

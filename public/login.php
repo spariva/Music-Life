@@ -4,6 +4,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
+//If there's a msg in the url, it's because the user tried to access the user page without logging in
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+    unset($_GET['msg']);
+}
+
 $errorsLogin = $_SESSION['errorsLogin'] ?? [];
 // es lo mismo que isset($_SESSION['errorsLogin']) ? $_SESSION['errorsLogin'] : [];
 unset($_SESSION['errorsLogin']);
@@ -80,18 +86,24 @@ unset($_SESSION['userNameLogin']);
                     </ul>
                 </div>
             </nav>
-        </header>
-
+        </header> 
+        <?php if (isset($msg)): ?>
+            <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
+                <?php echo $msg;
+                unset($msg);
+                ?>
+            </div>
+        <?php endif; ?>
         <div id="ubicador">
             <div class="contenedor">
                 <span class="contenedor__efectos"></span>
                 <form id="inicioSesion" action="../src/php/logIn.inc.php" method="POST">
                     <h2 class="formulario__titulo">Iniciar sesión</h2>
                     <div class="inputBox">
-                        <input type="text" placeholder="Usuario" value="" required>
+                        <input type="text" placeholder="Usuario" value="<?= htmlspecialchars($userNameLogin)?>" name="userName" required>
                     </div>
                     <div class="inputBox">
-                        <input type="password" placeholder="Contraseña" required>
+                        <input type="password" placeholder="Contraseña" name="userPassword" required>
                     </div>
                     <div class="inputBox">
                         <p>¿Primera vez aquí?</p><a href="#" id="crearCuenta">Crear cuenta</a>
@@ -115,7 +127,7 @@ unset($_SESSION['userNameLogin']);
                     <h2 class="formulario__titulo">Registro</h2>
                     <div class="inputBox">
                         <input type="text" placeholder="Nombre de usuario" name="userName"
-                            value="<?= htmlspecialchars($userNameSignUp) ?>" method="POST" required>
+                            value="<?= htmlspecialchars($userNameSignUp)?>" method="POST" required>
                     </div>
                     <div class="inputBox">
                         <input type="text" placeholder="Dirección de correo electrónico" name="userMail"
@@ -135,12 +147,11 @@ unset($_SESSION['userNameLogin']);
                     <div class="inputBox">
                         <p>¿Ya tiene una cuenta?</p><a href="#" id="conectarCuenta">Conectarse</a>
                     </div>
+                    
                 </form>
             </div>
-            <!--Hay que usar js para quitarlo del login-->
-            <?php if (isset($_GET['errorSignUp'])): ?>
-                <!--SignUp errors display-->
-                <?php if (count($errorsSignUp) > 0): ?>
+            <!--SignUp errors display-->
+            <?php  if (count($errorsSignUp) > 0 ){ ?>
                     <div class="alert alert-danger">
                         <?php foreach ($errorsSignUp as $error): ?>
                             <li>
@@ -148,8 +159,7 @@ unset($_SESSION['userNameLogin']);
                             </li>
                         <?php endforeach; ?>
                     </div>
-                <?php endif; ?>
-            <?php endif; ?>
+            <?php } ?>
         </div>
     </body>
 

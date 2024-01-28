@@ -6,7 +6,7 @@ class SignUpManager
     public $errors = [];
     public $userName;
     public $userMail;
-    private $userPassword;
+    public $userPassword;
 
     public function __construct($username, $usermail, $userpassword)
     {
@@ -32,6 +32,10 @@ class SignUpManager
         $this->validateData();
 
         if (count($this->errors) > 0) {
+            return false;
+        }
+
+        if ($this->checkMailExist($db)) {
             return false;
         }
 
@@ -66,7 +70,7 @@ class SignUpManager
     }
 
     public function checkMailExist($db): bool
-    {
+    {   
         $sql = "SELECT * FROM USER WHERE EMAIL = :EMAIL LIMIT 1";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':EMAIL', $this->userMail, PDO::PARAM_STR);
@@ -95,13 +99,8 @@ class SignUpManager
         return false;
     }
 
-    public function getPassword(): string
-    {
-        return $this->userPassword;
-    }
-
     public function saveUser($db)
-    {
+    {   
         $this->userPassword = password_hash($this->userPassword, PASSWORD_DEFAULT);
         $sql = "INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES (:NAME, :EMAIL, :PASSWORD)";
         $stmt = $db->prepare($sql);
