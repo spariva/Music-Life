@@ -41,7 +41,7 @@ body {
 
 .contenedor-principal-menuUsuario {
   position: absolute;
-  margin: 5%;
+  margin: 4%;
   display: grid;
   grid-template-areas: "usuario listas";
   grid-template-columns: 1fr 4fr;
