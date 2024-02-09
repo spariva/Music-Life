@@ -1,30 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
-@font-face {
-  font-family: notas;
-  src: url(../img/fonts/Cute_Notes.ttf);
-}
-
-@font-face {
-  font-family: espacial;
-  src: url(../img/fonts/spacetime-regular.ttf);
-}
-
-@font-face {
-  font-family: nubes;
-  src: url(../img/fonts/Cotton_Cloud.ttf);
-}
-
-@font-face {
-  font-family: lapiz;
-  src: url(../img/fonts/Pencilized.ttf);
-}
-
-@font-face {
-  font-family: neon;
-  src: url(../img/fonts/neon2.ttf);
-}
-
 :root {
   --white: #f3f3f3;
   --yellow: #ffff00;
@@ -41,7 +16,7 @@ body {
 
 .contenedor-principal-menuUsuario {
   position: absolute;
-  margin: 2% 5% 4%;
+  margin: 1% 5% 4%;
   display: grid;
   grid-template-areas: "usuario listas";
   grid-template-columns: 1fr 4fr;
