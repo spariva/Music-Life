@@ -108,6 +108,10 @@ unset($_SESSION['userNameLogin']);
                     <div class="inputBox">
                         <p>¿Primera vez aquí?</p><a href="#" id="crearCuenta">Crear cuenta</a>
                     </div>
+                    <div >
+                        <p style= "text-align: center"><a href="recuperarPsswd.html">¿Olvidaste la contraseña?</a></p>
+                    </div>
+
                     <!--Login errors display-->
                     <?php if (count($errorsLogin) > 0): ?>
                         <div class="alert alert-danger">

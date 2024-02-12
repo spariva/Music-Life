@@ -163,6 +163,25 @@ iframe {
   height: 400px;
 }
 
+/* .bloque y avisoCookies son para la ventana flotante de cookies*/
+.bloque {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border: 2px solid white;
+  border-radius: 20px;
+  margin: 10%;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.924);
+  text-align: center;
+}
+
+#avisoCookies {
+  background-color: rgba(30, 30, 30, 0.924);
+  color: white;
+  position: fixed;
+  bottom: 0;
+}
 
 /*Modo para moviles*/
 /* Media query para pantallas pequeñas */
