@@ -1,7 +1,6 @@
 <?php
 require '../config/init.php';
 
-
 //Gestion de la ventana flotante con el aviso sobre las cookies
 $mostrarWarning = true;
 if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
@@ -17,8 +16,22 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
   echo '<style>#contenido, #header { filter: blur(5px); }</style>';
   }
 }
-
 ?>
+<!-- 
+    //Creamos una instancia a la conexión con la database.
+    $db = Db::getInstance();
+
+    // Consulta SELECT
+    $sql = "SELECT * FROM PLAYLIST";
+    $result = $db->prepare($sql);
+
+    if ($result->rowCount() > 0) {
+        foreach ($result as $data) {
+            echo "Columna1: " . $data['columna1'] . " - Columna2: " . $data['columna2'] . " - Columna3: " . $data['columna3'] . "<br>";
+        }
+    } else {
+        echo "No se encontraron resultados";
+    } -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,8 +47,12 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 	</head>
 
 	<body>
+			<!-- <script>
+		function buscarPlaylist() {
+			// Solicitar al usuario que ingrese un nombre para la playlist
+			var nombrePlaylist = prompt("Por favor, ingrese un nombre para la playlist:");
 
-			<!--// Verificar si el usuario ingresó un nombre
+			// Verificar si el usuario ingresó un nombre
 			if (nombrePlaylist !== null && nombrePlaylist !== "") {
 				// Obtener la URL del iframe
 				var iframeCode = document.querySelector('.iframeBuscador').outerHTML;
@@ -68,42 +85,64 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		}
 	</script> -->
 	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
-	<header id="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="d-flex align-items-center">
-                <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
 
-                <!-- desplegable para pantallas pequeñas -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
+		<header id="header">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="d-flex align-items-center">
+					<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank">Info</a></li>
-                    <li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+					<!-- desplegable para pantallas pequeñas -->
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+						aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
+						<li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
+						<li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
+						<li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
+						<li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life"
+								target="_blank">Info</a></li>
+						<li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
 
 
-	<div id="contenido">
-		<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
-		<div class="contenedor" id="recomendado">
-			<div id="apartado">Top Artistas 2023</div>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX6bnzK9KPvrz?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1LUyBs1uGpN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4e5iLu?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-		</div>
+		<div id="contenido">
+			<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
+			<div class="contenedor" id="recomendado">
+				<div id="apartado">Top Artistas 2023</div>
+				<iframe style="border-radius:12px"
+					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J?utm_source=generator"
+					width="100%" height="152" frameBorder="0" allowfullscreen=""
+					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+					loading="lazy"></iframe>
+				<iframe style="border-radius:12px"
+					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ?utm_source=generator"
+					width="100%" height="152" frameBorder="0" allowfullscreen=""
+					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+					loading="lazy"></iframe>
+				<iframe style="border-radius:12px"
+					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX6bnzK9KPvrz?utm_source=generator"
+					width="100%" height="152" frameBorder="0" allowfullscreen=""
+					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+					loading="lazy"></iframe>
+				<iframe style="border-radius:12px"
+					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1LUyBs1uGpN?utm_source=generator"
+					width="100%" height="152" frameBorder="0" allowfullscreen=""
+					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+					loading="lazy"></iframe>
+				<iframe style="border-radius:12px"
+					src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4e5iLu?utm_source=generator"
+					width="100%" height="152" frameBorder="0" allowfullscreen=""
+					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+					loading="lazy"></iframe>
+			</div>
 
 
 			<div id="restoPagina">
@@ -232,25 +271,23 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<?php if($mostrarWarning==true) {?>
-		<div class="bloque" id="avisoCookies">
-		<b>Aviso de Cookies:</b>
-		Este sitio web utiliza cookies para mejorar la experiencia del usuario, analizar el tráfico y personalizar contenido. 
-		Al aceptar, consientes el uso de cookies. Puedes gestionarlas en la configuración del navegador. Utilizamos cookies esenciales, 
-		de rendimiento, funcionalidad y publicidad. Compartimos datos con socios de redes sociales, publicidad y análisis. 
-		Visita nuestras políticas de privacidad y cookies para más detalles. 
-		<a href="index.php?aceptadas=true">Aceptar Cookies</a>
-		</div>
-  	<?php } ?>
-
-	<script src="./js/BusquedaSpotify.js" defer></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-	<script src="./js/star-rating.js"></script>
-	<script src="./js/script.js"></script>
-</body>
+		<?php if($mostrarWarning==true) {?>
+			<div class="bloque" id="avisoCookies">
+				<b>Aviso de Cookies:</b>
+				Este sitio web utiliza cookies para mejorar la experiencia del usuario, analizar el tráfico y personalizar contenido. 
+				Al aceptar, consientes el uso de cookies. Puedes gestionarlas en la configuración del navegador. Utilizamos cookies esenciales, 
+				de rendimiento, funcionalidad y publicidad. Compartimos datos con socios de redes sociales, publicidad y análisis. 
+				Visita nuestras políticas de privacidad y cookies para más detalles. 
+				<a href="index.php?aceptadas=true">Aceptar Cookies</a>
+			</div>
+  		<?php } ?>
+		<script src="./js/BusquedaSpotify.js" defer></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+		<script src="./js/star-rating.js"></script>
+		<script src="./js/script.js"></script>
+	</body>
 
 </html>
