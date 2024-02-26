@@ -84,7 +84,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 			}
 		}
 	</script> -->
-	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
+	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager"></video>
 
 		<header id="header">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
