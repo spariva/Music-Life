@@ -123,11 +123,6 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 				$playlists = array_slice($playlists, 0, 5); //elegimos cuantas mostrar
 			?> -->
-			<?php
-			$db = DbConnection::getInstance();
-
-			$urls = $db->getRandomUrls(4, 'spotify'); //meter esto en starrating pa q se suba etc
-			?>
 
 			<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
 			<div class="contenedor" id="recomendado">
@@ -143,38 +138,79 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						loading="lazy"></iframe>';
 				?> -->
 
-				<?php
-				foreach ($url as $urls) {
+				<!-- Este es el que molaria usar pero el DBConnection no va< ?php
+				echo 'hola';
+				$db = DbConnection::getInstance();
+				echo 'hola';
+
+				$urls = $db->getRandomUrls(4, 'spotify');
+				echo 'hola';
+				foreach ($urls as $url){
 					echo '<iframe style="border-radius:12px"
 						src="' . $url . '?utm_source=generator"
 						width="100%" height="152" frameBorder="0" allowfullscreen=""
 						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 						loading="lazy"></iframe>';
-				?>
+				}
+				echo 'hola';
+				?> -->
+				<?php
+				// Conexión a la base de datos
+				$host = 'localhost'; // Cambia esto a tu host
+				$db   = 'musicLifeDatabase'; // Cambia esto a tu base de datos
+				$user = 'musicLifeProd'; // Cambia esto a tu usuario
+				$pass = 'musicLifeProd1234'; // Cambia esto a tu contraseña
+				$charset = 'utf8mb4';
 
-				<div class="valoracionesBuscador"> //de alguna manera guardar aqui el src para subir la valoraciion al darle al boton o pillarla y ya ns
-					<div class="contenedorSoporteParaValoraciones w-100">
-						<div class="cuadrado botonDesplegable">Sin Valoración</div>
-						<div class="ratingDropdown dropdown" style="display: none;">
-							<div class="ratingBlock">
-								<div class="star-rating">
-									<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
-									<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
-									<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
-									<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
-									<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+
+				$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+				$opt = [
+					PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+					PDO::ATTR_EMULATE_PREPARES   => false,
+				];
+				$pdo = new PDO($dsn, $user, $pass, $opt);
+
+				// Consulta a la base de datos
+				$limit = 4;
+				$userName = 'spotify';
+				$consulta = $pdo->prepare("SELECT LINK FROM PLAYLIST WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+				$consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+				$consulta->execute();
+				$urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+
+
+				// Generar los iframes con las URLs seleccionadas
+				foreach ($urls as $url) {
+					echo '<iframe style="border-radius:12px"
+						src="' . $url . '?utm_source=generator"
+						width="100%" height="152" frameBorder="0" allowfullscreen=""
+						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+						loading="lazy"></iframe>';
+					?>
+
+					<div class="valoracionesBuscador"> <!--de alguna manera guardar aqui el src para subir la valoraciion al darle al boton o pillarla y ya ns-->
+						<div class="contenedorSoporteParaValoraciones w-100">
+							<div class="cuadrado botonDesplegable">Sin Valoración</div>
+							<div class="ratingDropdown dropdown" style="display: none;">
+								<div class="ratingBlock">
+									<input type="hidden" class="playlistId" value="<?php echo $url; ?>">
+									<div class="star-rating">
+										<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
+										<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
+										<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
+										<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
+										<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+									</div>
+									<p><textarea class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+									<p><button class="submit-button">Enviar</button></p>
+									<p class="rating-value"></p>
+									<p class="listaComentarios"></p>
 								</div>
-								<p></p><textarea class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
-								<p><button class="submit-button">Enviar</button></p>
-								<p class="rating-value"></p>
-								<p class="listaComentarios"></p>
 							</div>
 						</div>
 					</div>
-				</div>
-				<?php
-				}
-				?>
+					<?php } ?>
 			</div>
 
 

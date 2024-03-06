@@ -2,7 +2,7 @@
 INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('Sergio','email1@mail.es','1234');
 INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('Maki','email2@mail.es','1234');
 INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('Miguel','email3@mail.es','1234');
-INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('spotify','spotify@mail.es','1234');
+INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('Spotify','spotify@mail.es','1234');
 
 COMMIT;
 
@@ -19,10 +19,7 @@ COMMIT;
 -- COMMIT;
 
 -- Insert Comentarios
-INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Genial playlist', '000001', 1223456);
-INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Qué buena playlist', '000002', 1223457);
-INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Lo mejor que he escuchado en años.', '000003', 1223458);
-INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Ni fu nifa...', '000003', 1223458);
+
 COMMIT;
 
 -- Insert Canciones
@@ -32,22 +29,27 @@ COMMIT;
 --COMMIT;
 
 --estas seran las de por defecto del index
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX6bnzK9KPvrz", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX1LUyBs1uGpN", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4e5iLu", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4sWSpwq3LiO", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4dyzvuaRJ0n", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcF6B6QPhFDv", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX1lVhptIYRda", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX10zKzsJ2jva", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4JAvHpjipBk", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4E3UdUs7fUx", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4SBhb3fqCJd", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcZDD7cfEKhW", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6", "spotify");
-INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcRXFNfZr7Tp", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX6bnzK9KPvrz", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX1LUyBs1uGpN", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4e5iLu", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4sWSpwq3LiO", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4dyzvuaRJ0n", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcF6B6QPhFDv", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX1lVhptIYRda", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX10zKzsJ2jva", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4JAvHpjipBk", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4E3UdUs7fUx", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4SBhb3fqCJd", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcZDD7cfEKhW", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6", "spotify");
+INSERT INTO PLAYLIST VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcRXFNfZr7Tp", "spotify");
+
+INSERT INTO COMENTARIOS (COMENTARIO, AUTOR, LINK) VALUES ('Genial playlist', 'Sergio', 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J');
+INSERT INTO COMENTARIOS (COMENTARIO, AUTOR, LINK) VALUES ('Qué buena playlist', 'Maki', 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J');
+INSERT INTO COMENTARIOS (COMENTARIO, AUTOR, LINK) VALUES ('Qué buena playlist', 'Maki', 'https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ');
+INSERT INTO COMENTARIOS (COMENTARIO, AUTOR, LINK) VALUES ('Lo mejor que he escuchado en años.', 'Miguel', 'https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ');

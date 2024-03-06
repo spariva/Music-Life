@@ -89,9 +89,9 @@ class DbConnection
     }
 
     public function getRandomUrls($limit, $userName){
-        $consulta = $this->db->prepare("SELECT link FROM playlist WHERE userName = :userName ORDER BY RAND() LIMIT :limit");
-        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
-        $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
+        $limit = (int)$limit; // Asegurarse de que el límite es un entero
+        $consulta = $this->db->prepare("SELECT LINK FROM PLAYLIST WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
         $consulta->execute();
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
