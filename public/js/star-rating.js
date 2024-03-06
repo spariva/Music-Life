@@ -1,79 +1,71 @@
-function toggleRating() {
-    const ratingDropdown = document.getElementById('ratingDropdown');
-    if (ratingDropdown.style.display === 'none' || ratingDropdown.style.display === '') {
-        ratingDropdown.style.display = 'block';
-    } else {
-        ratingDropdown.style.display = 'none';
-    }
-}
+// Selecciona todos los bloques de valoración
+const valoraciones = document.querySelectorAll('.valoracionesBuscador');
 
-const stars = document.querySelectorAll('.star');
-const commentInput = document.getElementById('comment');
-const submitButton = document.getElementById('submit-button');
-const ratingValue = document.getElementById('rating-value');
-const botonDesplegable = document.getElementById('botonDesplegable');
-var sectorComentarios = document.getElementById('listaComentarios');
-const comment = commentInput.value;
+valoraciones.forEach(valoracion => {
+    const ratingDropdown = valoracion.querySelector('.ratingDropdown');
+    const stars = valoracion.querySelectorAll('.star');
+    const commentInput = valoracion.querySelector('.comment');
+    const submitButton = valoracion.querySelector('.submit-button');
+    const ratingValue = valoracion.querySelector('.rating-value');
+    const botonDesplegable = valoracion.querySelector('.botonDesplegable');
+    const sectorComentarios = valoracion.querySelector('.listaComentarios');
+    var selectedRating = null;
 
-var selectedRating = null;
-
-stars.forEach((star, index) => {
-    star.addEventListener('mouseover', () => {
-        //si el raton se posa en el objeto llamamos a la funcion highlitStar
-        highlightStars(index);
-    });
-
-    star.addEventListener('mouseout', () => {
-        resetStars();
-    });
-
-    star.addEventListener('click', () => {
-        selectedRating = index + 1;
-        updateRating();
-    });
-});
-
-function highlightStars(index) {
-    stars.forEach((star, i) => {
-        if (i <= index) {
-            //Añade la clase active a los elementos 
-            star.classList.add('active');
+    botonDesplegable.addEventListener('click', () => {
+        if (ratingDropdown.style.display === 'none' || ratingDropdown.style.display === '') {
+            ratingDropdown.style.display = 'block';
         } else {
+            ratingDropdown.style.display = 'none';
+        }
+    });
+
+    stars.forEach((star, index) => {
+        star.addEventListener('mouseover', () => {
+            highlightStars(index);
+        });
+
+        star.addEventListener('mouseout', resetStars);
+
+        star.addEventListener('click', () => {
+            selectedRating = index + 1;
+            updateRating();
+        });
+    });
+
+    function highlightStars(index) {
+        stars.forEach((star, i) => {
+            if (i <= index) {
+                star.classList.add('active');
+            } else {
+                star.classList.remove('active');
+            }
+        });
+    }
+
+    function resetStars() {
+        stars.forEach(star => {
             star.classList.remove('active');
-        }
-    });
-}
-
-function resetStars() {
-    stars.forEach(star => {
-        //O la elimina
-        star.classList.remove('active');
-    });
-}
-
-function updateRating() {
-    // Marcar la estrella marcada y las anteriores
-    stars.forEach((star, i) => {
-        if (i < selectedRating) {
-            star.src = './img/star/EstrellaLlena.png';
-        } else {
-            star.src = './img/star/EstrellaVacia.png';
-        }
-    });
-}
-
-submitButton.addEventListener('click', () => {
-    const comment = commentInput.value;
-    if (selectedRating !== null && comment.trim() !== '') {
-        // Guardamos la puntuacion y el comentario
-        ratingValue.textContent = ('¡Gracias por tu puntuación y comentario!');
-        botonDesplegable.textContent = selectedRating + "/5 " + '\u2605';
-        var textoComentario = comment.value;
-        sectorComentarios.textContent = textoComentario;
-    } else {
-        ratingValue.textContent = ('Por favor, selecciona una puntuación y escribe un comentario antes de enviar.');
+        });
     }
+
+    function updateRating() {
+        stars.forEach((star, i) => {
+            if (i < selectedRating) {
+                star.src = './img/star/EstrellaLlena.png';
+            } else {
+                star.src = './img/star/EstrellaVacia.png';
+            }
+        });
+    }
+
+    submitButton.addEventListener('click', () => {
+        const comment = commentInput.value;
+        if (selectedRating !== null && comment.trim() !== '') {
+            ratingValue.textContent = ('¡Gracias por tu puntuación y comentario!');
+            botonDesplegable.textContent = selectedRating + "/5 " + '\u2605';
+            sectorComentarios.textContent = comment;
+        } else {
+            ratingValue.textContent = ('Por favor, selecciona una puntuación y escribe un comentario antes de enviar.');
+        }
+    });
 });
-
-botonDesplegable.addEventListener('click', toggleRating);
-

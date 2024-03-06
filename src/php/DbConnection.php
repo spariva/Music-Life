@@ -87,4 +87,13 @@ class DbConnection
         $userPwd = $consulta->fetch(PDO::FETCH_NUM);
         return $userPwd;
     }
+
+    public function getRandomUrls($limit, $userName){
+        $consulta = $this->db->prepare("SELECT link FROM playlist WHERE userName = :userName ORDER BY RAND() LIMIT :limit");
+        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $urls;
+    }
 }

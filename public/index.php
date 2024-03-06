@@ -114,34 +114,67 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 
 		<div id="contenido">
+			<!-- < ?php
+				$json = file_get_contents('./json/playlistPorDefecto.json');
+
+				$playlists = json_decode($json, true);//Convertir el contenido del archivo JSON a un array en PHP
+
+				shuffle($playlists);
+
+				$playlists = array_slice($playlists, 0, 5); //elegimos cuantas mostrar
+			?> -->
+			<?php
+			$db = DbConnection::getInstance();
+
+			$urls = $db->getRandomUrls(4, 'spotify'); //meter esto en starrating pa q se suba etc
+			?>
+
 			<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
 			<div class="contenedor" id="recomendado">
 				<div id="apartado">Top Artistas 2023</div>
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX6bnzK9KPvrz?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1LUyBs1uGpN?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4e5iLu?utm_source=generator"
-					width="100%" height="152" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-					loading="lazy"></iframe>
+
+				<!-- < ?php
+				// 5. Generar los iframes con las URLs seleccionadas
+				foreach ($playlists as $playlist) {
+					echo '<iframe style="border-radius:12px"
+						src="' . $playlist . '?utm_source=generator"
+						width="100%" height="152" frameBorder="0" allowfullscreen=""
+						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+						loading="lazy"></iframe>';
+				?> -->
+
+				<?php
+				foreach ($urls as $url) {
+					echo '<iframe style="border-radius:12px"
+						src="' . $url . '?utm_source=generator"
+						width="100%" height="152" frameBorder="0" allowfullscreen=""
+						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+						loading="lazy"></iframe>';
+				?>
+
+				<div class="valoracionesBuscador"> //de alguna manera guardar aqui el src para subir la valoraciion al darle al boton o pillarla y ya ns
+					<div class="contenedorSoporteParaValoraciones w-100">
+						<div class="cuadrado botonDesplegable">Sin Valoración</div>
+						<div class="ratingDropdown dropdown" style="display: none;">
+							<div class="ratingBlock">
+								<div class="star-rating">
+									<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
+									<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
+									<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
+									<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
+									<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+								</div>
+								<p></p><textarea class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+								<p><button class="submit-button">Enviar</button></p>
+								<p class="rating-value"></p>
+								<p class="listaComentarios"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php
+				}
+				?>
 			</div>
 
 
@@ -157,6 +190,26 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								width="100%" height="152" frameborder="0" allowfullscreen=""
 								allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 								loading="lazy"></iframe>
+								<div class="valoracionesBuscador">
+								<div class="contenedorSoporteParaValoraciones w-100">
+									<div class="cuadrado botonDesplegable">Sin Valoración</div>
+									<div class="ratingDropdown dropdown" style="display: none;">
+										<div class="ratingBlock">
+											<div class="star-rating">
+												<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
+												<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
+												<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
+												<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
+												<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+											</div>
+											<p></p><textarea class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+											<p><button class="submit-button">Enviar</button></p>
+											<p class="rating-value"></p>
+											<p class="listaComentarios"></p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
