@@ -6,17 +6,17 @@ INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('spotify','spotify@mail.es','123
 
 COMMIT;
 
---INSERT PLAYLIST PRUEBA
-INSERT INTO PLAYLIST_PRUEBA VALUES (001,'DUA_LIPA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator');
-INSERT INTO PLAYLIST_PRUEBA VALUES (002,'ANA_MENA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO3Jtnqm?utm_source=generator');
-INSERT INTO PLAYLIST_PRUEBA VALUES (003,'BELEN_AGUILERA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO35iRfG?utm_source=generator');
+-- --INSERT PLAYLIST PRUEBA
+-- INSERT INTO PLAYLIST_PRUEBA VALUES (001,'DUA_LIPA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator');
+-- INSERT INTO PLAYLIST_PRUEBA VALUES (002,'ANA_MENA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO3Jtnqm?utm_source=generator');
+-- INSERT INTO PLAYLIST_PRUEBA VALUES (003,'BELEN_AGUILERA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO35iRfG?utm_source=generator');
 
--- Insert Playlists
-INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Top 50 Mundial', '000001');
-INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Top 50 España', '000002');
-INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Lunes de lluvia', '000003');
-INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Juernes fiestero', '000003');
-COMMIT;
+-- -- Insert Playlists
+-- INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Top 50 Mundial', '000001');
+-- INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Top 50 España', '000002');
+-- INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Lunes de lluvia', '000003');
+-- INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Juernes fiestero', '000003');
+-- COMMIT;
 
 -- Insert Comentarios
 INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Genial playlist', '000001', 1223456);

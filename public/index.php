@@ -144,7 +144,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				?> -->
 
 				<?php
-				foreach ($urls as $url) {
+				foreach ($url as $urls) {
 					echo '<iframe style="border-radius:12px"
 						src="' . $url . '?utm_source=generator"
 						width="100%" height="152" frameBorder="0" allowfullscreen=""
