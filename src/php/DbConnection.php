@@ -96,4 +96,27 @@ class DbConnection
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
     }
+
+    public function showAllPlaylists(){
+        $consulta = $this->db->prepare("SELECT LINK FROM PLAYLIST");
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $urls;
+    }
+
+    public function showUserPlaylists($userName){
+        $consulta = $this->db->prepare("SELECT LINK FROM PLAYLIST WHERE USER_NAME = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $urls;
+    }
+
+    public function showUserPlaylistsRandom($userName, $limit){
+        $consulta = $this->db->prepare("SELECT LINK FROM PLAYLIST WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $urls;
+    }
 }
