@@ -17,7 +17,7 @@ class DbConnection
 {
     private static $instance;
     private $db;
-    private const CONFIG_FILE = '../../config/db.json';
+    private const CONFIG_FILE = DOC_ROOT.'/config/db.json';
     private $config;
 
     private function __construct()

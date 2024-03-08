@@ -1,8 +1,6 @@
 <?php
-//require_once '../config/init.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-session_start();
+require_once '../config/init.php';
+
 
 //If there's a msg in the url, it's because the user tried to access the user page without logging in
 if (isset($_GET['msg'])) {

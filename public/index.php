@@ -1,5 +1,5 @@
 <?php
-require '../config/init.php';
+require_once '../config/init.php';
 
 //Gestion de la ventana flotante con el aviso sobre las cookies
 $mostrarWarning = true;

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../config/init.php';
 
 if (!isset($_SESSION['user'])) {
     $msg = "No hay usuario logueado";

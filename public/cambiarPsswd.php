@@ -1,6 +1,5 @@
 <?php
-session_start(); 
-include_once 'DbConnection.php';
+require_once '../config/init.php';
 
 $token = $_GET['token'];
 
