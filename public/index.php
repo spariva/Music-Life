@@ -156,30 +156,33 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				?> -->
 				<?php
 				// Conexión a la base de datos
-				$host = 'localhost'; // Cambia esto a tu host
-				$db   = 'musicLifeDatabase'; // Cambia esto a tu base de datos
-				$user = 'musicLifeProd'; // Cambia esto a tu usuario
-				$pass = 'musicLifeProd1234'; // Cambia esto a tu contraseña
-				$charset = 'utf8mb4';
+				// $host = 'localhost'; // Cambia esto a tu host
+				// $db   = 'musicLifeDatabase'; // Cambia esto a tu base de datos
+				// $user = 'musicLifeProd'; // Cambia esto a tu usuario
+				// $pass = 'musicLifeProd1234'; // Cambia esto a tu contraseña
+				// $charset = 'utf8mb4';
 
 
-				$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-				$opt = [
-					PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-					PDO::ATTR_EMULATE_PREPARES   => false,
-				];
-				$pdo = new PDO($dsn, $user, $pass, $opt);
+				// $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+				// $opt = [
+				// 	PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+				// 	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+				// 	PDO::ATTR_EMULATE_PREPARES   => false,
+				// ];
+				// $pdo = new PDO($dsn, $user, $pass, $opt);
+				
 
 				// Consulta a la base de datos
-				$limit = 4;
-				$userName = 'spotify';
-				$consulta = $pdo->prepare("SELECT LINK FROM PLAYLIST WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
-				$consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
-				$consulta->execute();
-				$urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
-
-
+				// $limit = 4;
+				// $userName = 'spotify';
+				// $consulta = $pdo->prepare("SELECT LINK FROM PLAYLIST WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+				// $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+				// $consulta->execute();
+				// $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+				
+				$pdo = DbConnection::getInstance();
+				// $urls = $pdo->showAllPlaylists();
+				$urls = $pdo->showAllPlaylistsRandom(4);
 				// Generar los iframes con las URLs seleccionadas
 				foreach ($urls as $url) {
 					echo '<iframe style="border-radius:12px"

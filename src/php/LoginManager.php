@@ -82,12 +82,6 @@ class LoginManager{
 
             return false;
         }
-
-        // if($userPwd['password'] != $this->userPassword){
-        //     $this->errors['userPassword'] = 'La contraseña no es válida.';
-        //     return false;
-        // }
-
         return true;
     }
 }

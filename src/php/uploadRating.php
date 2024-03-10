@@ -1,9 +1,5 @@
 <?php
-include_once '../config/init.php';
-
-class LoginManager {
-    // ... (existing code remains unchanged)
-}
+include_once '../../config/init.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userName = $_POST["userName"] ?? "";
@@ -37,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($userPassword, PASSWORD_DEFAULT);
 
     // Use the singleton to obtain a database instance
-    $db = Db::getInstance();
+    $mdb = DbConnection::getInstance();
+    $db = $mdb->getConnection();
 
     // Insert user data into the usuarios table
     $sql = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (:userName, :userMail, :hashedPassword)";
@@ -61,7 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["playlistId"]) && isset
     $rating = $_POST["rating"];
     $comment = $_POST["comment"] ?? null;
 
-    $db = DbConnection::getInstance();
+    $mdb = DbConnection::getInstance();
+    $db = $mdb->getConnection();
 
     // Insert rating data into the VALORACION table
     $sql = "INSERT INTO VALORACION (PLAYLIST_ID, USUARIO_ID, PUNTUACION, COMENTARIO) VALUES (:playlistId, :userId, :rating, :comment)";
@@ -74,6 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["playlistId"]) && isset
 
     $stmt->execute();
 
-    $db->closeConnection();
+    $mdb->closeConnection();
 }
 

@@ -1,6 +1,5 @@
 <?php
-session_start();
-include_once 'DbConnection.php';
+require_once '../../config/init.php';
 
 $CORREO = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
@@ -15,7 +14,7 @@ try {
     $db = DbConnection::getInstance();
     $conn = $db->getConnection();
 
-    $sql = 'SELECT * FROM USER WHERE EMAIL = :USERID';
+    $sql = 'SELECT * FROM user WHERE EMAIL = :USERID';
     $stmt = $conn->prepare($sql);
 
     $stmt->bindParam(':USERID', $CORREO, PDO::PARAM_STR); //ESTO FALTA OBTENER DEL FORMULARIO EL CORREO
@@ -25,14 +24,14 @@ try {
     if ($stmt->rowCount() > 0) { //Comprobamos si ese usuario existe, si no pues no seguimos
 
         try {
-            $sql = 'DELETE FROM TOKENS WHERE TIPO = "RECOVERY" AND USERID = :USERID';
+            $sql = 'DELETE FROM tokens WHERE TIPO = "RECOVERY" AND USERID = :USERID';
             $stmt = $conn->prepare($sql);
         
             $stmt->bindParam(':USERID', $CORREO, PDO::PARAM_STR); //ESTO FALTA OBTENER DEL FORMULARIO EL CORREO
                                     
             $stmt->execute();
         
-            $sql = "INSERT INTO TOKENS (TOKEN, USERID, EXPIRES,TIPO) VALUES(:TOKEN, :USERID, :EXPIRES, 'RECOVERY')";
+            $sql = "INSERT INTO tokens (TOKEN, USERID, EXPIRES,TIPO) VALUES(:TOKEN, :USERID, :EXPIRES, 'RECOVERY')";
             $stmt = $conn->prepare($sql);
         
             // Asignar valores a los parámetros

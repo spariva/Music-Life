@@ -1,6 +1,5 @@
 <?php
-include_once './Sanitizer.php';
-include_once './DbConnection.php';
+require_once '../../config/init.php';
 class SignUpManager
 {
     public $errors = [];
@@ -71,7 +70,7 @@ class SignUpManager
 
     public function checkMailExist($db): bool
     {   
-        $sql = "SELECT * FROM USER WHERE EMAIL = :EMAIL LIMIT 1";
+        $sql = "SELECT * FROM user WHERE EMAIL = :EMAIL LIMIT 1";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':EMAIL', $this->userMail, PDO::PARAM_STR);
         $stmt->execute();
@@ -102,7 +101,7 @@ class SignUpManager
     public function saveUser($db)
     {   
         $this->userPassword = password_hash($this->userPassword, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES (:NAME, :EMAIL, :PASSWORD)";
+        $sql = "INSERT INTO user (NAME, EMAIL, PASSWORD) VALUES (:NAME, :EMAIL, :PASSWORD)";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':NAME', $this->userName, PDO::PARAM_STR);
         $stmt->bindValue(':EMAIL', $this->userMail, PDO::PARAM_STR);

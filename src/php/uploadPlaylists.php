@@ -1,4 +1,6 @@
 <?php
+require_once '../../config/init.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_pl = $_POST["id_pl"]?? "";
     $playlistName = $_POST["playlistName"]?? "";
@@ -9,9 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } 
 
 
-    $db = DbConnection::getInstance();
+    $mdb = DbConnection::getInstance();
+    $db = $mdb->getConnection();
 
-    $sql = "INSERT INTO PLAYLIST (id_pl, nombre, creador_id) VALUES (:id_pl, :playlistName, :creator)";
+    $sql = "INSERT INTO playlist (id_pl, nombre, creador_id) VALUES (:id_pl, :playlistName, :creator)";
     $stmt = $db->prepare($sql);
     
     $stmt->bindValue(':id_pl', $id_pl, PDO::PARAM_STR);
@@ -20,9 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->execute();
 
-    $db->closeConnection();
+    $mdb->closeConnection();
 
-    header("Location: ../../public/usuario.php"); //cambiar el doc root a que sea public
+    header("Location: ../../public/usuario.php");
+    // header("Location: " . DOC_ROOT . "public/usuario.php");
     exit();
 }
 
