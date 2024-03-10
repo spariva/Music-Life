@@ -179,7 +179,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				// $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
 				// $consulta->execute();
 				// $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
-				
+
+				session_start();
 				$pdo = DbConnection::getInstance();
 				// $urls = $pdo->showAllPlaylists();
 				$urls = $pdo->showAllPlaylistsRandom(4);
@@ -190,14 +191,27 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						width="100%" height="152" frameBorder="0" allowfullscreen=""
 						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 						loading="lazy"></iframe>';
-					?>
 
-					<div class="valoracionesBuscador"> <!--de alguna manera guardar aqui el src para subir la valoraciion al darle al boton o pillarla y ya ns-->
+
+						$username = $_SESSION['username'];
+						$stmt = $pdo->prepare("SELECT * FROM rating WHERE LINK = ? AND USER_NAME = ?");
+						$stmt->execute([$url, $username]);
+						$rating = $stmt->fetch();
+
+						if ($rating) {
+							echo '<div class="valoracionExistente">';
+							echo '<p>Valoración: ' . $rating['SCORE'] . '</p>';
+							echo '<p>Comentario: ' . $rating['TEXT'] . '</p>';
+							echo '</div>';
+						} else {?>
+
+					<div class="valoracionesBuscador"> 
 						<div class="contenedorSoporteParaValoraciones w-100">
 							<div class="cuadrado botonDesplegable">Sin Valoración</div>
 							<div class="ratingDropdown dropdown" style="display: none;">
+							<form action="subirValoracion.php" method="post">
 								<div class="ratingBlock">
-									<input type="hidden" class="playlistId" value="<?php echo $url; ?>">
+									<input type="hidden" name="url" value="<?php echo $url; ?>">
 									<div class="star-rating">
 										<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
 										<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
@@ -205,15 +219,18 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 										<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
 										<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
 									</div>
-									<p><textarea class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
-									<p><button class="submit-button">Enviar</button></p>
-									<p class="rating-value"></p>
+									<p><textarea name="comment" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+									<input type="hidden" name="rating" class="rating-value">
+									<p><button type="submit" class="submit-button">Enviar</button></p>
 									<p class="listaComentarios"></p>
 								</div>
+							</form>
 							</div>
 						</div>
 					</div>
-					<?php } ?>
+					<?php 
+						}
+					} ?>
 			</div>
 
 
