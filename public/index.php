@@ -365,7 +365,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		</div>
 
 		<?php if($mostrarWarning==true) {?>
-			<div class="bloque" id="avisoCookies">
+			<div class="bloque" id="avisoc">
 				<b>Aviso de Cookies:</b>
 				Este sitio web utiliza cookies para mejorar la experiencia del usuario, analizar el tráfico y personalizar contenido. 
 				Al aceptar, consientes el uso de cookies. Puedes gestionarlas en la configuración del navegador. Utilizamos cookies esenciales, 
