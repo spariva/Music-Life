@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../config/init.php';
 
 if (!isset($_SESSION['user'])) {
     $msg = "No hay usuario logueado";
@@ -43,7 +43,7 @@ if (!isset($_SESSION['user'])) {
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../src/php/logout.php">Log out</a></li>
                         <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
                         <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
                         <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
@@ -60,7 +60,7 @@ if (!isset($_SESSION['user'])) {
                     <?= $_SESSION['user']; ?>
                 </h2>
                 <img src="./img/imagenPerfil.png" alt="usuario-imagen">
-                <div id="correo">correoelectronico@email.com</div>
+                <!-- <div id="correo">correoelectronico@email.com</div> -->
                 <div class="usuarioListasFavs">
                     <iframe style="border-radius:12px"
                         src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5trt9i14X7j?utm_source=generator&theme=0"

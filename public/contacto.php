@@ -1,19 +1,5 @@
 <?php
-
-require '../config/init.php';
-// require '../vendor/autoload.php'; // Carga las dependencias de PHPMailer, pero tengo duda de qué autoload usar.
-//Errores, validate data, sanitize data ¿?
-// if the user submited the form
-// if there are form errors
-//     fill errors array
-// else
-//     record data to database
-//     302 regirect, as it required by HTTP standard
-//     exit
-// if we have some errors
-// display errors
-// fill form field values
-// display the form
+require_once '../config/init.php';
 
 //Si le has dado a enviar y no hay errores:
 if (isset($_POST["enviar"]) && (empty($errores))) {

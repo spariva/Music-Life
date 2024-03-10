@@ -1,8 +1,6 @@
 <?php
-//require_once '../config/init.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-session_start();
+require_once '../config/init.php';
+
 
 //If there's a msg in the url, it's because the user tried to access the user page without logging in
 if (isset($_GET['msg'])) {
@@ -48,7 +46,7 @@ unset($_SESSION['userNameLogin']);
         <link rel="stylesheet" type="text/css" href="./css/navbar.css">
         <link rel="stylesheet" href="./css/login.css">
         <script src="./js/login.js" defer></script>
-        <script src="./js/script.js" defer></script>
+        <!-- <script src="./js/script.js" defer></script> -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>

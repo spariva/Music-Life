@@ -1,11 +1,7 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-//include '../config/init.php';
-include './DbConnection.php';
-include './SignUpManager.php';
+require_once '../../config/init.php';
 
-session_start();
+
 $mdb = DbConnection::getInstance();
 $db = $mdb->getConnection();
 

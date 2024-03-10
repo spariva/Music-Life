@@ -1,37 +1,14 @@
 -- Insert Usuarios
-INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('Sergio','email1@mail.es','1234');
-INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('Maki','email2@mail.es','1234');
-INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('Miguel','email3@mail.es','1234');
-INSERT INTO USER (NAME, EMAIL, PASSWORD) VALUES('spotify','spotify@mail.es','1234');
+INSERT INTO user (NAME, EMAIL, PASSWORD) VALUES('Sergio','email1@mail.es','1234');
+INSERT INTO user (NAME, EMAIL, PASSWORD) VALUES('M','email2@mail.es','1234');
+INSERT INTO user (NAME, EMAIL, PASSWORD) VALUES('Miguel','email3@mail.es','1234');
+INSERT INTO user (NAME, EMAIL, PASSWORD) VALUES('Spotify','spotify@mail.es','1234');
 
 COMMIT;
-
---INSERT PLAYLIST PRUEBA
-INSERT INTO PLAYLIST_PRUEBA VALUES (001,'DUA_LIPA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator');
-INSERT INTO PLAYLIST_PRUEBA VALUES (002,'ANA_MENA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO3Jtnqm?utm_source=generator');
-INSERT INTO PLAYLIST_PRUEBA VALUES (003,'BELEN_AGUILERA',123456,'https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO35iRfG?utm_source=generator');
-
--- Insert Playlists
-INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Top 50 Mundial', '000001');
-INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Top 50 España', '000002');
-INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Lunes de lluvia', '000003');
-INSERT INTO PLAYLISTS (ID_PL, NAME, CREADOR_ID) VALUES (123456, 'Juernes fiestero', '000003');
-COMMIT;
-
--- Insert Comentarios
-INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Genial playlist', '000001', 1223456);
-INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Qué buena playlist', '000002', 1223457);
-INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Lo mejor que he escuchado en años.', '000003', 1223458);
-INSERT INTO COMENTARIOS (COMENTARIO, USUARIO_ID, PLAYLIST_ID) VALUES ('Ni fu nifa...', '000003', 1223458);
-COMMIT;
-
--- Insert Canciones
---INSERT INTO CANCIONES (1223462, column2, column3) VALUES ('value1', 'value2', 'value3');
---INSERT INTO CANCIONES (1223463, column2, column3) VALUES ('value4', 'value5', 'value6');
---INSERT INTO CANCIONES (1223465, column2, column3) VALUES ('value7', 'value8', 'value9');
---COMMIT;
 
 --estas seran las de por defecto del index
+-- 
+
 INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J", "spotify");
 INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ", "spotify");
 INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX6bnzK9KPvrz", "spotify");
@@ -51,3 +28,12 @@ INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX
 INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcZDD7cfEKhW", "spotify");
 INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6", "spotify");
 INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/37i9dQZF1DXcRXFNfZr7Tp", "spotify");
+
+INSERT INTO rating (TEXT, USER_NAME, LINK, SCORE) VALUES ('Genial playlist', 'Sergio', 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J', 5);
+INSERT INTO rating (TEXT, USER_NAME, LINK, SCORE) VALUES ('Qué buena playlist', 'M', 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5KpP2LN299J', 4);
+INSERT INTO rating (TEXT, USER_NAME, LINK, SCORE) VALUES ('Cool', 'M', 'https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ', 3);
+INSERT INTO rating (TEXT, USER_NAME, LINK, SCORE) VALUES ('Lo mejor que he escuchado en años.', 'Miguel', 'https://open.spotify.com/embed/playlist/37i9dQZF1DX2apWzyECwyZ', 2);
+
+
+-- INSERT INTO playlist VALUES("https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ", "Maki");
+-- INSERT INTO rating (TEXT, USER_NAME, LINK, SCORE) VALUES ('Desgarradora', 'Maki', 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ', 5);

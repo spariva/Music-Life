@@ -17,7 +17,7 @@ class DbConnection
 {
     private static $instance;
     private $db;
-    private const CONFIG_FILE = '../../config/db.json';
+    private const CONFIG_FILE = DOC_ROOT.'/config/db.json';
     private $config;
 
     private function __construct()
@@ -68,30 +68,40 @@ class DbConnection
         $this->db = null;
     }
 
-    public function getUsernameById($userId)
-    {
-        $consulta = $this->db->prepare("SELECT NAME FROM USUARIO WHERE ID = userId LIMIT 1");
-
-        $consulta->bindParam(":userId", $userId, PDO::PARAM_INT);
-
-        $consulta->execute();
-        $data = $consulta->fetch(PDO::FETCH_NUM);
-        return $data[0];
-    }
-
-    public function getUserPassword($userName)
-    {
-        $consulta = $this->db->prepare("SELECT PASSWORD FROM USER WHERE Nombre=:userName");
-        $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
-        $consulta->execute();
-        $userPwd = $consulta->fetch(PDO::FETCH_NUM);
-        return $userPwd;
-    }
-
     public function getRandomUrls($limit, $userName){
-        $consulta = $this->db->prepare("SELECT link FROM playlist WHERE userName = :userName ORDER BY RAND() LIMIT :limit");
-        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
-        $consulta->bindParam(":userName", $userName, PDO::PARAM_STR);
+        $limit = (int)$limit; // Asegurarse de que el límite es un entero
+        $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $urls;
+    }
+
+    public function showAllPlaylists(){
+        $consulta = $this->db->prepare("SELECT LINK FROM playlist");
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $urls;
+    }
+
+    public function showUserPlaylists($userName){
+        $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $urls;
+    }
+
+    public function showUserPlaylistsRandom($userName, $limit){
+        $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $urls;
+    }
+
+    public function showAllPlaylistsRandom($limit){
+        $consulta = $this->db->prepare("SELECT LINK FROM playlist ORDER BY RAND() LIMIT $limit");
         $consulta->execute();
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
