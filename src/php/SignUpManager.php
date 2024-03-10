@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/init.php';
+include_once '../../config/init.php';
 class SignUpManager
 {
     public $errors = [];

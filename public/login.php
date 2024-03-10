@@ -95,7 +95,7 @@ unset($_SESSION['userNameLogin']);
         <div id="ubicador">
             <div class="contenedor">
                 <span class="contenedor__efectos"></span>
-                <form id="inicioSesion" action="../src/php/logIn.inc.php" method="POST">
+                <form id="inicioSesion" action="./logIn.inc.php" method="POST">
                     <h2 class="formulario__titulo">Iniciar sesión</h2>
                     <div class="inputBox">
                         <input type="text" placeholder="Usuario" value="<?= htmlspecialchars($userNameLogin)?>" name="userName" required>
@@ -125,7 +125,7 @@ unset($_SESSION['userNameLogin']);
                     </div>
                 </form>
 
-                <form id="registro" action="../src/php/signUp.inc.php" method="POST">
+                <form id="registro" action="./signUp.inc.php" method="POST">
                     <h2 class="formulario__titulo">Registro</h2>
                     <div class="inputBox">
                         <input type="text" placeholder="Nombre de usuario" name="userName"

@@ -106,4 +106,13 @@ class DbConnection
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
     }
+
+    public function showUserRatings($userName, $limit){
+        $consulta = $this->db->prepare("SELECT * FROM rating WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $ratings = $consulta->fetchAll(PDO::FETCH_COLUMN);
+        return $ratings;
+    }
+
 }
