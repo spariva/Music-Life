@@ -1,18 +1,5 @@
 <?php
 
-//require_once __DIR__ . '/vendor/autoload.php'; // Path may vary based on your project structure
-
-//$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-//$dotenv->load();
-
-// $dbHost = $_ENV['DB_HOST'];
-// $dbUsername = $_ENV['DB_USERNAME'];
-// $dbPassword = $_ENV['DB_PASSWORD'];
-// $dbDatabase = $_ENV['DB_DATABASE'];
-// $dbDialect = $_ENV['DB_DIALECT'];
-// $dbSeederStorage = $_ENV['DB_SEEDER_STORAGE'];
-// $dbCharset = $_ENV['DB_CHARSET'];
-
 class DbConnection
 {
     private static $instance;
@@ -90,6 +77,40 @@ class DbConnection
         $consulta->execute();
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
+    }
+
+    public function showUserRatings($userName, $url){
+        $consulta = $this->db->prepare("SELECT * FROM rating WHERE USER_NAME = :USERNAME AND LINK = :URL");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->bindParam(":URL", $url, PDO::PARAM_STR);
+        $consulta->execute();
+        $rating = $consulta->fetch(PDO::FETCH_ASSOC);
+        return $rating;
+    }
+
+    public function showUserRatingsRandom($userName, $limit){
+        $consulta = $this->db->prepare("SELECT * FROM rating WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $ratings = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $ratings;
+    }
+
+    public function showUserRatingsAllRandom($limit){
+        $consulta = $this->db->prepare("SELECT * FROM rating ORDER BY RAND() LIMIT :limit");
+        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $consulta->execute();
+        $ratings = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $ratings;
+    }
+
+    public function showUserPlaylistRatings($username, $limit){
+        $consulta = $this->db->prepare("SELECT r.* FROM rating r INNER JOIN playlist p ON r.LINK = p.LINK WHERE p.USER_NAME = :username ORDER BY RAND() LIMIT :limit");
+        $consulta->bindParam(":username", $username, PDO::PARAM_STR);
+        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $consulta->execute();
+        $ratings = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $ratings;
     }
 
     public function showUserPlaylistsRandom($userName, $limit){

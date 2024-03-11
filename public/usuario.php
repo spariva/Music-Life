@@ -61,48 +61,64 @@ if (!isset($_SESSION['user'])) {
                 </h2>
                 <img src="./img/imagenPerfil.png" alt="usuario-imagen">
                 <!-- <div id="correo">correoelectronico@email.com</div> -->
-                <div class="usuarioListasFavs">
-                    <iframe style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5trt9i14X7j?utm_source=generator&theme=0"
-                        width="100%" height="152" frameBorder="0" allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                    <iframe style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/37i9dQZF1EIY4GfKsEmuO0?utm_source=generator"
-                        width="100%" height="152" frameBorder="0" allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                </div>
             </div>
 
             <div class="listas">
                 <div class="valoraciones">
-                    <h2>VALORACIONES</h2>
-                    <div class="valoracion" id="val1">
-                        <p><b>This is Lola Indigo: 5 estrellas</b> La mejor playlist del mundo, me ha encantado</p>
-                    </div>
-                    <div class="valoracion" id="val2">
-                        <p><b>Sand + Maksocrames: 4 estrellas</b> La escucho sin
-                            parar</p>
-                        </p>
-                    </div>
-                    <div class="valoracion" id="val3">
-                        <p><b>Pain: 3 estrellas</b> Tiene canciones geniales pero otras tengo que saltarlas </p>
-                        </p>
-                    </div>
+                    <h2>Mis valoraciones</h2>
+								<?php
+								$username = $_SESSION['user'];
+								$pdo = DbConnection::getInstance();
+								$ratings = $pdo->showUserRatingsRandom($username, 3);
+								$active = 'active';
 
+								if ($ratings) {
+									foreach ($ratings as $rating) {
+										echo '<div class="valoracion ' . $active . '">';
+										echo '<iframe style="border-radius:12px"
+											src="' . $rating['LINK'] . '?utm_source=generator"
+											width="100%" height="152" frameBorder="0" allowfullscreen=""
+											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+											loading="lazy"></iframe>';
+										echo '<div id="verValoracion" class="valoracionExistente">';
+										echo '<p>' . $rating['SCORE'] . '/5</p>';
+										echo '<p>' . $rating['TEXT'] . '</p>';
+										echo '</div>';
+										echo '</div>';
+										$active = '';
+									}
+								} else {
+									echo 'Todavia no tienes valoraciones, empieza ya!';
+								}
+								?>
                 </div>
                 <div class="musica">
-                    <iframe style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1QmCJj?utm_source=generator"
-                        width="100%" height="352" frameBorder="0" allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                    <iframe style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/159xmAdSIVlkemrogVpts1?utm_source=generator"
-                        width="100%" height="352" frameBorder="0" allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
+                <h2>Valoraciones a mis Playlist</h2>
+								<?php
+								$username = $_SESSION['user'];
+								$pdo2 = DbConnection::getInstance();
+								$ratings = $pdo2->showUserPlaylistRatings($username, 3);
+								$active = 'active';
+
+								if ($ratings) {
+									foreach ($ratings as $rating) {
+										echo '<div class="valoracion ' . $active . '">';
+										echo '<iframe style="border-radius:12px"
+											src="' . $rating['LINK'] . '?utm_source=generator"
+											width="100%" height="152" frameBorder="0" allowfullscreen=""
+											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+											loading="lazy"></iframe>';
+										echo '<div id="verValoracion" class="valoracionExistente">';
+										echo '<p><b>' . $rating['USER_NAME'] . '</b> - ' . $rating['SCORE'] . '/5</p>';
+										echo '<p>' . $rating['TEXT'] . '</p>';
+										echo '</div>';
+										echo '</div>';
+										$active = '';
+									}
+								} else {
+									echo 'Todavia nadie ha valorado tus playlist!';
+								}
+								?>
                 </div>
             </div>
         </div>
