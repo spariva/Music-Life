@@ -1,14 +1,27 @@
 <?php
 require_once '../../config/init.php';
-session_start();
+
+echo $_POST['url']. '// ';
+echo $_POST['rating']. '// ';
+echo $_POST['comment']. '// ';
+echo $_POST['username']. '// ';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $url = $_POST['url'];
     $rating = $_POST['rating'];
     $comment = $_POST['comment'];
-    $username = $_SESSION['username']; 
+    $username = $_POST['username']; 
 
-    $pdo = DbConnection::getInstance();
-    $stmt = $pdo->prepare("INSERT INTO rating (TEXT, USER_NAME, LINK, SCORE, DATE) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)");
-    $stmt->execute([$comment, $username, $url, $rating]);
+    $db = DbConnection::getInstance()->getConnection();
+    $stmt = $db->prepare("INSERT INTO rating (TEXT, USER_NAME, LINK, SCORE) VALUES (?, ?, ?, ?)");
+    $result = $stmt->execute([$comment, $username, $url, $rating]);
+
+    if ($result) {
+        // Redirect to index.php on success
+        header("Location: /public/index.php?mensaje=Valoración añadida correctamente");
+        exit();
+    } else {
+        // Echo error message on failure
+        echo "Error: " . $stmt->errorInfo()[2];
+    }
 }

@@ -114,73 +114,21 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 
 		<div id="contenido">
-			<!-- < ?php
-				$json = file_get_contents('./json/playlistPorDefecto.json');
-
-				$playlists = json_decode($json, true);//Convertir el contenido del archivo JSON a un array en PHP
-
-				shuffle($playlists);
-
-				$playlists = array_slice($playlists, 0, 5); //elegimos cuantas mostrar
-			?> -->
-
-			<!-- https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator -->
-			<div class="contenedor" id="recomendado">
-				<div id="apartado">Top Artistas 2023</div>
-
-				<!-- < ?php
-				// 5. Generar los iframes con las URLs seleccionadas
-				foreach ($playlists as $playlist) {
-					echo '<iframe style="border-radius:12px"
-						src="' . $playlist . '?utm_source=generator"
-						width="100%" height="152" frameBorder="0" allowfullscreen=""
-						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-						loading="lazy"></iframe>';
-				?> -->
-
-				<!-- Este es el que molaria usar pero el DBConnection no va< ?php
-				echo 'hola';
-				$db = DbConnection::getInstance();
-				echo 'hola';
-
-				$urls = $db->getRandomUrls(4, 'spotify');
-				echo 'hola';
-				foreach ($urls as $url){
-					echo '<iframe style="border-radius:12px"
-						src="' . $url . '?utm_source=generator"
-						width="100%" height="152" frameBorder="0" allowfullscreen=""
-						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-						loading="lazy"></iframe>';
-				}
-				echo 'hola';
-				?> -->
+			<div id="mensaje">
 				<?php
-				// Conexión a la base de datos
-				// $host = 'localhost'; // Cambia esto a tu host
-				// $db   = 'musicLifeDatabase'; // Cambia esto a tu base de datos
-				// $user = 'musicLifeProd'; // Cambia esto a tu usuario
-				// $pass = 'musicLifeProd1234'; // Cambia esto a tu contraseña
-				// $charset = 'utf8mb4';
+				if (isset($_GET['mensaje'])) {
+					echo $_GET['mensaje'];
+				}
+				?></div>
+				<script>
+				setTimeout(function() {
+					document.getElementById('mensaje').style.display = 'none';
+				}, 3000);
+			</script>
+			<div class="contenedor" id="recomendado">
+				<div id="apartado">Recomendados</div>
+				<?php
 
-
-				// $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-				// $opt = [
-				// 	PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-				// 	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-				// 	PDO::ATTR_EMULATE_PREPARES   => false,
-				// ];
-				// $pdo = new PDO($dsn, $user, $pass, $opt);
-				
-
-				// Consulta a la base de datos
-				// $limit = 4;
-				// $userName = 'spotify';
-				// $consulta = $pdo->prepare("SELECT LINK FROM PLAYLIST WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
-				// $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
-				// $consulta->execute();
-				// $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
-
-				session_start();
 				$pdo = DbConnection::getInstance();
 				// $urls = $pdo->showAllPlaylists();
 				$urls = $pdo->showAllPlaylistsRandom(4);
@@ -192,25 +140,25 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 						loading="lazy"></iframe>';
 
-
-						$username = $_SESSION['username'];
-						$stmt = $pdo->prepare("SELECT * FROM rating WHERE LINK = ? AND USER_NAME = ?");
-						$stmt->execute([$url, $username]);
-						$rating = $stmt->fetch();
-
-						if ($rating) {
-							echo '<div class="valoracionExistente">';
-							echo '<p>Valoración: ' . $rating['SCORE'] . '</p>';
-							echo '<p>Comentario: ' . $rating['TEXT'] . '</p>';
-							echo '</div>';
-						} else {?>
+					$username = $_SESSION['user'];
+					if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
+						$pdo2 = DbConnection::getInstance();
+						$rating = $pdo2->showUserRatings($username, $url);
+	
+							if ($rating) {
+								echo '<div class="valoracionExistente">';
+								echo '<p>' . $rating['SCORE'] . '/5 ⭐</p>';
+								echo '</div>';
+							} else {
+					?>
 
 					<div class="valoracionesBuscador"> 
 						<div class="contenedorSoporteParaValoraciones w-100">
 							<div class="cuadrado botonDesplegable">Sin Valoración</div>
 							<div class="ratingDropdown dropdown" style="display: none;">
-							<form action="subirValoracion.php" method="post">
+							<form action="../src/php/subirValoracion.php" method="post">
 								<div class="ratingBlock">
+									<input type="hidden" name="username" value="<?php echo $username; ?>">
 									<input type="hidden" name="url" value="<?php echo $url; ?>">
 									<div class="star-rating">
 										<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
@@ -230,6 +178,11 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 					</div>
 					<?php 
 						}
+					}else{
+						echo '<div class="valoracionExistente">';
+						echo '<p>Debes estar logueado para valorar</p>';
+						echo '</div>';
+					}
 					} ?>
 			</div>
 
@@ -238,11 +191,18 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				<div id="buscador">
 					<div id="lupaBuscador">
 						<div id="barraBusqueda" class="barraBusqueda">
-							<input type="text" id="nombrePlaylist" class="inputBuscador"
-								placeholder="Introduzca la ruta embedida del álbum..." value="">
-							<button id="botonBuscar">Buscar</button>
+							<form id="buscador2" action="../src/php/anadirPlaylist.php" method="post">
+								<input type="hidden" name="username" value="<?php echo $username; ?>">
+								<input type="text" id="urlPlaylist" class="inputBuscador"
+								placeholder="Introduce la ruta embedida del álbum..." name="urlPlaylist">
+								<button id="botonBuscar">Añadir</button>
+							</form>
 							<iframe id="iframeBusqueda" style="border-radius:12px"
-								src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator"
+								src="<?php if(isset($_GET['playlist'])){
+									echo $_GET['playlist'];
+								}else{
+									echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
+								}    ?>"
 								width="100%" height="152" frameborder="0" allowfullscreen=""
 								allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 								loading="lazy"></iframe>
@@ -250,7 +210,14 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								<div class="contenedorSoporteParaValoraciones w-100">
 									<div class="cuadrado botonDesplegable">Sin Valoración</div>
 									<div class="ratingDropdown dropdown" style="display: none;">
+											<form action="../src/php/subirValoracion.php" method="post">
 										<div class="ratingBlock">
+											<input type="hidden" name="username" value="<?php echo $_SESSION['user']; ?>">
+											<input type="hidden" name="url" value="<?php if(isset($_GET['playlist'])){
+												echo $_GET['playlist'];
+											}else{
+												echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
+											}    ?>">
 											<div class="star-rating">
 												<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
 												<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
@@ -258,11 +225,12 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 												<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
 												<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
 											</div>
-											<p></p><textarea class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
-											<p><button class="submit-button">Enviar</button></p>
-											<p class="rating-value"></p>
+											<p><textarea name="comment" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+											<input type="hidden" name="rating" class="rating-value">
+											<p><button type="submit" class="submit-button">Enviar</button></p>
 											<p class="listaComentarios"></p>
 										</div>
+									</form>
 									</div>
 								</div>
 							</div>
@@ -270,29 +238,43 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 					</div>
 
 					<div id="valoracionesBuscador">
-						<div class="contenedorSoporteParaValoraciones w-100">
-							<div class="cuadrado" id="botonDesplegable">Sin Valoración</div>
-							<div id="ratingDropdown" class="dropdown" style="display: none;">
-								<div class="ratingBlock">
-									<div class="star-rating">
-										<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png"
-											alt="Estrella 1">
-										<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png"
-											alt="Estrella 2">
-										<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png"
-											alt="Estrella 3">
-										<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png"
-											alt="Estrella 4">
-										<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png"
-											alt="Estrella 5">
-									</div>
-									<p></p><textarea id="comment"
-										placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
-									<p><button id="submit-button">Enviar</button></p>
-									<p id="rating-value"></p>
-									<p id="listaComentarios"></p>
-								</div>
+					<div id="apartado">Mis Valoraciones</div>
+						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<?php
+								$username = $_SESSION['user'];
+								$pdo3 = DbConnection::getInstance();
+								$ratings = $pdo3->showUserRatingsRandom($username, 5);
+								$active = 'active';
+
+								if ($ratings) {
+									foreach ($ratings as $rating) {
+										echo '<div class="carousel-item ' . $active . '">';
+										echo '<iframe style="border-radius:12px"
+											src="' . $rating['LINK'] . '?utm_source=generator"
+											width="100%" height="152" frameBorder="0" allowfullscreen=""
+											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+											loading="lazy"></iframe>';
+										echo '<div id="verValoracion" class="valoracionExistente">';
+										echo '<p>' . $rating['SCORE'] . '/5</p>';
+										echo '<p>' . $rating['TEXT'] . '</p>';
+										echo '</div>';
+										echo '</div>';
+										$active = '';
+									}
+								} else {
+									echo '<p>Todavia no tienes valoraciones, empieza ya!</p>';
+								}
+								?>
 							</div>
+							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -335,46 +317,45 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						</a>
 					</div>
 				</div>
-
+				
 				<div class="contenedor" id="valoraciones">
-					<div id="valoracionesListas">
-						<div id="apartado">Valoraciones</div>
-						<div id="iframeCarouselValoraciones" class="carousel slide" data-ride="carousel">
+				<div id="apartado">Valoraciones globales</div>
+
+					<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<iframe style="border-radius:12px"
-										src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3fRquEp6m8D?utm_source=generator"
-										width="100%" height="152" frameBorder="0" allowfullscreen=""
-										allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-										loading="lazy"></iframe>
-								</div>
-								<div class="carousel-item">
-									<iframe style="border-radius:12px"
-										src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1PfYnYcpw8w?utm_source=generator"
-										width="100%" height="152" frameBorder="0" allowfullscreen=""
-										allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-										loading="lazy"></iframe>
-								</div>
+								<?php
+								$pdo4 = DbConnection::getInstance();
+								$ratings = $pdo4->showUserRatingsAllRandom(5);
+								$active = 'active';
+
+								if ($ratings) {
+									foreach ($ratings as $rating) {
+										echo '<div class="carousel-item ' . $active . '">';
+										echo '<iframe style="border-radius:12px"
+											src="' . $rating['LINK'] . '?utm_source=generator"
+											width="100%" height="352" frameBorder="0" allowfullscreen=""
+											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+											loading="lazy"></iframe>';
+										echo '<div id="verValoracion" class="valoracionExistente">';
+										echo '<p><b>' . $rating['USER_NAME'] . '</b> - ' . $rating['SCORE'] . '/5</p>';
+										echo '<p>' . $rating['TEXT'] . '</p>';
+										echo '</div>';
+										echo '</div>';
+										$active = '';
+									}
+								} else {
+									echo '<p>Todavia no tienes valoraciones, empieza ya!</p>';
+								}
+								?>
 							</div>
-							<a class="carousel-control-prev" href="#iframeCarouselValoraciones" role="button"
-								data-slide="prev">
+							<a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
 								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Anterior</span>
+								<span class="sr-only">Previous</span>
 							</a>
-							<a class="carousel-control-next" href="#iframeCarouselValoraciones" role="button"
-								data-slide="next">
+							<a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
 								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Siguiente</span>
+								<span class="sr-only">Next</span>
 							</a>
-						</div>
-					</div>
-					<div id="valoracionesValoraciones">
-						<div id="textoValoraciones">5 estrellas: (Sergio) Me ha encantado <br> 3 estrellas: (Lu) No esta
-							mal pero no me encanta
-							<br>4 estrellas: (Ana) Muy bueno, ¡me sorprendió gratamente!
-							<br>3 estrellas: (Carlos) Aceptable, cumple su función pero esperaba más.
-							<br>5 estrellas: (Maki) ¡Excelente! Superó mis expectativas.
-							<br>2 estrellas: (Juan) No me convenció del todo, hay aspectos que podrían mejorar.
 						</div>
 					</div>
 				</div>

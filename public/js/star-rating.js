@@ -49,6 +49,7 @@ valoraciones.forEach(valoracion => {
     }
 
     function updateRating() {
+        ratingValue.value = selectedRating;
         stars.forEach((star, i) => {
             if (i < selectedRating) {
                 star.src = './img/star/EstrellaLlena.png';

@@ -61,7 +61,7 @@ body {
   grid-area: listas;
   display: grid;
   grid-template-areas: "valoraciones musica";
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 80px;
   text-align: center;
   color: black;
@@ -77,20 +77,16 @@ body {
 .valoracion {
   width: 100%;
   /* Hacer que la valoración ocupe todo el ancho disponible en su área */
-  height: 200px;
-  margin: 20px;
-  border-radius: 200px;
+  margin: 10px;
+  border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.211);
-  padding: 80px;
+  padding: 10px;
 }
 
 .musica {
   grid-area: musica;
 }
 
-.musica iframe {
-  margin: 10px;
-}
 
 @media screen and (max-width: 1200px) {
 
@@ -145,19 +141,14 @@ body {
   .valoracion {
     width: 100%;
     /* Hacer que la valoración ocupe todo el ancho disponible en su área */
-    height: 200px;
-    margin: 20px;
-    border-radius: 200px;
+    margin: 10px;
+    border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.211);
-    padding: 80px;
+    padding: 10px;
   }
 
   .musica {
     grid-area: musica;
-  }
-
-  .musica iframe {
-    margin: 10px;
   }
 
 }

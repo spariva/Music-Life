@@ -36,24 +36,20 @@ const formaSpotify = document.getElementsByClassName('formaSpotify');
 var textoContacto = document.getElementsByClassName('textoContacto');
 var textoSpotify = document.getElementsByClassName('textoSpotify');
 var apartado = document.querySelectorAll('#apartado');
+var textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, a, span, input, form, div');
 
 
 function setModoOnLoad() {
-
     var modoOscuro = getCookie('modoOscuro');
-
-    // Obtener la ruta de la página actual
     var ruta = window.location.pathname;
     var pagina = ruta.substring(ruta.lastIndexOf('/') + 1);
 
     if (modoOscuro === 'true') {
-
         if (pagina === 'spotify.html') {
-
             videoFondo.src = './img/FondoSpotifyOscuro.mp4';
             textoEnlaceModoOscuro.textContent = "Modo Claro";
             for (var i = 0; i < apartado.length; i++) {
-                apartado[i].style.color = 'black';
+                apartado[i].style.color = 'white';
             }
             for (var i = 0; i < elementosNavbar.length; i++) {
                 elementosNavbar[i].style.color = 'white';
@@ -61,19 +57,15 @@ function setModoOnLoad() {
             for (var i = 0; i < textoSpotify.length; i++) {
                 textoSpotify[i].style.color = 'white';
             }
-
             for (var i = 0; i < formaSpotify.length; i++) {
                 formaSpotify[i].style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
             }
-
         } else {
-
             videoFondo.src = './img/FondoIndexOscuro.mp4';
             textoEnlaceModoOscuro.textContent = "Modo Claro";
             for (var i = 0; i < apartado.length; i++) {
                 apartado[i].style.color = 'white';
             }
-            // navbar.style.background = 'white';
             for (var i = 0; i < elementosNavbar.length; i++) {
                 elementosNavbar[i].style.color = 'white';
             }
@@ -82,10 +74,11 @@ function setModoOnLoad() {
                 textoContacto[i].style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
             }
         }
-
+        for (var i = 0; i < textElements.length; i++) {
+            textElements[i].style.color = 'white';
+        }
     } else {
         if (pagina === 'spotify.html') {
-
             videoFondo.src = './img/FondoSpotifyClaro.mp4';
             textoEnlaceModoOscuro.textContent = "Modo Oscuro";
             for (var i = 0; i < elementosNavbar.length; i++) {
@@ -94,16 +87,12 @@ function setModoOnLoad() {
             for (var i = 0; i < textoSpotify.length; i++) {
                 textoSpotify[i].style.color = 'black';
             }
-
             for (var i = 0; i < formaSpotify.length; i++) {
                 formaSpotify[i].style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
             }
-
-        }else{
-
+        } else {
             videoFondo.src = './img/FondoIndexClaro.mp4';
             textoEnlaceModoOscuro.textContent = "Modo Oscuro";
-            // navbar.style.background = 'black';
             for (var i = 0; i < elementosNavbar.length; i++) {
                 elementosNavbar[i].style.color = 'black';
             }
@@ -111,12 +100,11 @@ function setModoOnLoad() {
                 textoContacto[i].style.color = 'black';
                 textoContacto[i].style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
             }
-
         }
-
+        for (var i = 0; i < textElements.length; i++) {
+            textElements[i].style.color = 'black';
+        }
     }
-
 }
 
-
-window.onload = setModoOnLoad; //Cada vez que se cargue una pagina se comprobara
+window.onload = setModoOnLoad;

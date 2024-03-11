@@ -94,3 +94,32 @@ video {
   }
 
 }
+
+.valoracionExistente{
+  text-align: center;
+}
+
+#valoracionesBuscador{
+  text-align: center;
+}
+
+#verValoracion{
+  padding: 10px;
+  text-align: center;
+}
+
+#botonBuscar{
+  padding: 10px;
+}
+
+#mensaje{
+  text-align: center;
+  z-index: 100;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
