@@ -158,8 +158,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							<div class="ratingDropdown dropdown" style="display: none;">
 							<form action="./subirValoracion.php" method="post">
 								<div class="ratingBlock">
-									<input type="hidden" name="username" value="<?php echo $username; ?>">
-									<input type="hidden" name="url" value="<?php echo $url; ?>">
+									<input type="hidden" name="username" value="<?php echo $username; ?>" required>
+									<input type="hidden" name="url" value="<?php echo $url; ?>" required>
 									<div class="star-rating">
 										<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
 										<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
@@ -168,7 +168,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 										<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
 									</div>
 									<p><textarea name="comment" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
-									<input type="hidden" name="rating" class="rating-value">
+									<input type="hidden" name="rating" class="rating-value" required>
 									<p><button type="submit" class="submit-button">Enviar</button></p>
 									<p class="listaComentarios"></p>
 								</div>

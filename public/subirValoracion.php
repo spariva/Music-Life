@@ -12,6 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $comment = $_POST['comment'];
     $username = $_POST['username']; 
 
+    if (empty($username) || empty($url) || empty($rating)) {
+        // Handle the error here. For example, you can redirect back with an error message.
+        header("Location: ./index.php?mensaje=Debes rellenar todos los campos");
+        exit();
+    }
+
     $db = DbConnection::getInstance()->getConnection();
     $stmt = $db->prepare("INSERT INTO rating (TEXT, USER_NAME, LINK, SCORE) VALUES (?, ?, ?, ?)");
     $result = $stmt->execute([$comment, $username, $url, $rating]);
