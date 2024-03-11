@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/init.php';
+require_once '../config/init.php';
 
 echo $_POST['url']. '// ';
 echo $_POST['rating']. '// ';
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result) {
         // Redirect to index.php on success
-        header("Location: /public/index.php?mensaje=Valoración añadida correctamente");
+        header("Location: ./index.php?mensaje=Valoración añadida correctamente");
         exit();
     } else {
         // Echo error message on failure

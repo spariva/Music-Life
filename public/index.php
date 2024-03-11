@@ -156,7 +156,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						<div class="contenedorSoporteParaValoraciones w-100">
 							<div class="cuadrado botonDesplegable">Sin Valoración</div>
 							<div class="ratingDropdown dropdown" style="display: none;">
-							<form action="../src/php/subirValoracion.php" method="post">
+							<form action="./subirValoracion.php" method="post">
 								<div class="ratingBlock">
 									<input type="hidden" name="username" value="<?php echo $username; ?>">
 									<input type="hidden" name="url" value="<?php echo $url; ?>">
@@ -191,7 +191,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				<div id="buscador">
 					<div id="lupaBuscador">
 						<div id="barraBusqueda" class="barraBusqueda">
-							<form id="buscador2" action="../src/php/anadirPlaylist.php" method="post">
+							<form id="buscador2" action="./anadirPlaylist.php" method="post">
 								<input type="hidden" name="username" value="<?php echo $username; ?>">
 								<input type="text" id="urlPlaylist" class="inputBuscador"
 								placeholder="Introduce la ruta embedida del álbum..." name="urlPlaylist">
@@ -210,7 +210,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								<div class="contenedorSoporteParaValoraciones w-100">
 									<div class="cuadrado botonDesplegable">Sin Valoración</div>
 									<div class="ratingDropdown dropdown" style="display: none;">
-											<form action="../src/php/subirValoracion.php" method="post">
+											<form action="./subirValoracion.php" method="post">
 										<div class="ratingBlock">
 											<input type="hidden" name="username" value="<?php echo $_SESSION['user']; ?>">
 											<input type="hidden" name="url" value="<?php if(isset($_GET['playlist'])){
