@@ -154,7 +154,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 					<div class="valoracionesBuscador"> 
 						<div class="contenedorSoporteParaValoraciones w-100">
-							<div class="cuadrado botonDesplegable">Sin Valoración</div>
+							<div class="cuadrado botonDesplegable">Sin Valoración aún</div>
 							<div class="ratingDropdown dropdown" style="display: none;">
 							<form action="./subirValoracion.php" method="post">
 								<div class="ratingBlock">
