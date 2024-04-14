@@ -55,6 +55,15 @@ class DbConnection
         $this->db = null;
     }
 
+    public function userExists($userName)
+    {
+        $consulta = $this->db->prepare("SELECT * FROM user WHERE USER_NAME = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $user = $consulta->fetch(PDO::FETCH_ASSOC);
+        return $user !== false;
+    }
+
     public function getRandomUrls($limit, $userName){
         $limit = (int)$limit; // Asegurarse de que el límite es un entero
         $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
@@ -119,6 +128,14 @@ class DbConnection
         $consulta->execute();
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
+    }
+
+    public function showUserFriends($userName){
+        $consulta = $this->db->prepare("SELECT * FROM friends WHERE USER_NAME = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $friends = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $friends;
     }
 
     public function showAllPlaylistsRandom($limit){

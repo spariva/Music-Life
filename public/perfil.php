@@ -2,6 +2,8 @@
 require_once '../config/init.php';
 
 $username = $_SESSION['user'];
+$perfil = $_GET['name'];
+
 
 if (!isset($_SESSION['user'])) {
     $msg = "No hay usuario logueado";
@@ -57,47 +59,35 @@ if (!isset($_SESSION['user'])) {
             </nav>
         </header>
         <div class="contenedor-principal-menuUsuario">
+            
             <div class="usuario" id="menuUsuario__izquierda">
-                <h2>
-                    <?= $_SESSION['user']; ?>
+            <a href="./usuario.php" >Volver a mi perfil</a>
+            <br>
+                <h2>Perfil de 
+                    <?= $perfil; ?>
                 </h2>
                 <img src="./img/imagenPerfil.png" alt="usuario-imagen">
                 <!-- <div id="correo">correoelectronico@email.com</div> -->
 
-                <div class="amigos" style="max-height: 300px; overflow-y: auto;">
-                    <h2 style="text-align: center;">Mis Amigos</h2>
+                <div class="amigos" style="max-height: 400px; overflow-y: auto;">
+                    <h2 style="text-align: center;">Amigos de <?= $perfil; ?></h2>
                     <ul>
                     <?php
                     $pdo = DbConnection::getInstance();
-                    $friends = $pdo->showUserFriends($_SESSION['user']);
+                    $friends = $pdo->showUserFriends($perfil);
                     foreach ($friends as $friend) {
                         echo "<li><a href='perfil.php?name=" . $friend['FRIEND_NAME'] . "'>" . $friend['FRIEND_NAME'] . "</a></li>";
-
                     }
                     ?>
                     </ul>
                 </div>
-
-                <div class="buscarAmigos">
-                    <h2>Buscar amigos</h2>
-                    <p>Introduce el nombre de usuario de la persona que quieres añadir a amigos.</p>
-                    
-
-                    <form method="post" action="./addFriend.php">
-						<input type="hidden" name="username" value="<?php echo $username; ?>" required>
-                        <input type="text" name="search" placeholder="Buscar usuario">
-                        <input type="submit" name="submit" value="Buscar">
-                    </form>
-                    </div>
             </div>
-
-
 
             <div class="listas">
                 <div class="valoraciones">
-                    <h2>Mis valoraciones</h2>
+                    <h2>Valoraciones de <?= $perfil; ?></h2>
 								<?php
-								$username = $_SESSION['user'];
+								$username = $perfil;
 								$pdo = DbConnection::getInstance();
 								$ratings = $pdo->showUserRatingsRandom($username, 3);
 								$active = 'active';
@@ -118,14 +108,14 @@ if (!isset($_SESSION['user'])) {
 										$active = '';
 									}
 								} else {
-									echo 'Todavia no tienes valoraciones, empieza ya!';
+									echo 'Todavia no tiene valoraciones!';
 								}
 								?>
                 </div>
                 <div class="musica">
-                <h2>Valoraciones a mis Playlist</h2>
+                <h2>Valoraciones a sus Playlist</h2>
 								<?php
-								$username = $_SESSION['user'];
+								$username = $perfil;
 								$pdo2 = DbConnection::getInstance();
 								$ratings = $pdo2->showUserPlaylistRatings($username, 3);
 								$active = 'active';
@@ -146,7 +136,7 @@ if (!isset($_SESSION['user'])) {
 										$active = '';
 									}
 								} else {
-									echo 'Todavia nadie ha valorado tus playlist!';
+									echo 'Todavia nadie ha valorado sus playlist!';
 								}
 								?>
                 </div>
