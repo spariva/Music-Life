@@ -138,6 +138,23 @@ class DbConnection
         return $friends;
     }
 
+    public function showUserFriendRequest($userName){
+        $consulta = $this->db->prepare("SELECT * FROM requests WHERE REQUESTED_USER = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $requests = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $requests;
+    }
+
+    public function checkIfFriend($userName, $friendName){
+        $consulta = $this->db->prepare("SELECT * FROM friends WHERE USER_NAME = :USERNAME AND FRIEND_NAME = :FRIENDNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->bindParam(":FRIENDNAME", $friendName, PDO::PARAM_STR);
+        $consulta->execute();
+        $requests = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $requests;
+    }
+
     public function showAllPlaylistsRandom($limit){
         $consulta = $this->db->prepare("SELECT LINK FROM playlist ORDER BY RAND() LIMIT $limit");
         $consulta->execute();

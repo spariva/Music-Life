@@ -66,6 +66,19 @@ if (!isset($_SESSION['user'])) {
                 <h2>Perfil de 
                     <?= $perfil; ?>
                 </h2>
+                <?php 
+                    $pdo = DbConnection::getInstance();
+                    $isFriend = $pdo->checkIfFriend($username, $perfil);
+                    if ($isFriend) {
+                        echo '<p>Sois amigos :)</p>';
+                    } else {
+                        echo '<form action="./requestFriend.php" method="post">
+                        <input type="hidden" name="search" value="' . $perfil . '">
+                        <input type="hidden" name="username" value="' . $username . '">
+                        <button type="submit">Solicitar Amistad</button>
+                        </form>';
+                    }
+                ?>
                 <img src="./img/imagenPerfil.png" alt="usuario-imagen">
                 <!-- <div id="correo">correoelectronico@email.com</div> -->
 

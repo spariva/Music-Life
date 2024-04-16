@@ -65,7 +65,7 @@ if (!isset($_SESSION['user'])) {
                 <!-- <div id="correo">correoelectronico@email.com</div> -->
 
                 <div class="amigos" style="max-height: 300px; overflow-y: auto;">
-                    <h2 style="text-align: center;">Mis Amigos</h2>
+                    <h3 style="text-align: center;">Mis Amigos</h3>
                     <ul>
                     <?php
                     $pdo = DbConnection::getInstance();
@@ -79,16 +79,38 @@ if (!isset($_SESSION['user'])) {
                 </div>
 
                 <div class="buscarAmigos">
-                    <h2>Buscar amigos</h2>
-                    <p>Introduce el nombre de usuario de la persona que quieres añadir a amigos.</p>
+                    <h3>Buscar amigos</h3>
+                    <p>Introduce el nombre de usuario de la persona que quieres solicitar para añadir a amigos.</p>
                     
-
-                    <form method="post" action="./addFriend.php">
+                    <form method="post" action="./requestFriend.php">
 						<input type="hidden" name="username" value="<?php echo $username; ?>" required>
                         <input type="text" name="search" placeholder="Buscar usuario">
-                        <input type="submit" name="submit" value="Buscar">
-                    </form>
-                    </div>
+                        <input type="submit" name="submit" value="Solicitar">
+                    </form><br>
+                </div>
+
+                <div class="solicitudes" style="max-height: 300px; overflow-y: auto;">
+                    <h3 style="text-align: center;">Mis Solicitudes</h3>
+                    <ul>
+                    <?php
+                    $pdo = DbConnection::getInstance();
+                    $requests = $pdo->showUserFriendRequest($_SESSION['user']);
+                    if($requests){
+                        foreach ($requests as $request) {
+                            echo "<li><a href='perfil.php?name=" . $request['REQUEST_USER'] . "'>" . $request['REQUEST_USER'] . "</a></li>";?>
+                            <form method="post" action="./acceptFriend.php">
+                                <input type="hidden" name="username" value="<?php echo $username; ?>" required>
+                                <input type="hidden" name="friend" value="<?php echo $request['REQUEST_USER']; ?>" required>
+                                <input type="submit" name="aceptar" value="Aceptar">
+                                <input type="submit" name="rechazar" value="Rechazar">
+                            </form>
+
+                        <?php }
+                    }else{
+                        echo "No tienes solicitudes de amistad";
+                    }?></ul>
+
+                </div>
             </div>
 
 
