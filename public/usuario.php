@@ -79,13 +79,29 @@ if (!isset($_SESSION['user'])) {
                 </div>
 
                 <div class="buscarAmigos">
-                    <h3>Buscar amigos</h3>
-                    <p>Introduce el nombre de usuario de la persona que quieres solicitar para añadir a amigos.</p>
-                    
-                    <form method="post" action="./requestFriend.php">
+                    <div id="tituloBuscarAmigos"><h3>Buscar amigos</h3> 
+                    <img id="infoLogo" src="./img/info.png" alt="Información">
+                    </div>
+                        <div id="infoDesplegable">
+                            <p>Introduce el nombre de usuario de la persona que quieras para enviarle una solicitud de amistad</p>
+                            <p>Si la solicitud es aceptada, pasareis a ser amigxs :)</p>
+                        </div>
+
+                        <script>
+                            document.getElementById('infoLogo').addEventListener('click', function() {
+                                var infoDesplegable = document.getElementById('infoDesplegable');
+                                if (infoDesplegable.style.display === 'none') {
+                                    infoDesplegable.style.display = 'block';
+                                } else {
+                                    infoDesplegable.style.display = 'none';
+                                }
+                            });
+                        </script>
+                   
+                    <form id="formBuscar" method="post" action="./requestFriend.php">
 						<input type="hidden" name="username" value="<?php echo $username; ?>" required>
-                        <input type="text" name="search" placeholder="Buscar usuario">
-                        <input type="submit" name="submit" value="Solicitar">
+                        <input type="text" id="buscadorUsuarios" name="search" placeholder="Buscar usuario">
+                        <input type="submit" id="btnSubmit" name="submit" value="Solicitar">
                     </form><br>
                 </div>
 

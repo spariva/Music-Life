@@ -70,12 +70,12 @@ if (!isset($_SESSION['user'])) {
                     $pdo = DbConnection::getInstance();
                     $isFriend = $pdo->checkIfFriend($username, $perfil);
                     if ($isFriend) {
-                        echo '<p>Sois amigos :)</p>';
+                        echo '<div id="soisAmigos">Sois amigos :)</div>';
                     } else {
                         echo '<form action="./requestFriend.php" method="post">
                         <input type="hidden" name="search" value="' . $perfil . '">
                         <input type="hidden" name="username" value="' . $username . '">
-                        <button type="submit">Solicitar Amistad</button>
+                        <button id="botonSolicitarAmistad" type="submit">Solicitar Amistad</button>
                         </form>';
                     }
                 ?>

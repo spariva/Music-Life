@@ -146,6 +146,15 @@ class DbConnection
         return $requests;
     }
 
+    public function showFriendsPlaylists ($userName, $limit){
+        $consulta = $this->db->prepare("SELECT * FROM playlist p INNER JOIN friends f ON p.USER_NAME = f.FRIEND_NAME WHERE f.USER_NAME = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $urls = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $urls;
+    }
+
+
     public function checkIfFriend($userName, $friendName){
         $consulta = $this->db->prepare("SELECT * FROM friends WHERE USER_NAME = :USERNAME AND FRIEND_NAME = :FRIENDNAME");
         $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);

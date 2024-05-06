@@ -5,7 +5,6 @@ require_once '../config/init.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $search = $_POST['search'];
     $username = $_POST['username']; 
-
                     
     if (empty($username) || empty($search)) {
                             
@@ -26,5 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
                             
         echo "Error: " . $stmt->errorInfo()[2];
+        header("Location: ./usuario.php?mensaje=El usuario introducido no existe");
+
     }
 }

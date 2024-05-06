@@ -280,30 +280,37 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				</div>
 
 				<div class="contenedor" id="tendencia">
-					<div id="apartado">Tendencia</div>
+					<div id="apartado">Tus Amigos</div>
 					<div id="iframeCarouselTendencia" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<iframe style="border-radius:12px"
-									src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator"
-									width="100%" height="152" frameBorder="0" allowfullscreen=""
-									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-									loading="lazy"></iframe>
-							</div>
-							<div class="carousel-item">
-								<iframe style="border-radius:12px"
-									src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNFJfN1Vw8d9?utm_source=generator"
-									width="100%" height="152" frameBorder="0" allowfullscreen=""
-									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-									loading="lazy"></iframe>
-							</div>
-							<div class="carousel-item">
-								<iframe style="border-radius:12px"
-									src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
-									width="100%" height="352" frameBorder="0" allowfullscreen=""
-									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-									loading="lazy"></iframe>
-							</div>
+						<?php
+								$username = $_SESSION['user'];
+								$pdo4 = DbConnection::getInstance();
+								
+								$urls = $pdo4->showFriendsPlaylists($username, 5);
+								$active = 'active';
+
+								if ($urls) {
+									foreach ($urls as $url) {
+										//echo($url);
+										echo '<p id="quienSubio">Subido por: ' . $url['USER_NAME'] . '</p>';
+										echo '<div class="carousel-item ' . $active . '">';
+										echo '<iframe style="border-radius:12px"
+											src="' . $url['LINK'] . '?utm_source=generator"
+											width="100%" height="152" frameBorder="0" allowfullscreen=""
+											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+											loading="lazy"></iframe>';
+										/*echo '<div id="verValoracion" class="valoracionExistente">';
+										echo '<p>' . $url['SCORE'] . '/5</p>';
+										echo '<p>' . $url['TEXT'] . '</p>';
+										echo '</div>';*/
+										echo '</div>';
+										$active = '';
+									}
+								} else {
+									echo '<p>Tus amigos son unos sosos y aún no han subido playlists :(</p>';
+								}
+								?>
 						</div>
 						<a class="carousel-control-prev" href="#iframeCarouselTendencia" role="button"
 							data-slide="prev">
@@ -324,8 +331,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 					<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
 								<?php
-								$pdo4 = DbConnection::getInstance();
-								$ratings = $pdo4->showUserRatingsAllRandom(5);
+								$pdo5 = DbConnection::getInstance();
+								$ratings = $pdo5->showUserRatingsAllRandom(5);
 								$active = 'active';
 
 								if ($ratings) {
