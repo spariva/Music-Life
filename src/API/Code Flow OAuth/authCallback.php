@@ -40,4 +40,4 @@ $refreshToken = $responseData['refresh_token'];
 
 // Redirigir al usuario a la página principal de Music-Life
 header('Location: index.html');
-?>
+
