@@ -105,14 +105,6 @@ class DbConnection
         return $ratings;
     }
 
-    public function showUserRatingsAllRandom($limit){
-        $consulta = $this->db->prepare("SELECT * FROM rating ORDER BY RAND() LIMIT :limit");
-        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
-        $consulta->execute();
-        $ratings = $consulta->fetchAll(PDO::FETCH_ASSOC);
-        return $ratings;
-    }
-
     public function showUserPlaylistRatings($username, $limit){
         $consulta = $this->db->prepare("SELECT r.* FROM rating r INNER JOIN playlist p ON r.LINK = p.LINK WHERE p.USER_NAME = :username ORDER BY RAND() LIMIT :limit");
         $consulta->bindParam(":username", $username, PDO::PARAM_STR);
@@ -146,14 +138,32 @@ class DbConnection
         return $requests;
     }
 
-    public function showFriendsPlaylists ($userName, $limit){
-        $consulta = $this->db->prepare("SELECT * FROM playlist p INNER JOIN friends f ON p.USER_NAME = f.FRIEND_NAME WHERE f.USER_NAME = :USERNAME");
+    //
+    public function showFriendsPlaylists($userName, $limit) {
+        $consulta = $this->db->prepare("SELECT p.LINK,p.USER_NAME, r.TEXT, r.SCORE FROM playlist p JOIN friends f ON p.USER_NAME = f.USER_NAME LEFT JOIN rating r ON p.LINK = r.LINK AND r.USER_NAME = :USERNAME WHERE f.FRIEND_NAME = :FRIENDNAME ");
         $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->bindParam(":FRIENDNAME", $userName, PDO::PARAM_STR); 
+        $consulta->execute();  
+        $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $resultados; 
+    }
+    
+    public function showRatingsToUserPlaylists($userName, $limit) {
+        $consulta = $this->db->prepare("SELECT r.LINK, r.USER_NAME, r.TEXT, r.SCORE FROM rating r JOIN playlist p ON r.LINK = p.LINK WHERE p.USER_NAME = :USERNAME ORDER BY RAND() LIMIT :limit");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
         $consulta->execute();
-        $urls = $consulta->fetchAll(PDO::FETCH_ASSOC);
-        return $urls;
+        $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $resultados;
     }
 
+    public function showUserRatingsAllRandom($limit){
+        $consulta = $this->db->prepare("SELECT * FROM rating ORDER BY RAND() LIMIT :limit");
+        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $consulta->execute();
+        $ratings = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $ratings;
+    }
 
     public function checkIfFriend($userName, $friendName){
         $consulta = $this->db->prepare("SELECT * FROM friends WHERE USER_NAME = :USERNAME AND FRIEND_NAME = :FRIENDNAME");
