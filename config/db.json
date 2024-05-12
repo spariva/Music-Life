@@ -1,9 +1,0 @@
-{
-"host": "localhost",
-"username": "musicLifeProd",
-"password": "musicLifeProd1234",
-"database": "musicLifeDatabase",
-"dialect": "mysql",a
-"seederStorage": "sequelize",
-"charset": "utf8mb4"
-}

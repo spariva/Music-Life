@@ -35,3 +35,4 @@ vendor/
 
 # Ignore db.json file on /config
 config/db.json
+config/dbi.json

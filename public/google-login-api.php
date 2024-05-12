@@ -1,10 +1,10 @@
 <?php
 //HAY QUE CAMBIAR LOS DATOS PQ LOS HE PUESTO EN UNA PAGINA DE PRUEBA ASI Q SE ME GUARDAN A MI (SERGIO) Y DEBERIAMOS HACERLO CON EL CORREO DE MUSIC LIFE ETC
 /* Google App Client Id */
-define('CLIENT_ID', '960764573173-dg7tc3ue39cpk16fu74qi2t5t2cgllqc.apps.googleusercontent.com');
+define('CLIENT_ID', '');
 
 /* Google App Client Secret */
-define('CLIENT_SECRET', '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');
+define('CLIENT_SECRET', '');
 
 /* Google App Redirect Url */
 define('CLIENT_REDIRECT_URL', 'http://music-life.es/login.php');
