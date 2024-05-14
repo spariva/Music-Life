@@ -6,6 +6,26 @@ if (!isset($_SESSION['user'])) {
     header("Location: ./login.php?msg=$msg");
     exit();
 }
+
+// Set up the Spotify API client
+if (isset($_SESSION['accessToken'])) {
+    $api = new SpotifyWebAPI\SpotifyWebAPI();
+    $accessToken = $_SESSION['accessToken'];
+    $api->setAccessToken($accessToken);
+
+    // Fetch user data
+    $spotifyUserResponse = $api->me();
+    $spotifyUser = [
+        'id' => $spotifyUserResponse->id,
+        'name' => $spotifyUserResponse->display_name,
+        'email' => $spotifyUserResponse->email,
+        'image' => $spotifyUserResponse->images[0]->url,
+    ]; 
+}
+
+// // Fetch user data or perform actions as required
+// 
+// print_r($user);
 ?>
 
 
@@ -56,11 +76,19 @@ if (!isset($_SESSION['user'])) {
         </header>
         <div class="contenedor-principal-menuUsuario">
             <div class="usuario" id="menuUsuario__izquierda">
-                <h2>
-                    <?= $_SESSION['user']; ?>
-                </h2>
-                <img src="./img/imagenPerfil.png" alt="usuario-imagen">
-                <!-- <div id="correo">correoelectronico@email.com</div> -->
+                <?php if (isset($spotifyUser)) : ?>
+                    <img src="<?= $spotifyUser['image']; ?>" alt="usuario-imagen" class="user-pic-lg w-50 h-25">
+                    <h3>
+                        <?= $spotifyUser['name']; ?>
+                    </h3>
+                    <p>
+                        <?= $spotifyUser['email']; ?>
+                    </p>
+                <?php else: ?>
+                    <img src="./img/imagenPerfil.png" alt="usuario-imagen">
+                    <!-- Botón link para conectar tu cuenta con Spotify: -->
+                    <a href="../src/API/Code%20Flow%20OAuth/oauthSpotifyLibrary.php" class="btn btn-outline-success btn-lg rounded-pill" role="button">Conecta con Spoti</a>
+                <?php endif; ?>
             </div>
 
             <div class="listas">
@@ -92,6 +120,30 @@ if (!isset($_SESSION['user'])) {
 								}
 								?>
                 </div>
+                <?php if (isset($spotifyUser)) : ?>
+                    <div class="spotify">
+                        <h2>Mis Playlist de Spotify</h2>
+                        <div class="spotify-playlists">
+                            <?php
+                            $playlists = $api->getUserPlaylists($spotifyUser['id']);
+                            $counter = 0;
+                            $maxIterations = 2;
+                            foreach ($playlists->items as $playlist) {
+                                if ($counter == $maxIterations) {
+                                    break;
+                                }
+                                echo '<div class="spotify-playlist">';
+                                echo '<img src="' . $playlist->images[0]->url . '" alt="playlist-imagen">';
+                                echo '<h3>' . $playlist->name . '</h3>';
+                                echo '<p>' . $playlist->description . '</p>';
+                                echo '<a href="' . $playlist->external_urls->spotify . '" target="_blank" class="btn btn-outline-info btn-lg rounded-pill" role="button">Escuchar</a>';
+                                echo '</div><br>';
+                                $counter++;
+                            }
+                            ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <div class="musica">
                 <h2>Valoraciones a mis Playlist</h2>
 								<?php

@@ -40,21 +40,18 @@ body {
   padding: 20px;
 }
 
-.usuario h2 {
-  margin-top: 40px;
-  font-family: neon;
-  font-size: 2em;
-  color: black;
-}
-
 .usuario img {
   border-radius: 100%;
   margin-bottom: 20px;
 }
 
-.usuario #correo {
-  margin-bottom: 20px;
-  color: #000000;
+/* No funciona TODO: */
+.user-pic-lg {
+  width: 670px;
+  height: 670px;
+  border-radius: 100%;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px 10px rgba(73, 223, 215, 0.762);
 }
 
 .listas {
@@ -111,6 +108,7 @@ body {
   .usuario img {
     border-radius: 100%;
     width: 170px;
+
   }
 
   .usuario #correo {
