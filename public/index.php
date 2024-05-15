@@ -47,43 +47,6 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 	</head>
 
 	<body>
-			<!-- <script>
-		function buscarPlaylist() {
-			// Solicitar al usuario que ingrese un nombre para la playlist
-			var nombrePlaylist = prompt("Por favor, ingrese un nombre para la playlist:");
-
-			// Verificar si el usuario ingresó un nombre
-			if (nombrePlaylist !== null && nombrePlaylist !== "") {
-				// Obtener la URL del iframe
-				var iframeCode = document.querySelector('.iframeBuscador').outerHTML;
-				var pattern = /src="(.*?)"/;
-				var matches = iframeCode.match(pattern);
-
-				if (matches && matches.length > 1) {
-					var enlacePlaylist = matches[1];
-
-					// Enviar la información al servidor (usando AJAX con jQuery)
-					$.ajax({
-						type: "POST",
-						url: "guardar_playlist.php",
-						data: {
-							id_pl: matches, // Agrega el valor correcto para id_pl (puede ser vacío por ahora)
-							playlistName: nombrePlaylist,
-							creator: < ?php echo $_SESSION['user']; ?> // Asumiendo que 'id_usuario' es la clave correcta para el ID del usuario
-						},
-						success: function(response) {
-							alert(response); // Muestra la respuesta del servidor (puedes personalizar el mensaje)
-						}
-					});
-				} else {
-					alert("No se pudo encontrar la URL del iframe.");
-				}
-			} else {
-				alert("Debe ingresar un nombre para la playlist.");
-
-			}
-		}
-	</script> -->
 	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager"></video>
 
 		<header id="header">
@@ -195,7 +158,23 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								<input type="hidden" name="username" value="<?php echo $username; ?>">
 								<input type="text" id="urlPlaylist" class="inputBuscador"
 								placeholder="Introduce la ruta embedida del álbum..." name="urlPlaylist">
-								<button id="botonBuscar">Añadir</button>
+								<a id="botonBusca" class="button-wrapper">
+									<span class="dot dot-1"></span>
+									<span class="dot dot-2"></span>
+									<span class="dot dot-3"></span>
+									<span class="dot dot-4"></span>
+									<span class="dot dot-5"></span>
+									<span class="dot dot-6"></span>
+									<span class="dot dot-7"></span>
+									<span class="dot dot-1"></span>
+									<span class="dot dot-2"></span>
+									<span class="dot dot-3"></span>
+									<span class="dot dot-4"></span>
+									<span class="dot dot-5"></span>
+									<span class="dot dot-6"></span>
+									<span class="dot dot-7"></span>
+									<span class="button btn btn-lg rounded-pill btn-primary-subtle"><button id="botonBuscar" class="btn btn-primary-subtle rounded-pill buttonBuscar">Buscar</button></span>
+								</a>
 							</form>
 							<iframe id="iframeBusqueda" style="border-radius:12px"
 								src="<?php if(isset($_GET['playlist'])){
