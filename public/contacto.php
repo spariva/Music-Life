@@ -40,7 +40,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
+                    <!--<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>-->
                     <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
                     <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
