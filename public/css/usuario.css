@@ -152,13 +152,14 @@ body {
   display: flex;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-    justify-content: center;
+  justify-content: center;
   margin: 10px;
   flex-wrap: wrap;
 }
 
 .bloquePV{
   margin: 25px;
+  width: 30%;
 }
 
 
@@ -203,13 +204,17 @@ body {
     grid-gap: 20px;
     text-align: center;
     color: black;
-    background-color: rgba(255, 255, 255, 0.239);
-    border-radius: 200px 200px 100px 100px;
-    padding: 40px;
+    /* background-color: rgba(255, 255, 255, 0.239);
+    border-radius: 50px 50px 5px 5px; */
+    padding: 10px;
   }
 
   .valoraciones {
     grid-area: valoraciones;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .valoracion {
@@ -218,15 +223,36 @@ body {
     margin: 10px;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.211);
-    padding: 10px;
+    padding: 5px;
   }
 
   .musica {
     grid-area: musica;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .playlists {
     grid-area: playlist;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .verPlaylists{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .bloquePV{
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
   }
 
 }

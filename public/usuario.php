@@ -201,7 +201,7 @@ if (!isset($_SESSION['user'])) {
                         //echo '<div class="bloquePV">';
                         echo '<iframe  class="bloquePV" style="border-radius:12px"
 											src="' . $link . '?utm_source=generator"
-											width="30%" height="152" frameBorder="0" allowfullscreen=""
+											 height="152" frameBorder="0" allowfullscreen=""
 											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 											loading="lazy"></iframe>';
                         //$active = '';

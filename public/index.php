@@ -44,6 +44,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 	<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -87,32 +88,30 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager"></video>
 
 	<header id="header">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="d-flex align-items-center">
-				<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+	<a class="textoCabecera" href="./index.php" id="logo2">Music-Life</a>
 
-				<!-- desplegable para pantallas pequeñas -->
+		<nav id='navbar' class="navbar ">
+
+			<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+			<!-- desplegable para pantallas pequeñas 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
+				</button>-->
 
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ml-auto">
-					<!--<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>-->
-					<li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
-					<li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
-					<li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
-					<li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank">Info</a></li>
-					<li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
-				</ul>
-			</div>
+			<a id="homeIcon" class="nav-link" href="./index.php"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a>
+			<a class="nav-link" href="./usuario.php"><i class="fas fa-user"></i><span class="nav-text"> Usuario</span></a>
+			<a class="nav-link" href="./spotify.html"><i class="fab fa-spotify"></i><span class="nav-text"> Spotify</span></a>
+			<a class="nav-link" href="./contacto.php"><i class="fas fa-envelope"></i><span class="nav-text"> Contacto</span></a>
+			<a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank"><i class="fas fa-info-circle"></i><span class="nav-text"> Info</span></a>
+			<a class="nav-link" id="modo-oscuro"><i id="logo-modo-oscuro" class="fa-solid"></i><span class="nav-text">Modo Oscuro</span></a>
 		</nav>
 	</header>
 
 
+
+
 	<div id="contenido">
-		
+
 		<div id="mensaje">
 			<?php
 			if (isset($_GET['mensaje'])) {
@@ -287,122 +286,122 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							<span class="sr-only">Next</span>
 						</a>
 					</div>
-					</div>
 				</div>
+			</div>
 
 
 
-				<div class="contenedor" id="tendencia">
-					<div id="apartado">Tus Amigos</div>
-					<div id="iframeCarouselTendencia" class="carousel slide" data-ride="carousel">
-						<div class="carousel-inner">
-							<?php
-							//$username = $_SESSION['user'];
-							$pdo4 = DbConnection::getInstance();
-							$listasAmigos = $pdo4->showFriendsPlaylists($username, 5);
-							/*foreach ($listasAmigos as $lista) {
+			<div class="contenedor" id="tendencia">
+				<div id="apartado">Tus Amigos</div>
+				<div id="iframeCarouselTendencia" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<?php
+						//$username = $_SESSION['user'];
+						$pdo4 = DbConnection::getInstance();
+						$listasAmigos = $pdo4->showFriendsPlaylists($username, 5);
+						/*foreach ($listasAmigos as $lista) {
 									foreach ($lista as $clave => $valor) {
 										echo "Clave: $clave; Valor: $valor<br>";
 									}
 								}*/
-							$active = 'active';
+						$active = 'active';
 
-							if ($listasAmigos) {
-								foreach ($listasAmigos as $lista) {
-									echo '<div class="carousel-item ' . $active . '">';
-									echo '<iframe style="border-radius:12px"
+						if ($listasAmigos) {
+							foreach ($listasAmigos as $lista) {
+								echo '<div class="carousel-item ' . $active . '">';
+								echo '<iframe style="border-radius:12px"
 											src="' . $lista['LINK'] . '?utm_source=generator"
 											width="100%" height="152" frameBorder="0" allowfullscreen=""
 											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 											loading="lazy"></iframe>';
-									if ($lista['TEXT']) {
-										echo '<div id="verValoracion" class="valoracionExistente">';
-										echo '<p>' . $lista['SCORE'] . '/5 : "'.$lista['TEXT'] .'"</p>';										
-									} else {
-										echo '<div id="verValoracion" class="valoracionExistente">';
-										echo 'no has valorado aun';
-									}
-									echo '<p id="quienSubio">Subido por: ' . $lista['USER_NAME'] . '</p>';
-									echo '</div>';
-									echo '</div>';
-									$active = '';
+								if ($lista['TEXT']) {
+									echo '<div id="verValoracion" class="valoracionExistente">';
+									echo '<p>' . $lista['SCORE'] . '/5 : "' . $lista['TEXT'] . '"</p>';
+								} else {
+									echo '<div id="verValoracion" class="valoracionExistente">';
+									echo 'no has valorado aun';
 								}
-							} else {
-								echo '<p>Tus amigos son unos sosos y aún no han subido playlists :(</p>';
+								echo '<p id="quienSubio">Subido por: ' . $lista['USER_NAME'] . '</p>';
+								echo '</div>';
+								echo '</div>';
+								$active = '';
 							}
-							?>
-						</div>
-					
-						<a class="carousel-control-prev" href="#iframeCarouselTendencia" role="button" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Anterior</span>
-						</a>
-						<a class="carousel-control-next" href="#iframeCarouselTendencia" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Siguiente</span>
-						</a>
+						} else {
+							echo '<p>Tus amigos son unos sosos y aún no han subido playlists :(</p>';
+						}
+						?>
 					</div>
+
+					<a class="carousel-control-prev" href="#iframeCarouselTendencia" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Anterior</span>
+					</a>
+					<a class="carousel-control-next" href="#iframeCarouselTendencia" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Siguiente</span>
+					</a>
 				</div>
+			</div>
 
-				<div class="contenedor" id="valoraciones">
-					<div id="apartado">Valoraciones globales</div>
+			<div class="contenedor" id="valoraciones">
+				<div id="apartado">Valoraciones globales</div>
 
-					<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-						<div class="carousel-inner">
-							<?php
-							$pdo5 = DbConnection::getInstance();
-							$ratings = $pdo5->showUserRatingsAllRandom(5);
-							$active = 'active';
+				<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<?php
+						$pdo5 = DbConnection::getInstance();
+						$ratings = $pdo5->showUserRatingsAllRandom(5);
+						$active = 'active';
 
-							if ($ratings) {
-								foreach ($ratings as $rating) {
-									echo '<div class="carousel-item ' . $active . '">';
-									echo '<iframe style="border-radius:12px"
+						if ($ratings) {
+							foreach ($ratings as $rating) {
+								echo '<div class="carousel-item ' . $active . '">';
+								echo '<iframe style="border-radius:12px"
 											src="' . $rating['LINK'] . '?utm_source=generator"
 											width="100%" height="352" frameBorder="0" allowfullscreen=""
 											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 											loading="lazy"></iframe>';
-									echo '<div id="verValoracion" class="valoracionExistente">';
-									echo '<p><b>' . $rating['USER_NAME'] . '</b> - ' . $rating['SCORE'] . '/5</p>';
-									echo '<p>' . $rating['TEXT'] . '</p>';
-									echo '</div>';
-									echo '</div>';
-									$active = '';
-								}
-							} else {
-								echo '<p>Todavia no tienes valoraciones, empieza ya!</p>';
+								echo '<div id="verValoracion" class="valoracionExistente">';
+								echo '<p><b>' . $rating['USER_NAME'] . '</b> - ' . $rating['SCORE'] . '/5</p>';
+								echo '<p>' . $rating['TEXT'] . '</p>';
+								echo '</div>';
+								echo '</div>';
+								$active = '';
 							}
-							?>
-						</div>
-						<a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
+						} else {
+							echo '<p>Todavia no tienes valoraciones, empieza ya!</p>';
+						}
+						?>
 					</div>
+					<a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
 				</div>
+			</div>
 		</div>
 
 
-	<?php if ($mostrarWarning == true) { ?>
-		<div class="bloque" id="avisoc">
-			<b>Aviso de Cookies:</b>
-			Este sitio web utiliza cookies para mejorar la experiencia del usuario, analizar el tráfico y personalizar contenido.
-			Al aceptar, consientes el uso de cookies. Puedes gestionarlas en la configuración del navegador. Utilizamos cookies esenciales,
-			de rendimiento, funcionalidad y publicidad. Compartimos datos con socios de redes sociales, publicidad y análisis.
-			Visita nuestras políticas de privacidad y cookies para más detalles.
-			<a href="index.php?aceptadas=true">Aceptar Cookies</a>
-		</div>
-	<?php } ?>
-	<script src="./js/BusquedaSpotify.js" defer></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-	<script src="./js/star-rating.js"></script>
-	<script src="./js/script.js"></script>
+		<?php if ($mostrarWarning == true) { ?>
+			<div class="bloque" id="avisoc">
+				<b>Aviso de Cookies:</b>
+				Este sitio web utiliza cookies para mejorar la experiencia del usuario, analizar el tráfico y personalizar contenido.
+				Al aceptar, consientes el uso de cookies. Puedes gestionarlas en la configuración del navegador. Utilizamos cookies esenciales,
+				de rendimiento, funcionalidad y publicidad. Compartimos datos con socios de redes sociales, publicidad y análisis.
+				Visita nuestras políticas de privacidad y cookies para más detalles.
+				<a href="index.php?aceptadas=true">Aceptar Cookies</a>
+			</div>
+		<?php } ?>
+		<script src="./js/BusquedaSpotify.js" defer></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+		<script src="./js/star-rating.js"></script>
+		<script src="./js/script.js"></script>
 </body>
 
 </html>
