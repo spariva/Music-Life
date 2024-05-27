@@ -384,16 +384,20 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				</div>
 			</div>
 		</div>
+	</div>
 
 
 		<?php if ($mostrarWarning == true) { ?>
 			<div class="bloque" id="avisoc">
-				<b>Aviso de Cookies:</b>
-				Este sitio web utiliza cookies para mejorar la experiencia del usuario, analizar el tráfico y personalizar contenido.
-				Al aceptar, consientes el uso de cookies. Puedes gestionarlas en la configuración del navegador. Utilizamos cookies esenciales,
-				de rendimiento, funcionalidad y publicidad. Compartimos datos con socios de redes sociales, publicidad y análisis.
-				Visita nuestras políticas de privacidad y cookies para más detalles.
-				<a href="index.php?aceptadas=true">Aceptar Cookies</a>
+				<div id="avisoCookies"> <h4>Aviso de Cookies<h4></div>
+				<div id="textoCookies">Para mejorar tu experiencia en la web recogemos algunas cookies, nos sirven para acordarnos de si preferias
+					 modo oscuro o claro, de quien eras (para no tener que iniciar sesión cada vez) y para algunos datos de configuración más.<br>
+					 No recogemos ni recopilamos ningún tipo de dato sensible.
+					 Y tranquil@, con nosotrxs tus cookies están a salvo.
+				</div>
+				<div id="aceptarCookies"> <a href="index.php?aceptadas=true">Aceptar Cookies</a></div>
+				<div id="imgCookies1"><img class="imgCookies" src="./img/cookieMonster.png" alt="cookie1"></div>
+				<div id="imgCookies2"><img class="imgCookies" src="./img/cookies.png" alt="cookie2"></div>
 			</div>
 		<?php } ?>
 		<script src="./js/BusquedaSpotify.js" defer></script>
