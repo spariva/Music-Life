@@ -11,6 +11,7 @@ let botonBuscar = document.getElementById('botonBuscar');
 botonBuscar.addEventListener('click', buscarLista);
 
 function buscarLista() {
+    console.log('a');
     let contenidoIframe = consulta.value;
     let match = contenidoIframe.match(/src="(.*?)"/);
 

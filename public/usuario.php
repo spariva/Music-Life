@@ -1,5 +1,6 @@
 <?php
-require_once '../config/init.php';
+// require_once '../config/init.php';
+require_once 'templates/header.php';
 
 if (!isset($_SESSION['user'])) {
     $msg = "No hay usuario logueado";
@@ -29,7 +30,7 @@ if (isset($_SESSION['accessToken'])) {
 ?>
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 
 
@@ -52,10 +53,10 @@ if (isset($_SESSION['accessToken'])) {
         <header id="header">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="d-flex align-items-center">
-                    <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+                    <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a> -->
 
                     <!-- desplegable para pantallas pequeñas -->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -73,7 +74,7 @@ if (isset($_SESSION['accessToken'])) {
                     </ul>
                 </div>
             </nav>
-        </header>
+        </header> -->
         <div class="contenedor-principal-menuUsuario">
             <div class="usuario" id="menuUsuario__izquierda">
                 <?php if (isset($spotifyUser)) : ?>
@@ -94,31 +95,52 @@ if (isset($_SESSION['accessToken'])) {
             <div class="listas">
                 <div class="valoraciones">
                     <h2>Mis valoraciones</h2>
-								<?php
-								$username = $_SESSION['user'];
-								$pdo = DbConnection::getInstance();
-								$ratings = $pdo->showUserRatingsRandom($username, 3);
-								$active = 'active';
+                        <?php
+                            $username = $_SESSION['user'];
+                            $pdo = DbConnection::getInstance();
+                            $ratings = $pdo->showUserRatingsRandom($username, 3);
+                            $active = 'active';
 
-								if ($ratings) {
-									foreach ($ratings as $rating) {
-										echo '<div class="valoracion ' . $active . '">';
-										echo '<iframe style="border-radius:12px"
-											src="' . $rating['LINK'] . '?utm_source=generator"
-											width="100%" height="152" frameBorder="0" allowfullscreen=""
-											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-											loading="lazy"></iframe>';
-										echo '<div id="verValoracion" class="valoracionExistente">';
-										echo '<p>' . $rating['SCORE'] . '/5</p>';
-										echo '<p>' . $rating['TEXT'] . '</p>';
-										echo '</div>';
-										echo '</div>';
-										$active = '';
-									}
-								} else {
-									echo 'Todavia no tienes valoraciones, empieza ya!';
-								}
-								?>
+                            if ($ratings) {
+                                foreach ($ratings as $rating) {
+                        ?>
+                                    <form action="" method="post">
+                                        <div class="valoracion <?= $active ?>">
+                                            <iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0" allowfullscreen=""
+                                            width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                            loading="lazy"></iframe>
+                                            <div id="verValoracion" class="valoracionExistente">
+                                                <p>
+                                                    <?= $rating['SCORE'] ?> /5
+                                                </p>
+                                                <p>
+                                                    <?= $rating['TEXT'] ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <!-- echo '<div class="valoracion ' . $active . '">';
+                                    echo '<iframe style="border-radius:12px"
+                                        src="' . $rating['LINK'] . '?utm_source=generator"
+                                        width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                        loading="lazy"></iframe>';
+                                    echo '<div id="verValoracion" class="valoracionExistente">';
+                                    echo '<p>' . $rating['SCORE'] . '/5</p>';
+                                    echo '<p>' . $rating['TEXT'] . '</p>';
+                                    echo '</div>';
+                                    echo '</div>'; -->
+
+                        <?php
+                                $active = '';
+
+                            }
+                        } else {
+                            echo 'Todavia no tienes valoraciones, empieza ya!';
+                        }
+                        ?>
                 </div>
                 <?php if (isset($spotifyUser)) : ?>
                     <div class="spotify">
@@ -146,35 +168,39 @@ if (isset($_SESSION['accessToken'])) {
                 <?php endif; ?>
                 <div class="musica">
                 <h2>Valoraciones a mis Playlist</h2>
-								<?php
-								$username = $_SESSION['user'];
-								$pdo2 = DbConnection::getInstance();
-								$ratings = $pdo2->showUserPlaylistRatings($username, 3);
-								$active = 'active';
+                    <?php
+                    $username = $_SESSION['user'];
+                    $pdo2 = DbConnection::getInstance();
+                    $ratings = $pdo2->showUserPlaylistRatings($username, 3);
+                    $active = 'active';
 
-								if ($ratings) {
-									foreach ($ratings as $rating) {
-										echo '<div class="valoracion ' . $active . '">';
-										echo '<iframe style="border-radius:12px"
-											src="' . $rating['LINK'] . '?utm_source=generator"
-											width="100%" height="152" frameBorder="0" allowfullscreen=""
-											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-											loading="lazy"></iframe>';
-										echo '<div id="verValoracion" class="valoracionExistente">';
-										echo '<p><b>' . $rating['USER_NAME'] . '</b> - ' . $rating['SCORE'] . '/5</p>';
-										echo '<p>' . $rating['TEXT'] . '</p>';
-										echo '</div>';
-										echo '</div>';
-										$active = '';
-									}
-								} else {
-									echo 'Todavia nadie ha valorado tus playlist!';
-								}
-								?>
+                    if ($ratings) {
+                        foreach ($ratings as $rating) {
+                            echo '<div class="valoracion ' . $active . '">';
+                            echo '<iframe style="border-radius:12px"
+                                src="' . $rating['LINK'] . '?utm_source=generator"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>';
+                            echo '<div id="verValoracion" class="valoracionExistente">';
+                            echo '<p><b>' . $rating['USER_NAME'] . '</b> - ' . $rating['SCORE'] . '/5</p>';
+                            echo '<p>' . $rating['TEXT'] . '</p>';
+                            echo '</div>';
+                            echo '</div>';
+                            $active = '';
+                        }
+                    } else {
+                        echo 'Todavia nadie ha valorado tus playlist!';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
-
+        <script>
+            let logout = document.getElementsByClassName('nav-link')[1];
+            logout.href = './logout.php';
+            logout.innerHTML = 'Log out';
+        </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>

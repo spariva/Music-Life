@@ -1,5 +1,6 @@
 <?php
-require_once '../config/init.php';
+// require_once '../config/init.php';
+require_once 'templates/header.php';
 
 
 //If there's a msg in the url, it's because the user tried to access the user page without logging in
@@ -34,7 +35,7 @@ unset($_SESSION['userNameLogin']);
 // }
 
 ?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 
     <head>
@@ -45,28 +46,22 @@ unset($_SESSION['userNameLogin']);
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./css/navbar.css">
         <link rel="stylesheet" href="./css/login.css">
-        <script src="./js/login.js" defer></script>
+        <script src="./js/login.js" defer></script> -->
         <!-- <script src="./js/script.js" defer></script> -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
     </head>
 
-    <body class="<?= $bodyClass ?>">
-        <?php if ($bodyClass == "crearCuenta"): ?>
-            <video src="./img/FondoSpotifyClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
-                disablePictureInPicture></video>
-        <?php else: ?>
-            <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
-                disablePictureInPicture></video>
-        <?php endif ?>
+    ---------------EL COMIENZO DEL BODY ESTA COPIADO EN codigoCortado.txt
+    
         <header id="header">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="d-flex align-items-center">
-                    <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+                    <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a> -->
 
                     <!-- desplegable para pantallas pequeñas -->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -84,7 +79,7 @@ unset($_SESSION['userNameLogin']);
                     </ul>
                 </div>
             </nav>
-        </header> 
+        </header>  -->
         <?php if (isset($msg)): ?>
             <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
                 <?php echo $msg;

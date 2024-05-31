@@ -1,5 +1,6 @@
 <?php
-require_once '../config/init.php';
+// require_once '../config/init.php';
+require_once 'templates/header.php';
 
 //Gestion de la ventana flotante con el aviso sobre las cookies
 $mostrarWarning = true;
@@ -13,7 +14,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
   }else{
     setcookie('aceptadas', false);
     $mostrarWarning = true;
-  echo '<style>#contenido, #header { filter: blur(5px); }</style>';
+  	echo '<style>#contenido, #header { filter: blur(5px); }</style>';
   }
 }
 ?>
@@ -32,7 +33,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
     } else {
         echo "No se encontraron resultados";
     } -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 
 	<head>
@@ -52,10 +53,10 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		<header id="header">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="d-flex align-items-center">
-					<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+					<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a> -->
 
 					<!-- desplegable para pantallas pequeñas -->
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+					<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
 						aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -63,6 +64,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link" href="./spotifyLab.php">Spotify-Lab</a></li>
 						<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
 						<li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
 						<li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
@@ -73,7 +75,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 					</ul>
 				</div>
 			</nav>
-		</header>
+		</header> -->
 
 
 		<div id="contenido">
@@ -351,12 +353,12 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				<a href="index.php?aceptadas=true">Aceptar Cookies</a>
 			</div>
   		<?php } ?>
-		<script src="./js/BusquedaSpotify.js" defer></script>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- <script src="./js/BusquedaSpotify.js" defer></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-		<script src="./js/star-rating.js"></script>
-		<script src="./js/script.js"></script>
+		<script src="./js/star-rating.js" defer></script>
+		<script src="./js/script.js" defer></script> -->
 	</body>
 
 </html>
