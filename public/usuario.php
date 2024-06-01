@@ -2,7 +2,7 @@
 require_once '../config/init.php';
 
 if (!isset($_SESSION['user'])) {
-    $msg = "No hay usuario logueado";
+    $msg = "Aún no has iniciado sesión";
     header("Location: ./login.php?msg=$msg");
     exit();
 }
@@ -87,7 +87,7 @@ if (isset($_SESSION['accessToken'])) {
                 <?php else: ?>
                     <img src="./img/imagenPerfil.png" alt="usuario-imagen">
                     <!-- Botón link para conectar tu cuenta con Spotify: -->
-                    <a href="../src/API/Code%20Flow%20OAuth/oauthSpotifyLibrary.php" class="btn btn-outline-success btn-lg rounded-pill" role="button">Conecta con Spoti</a>
+                    <a href="./oauthSpotifyLibrary.php" class="btn btn-outline-success btn-lg rounded-pill" role="button">Conecta con Spoti</a>
                 <?php endif; ?>
             </div>
 
@@ -127,7 +127,7 @@ if (isset($_SESSION['accessToken'])) {
                             <?php
                             $playlists = $api->getUserPlaylists($spotifyUser['id']);
                             $counter = 0;
-                            $maxIterations = 2;
+                            $maxIterations = 6;
                             foreach ($playlists->items as $playlist) {
                                 if ($counter == $maxIterations) {
                                     break;
@@ -135,7 +135,7 @@ if (isset($_SESSION['accessToken'])) {
                                 echo '<div class="spotify-playlist">';
                                 echo '<img src="' . $playlist->images[0]->url . '" alt="playlist-imagen">';
                                 echo '<h3>' . $playlist->name . '</h3>';
-                                echo '<p>' . $playlist->description . '</p>';
+                                echo '<p>' . $playlist->owner->followers . '</p>';
                                 echo '<a href="' . $playlist->external_urls->spotify . '" target="_blank" class="btn btn-outline-info btn-lg rounded-pill" role="button">Escuchar</a>';
                                 echo '</div><br>';
                                 $counter++;

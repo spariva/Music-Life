@@ -158,7 +158,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								<input type="hidden" name="username" value="<?php echo $username; ?>">
 								<input type="text" id="urlPlaylist" class="inputBuscador"
 								placeholder="Introduce la ruta embedida del álbum..." name="urlPlaylist">
-								<a id="botonBusca" class="button-wrapper">
+								<a id="botonBusca" class="button-wrapper" onclick="alert('Has hecho clic en el enlace')">
 									<span class="dot dot-1"></span>
 									<span class="dot dot-2"></span>
 									<span class="dot dot-3"></span>
@@ -173,8 +173,27 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 									<span class="dot dot-5"></span>
 									<span class="dot dot-6"></span>
 									<span class="dot dot-7"></span>
-									<span class="button btn btn-lg rounded-pill btn-primary-subtle"><button id="botonBuscar" class="btn btn-primary-subtle rounded-pill buttonBuscar">Buscar</button></span>
+									<span id="botonBuscar" class="button btn btn-lg rounded-pill btn-primary-subtle" onclick="event.stopPropagation(); alert('Has hecho clic en el span')">
+										<button class="btn btn-primary-subtle rounded-pill btnBuscar" onclick="event.stopPropagation(); alert('Has hecho clic en el botón')">Buscar</button>
+									</span>
 								</a>
+								<!-- <a id="botonBusca" class="button-wrapper">
+									<span class="dot dot-1"></span>
+									<span class="dot dot-2"></span>
+									<span class="dot dot-3"></span>
+									<span class="dot dot-4"></span>
+									<span class="dot dot-5"></span>
+									<span class="dot dot-6"></span>
+									<span class="dot dot-7"></span>
+									<span class="dot dot-1"></span>
+									<span class="dot dot-2"></span>
+									<span class="dot dot-3"></span>
+									<span class="dot dot-4"></span>
+									<span class="dot dot-5"></span>
+									<span class="dot dot-6"></span>
+									<span class="dot dot-7"></span>
+									<span class="button btn btn-lg rounded-pill btn-primary-subtle"><button id="botonBuscar" class="btn btn-primary-subtle rounded-pill btnBuscar">Buscar</button></span>
+								</a> -->
 							</form>
 							<iframe id="iframeBusqueda" style="border-radius:12px"
 								src="<?php if(isset($_GET['playlist'])){
