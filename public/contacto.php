@@ -88,9 +88,11 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
                         <?= $errores['nombre'] ?>
                     </span>
                 <?php } ?>
-
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
+                
+                <!-- <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br> -->
+                <label for="mensaje-contacto">Mensaje:</label>
+                <textarea id="mensaje-contacto" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
 
                 <button type="submit">Enviar</button>
             </form>

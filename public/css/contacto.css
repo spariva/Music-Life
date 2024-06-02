@@ -36,7 +36,8 @@ body {
     width: 100%;
 }
 
-#mensaje {
+/* #mensaje */
+#mensaje-contacto {
     max-height: 300px;
     min-height: 100px;
     max-width: 370px;
@@ -76,7 +77,8 @@ body {
         opacity: 0.7;
     }
     
-    #mensaje {
+    /* #mensaje */
+    #mensaje-contacto {
         max-height: 300px;
         min-height: 100px;
         max-width: 300px;
