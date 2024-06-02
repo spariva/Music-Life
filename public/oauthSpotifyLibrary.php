@@ -15,9 +15,12 @@ $session = new SpotifyWebAPI\Session(
 // Later, after Spotify redirects to your redirect URI
 if (isset($_GET['code'])) {
     $state = $_GET['state'];
+    $storedState = $_SESSION['state'];
     // Fetch the stored state value from somewhere. A session for example
     if ($state !== $storedState) {
         // The state returned isn't the same as the one we've stored, we shouldn't continue
+        echo 'State mismatch wtf';
+        header('Location: ' . DOC_ROOT . '/public/index.php');
         die('State mismatch');
     }
 
@@ -29,14 +32,19 @@ if (isset($_GET['code'])) {
 
     // Store the access and refresh tokens somewhere. In a session for example
     $_SESSION['accessToken'] = $accessToken;
-    $_SESSION['refreshToken'] = $refreshToken;  
+    $_SESSION['refreshToken'] = $refreshToken;
+    $userName = $_SESSION['user'];
+    
+    $mdb = DbConnection::getInstance();
+    $mdb->saveTokensToDatabase($userName, $accessToken, $refreshToken);
+
     // Send the user along and fetch some data!
-    // header('Location: ' . DOC_ROOT . '/public/usuario.php'); why doesn't work?
     header('Location: ./usuario.php');
     die();
 } else {
     // Request authorization from the user
     $state = $session->generateState();
+    $_SESSION['state'] = $state;
     $options = [
         'scope' => [
             'user-read-email', 

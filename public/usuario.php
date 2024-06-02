@@ -7,22 +7,6 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-// Set up the Spotify API client
-if (isset($_SESSION['accessToken'])) {
-    $api = new SpotifyWebAPI\SpotifyWebAPI();
-    $accessToken = $_SESSION['accessToken'];
-    $api->setAccessToken($accessToken);
-
-    // Fetch user data
-    $spotifyUserResponse = $api->me();
-    $spotifyUser = [
-        'id' => $spotifyUserResponse->id,
-        'name' => $spotifyUserResponse->display_name,
-        'email' => $spotifyUserResponse->email,
-        'image' => $spotifyUserResponse->images[0]->url,
-    ]; 
-}
-
 // // Fetch user data or perform actions as required
 // 
 // print_r($user);

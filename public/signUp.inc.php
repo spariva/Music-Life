@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         //se envían los datos del formulario al login
         $_SESSION['userNameSignUp'] = $userName;
         $_SESSION['userMailSignUp'] = $userMail;
-        //lo hago con session porque el js y el php se llevan mal
+        //lo hago con session porque el js y el php se llevan mal *sad face* Podemos cambiar la cookie del modo oscuro sino, pero tendría que no borrar los errores del formulario.
         $_SESSION['bodyClass'] = 'crearCuenta';
         header("Location: ./login.php?errorSignUp=true");
         die();

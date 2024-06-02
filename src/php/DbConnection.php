@@ -128,4 +128,76 @@ class DbConnection
         return $urls;
     }
 
+    // public function saveTokensToDatabase($accessToken, $refreshToken)
+    // {
+    //     $consulta = $this->db->prepare("INSERT INTO tokens (access_token, refresh_token) VALUES (:accessToken, :refreshToken)");
+    //     $consulta->bindParam(":accessToken", $accessToken, PDO::PARAM_STR);
+    //     $consulta->bindParam(":refreshToken", $refreshToken, PDO::PARAM_STR);
+    //     $consulta->execute();
+    // }
+
+    function saveTokensToDatabase($userName, $accessToken, $refreshToken) {
+        $consulta = $this->db->prepare('
+            INSERT INTO user_tokens (USER_NAME, ACCESS_TOKEN, REFRESH_TOKEN)
+            VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE
+                ACCESS_TOKEN = VALUES(ACCESS_TOKEN),
+                REFRESH_TOKEN = VALUES(REFRESH_TOKEN)
+        ');
+        $consulta->execute([$userName, $accessToken, $refreshToken]);
+    }
+
+    function getApiTokens($userName) {
+        $consulta = $this->db->prepare('
+            SELECT ACCESS_TOKEN, REFRESH_TOKEN
+            FROM user_tokens
+            WHERE USER_NAME = ?
+        ');
+        $consulta->execute([$userName]);
+        return $consulta->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    //Este método no va en DbConnection:
+    function refreshAccessToken($refreshToken) {
+        global $clientId, $clientSecret;
+    
+        $auth = base64_encode($clientId . ':' . $clientSecret);
+        $url = 'https://accounts.spotify.com/api/token';
+    
+        $data = [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $refreshToken,
+        ];
+    
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n" .
+                            "Authorization: Basic $auth\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data),
+            ],
+        ];
+    
+        $context = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+    
+        if ($result === FALSE) {
+            // Manejar error
+            return false;
+        }
+    
+        $response = json_decode($result, true);
+    
+        if (isset($response['access_token'])) {
+            $accessToken = $response['access_token'];
+            $newRefreshToken = $response['refresh_token'] ?? $refreshToken;
+    
+            //$mdb = DB::getInstance()->saveTokensToDatabase($userName, $accessToken, $newRefreshToken);
+    
+            return $accessToken;
+        }
+    
+        return false;
+    }
+
 }
