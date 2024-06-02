@@ -7,6 +7,10 @@
   --title-text: #f9fbfad5;
   --background-user: #d4d5d6;
 }
+/* clase para ocualtar elementos con JS */
+.ocultar{
+  display: none;
+}
 
 body {
   background-color: var(--white);
@@ -32,12 +36,23 @@ body {
   color: var(--white);
   flex-direction: column;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.1);
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  background-color: rgba(232, 253, 243, 0.1);
   border-radius: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+}
+
+.genero-item{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  color: var(--data-text);
+  font-size: 16px;
+  cursor: pointer;
+  margin: 2%;
 }
 
 .lab-panel img {
@@ -51,6 +66,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-bottom: 6%;
 }
 
 .cont-btn-generos{
@@ -66,10 +82,62 @@ body {
   justify-content: center;
   align-items: center;
   color: #0f2832;
+  font-weight: 500;
 }
 
 .lab-form input{
   width: 100%;
+  border-radius: 4px;
+  border-style: none;
+}
+
+.lab-form input[type="range"]{
+  -webkit-appearance: none;
+  height: 15px;
+  background: white;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.lab-form input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: blue;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.lab-form input[type="range"]::-moz-range-thumb{
+  width: 25px;
+  height: 25px;
+  background: blue;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+
+#valorTempo{
+  margin-bottom: 5%;
+}
+
+.lab-form button{
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 30px;
+  width: 30%;
+  background-color: rgb(76, 253, 94);
+  margin: auto;
+  border-style: none;
+}
+
+.lab-form button:hover{
+  border-right: 5px solid;
+  border-left: 5px solid;
+  border-color: rgba(67, 155, 222, 0.5);
+  transition: ease-in-out 0.2s;
 }
 
 /* No funciona TODO: */
@@ -81,7 +149,45 @@ body {
   box-shadow: 0 0 10px 10px rgba(73, 223, 215, 0.762);
 } */
 
-/* .listas {
+.lab-resultado-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 80px;
+  padding: 40px;
+}
+
+.lab-intro{
+  display: flex;
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+.lab-intro #getInfo{
+  background-color: #f3f3f3;
+  height: 30px;
+  width: 30px;
+  border: 1px solid;
+  border-radius: 50%;
+  border-color: #0f2832;
+  color: var(--data-text);
+  cursor: pointer;
+}
+
+#info{
+  background-color: rgb(200, 246, 241);
+  border-radius: 20px;
+  text-align: center;
+  color: var(--data-text);
+  width: 50%;
+  padding: 3%;
+  margin: 0 1%;
+}
+
+/* .lab-resultado-container {
   grid-area: listas;
   display: grid;
   grid-template-areas: "valoraciones musica";
@@ -92,9 +198,9 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 80px;
   padding: 40px;
-}
+} */
 
-.valoraciones {
+/* .valoraciones {
   grid-area: valoraciones;
 }
 
@@ -114,17 +220,28 @@ body {
 
 @media screen and (max-width: 1200px) {
 
+  /* Modal Info */
+
+  .lab-intro{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+
   .contenedor-principal-lab {
     display: grid;
     grid-template-areas: "usuario" "listas";
     grid-template-columns: 1fr;
+    width: 90%;
   }
 
   .lab-panel {
     text-align: center;
     grid-area: usuario;
-    padding: 20px;
-    border-radius: 300px 300px 40px 40px;
+    padding: 60px;
+    border-radius: 90px 90px 40px 40px;
+
   }
 
   .lab-panel h2 {
@@ -146,7 +263,7 @@ body {
     margin-top: 10px;
   }
 
-  .listas {
+  .lab-resultado-container {
     grid-area: listas;
     display: grid;
     grid-template-areas: "valoraciones" "musica";

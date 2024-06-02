@@ -52,10 +52,10 @@ require_once 'templates/header.php';
                 <!-- aqui las opciones del panel -->
                 <form action="" class="lab-form">
                     <label for="limite-canciones">Limite de canciones: </label>
-                    <input type="number" name="limite-canciones" id="limite-canciones" min="0"><br>
+                    <input type="number" name="limite-canciones" id="limite-canciones" min="0" placeholder="introduce un número"><br>
                     <label for="cod-artistas">Codigo de artista: </label>
                     <input type="text" name="cod-artistas" id="cod-artistas"><br>
-                    <label for="generos">Generos musicales: </label>
+                    <label for="generos">Generos musicales (5 max): </label>
                     <div id="cont-generos">
                         <input type="text" name="generos" id="generos" readonly><br>
                         <div class="cont-btn-generos">
@@ -73,12 +73,22 @@ require_once 'templates/header.php';
                     <!-- hay que buscar cuales son los valores limite -->
                     <input type="range" name="tempo" id="tempo" min="0" max="200" step="1" value="0">
                     <span id="valorTempo">0</span>
-                    instrumental
+
+                    <button type="submit">enviar</button>
                 </form>
             </div>
 
-            <div class="lab-resultado">
+            <div class="lab-resultado-container">
                 <!-- aqui el resultado de la busqueda -->
+                <div class="lab-intro">
+                    <span id="getInfo">?</span>
+                    <span id="info" class="ocultar">
+                        <h2>Spotify-Lab: Recomendaciones</h2>
+                        <p>Gracias a la potente API de Spotify, te ayudamos a generar recomendaciones de listas personalizadas a tu gusto</p>
+                    </span>
+                   
+                </div>
+                <div class="lab-resultado"></div>
 
             </div>
         </div>
