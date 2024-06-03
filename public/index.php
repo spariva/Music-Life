@@ -85,7 +85,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 			}
 		}
 	</script> -->
-	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager"></video>
+	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager" playsinline></video>
 
 	<header id="header">
 	<a class="textoCabecera" href="./index.php" id="logo2">Music-Life</a>

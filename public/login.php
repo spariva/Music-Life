@@ -54,9 +54,9 @@ unset($_SESSION['userNameLogin']);
 
 <body class="<?= $bodyClass ?>">
     <?php if ($bodyClass == "crearCuenta") : ?>
-        <video src="./img/FondoSpotifyClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
+        <video src="./img/FondoSpotifyClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager" playsinline></video>
     <?php else : ?>
-        <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
+        <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager" playsinline></video>
     <?php endif ?>
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">

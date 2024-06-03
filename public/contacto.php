@@ -25,7 +25,8 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 </head>
 
 <body>
-<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
+<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager" playsinline></video>
+
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="d-flex align-items-center">
