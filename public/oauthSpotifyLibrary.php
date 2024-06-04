@@ -19,7 +19,6 @@ if (isset($_GET['code'])) {
     // Fetch the stored state value from somewhere. A session for example
     if ($state !== $storedState) {
         // The state returned isn't the same as the one we've stored, we shouldn't continue
-        echo 'State mismatch wtf';
         header('Location: ' . DOC_ROOT . '/public/index.php');
         die('State mismatch');
     }
@@ -35,11 +34,11 @@ if (isset($_GET['code'])) {
     $_SESSION['refreshToken'] = $refreshToken;
     $userName = $_SESSION['user'];
     
-    $mdb = DbConnection::getInstance();
-    $mdb->saveTokensToDatabase($userName, $accessToken, $refreshToken);
+    // $mdb = DbConnection::getInstance();
+    // $mdb->saveTokensToDatabase($userName, $accessToken, $refreshToken);
 
     // Send the user along and fetch some data!
-    header('Location: ./usuario.php');
+    header('Location: ./spotifyLab.php');
     die();
 } else {
     // Request authorization from the user

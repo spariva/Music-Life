@@ -16,6 +16,10 @@ if (isset($_SESSION['accessToken'])) {
         'image' => $spotifyUserResponse->images[0]->url,
     ]; 
 }
+// } else {
+//     // $mdb = DbConnection::getInstance();
+//     // $accessToken = $mdb->getApiTokens();
+// }
 
 ?>
 
@@ -95,6 +99,7 @@ if (isset($_SESSION['accessToken'])) {
 
             <div class="lab-resultado">
                 <!-- aqui el resultado de la busqueda -->
+
 
             </div>
         </div>

@@ -25,7 +25,7 @@ if (!isset($_SESSION['user'])) {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./css/navbar.css">
         <link rel="stylesheet" href="./css/usuario.css">
-        <script src="./js/usuario.js" defer></script>
+        <!-- <script src="./js/usuario.js" defer></script> -->
         <script src="./js/script.js" defer></script>
     </head>
 
