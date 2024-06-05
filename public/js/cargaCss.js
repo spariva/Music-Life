@@ -12,7 +12,7 @@ if(window.location.href.includes('spotifyLab')){
     // head.appendChild(`<link rel="stylesheet" type="text/css" href="./css/navbar.css">`);
     // head.appendChild(`<link rel="stylesheet" type="text/css" href="./css/star-rating.css">`);
     // head.appendChild(`<link rel="stylesheet" type="text/css" href="./css/usuario.css">`);
-}else if(window.location.href.includes('index') || window.location.href === 'music-lifes.es'){
+}else if(window.location.href.includes('index') || window.location.href === 'music-life.es'){
     head.innerHTML += `
     <link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
     <link rel="stylesheet" type="text/css" href="./css/star-rating.css">

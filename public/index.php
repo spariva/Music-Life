@@ -44,6 +44,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		<link rel="stylesheet" type="text/css" href="./css/navbar.css">
 		<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 		<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
+		<link rel="stylesheet" href="./css/playlist.css">
 	</head>
 
 	<body>
@@ -148,17 +149,15 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 					}
 					} ?>
 			</div>
-
-
 			<div id="restoPagina">
 				<div id="buscador">
 					<div id="lupaBuscador">
 						<div id="barraBusqueda" class="barraBusqueda">
-							<form id="buscador2" action="./anadirPlaylist.php" method="post">
+							<form id="buscador2" aria-label="He quitado el action a anadir, porque ahora molestaba, volver a poner">
 								<input type="hidden" name="username" value="<?php echo $username; ?>">
-								<input type="text" id="urlPlaylist" class="inputBuscador"
+								<input type="text" id="inputBusqueda" class="inputBuscador"
 								placeholder="Introduce la ruta embedida del álbum..." name="urlPlaylist">
-								<a id="botonBusca" class="button-wrapper" onclick="alert('Has hecho clic en el enlace')">
+								<a class="button-wrapper">
 									<span class="dot dot-1"></span>
 									<span class="dot dot-2"></span>
 									<span class="dot dot-3"></span>
@@ -173,34 +172,13 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 									<span class="dot dot-5"></span>
 									<span class="dot dot-6"></span>
 									<span class="dot dot-7"></span>
-									<span id="botonBuscar" class="button btn btn-lg rounded-pill btn-primary-subtle" onclick="event.stopPropagation(); alert('Has hecho clic en el span')">
-										<button class="btn btn-primary-subtle rounded-pill btnBuscar" onclick="event.stopPropagation(); alert('Has hecho clic en el botón')">Buscar</button>
+									<span id="botonBuscar" class="button btn btn-lg rounded-pill btn-primary-subtle">
+										<button class="btn btn-primary-subtle rounded-pill btnBuscar">Buscar</button>
 									</span>
 								</a>
-								<!-- <a id="botonBusca" class="button-wrapper">
-									<span class="dot dot-1"></span>
-									<span class="dot dot-2"></span>
-									<span class="dot dot-3"></span>
-									<span class="dot dot-4"></span>
-									<span class="dot dot-5"></span>
-									<span class="dot dot-6"></span>
-									<span class="dot dot-7"></span>
-									<span class="dot dot-1"></span>
-									<span class="dot dot-2"></span>
-									<span class="dot dot-3"></span>
-									<span class="dot dot-4"></span>
-									<span class="dot dot-5"></span>
-									<span class="dot dot-6"></span>
-									<span class="dot dot-7"></span>
-									<span class="button btn btn-lg rounded-pill btn-primary-subtle"><button id="botonBuscar" class="btn btn-primary-subtle rounded-pill btnBuscar">Buscar</button></span>
-								</a> -->
 							</form>
 							<iframe id="iframeBusqueda" style="border-radius:12px"
-								src="<?php if(isset($_GET['playlist'])){
-									echo $_GET['playlist'];
-								}else{
-									echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
-								}    ?>"
+								src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator"
 								width="100%" height="152" frameborder="0" allowfullscreen=""
 								allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 								loading="lazy"></iframe>
@@ -234,7 +212,6 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							</div>
 						</div>
 					</div>
-
 					<div id="valoracionesBuscador">
 					<div id="apartado">Mis Valoraciones</div>
 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -370,7 +347,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				<a href="index.php?aceptadas=true">Aceptar Cookies</a>
 			</div>
   		<?php } ?>
-		<script src="./js/BusquedaSpotify.js" defer></script>
+		<!-- <script src="./js/BusquedaSpotify.js" defer></script> -->
+		<script src="./js/playlists.js" defer></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
