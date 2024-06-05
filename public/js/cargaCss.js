@@ -27,6 +27,7 @@ if(window.location.href.includes('spotifyLab')){
 }else if(window.location.href.includes('usuario')){
     head.innerHTML += `
     <link rel="stylesheet" href="./css/usuario.css">
+    <link rel="stylesheet" type="text/css" href="./css/star-rating.css">
     `;
 }else if(window.location.href.includes('contacto')){
     head.innerHTML += `
