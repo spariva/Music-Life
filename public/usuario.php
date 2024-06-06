@@ -104,37 +104,40 @@ if (isset($_SESSION['accessToken'])) {
                             if ($ratings) {
                                 foreach ($ratings as $rating) {
                         ?>
-                                    <form action="./editarValoracion.php" method="post">
-                                        <div class="valoracion <?= $active ?>">
-                                            <iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0" allowfullscreen=""
-                                            width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                            loading="lazy"></iframe>
-                                            <!-- <div id="verValoracion" class="valoracionExistente "> -->
-                                            <div class="valoracionExistente verValoracion">
-                                                <p><?= $rating['SCORE'] ?> /5</p>
-                                                <p><?= $rating['TEXT'] ?></p>    
-                                            </div>
-                                            <div class="ratingBlock ocultar">
-                                                <div class="editarValoracionCont">
-                                                    <div class="star-rating">
-                                                        <img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
-                                                        <img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
-                                                        <img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
-                                                        <img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
-                                                        <img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+                                    <div>
+                                        <form action="./editarValoracion.php" method="post">
+                                            <div class="valoracion <?= $active ?> ">
+                                                <iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0" allowfullscreen=""
+                                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                                loading="lazy"></iframe>
+
+                                                <div class="valoracionExistente verValoracion">
+                                                    <p><?= $rating['SCORE'] ?> /5</p>
+                                                    <p><?= $rating['TEXT'] ?></p>    
+                                                </div>
+                                                <div class="ratingBlock ocultar">
+                                                    <div class="cerrar">X</div>
+                                                    <div class="editarValoracionCont">
+                                                        <div class="star-rating">
+                                                            <img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
+                                                            <img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
+                                                            <img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
+                                                            <img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
+                                                            <img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+                                                        </div>
+                                                        <input type="hidden" name="url" value="<?= $rating['LINK'] ?>">
+                                                        <p><textarea name="nuevaValoracion" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+                                                        <input type="hidden" name="nuevoRating" class="rating-value">
+                                                        <p><button type="submit" class="submit-button">Editar</button></p>
                                                     </div>
-                                                    <input type="hidden" name="url" value="<?= $rating['LINK'] ?>">
-                                                    <p><textarea name="nuevaValoracion" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
-                                                    <input type="hidden" name="nuevoRating" class="rating-value" required>
-                                                    <p><button type="submit" class="submit-button">Editar</button></p>
                                                 </div>
                                             </div>
+                                        </form>
+                                        <div class="btnsValoracion">
+                                            <button class="btnEditarValoracion">Editar</button>
+                                            <button class="btnEliminarValoracion">Eliminar</button>
                                         </div>
-                                    </form>
-                                    <div class="btnsValoracion">
-                                        <button class="btnEditarValoracion">Editar</button>
-                                        <button class="btnEliminarValoracion">Eliminar</button>
                                     </div>
 
                                     <!-- echo '<div class="valoracion ' . $active . '">';

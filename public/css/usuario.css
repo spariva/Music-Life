@@ -79,6 +79,35 @@ body {
   background-color: rgba(255, 255, 255, 0.211);
   padding: 10px;
 }
+.btnsValoracion{
+  width: 100%;
+  margin: 0 10px;
+}
+.btnEditarValoracion, .btnEliminarValoracion{
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
+  opacity: 0.8;
+  border: 0;
+  text-align: center;
+  background-color: #ffffff;
+}
+.btnEliminarValoracion{
+  background-color: #ff9497;
+}
+.cerrar{
+  margin: 2% 4%;
+  text-align: right;
+  color: #0f2832;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+.cerrar:hover{
+  font-weight: 800;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
 
 .musica {
   grid-area: musica;
