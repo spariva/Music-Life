@@ -1,229 +1,238 @@
-  body {
-    background-color: grey;
-  }
-
-  /* CUERPO */
-
-  :root {
-    --white: #fff;
-    --red: rgb(66, 153, 215);
-    /* --red: #f4242f; */
-    --yellow: #ffeb3b;
-    --blue: #2196f3;
-    --blur-grey: #ffffff80;
-    --blur-greySoft: #ffffff40;
-  }
-
-  #ubicador {
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 9%;
-  }
-
-  body.crearCuenta::after {
-    opacity: 1;
-  }
-
-  .contenedor {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 350px;
-    height: 340px;
-    border-radius: 15px;
-    z-index: 1;
-    transition: 0.5s;
-    overflow: hidden;
-  }
-
-  .crearCuenta .contenedor {
-    height: 430px;
-  }
-
-  .error{
-    color: rgb(238, 44, 44);
-    margin: 0px;
-    padding: 0px;
+body {
+  background-color: grey;
 }
 
+/* CUERPO */
 
-  .contenedor::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: repeating-conic-gradient(from var(--grados), #45f3ff 0%,
-        #45f3ff 10%, transparent 10%, transparent 80%, #45f3ff 100%);
-    animation: animacion 2.5s linear infinite;
-  }
+:root {
+  --white: #fff;
+  --red: rgb(66, 153, 215);
+  --yellow: #ffeb3b;
+  --blue: #2196f3;
+  --blur-grey: #ffffff80;
+  --blur-greySoft: #ffffff40;
+}
 
-  @property --grados {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 0deg;
-  }
+#ubicador {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9%;
+}
 
-  @keyframes animacion {
-    0% {
+body.crearCuenta::after {
+  opacity: 1;
+}
+
+.contenedor {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 350px;
+  height: 340px;
+  border-radius: 15px;
+  z-index: 1;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.crearCuenta .contenedor {
+  height: 430px;
+}
+
+.error {
+  color: rgb(238, 44, 44);
+  margin: 0px;
+  padding: 0px;
+}
+
+.contenedor::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(from var(--grados), #45f3ff 0%,
+      #45f3ff 10%, transparent 10%, transparent 80%, #45f3ff 100%);
+  animation: animacion 2.5s linear infinite;
+}
+
+@property --grados {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes animacion {
+  0% {
       --grados: 0deg
-    }
+  }
 
-    100% {
+  100% {
       --grados: 360deg
-    }
   }
+}
 
-  .contenedor__efectos {
-    height: 100%;
-    position: absolute;
-    inset: 5px;
-    overflow: hidden;
-    border-radius: 15px;
-  }
+.contenedor__efectos {
+  height: 100%;
+  position: absolute;
+  inset: 5px;
+  overflow: hidden;
+  border-radius: 15px;
+}
 
-  .contenedor__efectos::before {
-    content: '';
-    position: absolute;
-    inset: 5px;
-    background: url(../img/FondoIndexClaro.mp4);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    filter: blur(15px);
-    border-radius: 20px;
-  }
+.contenedor__efectos::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  background: url(../img/FondoIndexClaro.mp4);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px);
+  border-radius: 20px;
+}
 
-  .contenedor__efectos::after {
-    content: '';
-    position: absolute;
-    inset: 5px;
-    background: url(../img/background-blue.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    filter: blur(15px);
-  }
+.contenedor__efectos::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  background: url(../img/background-blue.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px);
+}
 
-  body.crearCuenta .contenedor__efectos::before,
-  body.crearCuenta .contenedor__efectos::after {
-    background: url(../img/background-green.PNG);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    filter: blur(15px);
-  }
+body.crearCuenta .contenedor__efectos::before,
+body.crearCuenta .contenedor__efectos::after {
+  background: url(../img/background-green.PNG);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px);
+}
 
-  body.crearCuenta .contenedor::before {
-    filter: hue-rotate(270deg);
-  }
+body.crearCuenta .contenedor::before {
+  filter: hue-rotate(270deg);
+}
 
-  form {
-    position: absolute;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 15px;
-    transition: 0.5s;
-  }
+form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+  transition: 0.5s;
+}
 
-  form#registro {
-    left: 100%;
-  }
+form#registro {
+  display: none;
+}
 
-  body.crearCuenta form#inicioSesion {
-    left: -100%;
-  }
+body.crearCuenta form#inicioSesion {
+  display: none;
+}
 
-  body.crearCuenta form#registro {
-    left: 0;
-  }
+body.crearCuenta form#registro {
+  display: flex;
+}
 
-  .formulario__titulo {
-    position: relative;
-    color: var(--white);
-    font-size: 1.5em;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
+.formulario__titulo {
+  position: relative;
+  color: var(--white);
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
 
-  form .inputBox {
-    position: relative;
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-  }
+form .inputBox {
+  position: relative;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
 
-  body.crearCuenta form .inputBox {
-    justify-content: center;
-  }
+body.crearCuenta form .inputBox {
+  justify-content: center;
+}
 
-  form .inputBox p {
-    margin-right: 10px;
-    cursor: default;
-  }
+form .inputBox p {
+  margin-right: 10px;
+  cursor: default;
+}
 
-  form .inputBox a,
-  form .inputBox p {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 0.85em;
-  }
+form .inputBox a,
+form .inputBox p {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.85em;
+}
 
-  form .inputBox #crearCuenta {
-    text-decoration: underline;
-  }
+form .inputBox #crearCuenta {
+  text-decoration: underline;
+}
 
-  form .inputBox input {
-    width: 100%;
-    outline: none;
-    border: 1px solid var(--blur-greySoft);
-    background: rgba(0, 0, 0, 0.15);
-    padding: 6px 15px;
-    border-radius: 4px;
-    font-size: 0.85em;
-    color: var(--white);
-  }
+form .inputBox input {
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--blur-greySoft);
+  background: rgba(0, 0, 0, 0.15);
+  padding: 6px 15px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: var(--white);
+}
 
-  form .inputBox input::placeholder {
-    color: var(--blur-grey);
-  }
+form .inputBox input::placeholder {
+  color: var(--blur-grey);
+}
 
-  form .inputBox .botonConectarse {
-    background: var(--blue);
-    font-weight: 500;
-    cursor: pointer;
-  }
+form .inputBox .botonConectarse {
+  background: var(--blue);
+  font-weight: 500;
+  cursor: pointer;
+}
 
-  form#registro .inputBox .botonCrear {
-    background: var(--red);
-    cursor: pointer;
-  }
+form#registro .inputBox .botonCrear {
+  background: var(--red);
+  cursor: pointer;
+}
 
-  #conectarCuenta {
-    font-weight: 500;
-    color: var(--yellow);
-    text-decoration: underline;
-  }
+#conectarCuenta {
+  font-weight: 500;
+  color: var(--yellow);
+  text-decoration: underline;
+}
 
+#enviarRecuperar,
+#closeModal{
+  background-color: var(--blue);
+  border-radius: 10px;
+  color: white;
+  border: none;
+  padding: 7px;
+  margin: 10px;
+}
 
-  /*Modo para moviles*/
-  /* Media query para pantallas pequeñas */
-  @media screen and (max-width: 1200px) {
-
-    .contenedor {
+/*Modo para moviles*/
+/* Media query para pantallas pequeñas */
+@media screen and (max-width: 1200px) {
+  .contenedor {
       margin: 15px;
       padding: 5px;
       background-color: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       animation: animacionColorFondo 6s linear infinite alternate;
-    }
-
   }
+}
+
+#recuperarPSWD {
+  display: none;
+}

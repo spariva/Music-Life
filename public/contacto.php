@@ -26,7 +26,8 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 </head>
 
 <body>
-<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
+<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager" playsinline></video>
+
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="d-flex align-items-center">
@@ -41,7 +42,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
+                    <!--<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>-->
                     <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
                     <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>

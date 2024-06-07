@@ -33,5 +33,21 @@ window.onload = function() {
     }
 };
 
+document.addEventListener('DOMContentLoaded', function() {
+    const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+    const closeModalButton = document.getElementById('closeModal');
+    const loginForm = document.getElementById('inicioSesion');
+    const recoverForm = document.getElementById('recuperarPSWD');
 
+    forgotPasswordLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        loginForm.style.display = 'none';
+        recoverForm.style.display = 'flex';
+    });
+
+    closeModalButton.addEventListener('click', function() {
+        recoverForm.style.display = 'none';
+        loginForm.style.display = 'flex';
+    });
+});
 
