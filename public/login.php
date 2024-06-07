@@ -149,7 +149,7 @@ unset($_SESSION['userNameLogin']);
             </form>
 
 
-            <form id="recuperarPSWD" action="../src/php/recuperarPsswd.php" method="post">
+            <form id="recuperarPSWD" action="./mailer/recuperarPsswd.php" method="post">
                 <h3 class="formulario__titulo">Recupera tu contraseña</h3>
                 <div class="inputBox">
                     <p>Email: <input type="email" id="email" name="email" required></p>
