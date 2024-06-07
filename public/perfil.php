@@ -2,6 +2,8 @@
 require_once '../config/init.php';
 
 $username = $_SESSION['user'];
+$perfil = $_GET['name'];
+
 
 if (!isset($_SESSION['user'])) {
     $msg = "No hay usuario logueado";
@@ -54,86 +56,48 @@ if (!isset($_SESSION['user'])) {
         </nav>
     </header>
     <div class="contenedor-principal-menuUsuario">
+
         <div class="usuario" id="menuUsuario__izquierda">
-            <h2>
-                <?= $_SESSION['user']; ?>
+            <a href="./usuario.php">Volver a mi perfil</a>
+            <br>
+            <h2>Perfil de
+                <?= $perfil; ?>
             </h2>
+            <?php
+            $pdo = DbConnection::getInstance();
+            $isFriend = $pdo->checkIfFriend($username, $perfil);
+            if ($isFriend) {
+                echo '<div id="soisAmigos">Sois amigos :)</div>';
+            } else {
+                echo '<form action="./requestFriend.php" method="post">
+                        <input type="hidden" name="search" value="' . $perfil . '">
+                        <input type="hidden" name="username" value="' . $username . '">
+                        <button id="botonSolicitarAmistad" type="submit">Solicitar Amistad</button>
+                        </form>';
+            }
+            ?>
             <img src="./img/imagenPerfil.png" alt="usuario-imagen">
             <!-- <div id="correo">correoelectronico@email.com</div> -->
 
-            <div class="amigos" style="max-height: 300px; overflow-y: auto;">
-                <h3 style="text-align: center;">Mis Amigos</h3>
+            <div class="amigos" style="max-height: 400px; overflow-y: auto;">
+                <h2 style="text-align: center;">Amigos de <?= $perfil; ?></h2>
                 <ul>
                     <?php
                     $pdo = DbConnection::getInstance();
-                    $friends = $pdo->showUserFriends($_SESSION['user']);
+                    $friends = $pdo->showUserFriends($perfil);
                     foreach ($friends as $friend) {
                         echo "<li><a href='perfil.php?name=" . $friend['FRIEND_NAME'] . "'>" . $friend['FRIEND_NAME'] . "</a></li>";
                     }
                     ?>
                 </ul>
             </div>
-
-            <div class="buscarAmigos">
-                <div id="tituloBuscarAmigos">
-                    <h3>Buscar amigos</h3>
-                    <img id="infoLogo" src="./img/info.png" alt="Información">
-                </div>
-                <div id="infoDesplegable">
-                    <p>Introduce el nombre de usuario de la persona que quieras para enviarle una solicitud de amistad</p>
-                    <p>Si la solicitud es aceptada, pasareis a ser amigxs :)</p>
-                </div>
-
-                <script>
-                    document.getElementById('infoLogo').addEventListener('click', function() {
-                        var infoDesplegable = document.getElementById('infoDesplegable');
-                        if (infoDesplegable.style.display === 'none') {
-                            infoDesplegable.style.display = 'block';
-                        } else {
-                            infoDesplegable.style.display = 'none';
-                        }
-                    });
-                </script>
-
-                <form id="formBuscar" method="post" action="./requestFriend.php">
-                    <input type="hidden" name="username" value="<?php echo $username; ?>" required>
-                    <input type="text" id="buscadorUsuarios" name="search" placeholder="Buscar usuario">
-                    <input type="submit" id="btnSubmit" name="submit" value="Solicitar">
-                </form><br>
-            </div>
-
-            <div class="solicitudes" style="max-height: 300px; overflow-y: auto;">
-                <h3 style="text-align: center;">Mis Solicitudes</h3>
-                <ul>
-                    <?php
-                    $pdo = DbConnection::getInstance();
-                    $requests = $pdo->showUserFriendRequest($_SESSION['user']);
-                    if ($requests) {
-                        foreach ($requests as $request) {
-                            echo "<li><a href='perfil.php?name=" . $request['REQUEST_USER'] . "'>" . $request['REQUEST_USER'] . "</a></li>"; ?>
-                            <form method="post" action="./acceptFriend.php">
-                                <input type="hidden" name="username" value="<?php echo $username; ?>" required>
-                                <input type="hidden" name="friend" value="<?php echo $request['REQUEST_USER']; ?>" required>
-                                <input type="submit" name="aceptar" value="Aceptar">
-                                <input type="submit" name="rechazar" value="Rechazar">
-                            </form>
-
-                    <?php }
-                    } else {
-                        echo "No tienes solicitudes de amistad";
-                    } ?>
-                </ul>
-
-            </div>
         </div>
-
-
 
         <div class="listas">
             <div class="valoraciones">
-                <h2>Mis valoraciones</h2>
+                <h2>Valoraciones de <?= $perfil; ?></h2>
                 <?php
-                $username = $_SESSION['user'];
+                $username = $perfil;
                 $pdo = DbConnection::getInstance();
                 $ratings = $pdo->showUserRatingsRandom($username, 3);
                 $active = 'active';
@@ -154,16 +118,15 @@ if (!isset($_SESSION['user'])) {
                         $active = '';
                     }
                 } else {
-                    echo 'Todavia no tienes valoraciones, empieza ya!';
+                    echo 'Todavia no tiene valoraciones!';
                 }
                 ?>
             </div>
             <div class="musica">
-                <h2>Valoraciones a mis Playlists</h2>
+                <h2>Valoraciones a sus Playlist</h2>
                 <?php
-                //$username = $_SESSION['user'];
                 $pdo2 = DbConnection::getInstance();
-                $ratings = $pdo2->showUserPlaylistRatings($username, 3);
+                $ratings = $pdo2->showUserPlaylistRatings($perfil, 3);
                 $active = 'active';
 
                 if ($ratings) {
@@ -182,17 +145,15 @@ if (!isset($_SESSION['user'])) {
                         $active = '';
                     }
                 } else {
-                    echo 'Todavia nadie ha valorado tus playlist!';
+                    echo 'Todavia nadie ha valorado sus playlist!';
                 }
                 ?>
             </div>
-
             <div class="playlists">
-                <h2>Todas mis Playlists</h2>
+                <h2>Todas sus Playlists</h2>
                 <?php
-                $username = $_SESSION['user'];
                 $pdo3 = DbConnection::getInstance();
-                $links = $pdo3->showUserPlaylistsRandom($username, 0);
+                $links = $pdo3->showUserPlaylistsRandom($perfil, 0);
                 //$active = 'active';
 
                 if ($links) {
@@ -201,7 +162,7 @@ if (!isset($_SESSION['user'])) {
                         //echo '<div class="bloquePV">';
                         echo '<iframe  class="bloquePV" style="border-radius:12px"
 											src="' . $link . '?utm_source=generator"
-											 height="152" frameBorder="0" allowfullscreen=""
+											width="30%" height="152" frameBorder="0" allowfullscreen=""
 											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 											loading="lazy"></iframe>';
                         //$active = '';
@@ -210,7 +171,7 @@ if (!isset($_SESSION['user'])) {
                     echo '</div>';
 
                 } else {
-                    echo 'Todavia no has subido ninguna playlist!';
+                    echo 'Todavia no ha subido ninguna playlist!';
                 }
                 ?>
             </div>
