@@ -1,3 +1,15 @@
+html {
+  line-height: 1.15; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  overflow: -moz-scrollbars-none; /* Para Firefox */
+  -ms-overflow-style: none;  /* Para IE y Edge */
+  scrollbar-width: none;  /* Para Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Para Chrome, Safari y Opera */
+}
 @font-face {
   font-family: popText;
   src: url(../img/fonts/PopArt-Regular.ttf);
