@@ -60,19 +60,7 @@ if (!isset($_SESSION['user'])) {
         </header>
         <div class="contenedor-principal-menuUsuario">
             <div class="usuario" id="menuUsuario__izquierda">
-                <?php if (isset($spotifyUser)) : ?>
-                    <img src="<?= $spotifyUser['image']; ?>" alt="usuario-imagen" class="user-pic-lg w-50 h-25">
-                    <h3>
-                        <?= $spotifyUser['name']; ?>
-                    </h3>
-                    <p>
-                        <?= $spotifyUser['email']; ?>
-                    </p>
-                <?php else: ?>
-                    <img src="./img/imagenPerfil.png" alt="usuario-imagen">
-                    <!-- Botón link para conectar tu cuenta con Spotify: -->
-                    <a href="./oauthSpotifyLibrary.php" class="btn btn-outline-success btn-lg rounded-pill" role="button">Conecta con Spoti</a>
-                <?php endif; ?>
+                <img src="./img/imagenPerfil.png" alt="usuario-imagen">
             </div>
 
             <div class="listas">

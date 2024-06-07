@@ -348,7 +348,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 			</div>
   		<?php } ?>
 		<!-- <script src="./js/BusquedaSpotify.js" defer></script> -->
-		<script src="./js/playlists.js" defer></script>
+		<script src="./js/playlistsAPI.js" defer></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
