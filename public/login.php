@@ -153,13 +153,12 @@ unset($_SESSION['userNameLogin']);
                 <h3 class="formulario__titulo">Recupera tu contraseña</h3>
                 <div class="inputBox">
                     <p>Email: <input type="email" id="email" name="email" required></p>
+
                 </div>
                 <div class="botonesPsswd">
-                    <div class="inputBox botonConectarse">
-                        <button type="submit">Enviar email de recuperación</button>
-                    </div>
-                    <div class="inputBox botonConectarse">
-                        <button type="button" id="closeModal">Cerrar</button>
+                    <div class=" botonesRecuperar">
+                        <button type="submit" id="enviarRecuperar">Solicitar cambio</button>
+                        <button type="button" onclick="window.location.href='http://music-life.es/login.php'" id="closeModal">Cerrar</button>
                     </div>
                 </div>
             </form>

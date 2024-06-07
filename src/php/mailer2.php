@@ -1,12 +1,12 @@
 <?php
-// Load Composer's autoloader
-require '../../phpmailer/vendor/autoload.php';
-
-// Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+// Load Composer's autoloader
+require '../../vendor/autoload.php';
+
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
 
 
 // Instantiation and passing `true` enables exceptions
@@ -19,20 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = $_POST["subject"];
     $redireccion = $_POST["redireccion"];
 
-
     try {
-        //Server settings
         $mail->SMTPDebug = false; // or $mail->SMTPDebug = 0;
         $mail->isSMTP();     // Send using SMTP
-        $mail->Host       = 'ssl0.ovh.net:993'; // Set the SMTP server to send through
+        $mail->Host       = 'smtp-relay.brevo.com'; // Set the SMTP server to send through
         $mail->SMTPAuth   = true;   // Enable SMTP authentication
-        $mail->Username   = 'support@music-life.es';     // SMTP username
-        $mail->Password   = 'xxxxx';  // SMTP password
+        $mail->Username   = 'sergiosahi25@gmail.com';     // SMTP username
+        $mail->Password   = 'CDLYQwFST8gPJa32';  // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 587;   // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
         // From email address and name
-        $mail->setFrom('support@music-life.es', 'Support');
+        $mail->setFrom('music-life@support.es', 'Soporte Music Life');
 
         // To email addresss
         $mail->addAddress($email); // Agrega el destinatario obtenido del formulario
@@ -47,10 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
-        echo '<div style="text-align: center; font-size: 20px; font-weight: bold;">
-        <p>Correo enviado, por favor revisa tu bandeja de entrada :) </p>
-        <p><a href="http://music-life.es">Volver a la web</a></p>
-      </div>';
+        header("Location: http://music-life.es");
+        exit();
+        
+        //echo '<div style="text-align: center; font-size: 20px; font-weight: bold;"><p>Correo enviado, por favor revisa tu bandeja de entrada :) </p><p><a href="http://music-life.es">Volver a la web</a></p></div>';
 
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

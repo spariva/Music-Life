@@ -211,6 +211,16 @@ form#registro .inputBox .botonCrear {
   text-decoration: underline;
 }
 
+#enviarRecuperar,
+#closeModal{
+  background-color: var(--blue);
+  border-radius: 10px;
+  color: white;
+  border: none;
+  padding: 7px;
+  margin: 10px;
+}
+
 /*Modo para moviles*/
 /* Media query para pantallas pequeñas */
 @media screen and (max-width: 1200px) {
