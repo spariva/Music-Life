@@ -10,9 +10,6 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-// // Fetch user data or perform actions as required
-// 
-// print_r($user);
 ?>
 
  <div class="contenedor-principal-menuUsuario">

@@ -402,7 +402,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				<div id="textoCookies">Para mejorar tu experiencia en la web recogemos algunas cookies, nos sirven para acordarnos de si preferias
 					 modo oscuro o claro, de quien eras (para no tener que iniciar sesión cada vez) y para algunos datos de configuración más.<br>
 					 No recogemos ni recopilamos ningún tipo de dato sensible.
-					 Y tranquil@, con nosotrxs tus cookies están a salvo.
+					 Y tranqui, con nosotres tus cookies están a salvo.
 				</div>
 				<div id="aceptarCookies"> <a href="index.php?aceptadas=true">Aceptar Cookies</a></div>
 				<div id="imgCookies1"><img class="imgCookies" src="./img/cookieMonster.png" alt="cookie1"></div>
@@ -411,12 +411,10 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
   		<?php } ?>
 		<!-- <script src="./js/BusquedaSpotify.js" defer></script> -->
 		<script src="./js/playlistsAPI.js" defer></script>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<!-- EL DE ARRIBA CARGA DOS VECES MAYBE TODO -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 		<script src="./js/star-rating.js" defer></script>
-		<script src="./js/script.js" defer></script> -->
+		<script src="./js/script.js" defer></script>
 	</body>
 
 

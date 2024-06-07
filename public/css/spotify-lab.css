@@ -92,7 +92,6 @@ body {
 }
 
 .lab-form input[type="range"]{
-  -webkit-appearance: none;
   height: 15px;
   background: white;
   outline: none;
