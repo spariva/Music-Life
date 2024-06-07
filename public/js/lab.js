@@ -50,7 +50,8 @@ let inpTempo = document.getElementById('tempo');
 inpTempo.addEventListener('click', ()=>{
     let tempoValue = inpTempo.value;
     let tempoSpan = document.getElementById('valorTempo');
-    tempoSpan.innerHTML = tempoValue;
+    tempoSpan.textContent = tempoValue;
+    // tempoSpan.innerHTML = tempoValue;
 });
 
 /**-----------> Boton info */

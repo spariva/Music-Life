@@ -167,7 +167,7 @@ if (isset($_SESSION['accessToken'])) {
                   
                                
               <?php
-                } else {
+                }} else {
                     echo 'Todavia no tienes valoraciones, empieza ya!';
                 }
                 ?>
