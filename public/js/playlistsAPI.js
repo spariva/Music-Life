@@ -5,8 +5,8 @@ const iframeBuscador = document.getElementById('iframeBusqueda');
 async function getAccessToken() {
     const authParams = new URLSearchParams({
         grant_type: 'client_credentials',
-        client_id: 'dcac2d43d9144e148397e800ed490350',
-        client_secret: 'dc150869674b417abfcab580cde9a88b',
+        client_id: '',
+        client_secret: '',
     });
 
     const response = await fetch('https://accounts.spotify.com/api/token', {
