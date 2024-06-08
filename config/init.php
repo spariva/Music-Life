@@ -3,9 +3,9 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPAR
 
 
 Dotenv\Dotenv::createImmutable(dirname(__DIR__))->load();
-if ($_ENV['TEST'] === false) {
-    throw new Exception("Environment variables not loaded");
-}
+// if ($_ENV['TEST'] === false) {
+//     throw new Exception("Environment variables not loaded");
+// }
 
 session_start();
 

@@ -78,8 +78,7 @@ if (isset($_SESSION['accessToken'])) {
         <?php else: ?>
 
             <!-- Botón link para conectar tu cuenta con Spotify: -->
-            <a href="./oauthSpotifyLibrary.php" class="btn btn-outline-success btn-lg rounded-pill" role="button">Conecta
-                con Spoti</a>
+            <a href="./oauthSpotifyLibrary.php" class="btn btn-outline-success btn-lg rounded-pill" role="button">Conecta con Spotify</a>
         <?php endif; ?>
                 <!-- aqui las opciones del panel -->
                 <form action="" class="lab-form">

@@ -99,9 +99,9 @@ if (!isset($_SESSION['user'])) {
                 if ($ratings) {
                     foreach ($ratings as $rating) {
                       ?>
-               <div>
+                                    <div class="valoracion">
                                         <form action="./editarValoracion.php" method="post">
-                                            <div class="valoracion <?= $active ?> ">
+                                            <div class="<?= $active ?> ">
                                                 <iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0" allowfullscreen=""
                                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
                                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -126,11 +126,12 @@ if (!isset($_SESSION['user'])) {
                                                         <p><button type="submit" class="submit-button">Editar</button></p>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                         </form>
                                         <div class="btnsValoracion">
-                                            <button class="btnEditarValoracion">Editar</button>
-                                            <button class="btnEliminarValoracion">Eliminar</button>
+                                            <button class="btnEditarValoracion"><i class="bi bi-pencil-square"></i></button>
+                                            <button class="btnEliminarValoracion"><i class="bi bi-trash3-fill"></i></button>
                                         </div>
                                     </div>
 <!-- //                         echo '<div class="valoracion ' . $active . '">';
@@ -216,6 +217,8 @@ if (!isset($_SESSION['user'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+    <script src="./js/editarValoraciones.js" defer></script>
+    <script src="./js/procesarInputs.js" defer></script>
 </body>
 
 </html>

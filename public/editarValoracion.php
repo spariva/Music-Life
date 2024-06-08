@@ -9,8 +9,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nuevaValoracion']) && i
 
     try{
         $db = DbConnection::getInstance()->getConnection();
+        $sanitizer = new Sanitizer();
         $stmt = $db->prepare("UPDATE rating SET TEXT = ?, SCORE = ? WHERE USER_NAME = ? AND LINK = ?");
-        $result = $stmt->execute([$nuevoComment, $nuevoRating, $username, $enlace]);
+        $result = $stmt->execute([
+            $sanitizer->sanitize($nuevoComment), 
+            $sanitizer->sanitize($nuevoRating), 
+            $sanitizer->sanitize($username), 
+            $sanitizer->sanitize($enlace)]);
 
         if($result){
             echo "bien";
