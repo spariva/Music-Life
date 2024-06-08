@@ -7,5 +7,5 @@
         "jwilsson/spotify-web-api-php": "^6.0",
         "league/oauth2-client": "^2.7"
     },
-    "license": "GPL-3.0"
+    "license": "GPL-3.0-or-later"
 }
