@@ -43,9 +43,12 @@ const body = document.querySelector('body');
 // var modo oscuro:
 const videoFondo = document.getElementById('videoFondo');
 const elementosNavbar = document.getElementsByClassName('textoCabecera');
-const textoCabecera = document.getElementById('logo');
+const logoCargar = document.getElementById('logo');
 const formaSpotify = document.getElementsByClassName('formaSpotify');
 var textoContacto = document.getElementsByClassName('textoContacto');
+var inputBusqueda = document.getElementById('inputBusqueda');
+var navBar = document.getElementsByClassName('navBar');
+
 var textoSpotify = document.getElementsByClassName('textoSpotify');
 var apartado = document.querySelectorAll('#apartado');
 var textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, a, span, input, form, div, i');
@@ -69,7 +72,7 @@ function setModoOnLoad() {
             for (var i = 0; i < apartado.length; i++) {
                 apartado[i].style.color = 'white';
             }
-            for (var i = 0; i < elementosNavbar.length; i++) {
+            for (var i = 1; i < elementosNavbar.length; i++) {
                 elementosNavbar[i].style.color = 'white';
             }
             for (var i = 0; i < textoSpotify.length; i++) {
@@ -80,6 +83,12 @@ function setModoOnLoad() {
             }
         } else {
             videoFondo.src = './img/FondoIndexOscuro.mp4';
+            logoCargar.style.setProperty('color', 'white', 'important');
+
+            console.log('aaa');
+            console.log(logoCargar);
+            //navbar[0].style.color = 'white';
+
 
             logoModoOscuro.classList.remove('fa-moon');
             logoModoOscuro.classList.add('fa-sun');
@@ -92,7 +101,7 @@ function setModoOnLoad() {
             for (var i = 0; i < apartado.length; i++) {
                 apartado[i].style.color = 'white';
             }
-            for (var i = 0; i < elementosNavbar.length; i++) {
+            for (var i = 1; i < elementosNavbar.length; i++) {
                 elementosNavbar[i].style.color = 'white';
             }
             for (var i = 0; i < textoContacto.length; i++) {
@@ -100,9 +109,12 @@ function setModoOnLoad() {
                 textoContacto[i].style.backgroundColor = 'rgba(80,80,80, 1)';
             }
         }
+        inputBusqueda.style.backgroundColor = 'rgb(50,50,50)';
+
         for (var i = 0; i < textElements.length; i++) {
             textElements[i].style.color = 'white';
         }
+
     } else {
         if (pagina === 'spotify.html') {
             videoFondo.src = './img/FondoSpotifyClaro.mp4';
@@ -148,6 +160,9 @@ function setModoOnLoad() {
         for (var i = 0; i < textElements.length; i++) {
             textElements[i].style.color = 'black';
         }
+        inputBusqueda.style.backgroundColor = 'white';
+
+        //textoCabecera.style.color = 'black';
     }
 }
 

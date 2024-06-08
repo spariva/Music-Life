@@ -34,10 +34,6 @@ CABECERA
     font-family: popTextImpact, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.textoCabecera {
-    color: black;
-}
-
 .navbar a {
     position: relative;
     font-size: 18px;

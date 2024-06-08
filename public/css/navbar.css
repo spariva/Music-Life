@@ -46,13 +46,9 @@ video {
 #logo {
   display: block;
   font-size: 32px;
-  text-decoration: none;
+  text-decoration: none; 
   font-weight: 550;
   font-family: popText, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.textoCabecera {
-  color: black;
 }
 
 /* Para poder hacer el navbar de bootstrap transparente */
@@ -88,13 +84,6 @@ video {
 
 #modo-oscuro {
   cursor: pointer;
-}
-
-.bg-negro{
-  
-}
-
-.bg-blanco{
 }
 
 /*Modo para moviles*/
@@ -188,10 +177,6 @@ video {
 #verValoracion {
   padding: 10px;
   text-align: center;
-}
-
-#botonBuscar {
-  padding: 10px;
 }
 
 #mensaje {

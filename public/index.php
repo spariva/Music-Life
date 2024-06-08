@@ -19,88 +19,6 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 	}
 }
 ?>
-<!-- 
-    //Creamos una instancia a la conexión con la database.
-    $db = Db::getInstance();
-
-    // Consulta SELECT
-    $sql = "SELECT * FROM PLAYLIST";
-    $result = $db->prepare($sql);
-
-    if ($result->rowCount() > 0) {
-        foreach ($result as $data) {
-            echo "Columna1: " . $data['columna1'] . " - Columna2: " . $data['columna2'] . " - Columna3: " . $data['columna3'] . "<br>";
-        }
-    } else {
-        echo "No se encontraron resultados";
-    } -->
-<!-- <!DOCTYPE html>
-<html lang="es">
-
-
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
-		<title>Music-Life</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="./css/navbar.css">
-		<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
-		<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
-		<link rel="stylesheet" href="./css/playlist.css">
-	</head>
-
-	<body>
-	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager"></video>
-
-		<header id="header">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="d-flex align-items-center">
-					<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a> -->
-
-					<!-- desplegable para pantallas pequeñas -->
-					<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-						aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-				</div>
-
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="./spotifyLab.php">Spotify-Lab</a></li>
-						<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
-						<li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
-						<li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
-						<li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
-						<li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life"
-								target="_blank">Info</a></li>
-						<li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
-					</ul>
-				</div>
-			</nav>
-		</header> -->
-
-
-		<nav id='navbar' class="navbar ">
-
-			<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
-			<!-- desplegable para pantallas pequeñas 
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>-->
-
-			<a id="homeIcon" class="nav-link" href="./index.php"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a>
-			<a class="nav-link" href="./usuario.php"><i class="fas fa-user"></i><span class="nav-text"> Usuario</span></a>
-			<a class="nav-link" href="./spotify.html"><i class="fab fa-spotify"></i><span class="nav-text"> Spotify</span></a>
-			<a class="nav-link" href="./contacto.php"><i class="fas fa-envelope"></i><span class="nav-text"> Contacto</span></a>
-			<a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank"><i class="fas fa-info-circle"></i><span class="nav-text"> Info</span></a>
-			<a class="nav-link" id="modo-oscuro"><i id="logo-modo-oscuro" class="fa-solid"></i><span class="nav-text">Modo Oscuro</span></a>
-		</nav>
-	</header>
-
-
-
-
 	<div id="contenido">
 
 		<div id="mensaje">
@@ -181,7 +99,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							<form id="buscador2" aria-label="He quitado el action a anadir, porque ahora molestaba, volver a poner">
 								<input type="hidden" name="username" value="<?php echo $username; ?>">
 								<input type="text" id="inputBusqueda" class="inputBuscador"
-								placeholder="Introduce la ruta embedida del álbum..." name="urlPlaylist">
+								placeholder="¿Qué quieres buscar?" name="urlPlaylist">
 								<a class="button-wrapper">
 									<span class="dot dot-1"></span>
 									<span class="dot dot-2"></span>
@@ -336,7 +254,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								$active = '';
 							}
 						} else {
-							echo '<p>Tus amigos son unos sosos y aún no han subido playlists :(</p>';
+							echo '<p style="text-align:center" >Tus amigos son unos sosos y aún no han subido playlists :(</p>';
 						}
 						?>
 					</div>
@@ -378,7 +296,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								$active = '';
 							}
 						} else {
-							echo '<p>Todavia no tienes valoraciones, empieza ya!</p>';
+							echo '<p style="text-align: center">Todavia no tienes valoraciones, empieza ya!</p>';
 						}
 						?>
 					</div>

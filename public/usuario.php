@@ -14,6 +14,7 @@ if (!isset($_SESSION['user'])) {
 
  <div class="contenedor-principal-menuUsuario">
         <div class="usuario" id="menuUsuario__izquierda">
+        <a href="./logout.php">Cerrar sesión</a>
             <h2>
                 <?= $_SESSION['user']; ?>
             </h2>
@@ -213,6 +214,7 @@ if (!isset($_SESSION['user'])) {
         </div>
     </div>
 
+		<link rel="stylesheet" type="text/css" href="./css/usuario.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
