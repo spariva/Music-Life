@@ -1,6 +1,6 @@
 <?php
+require_once '../../src/php/DbConnection.php';
 require_once '../../config/init.php';
-
 $token = $_GET['token'];
 
 try {
@@ -172,7 +172,7 @@ try {
                 <br>
                 <p>Para usuario: <?php echo $mail; ?> </p>
                 <div class="inputBox">
-                    <p><input type="password" id="new_password" name="new_password" required></p>
+                    <p><input type="text" id="new_password" name="new_password" required></p>
                 </div>
                 <input type="hidden" name="mail" value="<?php echo $mail; ?>">
                 <button type="submit">Cambiar ahora</button>

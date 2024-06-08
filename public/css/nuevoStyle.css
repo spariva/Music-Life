@@ -27,13 +27,9 @@
   
   #logo {
     font-size: 32px;
-    text-decoration: none;
+    /* text-decoration: none; */
     font-weight: 550;
-    font-family: popText, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  }
-  
-  .textoCabecera {
-    color: black;
+    /* font-family: popText, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   }
   
   .navbar a {
