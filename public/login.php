@@ -30,56 +30,12 @@ $userNameLogin = $_SESSION['userNameLogin'] ?? "";
 unset($_SESSION['userNameLogin']);
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
-//     $mailer = MailerSingleton::obtenerInstancia();
+//     $mailer = Mailer::obtenerInstancia();
 //     $mailer->enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra);
 // }
 
 ?>
-<!-- <!DOCTYPE html>
-<html lang="es">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
-        <title>Login - Music Life</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="./css/navbar.css">
-        <link rel="stylesheet" href="./css/login.css">
-        <script src="./js/login.js" defer></script> -->
-        <!-- <script src="./js/script.js" defer></script> -->
-        <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-    </head>
-
-    ---------------EL COMIENZO DEL BODY ESTA COPIADO EN codigoCortado.txt
-    
-        <header id="header">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="d-flex align-items-center">
-                    <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a> -->
-
-                    <!-- desplegable para pantallas pequeñas -->
-                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
-                        <li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life"
-                                target="_blank">Info</a></li>
-                        <li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>  -->
         <?php if (isset($msg)): ?>
             <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
                 <?php echo $msg;
@@ -141,7 +97,6 @@ unset($_SESSION['userNameLogin']);
             </form>
 
 
-
             <form id="registro" action="./signUp.inc.php" method="POST">
                 <h2 class="formulario__titulo">Registro</h2>
                 <div class="inputBox">
@@ -194,7 +149,7 @@ unset($_SESSION['userNameLogin']);
                 </li>
             <?php endforeach; ?>
         </div>
-    <?php } ?>
+    <?php } endif ?>
     </div>
 </body>
 

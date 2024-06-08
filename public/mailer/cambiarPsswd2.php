@@ -1,11 +1,6 @@
 <?php
-session_start(); 
+require_once '../../config/init.php';
 
-// Datos de conexión a la base de datos
-$host = 'localhost';  // Cambia esto por tu host
-$dbname = 'musicLifeDatabase';  // Cambia esto por tu nombre de base de datos
-$username = 'musicLifeProd';  // Cambia esto por tu nombre de usuario
-$password = 'musicLifeProd1234';  // Cambia esto por tu contraseña
 
 $email = $_POST['mail'];
 echo $email;
@@ -13,8 +8,8 @@ $new_psswd = $_POST['new_password'];
 echo $new_psswd;
 
 try {
-    // Crear conexión
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $db = DbConnection::getInstance();
+    $conn = $db->getConnection();
     // Establecer el modo de error de PDO para excepciones
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -45,6 +40,5 @@ try {
 } catch (PDOException $pe) {
     die("No se pudo conectar a la base de datos $dbname: " . $pe->getMessage());
 } finally {
-    // Cerrar la conexión
-    $conn = null;
+    $db->closeConnection();
 }
