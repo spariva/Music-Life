@@ -1,5 +1,6 @@
 <?php
-require_once '../config/init.php';
+// require_once '../config/init.php';
+require_once 'templates/header.php';
 
 //Si le has dado a enviar y no hay errores:
 if (isset($_POST["enviar"]) && (empty($errores))) {
@@ -10,7 +11,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -25,14 +26,15 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 </head>
 
 <body>
-<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
+<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture loading="eager" playsinline></video>
+
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="d-flex align-items-center">
-                <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+                <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a> -->
 
                 <!-- desplegable para pantallas pequeñas -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -40,7 +42,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
+                    <!--<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>-->
                     <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
                     <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
@@ -49,7 +51,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
                 </ul>
             </div>
         </nav>
-    </header>
+    </header> -->
     <div id="contenido">
         <div class="content" id="formContacto">
             <h2 class="textoContacto">Formulario de Contacto</h2><br>
@@ -87,9 +89,11 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
                         <?= $errores['nombre'] ?>
                     </span>
                 <?php } ?>
-
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
+                
+                <!-- <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br> -->
+                <label for="mensaje-contacto">Mensaje:</label>
+                <textarea id="mensaje-contacto" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
 
                 <button type="submit">Enviar</button>
             </form>

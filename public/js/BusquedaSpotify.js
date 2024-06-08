@@ -1,16 +1,12 @@
-console.log("scripts ok");
-
-// Ejemplos
-// https://open.spotify.com/embed/playlist/37i9dQZF1DX5Ejj0EkURtP?utm_source=generator
-// https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator
+// Este código cambia el src de la url del iframe en la página de búsqueda de Spotify. Solo eso.
 let consulta = document.getElementById('nombrePlaylist');
 let iframeBuscador = document.getElementById('iframeBusqueda');
-let botonBuscar = document.getElementById('botonBuscar');
+let botonBuscar = document.getElementById('botonBusca');
 
-// Manejo de Eventos
 botonBuscar.addEventListener('click', buscarLista);
 
 function buscarLista() {
+    console.log('a');
     let contenidoIframe = consulta.value;
     let match = contenidoIframe.match(/src="(.*?)"/);
 

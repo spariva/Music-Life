@@ -13,30 +13,48 @@ body {
 .textoContacto {
     display: flex;
     transition: 1.0s ease;
-    background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    background-color: rgba(212, 243, 255, 0.3);
     /* padding: 30px; */
     border-radius: 30px;
     flex-direction: column;
     padding: 30px;
+    font-variant: small-caps;
+}
+
+
+
+.textoContacto input, textarea, select{
+    border-radius: 4px;
+    border-style: none;
+    background-color: rgba(187, 238, 252, 0.8);
 }
 
 .textoContacto button {
-    transition: 1.0s ease;
-    background-color: rgba(255, 255, 255, 1);
+    /* transition: 1.0s ease; */
+    /* background-color: rgba(255, 255, 255, 1); */
     font-size: 15px;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 30px;
+    width: 30%;
+    background-color: rgba(187, 238, 252, 1);
+    margin: auto;
+    border-style: none;
 }
 
 .textoContacto button:hover {
-    opacity: 0.7;
+    /* opacity: 0.7; */
+    border-right: 5px solid;
+    border-left: 5px solid;
+    border-color: rgba(67, 155, 222, 0.5);
+    transition: ease-in-out 0.2s;
 }
 
 .casilla{
     width: 100%;
 }
 
-#mensaje {
+#mensaje-contacto {
     max-height: 300px;
     min-height: 100px;
     max-width: 370px;
@@ -65,7 +83,7 @@ body {
     
     .textoContacto button {
         transition: 1.0s ease;
-        background-color: rgba(255, 255, 255, 1);
+        background-color: rgba(187, 238, 252, 1);
         font-size: 15px;
         padding: 15px;
         border-radius: 15px;
@@ -76,7 +94,7 @@ body {
         opacity: 0.7;
     }
     
-    #mensaje {
+    #mensaje-contacto {
         max-height: 300px;
         min-height: 100px;
         max-width: 300px;

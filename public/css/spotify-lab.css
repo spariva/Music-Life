@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+:root {
+  --white: #f3f3f3;
+  --yellow: #ffff00;
+  --data-text: #0f2832;
+  --title-text: #f9fbfad5;
+  --background-user: #d4d5d6;
+}
+/* clase para ocualtar elementos con JS */
+.ocultar{
+  display: none;
+}
+
+body {
+  background-color: var(--white);
+  width: 100%;
+  height: 100%;
+}
+
+.contenedor-principal-lab {
+  position: absolute;
+  margin: 1% 5% 4%;
+  display: grid;
+  grid-template-areas: "usuario listas";
+  grid-template-columns: 2fr 4fr;
+  grid-gap: 50px;
+  height: 75vh;
+  width: 90%;
+  z-index: 1;
+}
+
+.lab-panel {
+  text-align: center;
+  grid-area: usuario;
+  color: var(--white);
+  flex-direction: column;
+  align-items: center;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  background-color: rgba(232, 253, 243, 0.1);
+  border-radius: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.genero-item{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  color: var(--data-text);
+  font-size: 16px;
+  cursor: pointer;
+  margin: 2%;
+}
+
+.lab-panel img {
+  border-radius: 100%;
+  margin-bottom: 20px;
+}
+
+#cont-generos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 6%;
+}
+
+.cont-btn-generos{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+}
+
+.lab-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #0f2832;
+  font-weight: 500;
+}
+
+.lab-form input{
+  width: 100%;
+  border-radius: 4px;
+  border-style: none;
+}
+
+.lab-form input[type="range"]{
+  height: 15px;
+  background: white;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.lab-form input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: blue;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.lab-form input[type="range"]::-moz-range-thumb{
+  width: 25px;
+  height: 25px;
+  background: blue;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+
+#valorTempo{
+  margin-bottom: 5%;
+}
+
+.lab-form button{
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 30px;
+  width: 30%;
+  background-color: rgb(76, 253, 94);
+  margin: auto;
+  border-style: none;
+}
+
+.lab-form button:hover{
+  border-right: 5px solid;
+  border-left: 5px solid;
+  border-color: rgba(67, 155, 222, 0.5);
+  transition: ease-in-out 0.2s;
+}
+
+/* No funciona TODO: */
+/* .user-pic-lg {
+  width: 670px;
+  height: 670px;
+  border-radius: 100%;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px 10px rgba(73, 223, 215, 0.762);
+} */
+
+.lab-resultado-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 80px;
+  padding: 40px;
+}
+
+.lab-intro{
+  display: flex;
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+.lab-intro #getInfo{
+  background-color: #f3f3f3;
+  height: 30px;
+  width: 30px;
+  border: 1px solid;
+  border-radius: 50%;
+  border-color: #0f2832;
+  color: var(--data-text);
+  cursor: pointer;
+}
+
+#info{
+  background-color: rgb(200, 246, 241);
+  border-radius: 20px;
+  text-align: center;
+  color: var(--data-text);
+  width: 50%;
+  padding: 3%;
+  margin: 0 1%;
+}
+
+/* .lab-resultado-container {
+  grid-area: listas;
+  display: grid;
+  grid-template-areas: "valoraciones musica";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 80px;
+  text-align: center;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 80px;
+  padding: 40px;
+} */
+
+/* 
+.valoraciones {
+  grid-area: valoraciones;
+}
+
+.valoracion {
+  width: 100%; */
+  /* Hacer que la valoración ocupe todo el ancho disponible en su área */
+  /* margin: 10px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.211);
+  padding: 10px;
+} */
+
+.musica {
+  grid-area: musica;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+  /* Modal Info */
+
+  .lab-intro{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .contenedor-principal-lab {
+    display: grid;
+    grid-template-areas: "usuario" "listas";
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+
+  .lab-panel {
+    text-align: center;
+    grid-area: usuario;
+    padding: 60px;
+    border-radius: 90px 90px 40px 40px;
+
+  }
+
+  .lab-panel h2 {
+    margin-top: 0;
+    color: black;
+  }
+
+  .lab-panel img {
+    border-radius: 100%;
+    width: 170px;
+
+  }
+
+  .lab-panel #correo {
+    color: #0f2832;
+  }
+
+  .lab-panel iframe {
+    margin-top: 10px;
+  }
+
+  .lab-resultado-container {
+    grid-area: listas;
+    display: grid;
+    grid-template-areas: "valoraciones" "musica";
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    text-align: center;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.239);
+    border-radius: 200px 200px 100px 100px;
+    padding: 40px;
+  }
+
+  .valoraciones {
+    grid-area: valoraciones;
+  }
+
+  .valoracion {
+    width: 100%;
+    /* Hacer que la valoración ocupe todo el ancho disponible en su área */
+    margin: 10px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.211);
+    padding: 10px;
+  }
+
+  .musica {
+    grid-area: musica;
+  }
+
+}

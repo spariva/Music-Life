@@ -1,11 +1,13 @@
 <?php
 // auth_callback.php
+include_once '../../../config/init.php';
+require '../../../vendor/autoload.php';
 
 // Datos de configuración de la aplicación en Spotify Developer Dashboard
-$clientId = 'TU_CLIENT_ID';
+$clientId = isset($_ENV['CLIENT_ID']) ? $_ENV['CLIENT_ID'] : 'TU_CLIENT_ID';
 $clientSecret = 'TU_CLIENT_SECRET';
 $redirectUri = 'TU_URL_DE_REDIRECCIONAMIENTO';
-
+echo $clientId;
 // Código de autorización recibido como parámetro GET
 $authorizationCode = $_GET['code'];
 
@@ -39,5 +41,5 @@ $refreshToken = $responseData['refresh_token'];
 // $_SESSION['refresh_token'] = $refreshToken;
 
 // Redirigir al usuario a la página principal de Music-Life
-header('Location: index.html');
+
 

@@ -4,7 +4,9 @@ class DbConnection
 {
     private static $instance;
     private $db;
-    private const CONFIG_FILE = DOC_ROOT.'/config/db.json';
+    private const CONFIG_FILE = DOC_ROOT . '/config/db.json';
+    //private const CONFIG_FILE = '../../config/db.json';
+
     private $config;
 
     private function __construct()
@@ -55,7 +57,17 @@ class DbConnection
         $this->db = null;
     }
 
-    public function getRandomUrls($limit, $userName){
+    public function userExists($userName)
+    {
+        $consulta = $this->db->prepare("SELECT * FROM user WHERE USER_NAME = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $user = $consulta->fetch(PDO::FETCH_ASSOC);
+        return $user !== false;
+    }
+
+    public function getRandomUrls($limit, $userName)
+    {
         $limit = (int)$limit; // Asegurarse de que el límite es un entero
         $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
         $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
@@ -64,14 +76,16 @@ class DbConnection
         return $urls;
     }
 
-    public function showAllPlaylists(){
+    public function showAllPlaylists()
+    {
         $consulta = $this->db->prepare("SELECT LINK FROM playlist");
         $consulta->execute();
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
     }
 
-    public function showUserPlaylists($userName){
+    public function showUserPlaylists($userName)
+    {
         $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME");
         $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
         $consulta->execute();
@@ -79,7 +93,8 @@ class DbConnection
         return $urls;
     }
 
-    public function showUserRatings($userName, $url){
+    public function showUserRatings($userName, $url)
+    {
         $consulta = $this->db->prepare("SELECT * FROM rating WHERE USER_NAME = :USERNAME AND LINK = :URL");
         $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
         $consulta->bindParam(":URL", $url, PDO::PARAM_STR);
@@ -88,7 +103,8 @@ class DbConnection
         return $rating;
     }
 
-    public function showUserRatingsRandom($userName, $limit){
+    public function showUserRatingsRandom($userName, $limit)
+    {
         $consulta = $this->db->prepare("SELECT * FROM rating WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
         $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
         $consulta->execute();
@@ -96,15 +112,8 @@ class DbConnection
         return $ratings;
     }
 
-    public function showUserRatingsAllRandom($limit){
-        $consulta = $this->db->prepare("SELECT * FROM rating ORDER BY RAND() LIMIT :limit");
-        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
-        $consulta->execute();
-        $ratings = $consulta->fetchAll(PDO::FETCH_ASSOC);
-        return $ratings;
-    }
-
-    public function showUserPlaylistRatings($username, $limit){
+    public function showUserPlaylistRatings($username, $limit)
+    {
         $consulta = $this->db->prepare("SELECT r.* FROM rating r INNER JOIN playlist p ON r.LINK = p.LINK WHERE p.USER_NAME = :username ORDER BY RAND() LIMIT :limit");
         $consulta->bindParam(":username", $username, PDO::PARAM_STR);
         $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
@@ -113,19 +122,155 @@ class DbConnection
         return $ratings;
     }
 
-    public function showUserPlaylistsRandom($userName, $limit){
-        $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+    public function showUserPlaylistsRandom($userName, $limit)
+    {
+        if ($limit === 0) { //sin limite
+            $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME ORDER BY RAND()");
+        } else {
+            $consulta = $this->db->prepare("SELECT LINK FROM playlist WHERE USER_NAME = :USERNAME ORDER BY RAND() LIMIT $limit");
+        }
         $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
         $consulta->execute();
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
     }
 
-    public function showAllPlaylistsRandom($limit){
+    public function showUserFriends($userName)
+    {
+        $consulta = $this->db->prepare("SELECT * FROM friends WHERE USER_NAME = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $friends = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $friends;
+    }
+
+    public function showUserFriendRequest($userName)
+    {
+        $consulta = $this->db->prepare("SELECT * FROM requests WHERE REQUESTED_USER = :USERNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $requests = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $requests;
+    }
+
+    //
+    public function showFriendsPlaylists($userName, $limit)
+    {
+        $consulta = $this->db->prepare("SELECT p.LINK,p.USER_NAME, r.TEXT, r.SCORE FROM playlist p JOIN friends f ON p.USER_NAME = f.USER_NAME LEFT JOIN rating r ON p.LINK = r.LINK AND r.USER_NAME = :USERNAME WHERE f.FRIEND_NAME = :FRIENDNAME ");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->bindParam(":FRIENDNAME", $userName, PDO::PARAM_STR);
+        $consulta->execute();
+        $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $resultados;
+    }
+
+    public function showRatingsToUserPlaylists($userName, $limit)
+    {
+        $consulta = $this->db->prepare("SELECT r.LINK, r.USER_NAME, r.TEXT, r.SCORE FROM rating r JOIN playlist p ON r.LINK = p.LINK WHERE p.USER_NAME = :USERNAME ORDER BY RAND() LIMIT :limit");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $consulta->execute();
+        $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $resultados;
+    }
+
+    public function showUserRatingsAllRandom($limit)
+    {
+        $consulta = $this->db->prepare("SELECT * FROM rating ORDER BY RAND() LIMIT :limit");
+        $consulta->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $consulta->execute();
+        $ratings = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $ratings;
+    }
+
+    public function checkIfFriend($userName, $friendName)
+    {
+        $consulta = $this->db->prepare("SELECT * FROM friends WHERE USER_NAME = :USERNAME AND FRIEND_NAME = :FRIENDNAME");
+        $consulta->bindParam(":USERNAME", $userName, PDO::PARAM_STR);
+        $consulta->bindParam(":FRIENDNAME", $friendName, PDO::PARAM_STR);
+        $consulta->execute();
+        $requests = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $requests;
+    }
+
+    public function showAllPlaylistsRandom($limit)
+    {
         $consulta = $this->db->prepare("SELECT LINK FROM playlist ORDER BY RAND() LIMIT $limit");
         $consulta->execute();
         $urls = $consulta->fetchAll(PDO::FETCH_COLUMN);
         return $urls;
+    }
+
+    // public function saveTokensToDatabase($accessToken, $refreshToken)
+    // {
+    //     $consulta = $this->db->prepare("INSERT INTO tokens (access_token, refresh_token) VALUES (:accessToken, :refreshToken)");
+    //     $consulta->bindParam(":accessToken", $accessToken, PDO::PARAM_STR);
+    //     $consulta->bindParam(":refreshToken", $refreshToken, PDO::PARAM_STR);
+    //     $consulta->execute();
+    // }
+
+    function saveTokensToDatabase($userName, $accessToken, $refreshToken) {
+        $consulta = $this->db->prepare('
+            INSERT INTO user_tokens (USER_NAME, ACCESS_TOKEN, REFRESH_TOKEN)
+            VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE
+                ACCESS_TOKEN = VALUES(ACCESS_TOKEN),
+                REFRESH_TOKEN = VALUES(REFRESH_TOKEN)
+        ');
+        $consulta->execute([$userName, $accessToken, $refreshToken]);
+    }
+
+    function getApiTokens($userName) {
+        $consulta = $this->db->prepare('
+            SELECT ACCESS_TOKEN, REFRESH_TOKEN
+            FROM user_tokens
+            WHERE USER_NAME = ?
+        ');
+        $consulta->execute([$userName]);
+        return $consulta->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    //Este método no va en DbConnection:
+    function refreshAccessToken($refreshToken) {
+        global $clientId, $clientSecret;
+    
+        $auth = base64_encode($clientId . ':' . $clientSecret);
+        $url = 'https://accounts.spotify.com/api/token';
+    
+        $data = [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $refreshToken,
+        ];
+    
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n" .
+                            "Authorization: Basic $auth\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data),
+            ],
+        ];
+    
+        $context = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+    
+        if ($result === FALSE) {
+            // Manejar error
+            return false;
+        }
+    
+        $response = json_decode($result, true);
+    
+        if (isset($response['access_token'])) {
+            $accessToken = $response['access_token'];
+            $newRefreshToken = $response['refresh_token'] ?? $refreshToken;
+    
+            //$mdb = DB::getInstance()->saveTokensToDatabase($userName, $accessToken, $newRefreshToken);
+    
+            return $accessToken;
+        }
+    
+        return false;
     }
 
 }
