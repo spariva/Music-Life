@@ -90,6 +90,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				</button>-->
 
 			<a id="homeIcon" class="nav-link" href="./index.php"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a>
+			<a class="nav-link" href="./spotifyLab.php"></a>
 			<a class="nav-link" href="./usuario.php"><i class="fas fa-user"></i><span class="nav-text"> Usuario</span></a>
 			<a class="nav-link" href="./spotify.html"><i class="fab fa-spotify"></i><span class="nav-text"> Spotify</span></a>
 			<a class="nav-link" href="./contacto.php"><i class="fas fa-envelope"></i><span class="nav-text"> Contacto</span></a>
@@ -265,21 +266,58 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 									$groupedRatings[$link][] = $rating;
 								}
 								foreach ($groupedRatings as $link => $ratingsForLink) {
-									echo '<div class="carousel-item ' . $active . '">';
-									echo '<iframe style="border-radius:12px"
-											src="' . $rating['LINK'] . '?utm_source=generator"
-											width="100%" height="152" frameBorder="0" allowfullscreen=""
-											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-											loading="lazy"></iframe>';
-									echo '<div id="verValoracion" class="valoracionExistente">';
+									// echo '<div class="carousel-item ' . $active . '">';
+									// echo '<iframe style="border-radius:12px"
+									// 		src="' . $rating['LINK'] . '?utm_source=generator"
+									// 		width="100%" height="152" frameBorder="0" allowfullscreen=""
+									// 		allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+									// 		loading="lazy"></iframe>';
+									// echo '<div id="verValoracion" class="valoracionExistente">';
 
-									foreach ($ratings as $rating) {
-										echo '<p>' . $rating['USER_NAME'] . ' - ' . $rating['SCORE'] . ': ' . $rating['TEXT'] . '</p>';
-										//echo '</div>';
-									}
-									echo '</div>';
-									echo '</div>';
-									$active = '';
+									// foreach ($ratings as $rating) {
+									// 	echo '<p>' . $rating['USER_NAME'] . ' - ' . $rating['SCORE'] . ': ' . $rating['TEXT'] . '</p>';
+									// 	//echo '</div>';
+									// }
+									// echo '</div>';
+									// echo '</div>';
+									// $active = '';
+									?>
+									<div class="valoracion carousel-item">
+                                        <form action="./editarValoracion.php" method="post">
+                                            <div class="<?= $active ?> ">
+                                                <iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0" allowfullscreen=""
+                                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                                loading="lazy"></iframe>
+                                                <div class="valoracionExistente verValoracion">
+                                                    <p><?= $rating['SCORE'] ?> /5</p>
+                                                    <p><?= $rating['TEXT'] ?></p>    
+                                                </div>
+                                                <div class="ratingBlock ocultar">
+                                                    <div class="cerrar">X</div>
+                                                    <div class="editarValoracionCont">
+                                                        <div class="star-rating">
+                                                            <img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
+                                                            <img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
+                                                            <img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
+                                                            <img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
+                                                            <img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+                                                        </div>
+                                                        <input type="hidden" name="url" value="<?= $rating['LINK'] ?>">
+                                                        <p><textarea name="nuevaValoracion" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+                                                        <input type="hidden" name="nuevoRating" class="rating-value">
+                                                        <p><button type="submit" class="submit-button">Editar</button></p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </form>
+                                        <div class="btnsValoracion">
+                                            <button class="btnEditarValoracion"><i class="bi bi-pencil-square"></i></button>
+                                            <button class="btnEliminarValoracion"><i class="bi bi-trash3-fill"></i></button>
+                                        </div>
+                                    </div>
+									<?php
 								}
 							} else {
 								echo '<p>Todavia no tienes valoraciones</p>';
@@ -415,6 +453,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 		<script src="./js/star-rating.js" defer></script>
 		<script src="./js/script.js" defer></script>
+		<script src="./js/editarValoraciones.js" defer></script>
 	</body>
 
 

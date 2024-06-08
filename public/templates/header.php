@@ -15,14 +15,16 @@ require_once '../config/init.php';
 		<!-- <link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 		<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
         <link rel="stylesheet" type="text/css" href="./css/usuario.css"> -->
-        <script src="./js/BusquedaSpotify.js" defer></script>
+        <!-- <script src="./js/BusquedaSpotify.js" defer></script> -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 		<script src="./js/star-rating.js" defer></script>
 		<script src="./js/script.js" defer></script>
 		<script src="./js/cargaCss.js"></script>
 		<script src="./js/login.js" defer></script>
+		<script src="./js/procesarInputs.js" defer></script>
 	</head>
 
 	<!-- <body> -->

@@ -7,7 +7,9 @@
   --title-text: #f9fbfad5;
   --background-user: #d4d5d6;
 }
-
+.ocultar{
+  display: none; 
+}
 body {
   background-color: var(--white);
   width: 100%;
@@ -82,14 +84,12 @@ body {
   padding: 10px;
 }
 .btnsValoracion{
-  width: 100%;
   margin: 0 10px;
 }
 .btnEditarValoracion, .btnEliminarValoracion{
   border-radius: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: auto;
+  padding: 10px 20px;
+  margin: 1%;
   opacity: 0.8;
   border: 0;
   text-align: center;
