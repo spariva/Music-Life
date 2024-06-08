@@ -71,8 +71,8 @@ if ($creacionToken == true) {
     $link = "<div style='text-align: center; background-color: #57A8FF;color:white; padding: 40px; font-size: 17px;'>";
 
     $link .= "<h1>Soporte Music Life </h1> \n <br> Has solicitado un cambio de contrasena para music-life.es.<br><br> Tienes disponible durante 24 horas este link para poder hacerlo \n <br> \n <br>";
-    $link .= "<a href='http://music-life.es/mailer/cambiarPsswd.php?token=$token' style='background-color: #95C8FF; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;'>Cambiar contrasena</a></div>";
-    $link .= " href='http://music-life.es/mailer/cambiarPsswd.php?token=$token' ";
+    $link .= "<a href='http://music-life.es/mailer/cambiarPsswd?token=$token' style='background-color: #95C8FF; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;'>Cambiar contrasena</a></div>";
+    $link .= " href='http://music-life.es/mailer/cambiarPsswd?token=$token' ";
 
     //CAMBIAR ESTO AL SUBITR A INTENET
     //$link .= "<a href='http://localhost:3000/src/php/cambiarPsswd.php?token=$token' style='background-color: #95C8FF; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;'>Cambiar contrasena</a></div>";
