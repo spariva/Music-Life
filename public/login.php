@@ -104,7 +104,7 @@ unset($_SESSION['userNameLogin']);
                 <div class="botonesPsswd">
                     <div class=" botonesRecuperar">
                         <button type="submit" id="enviarRecuperar">Solicitar cambio</button>
-                        <!-- <button type="button" onclick="window.location.href='http://music-life.es/login.php'" id="closeModal">Cerrar</button> -->
+                        <button type="button" onclick="window.location.href='http://music-life.es/login.php'" id="closeModal">Cerrar</button>
                     </div>
                 </div>
             </form>
@@ -132,6 +132,7 @@ unset($_SESSION['userNameLogin']);
         </div>
     <?php } ?>
     </div>
+    <script src="./js/login.js"></script>
 </body>
 
 </html>

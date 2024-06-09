@@ -37,9 +37,13 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 ?>
 <div id="contenido">
 	<script>
-		setTimeout(function() {
-			document.getElementById('mensaje').style.display = 'none';
-		}, 3000);
+		var mensaje = document.getElementById('mensaje');
+		if (mensaje) {
+			mensaje.style.display = 'block';
+			setTimeout(function() {
+				mensaje.style.display = 'none';
+			}, 3000);
+		}
 	</script>
 	<div class="contenedor" id="recomendado">
 		<div id="apartado">Recomendados</div>
@@ -132,25 +136,21 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 
 
-							<iframe id="iframeBusqueda" style="border-radius:12px"
-								src="<?php if(isset($_GET['playlist'])){
-									echo $_GET['playlist'];
-								}else{
-									echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
-								}    ?>"
-								width="100%" height="152" frameborder="0" allowfullscreen=""
-								allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-								loading="lazy"></iframe>
+					<iframe id="iframeBusqueda" style="border-radius:12px" src="<?php if (isset($_GET['playlist'])) {
+																					echo $_GET['playlist'];
+																				} else {
+																					echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
+																				}    ?>" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-								<?php if (isset($_SESSION['user'])) { ?>
+					<?php if (isset($_SESSION['user'])) { ?>
 
-							<form id="buscador3" action="./anadirPlaylist.php" method="post">
-								<input type="hidden" name="username" value="<?php echo $username; ?>">
-								<input type="hidden" id="urlPlaylist" class="inputBuscador" name="urlPlaylist">
-								<button id="botonGuardar">Compartir playlist</button>
-							</form>
+						<form id="buscador3" action="./anadirPlaylist.php" method="post">
+							<input type="hidden" name="username" value="<?php echo $username; ?>">
+							<input type="hidden" id="urlPlaylist" class="inputBuscador" name="urlPlaylist">
+							<button id="botonGuardar">Compartir playlist</button>
+						</form>
 
-							<?php }  ?>
+					<?php }  ?>
 
 
 					<!--<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->

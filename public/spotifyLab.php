@@ -159,5 +159,7 @@ if (isset($_SESSION['accessToken'])) {
             </div>
         </div>
         <script src="./js/lab.js" defer></script>
+        <script src="./js/script.js" defer></script>
+
 </body>
 </html>
