@@ -4,9 +4,9 @@ require_once 'templates/header.php';
 
 
 //If there's a msg in the url, it's because the user tried to access the user page without logging in
-if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    unset($_GET['msg']);
+if (isset($_GET['mensaje'])) {
+    $msg = $_GET['mensaje'];
+    unset($_GET['mensaje']);
 }
 
 $errorsLogin = $_SESSION['errorsLogin'] ?? [];

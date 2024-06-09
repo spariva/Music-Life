@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/init.php';
+require_once './../config/init.php';
 
 
 $email = $_POST['mail'];
@@ -29,11 +29,11 @@ try {
 
     if ($rowCount > 0) {
         echo "Contraseña cambiada con éxito.";
-        header("Location: login.php?contrasenaCambiada=true");
+        header("Location: login.php?mensaje=Contraseña Cambiada con exito :)");
         exit();  // Detiene la ejecución del script después de enviar el encabezado de redirección
     } else {
         echo "No se encontró el usuario o la contraseña no se cambió.";
-        header("Location: login.php?contrasenaCambiada=false");
+        header("Location: login.php?mensaje=Hubo un problema cambiando tu contraseña");
         exit();
     }
 
