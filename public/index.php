@@ -108,7 +108,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 				<div id="barraBusqueda" class="barraBusqueda">
 					<form id="buscador2" aria-label="Botón de búsqueda de playlists" action="">
 						<input type="hidden" name="username" value="<?php echo $username; ?>">
-						<input type="text" id="inputBusqueda" class="inputBuscador" placeholder="Introduce la ruta embedida del álbum...">
+						<input type="text" id="inputBusqueda" class="inputBuscador" placeholder="¿Qué quieres buscar?">
 						<a class="button-wrapper">
 							<span class="dot dot-1"></span>
 							<span class="dot dot-2"></span>
@@ -159,14 +159,6 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						<div class="valoracionesBuscador">
 							<div class="contenedorSoporteParaValoraciones w-100">
 								<div class="cuadrado botonDesplegable">Sin Valoración</div>
-								<script>
-									var iframe = document.getElementById('iframeBusqueda');
-									var src = iframe.src;
-									document.write(src);
-								</script>
-								<?php
-								echo $username;
-								echo 'aaaaaaa'; ?>
 								<div class="ratingDropdown dropdown" style="display: none;">
 									<form action="./subirValoracion.php" method="post">
 										<div class="ratingBlock">
