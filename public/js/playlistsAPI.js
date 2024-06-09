@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         //accede al $_SESSION['access_token'] de PHP o a la cookie de nombre indexToken
         accessToken = document.cookie.split('; ').find(row => row.startsWith('indexToken')).split('=')[1];
         console.log(accessToken);
-
-
     }
 
     // async function getAccessToken() {
