@@ -14,6 +14,8 @@ if (!isset($_SESSION['user'])) {
 
  <div class="contenedor-principal-menuUsuario">
         <div class="usuario" id="menuUsuario__izquierda">
+        <a href="./logout.php">Cerrar sesión</a>
+
             <h2>
                 <?= $_SESSION['user']; ?>
             </h2>

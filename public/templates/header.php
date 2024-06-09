@@ -16,11 +16,13 @@ require_once '../config/init.php';
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 		<script src="./js/star-rating.js" defer></script>
-		<script src="./js/script.js" defer></script>
 		<script src="./js/cargaCss.js"></script>
 		<script src="./js/login.js" defer></script>
 		<script src="./js/procesarInputs.js" defer></script>
+		<script src="./js/script.js" defer></script>
+
 	</head>
 
 	<body class="<?= $bodyClass ?>">
@@ -32,30 +34,17 @@ require_once '../config/init.php';
                 disablePictureInPicture></video>
         <?php endif ?>
 		<header id="header">
-			<nav class="navbar navbar-expand-lg">
-				<div class="d-flex align-items-center">
-					<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+		<nav id='navbar' class="navbar ">
 
-					<!-- desplegable para pantallas pequeñas -->
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-						aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-				</div>
+			<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
 
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="./spotifyLab.php">Labs</a></li>
-						<li class="nav-item"><a class="nav-link" href="./logout.php">Logout</a></li>
-						<li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
-						<li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
-						<li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
-						<li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life"
-								target="_blank">Info</a></li>
-						<li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
-					</ul>
-				</div>
-			</nav>
+			<a id="homeIcon" class="nav-link" href="./index.php"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a>
+			<a class="nav-link" href="./usuario.php"><i class="fas fa-user"></i><span class="nav-text"> Usuario</span></a>
+			<a class="nav-link" href="./spotifyLab.php"><i class="fab fa-spotify"></i><span class="nav-text"> Labs</span></a>
+			<a class="nav-link" href="./contacto.php"><i class="fas fa-envelope"></i><span class="nav-text"> Contacto</span></a>
+			<a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank"><i class="fas fa-info-circle"></i><span class="nav-text"> Info</span></a>
+			<a class="nav-link" id="modo-oscuro"><i id="logo-modo-oscuro" class="fa-solid"></i><span class="nav-text">Modo Oscuro</span></a>
+		</nav>
 		</header>
 
 		<?php if (isset($msg)) : ?>
