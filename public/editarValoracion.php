@@ -34,7 +34,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nuevaValoracion']) && i
     try{
         $db = DbConnection::getInstance()->getConnection();
         $stmt = $db->prepare("DELETE FROM rating WHERE USER_NAME = ? AND LINK = ?");
-        $result = $stmt->execute([$username, $enlace]);
+        $result = $stmt->execute([
+            $sanitizer->sanitize($username), 
+            $sanitizer->sanitize($enlace)]);
 
         if($result){
             echo "borrado";
