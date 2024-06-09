@@ -86,16 +86,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 
-
 });
-
-// function starRating(contenedor, indice){
-//   let starContainer = contenedor.querySelector('.star');
-//   for(let star of starContainer){
-//     star.addEventListener('click', ()=>{
-//         for(let i; i <= indice.length; i++){
-//             starContainer[i].classList.add('')
-//         }
-//     })
-//   }  
-// }

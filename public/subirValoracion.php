@@ -1,19 +1,14 @@
 <?php
 require_once '../config/init.php';
 
-echo $_POST['url']. '// ';
-echo $_POST['rating']. '// ';
-echo $_POST['comment']. '// ';
-echo $_POST['username']. '// ';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $url = $_POST['url'];
     $rating = $_POST['rating'];
     $comment = $_POST['comment'];
-    $username = $_POST['username']; 
+    $username = $_POST['username'];
 
     if (empty($username) || empty($url) || empty($rating)) {
-        // Handle the error here. For example, you can redirect back with an error message.
+        // Handle the error here. For example, you can redirect back with an error message
         header("Location: ./index.php?mensaje=Debes rellenar todos los campos");
         exit();
     }
@@ -29,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         // Echo error message on failure
         echo "Error: " . $stmt->errorInfo()[2];
+        die();
     }
 }
 

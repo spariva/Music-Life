@@ -78,8 +78,7 @@ if (isset($_SESSION['accessToken'])) {
         <?php else: ?>
 
             <!-- Botón link para conectar tu cuenta con Spotify: -->
-            <!-- <a href="./oauthSpotifyLibrary.php" class="btn btn-outline-success btn-lg rounded-pill" role="button">Conecta con Spotify</a> -->
-            <a href="./oauthSpotifyLibrary.php" class="btn btn-outline-dark btn-success btn-lg rounded-pill m-5" role="button">Conecta con Spotify</a>
+            <a href="./oauthSpotifyLibrary.php" class="btn btn-outline-success btn-lg rounded-pill" role="button">Conecta con Spotify</a>
         <?php endif; ?>
                 <!-- aqui las opciones del panel -->
                 <form action="" class="lab-form">
@@ -106,7 +105,7 @@ if (isset($_SESSION['accessToken'])) {
                     <input type="range" name="tempo" id="tempo" min="0" max="200" step="1" value="0">
                     <span id="valorTempo">0</span>
 
-                    <button type="submit" class="m-4">enviar</button>
+                    <button type="submit">enviar</button>
                 </form>
             </div>
 
