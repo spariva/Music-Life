@@ -95,16 +95,16 @@ unset($_SESSION['userNameLogin']);
             </form>
 
 
-            <form id="recuperarPSWD" action="./mailer/recuperarPsswd.php" method="post">
+            <form id="recuperarPSWD" action="./recuperarPsswd.php" method="post">
                 <h3 class="formulario__titulo">Recupera tu contraseña</h3>
                 <div class="inputBox">
-                    <p>Email: <input type="email" id="email" name="email" required></p>
+                    <p>Email</p><p><input type="email" id="email" name="email" required></p>
 
                 </div>
                 <div class="botonesPsswd">
                     <div class=" botonesRecuperar">
                         <button type="submit" id="enviarRecuperar">Solicitar cambio</button>
-                        <button type="button" onclick="window.location.href='http://music-life.es/login.php'" id="closeModal">Cerrar</button>
+                        <!-- <button type="button" onclick="window.location.href='http://music-life.es/login.php'" id="closeModal">Cerrar</button> -->
                     </div>
                 </div>
             </form>

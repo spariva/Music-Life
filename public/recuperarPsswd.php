@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/init.php';
+require_once './../config/init.php';
 
 $CORREO = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 

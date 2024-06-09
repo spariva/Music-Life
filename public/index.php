@@ -42,7 +42,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 			mensaje.style.display = 'block';
 			setTimeout(function() {
 				mensaje.style.display = 'none';
-			}, 3000);
+			}, 4000);
 		}
 	</script>
 	<div class="contenedor" id="recomendado">
@@ -134,14 +134,6 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						</a>
 					</form>
 
-
-
-					<iframe id="iframeBusqueda" style="border-radius:12px" src="<?php if (isset($_GET['playlist'])) {
-																					echo $_GET['playlist'];
-																				} else {
-																					echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
-																				}    ?>" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
 					<?php if (isset($_SESSION['user'])) { ?>
 
 						<form id="buscador3" action="./anadirPlaylist.php" method="post">
@@ -150,7 +142,17 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							<button id="botonGuardar">Compartir playlist</button>
 						</form>
 
-					<?php }  ?>
+						<?php }  ?>
+
+
+
+					<iframe id="iframeBusqueda" style="border-radius:12px" src="<?php if (isset($_GET['playlist'])) {
+																					echo $_GET['playlist'];
+																				} else {
+																					echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
+																				}    ?>" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
 
 
 					<!--<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->

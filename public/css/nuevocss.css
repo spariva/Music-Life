@@ -13,6 +13,12 @@ body {
 
 /* Bloque del iframe para busquedas embed */
 
+#buscador2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .contenedorBuscar {
   grid-column: 3 / span 2;
   grid-row: 2 / span 4;
@@ -32,12 +38,19 @@ body {
 
 .barraBusqueda .inputBuscador {
   width: 70%;
+  text-align: center;
+  width: 60%;
   margin: 10px;
   padding: 10px;
   border: 1px solid var(--grey-light);
-  outline: none;
-  font-size: 1.1em;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
+  border: 0;
   border-radius: 30px;
+
 }
 
 .barraBusqueda .barraBusqueda__icono {
@@ -448,6 +461,12 @@ iframe {
 /* Media query para pantallas pequeñas */
 @media screen and (max-width: 1200px) {
 
+  .btnBuscar{
+    font-size: 10px;
+    font-weight: 460;
+    padding: 5px;
+  }
+
   .contenedor {
     margin: 15px;
     padding: 5px;
@@ -497,11 +516,13 @@ iframe {
 
   .barraBusqueda .inputBuscador {
     width: 70%;
+    width: 60%;
     margin-right: 0;
     padding: 10px;
     border: 1px solid var(--grey-light);
     outline: none;
     font-size: 1.1em;
+    font-size: 11px;
     border-radius: 30px;
   }
 

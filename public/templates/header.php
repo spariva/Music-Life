@@ -29,6 +29,8 @@ require_once '../config/init.php';
                 disablePictureInPicture></video>
         <?php endif ?>
 		<header id="header">
+		<a class="textoCabecera" href="./index.php" id="logo2">Music-Life</a>
+
 		<nav id='navbar' class="navbar ">
 
 			<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>

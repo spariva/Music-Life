@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 // Load Composer's autoloader
-require '../../vendor/autoload.php';
+require './../vendor/autoload.php';
 
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
-        header("Location: http://music-life.es");
+        header("Location: http://music-life.es?mensaje=Correo enviado, por favor revisa tu bandeja de entrada :)");
         exit();
         
         //echo '<div style="text-align: center; font-size: 20px; font-weight: bold;"><p>Correo enviado, por favor revisa tu bandeja de entrada :) </p><p><a href="http://music-life.es">Volver a la web</a></p></div>';
