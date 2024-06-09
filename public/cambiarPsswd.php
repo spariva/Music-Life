@@ -7,7 +7,7 @@ try {
     $db = DbConnection::getInstance();
     $conn = $db->getConnection();
 
-    $sql = 'SELECT USERID FROM TOKENS WHERE TIPO = "RECOVERY" AND EXPIRES > NOW() AND TOKEN = :TOKEN';
+    $sql = 'SELECT USERID FROM tokens WHERE TIPO = "RECOVERY" AND EXPIRES > NOW() AND TOKEN = :TOKEN';
     $stmt = $conn->prepare($sql);
 
     $stmt->bindParam(':TOKEN', $token, PDO::PARAM_STR);
