@@ -405,8 +405,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 <script src="./js/star-rating.js" defer></script>
-<script src="./js/script.js" defer></script>
 <script src="./js/editarValoraciones.js" defer></script>
+<script src="./js/script.js" defer></script>
 </body>
 
 
