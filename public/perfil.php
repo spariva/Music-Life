@@ -150,7 +150,7 @@ if (!isset($_SESSION['user'])) {
                 ?>
             </div>
             <div class="playlists">
-                <h2>Todas sus Playlists</h2>
+                <h2>Playlists compartidas</h2>
                 <?php
                 $pdo3 = DbConnection::getInstance();
                 $links = $pdo3->showUserPlaylistsRandom($perfil, 0);

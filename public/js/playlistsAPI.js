@@ -61,6 +61,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function swapIframe(playlistID) {
         iframeBuscador.src = `https://open.spotify.com/embed/playlist/${playlistID}`;
+
+        var botonGuardar = document.getElementById('botonGuardar');
+        botonGuardar.style.display = 'block';
+
+
+        var urlPlaylist = document.getElementById('urlPlaylist');
+        urlPlaylist.value = `https://open.spotify.com/embed/playlist/${playlistID}`;
+
+            userCookie = document.cookie.split('; ').find(row => row.startsWith('USER'));
+            if (userCookie) {
+                userCookie = userCookie.split('=')[1];
+                console.log(userCookie);
+            } else {
+                console.log('No hay sesion iniciada');
+            }
+        
     }
 
     // Obtener el token de acceso al cargar la página

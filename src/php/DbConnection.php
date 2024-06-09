@@ -199,6 +199,18 @@ class DbConnection
         return $urls;
     }
 
+    public function checkIfPlaylistIsSaved($url){
+        $consulta = $this->db->prepare("SELECT * FROM playlist WHERE LINK = :URL");
+        $consulta->bindParam(":URL", $url, PDO::PARAM_STR);
+        $consulta->execute();
+        $playlist = $consulta->fetch(PDO::FETCH_ASSOC);
+        if($playlist){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     // public function saveTokensToDatabase($accessToken, $refreshToken)
     // {
     //     $consulta = $this->db->prepare("INSERT INTO tokens (access_token, refresh_token) VALUES (:accessToken, :refreshToken)");

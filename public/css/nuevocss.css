@@ -582,3 +582,18 @@ iframe {
   text-align: center;
 }
 }
+
+#botonGuardar{
+  border: 0;
+  background-color: #9a57ff;
+  color:white;
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+}
+
+#buscador3{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}

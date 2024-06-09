@@ -185,7 +185,7 @@ if (!isset($_SESSION['user'])) {
             </div>
 
             <div class="playlists">
-                <h2>Todas mis Playlists</h2>
+                <h2>Tus playlists compartidas</h2>
                 <?php
                 $username = $_SESSION['user'];
                 $pdo3 = DbConnection::getInstance();

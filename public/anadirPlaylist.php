@@ -6,8 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
 
     // Extract the URL between src=" and "
-    preg_match('/src="([^"]*)"/', $url, $matches);
-    $url = $matches[1] ?? '';
+    //preg_match('/src="([^"]*)"/', $url, $matches);
+    //$url = $matches[1] ?? '';
 
     echo 'Esta playlist ya ha sido añadida por otro usuario.';
     
@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     } else {
         // Echo error message on failure
+        header("Location: ./index.php?playlist=".$url."&error=Esta playlist ya ha sido añadida por otro usuario");
         echo "Error: " . $stmt->errorInfo()[2];
     }
 }
