@@ -12,9 +12,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nuevaValoracion']) && i
         $sanitizer = new Sanitizer();
         $stmt = $db->prepare("UPDATE rating SET TEXT = ?, SCORE = ? WHERE USER_NAME = ? AND LINK = ?");
         $result = $stmt->execute([
-            $sanitizer->sanitize($nuevoComment), 
+            $sanitizer->sanitizeString($nuevoComment), 
             $sanitizer->sanitize($nuevoRating), 
-            $sanitizer->sanitize($username), 
+            $sanitizer->sanitizeString($username), 
             $sanitizer->sanitize($enlace)]);
 
         if($result){

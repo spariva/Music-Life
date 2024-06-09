@@ -39,7 +39,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
                 <div id="infoDesplegable">
                     <p>Introduce el nombre de usuario de la persona que quieras para enviarle una solicitud de amistad</p>
-                    <p>Si la solicitud es aceptada, pasareis a ser amigxs :)</p>
+                    <p>Si la solicitud es aceptada, pasaréis a ser amigues :)</p>
                 </div>
 
                 <script>

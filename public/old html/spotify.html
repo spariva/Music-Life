@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://developer.spotify.com/images/guidelines/design/icon3@2x.png" type="image/png">
+    <title>Spotify - Music Life</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="./css/spotify.css">
+</head>
+
+<body>
+	<video id="videoFondo" autoplay="true" muted="true" loop="true" disablePictureInPicture></video>
+	<header id="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="d-flex align-items-center">
+                <a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
+
+                <!-- desplegable para pantallas pequeñas -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank">Info</a></li>
+                    <li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="contenedor">
+        <div class="formaSpotify" id="contenido">
+            <h2 class="textoSpotify">¿Cómo trabajamos con Spotify?</h2>
+            <img id="spotifyApi" class="formaSpotify" src="./img/spotifyAPI.png"
+                href="https://developer.spotify.com/documentation/web-api.com"><br>
+            <!-- Texto de ChatGPT -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var textosAnimados = document.querySelectorAll(".texto-animado");
+        
+                    textosAnimados.forEach(function (texto) {
+                        var parrafos = texto.querySelectorAll("p");
+                        texto.innerHTML = "";
+        
+                        function escribirParrafo(i) {
+                            if (i < parrafos.length) {
+                                var nuevoParrafo = document.createElement("p");
+                                texto.appendChild(nuevoParrafo);
+        
+                                var contenido = parrafos[i].innerHTML;
+                                var j = 0;
+                                var velocidadEscritura = 10; // Ajusta la velocidad según tus preferencias (menor valor = más rápido)
+        
+                                function escribirTexto() {
+                                    if (j < contenido.length) {
+                                        nuevoParrafo.innerHTML += contenido.charAt(j);
+                                        j++;
+                                        setTimeout(escribirTexto, velocidadEscritura);
+                                    } else {
+                                        escribirParrafo(i + 1); // Llama al siguiente párrafo
+                                    }
+                                }
+        
+                                escribirTexto();
+                            }
+                        }
+        
+                        escribirParrafo(0); // Comienza con el primer párrafo
+                    });
+                });
+            </script>
+        
+            <div class="textoSpotify texto-animado">
+                <p>La API de Spotify es una herramienta poderosa que permite a los desarrolladores integrar
+                    funcionalidades de Spotify en sus aplicaciones y servicios.</p>
+                <p>Proporciona acceso a la extensa biblioteca musical de Spotify, permitiendo a las aplicaciones
+                    buscar pistas, álbumes y artistas, así como obtener detalles detallados sobre ellos.</p>
+                <p>Les desarrolladores pueden controlar la reproducción de música, crear y gestionar listas de
+                    reproducción personalizadas, y ofrecer recomendaciones musicales basadas en el gusto de les usuaries.</p>
+                <p>Además, la API permite acceder a perfiles de usuario, actividades recientes y características de
+                    audio detalladas de las pistas.</p>
+                <p>Para ello utilizamos el Authorization Code Flow, almacenando de forma segura el token de autentificación en nuestro server, y así solo tienes que acceder la primera vez a tu cuenta, para ya luego tener acceso cada vez que entres.
+                </p>
+                <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow" target="_blank">Api
+                    Spotify</a>
+            </div>
+        </div>
+        <div id="reproductor">
+            <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator" width="100%"
+                height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+            <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/37i9dQZEVXbLesry2Qw2xS?utm_source=generator" width="100%"
+                height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        </div>
+        
+    </div>
+    <!-- Retirado este elemento div porque ya se inserta desde los scripts-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+	<script src="./js/script.js"></script>
+</body>
+
+</html>

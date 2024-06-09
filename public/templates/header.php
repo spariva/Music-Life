@@ -15,7 +15,6 @@ require_once '../config/init.php';
 		<!-- <link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 		<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
         <link rel="stylesheet" type="text/css" href="./css/usuario.css"> -->
-        <!-- <script src="./js/BusquedaSpotify.js" defer></script> -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
