@@ -15,6 +15,7 @@ require_once '../config/init.php';
 		<!-- <link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
 		<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
         <link rel="stylesheet" type="text/css" href="./css/usuario.css"> -->
+        <!-- <script src="./js/BusquedaSpotify.js" defer></script> -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
@@ -37,7 +38,7 @@ require_once '../config/init.php';
                 disablePictureInPicture></video>
         <?php endif ?>
 		<header id="header">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<nav class="navbar navbar-expand-lg">
 				<div class="d-flex align-items-center">
 					<a class="textoCabecera" href="./index.php" id="logo">Music-Life</a>
 
@@ -51,6 +52,7 @@ require_once '../config/init.php';
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="./spotifyLab.php">Labs</a></li>
+						<li class="nav-item"><a class="nav-link" href="./logout.php">Logout</a></li>
 						<li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
 						<li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
 						<li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
@@ -61,3 +63,12 @@ require_once '../config/init.php';
 				</div>
 			</nav>
 		</header>
+
+		<?php if (isset($msg)) : ?>
+			<div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
+				<?php 
+					echo $msg;
+					unset($msg);
+				?>
+			</div>
+		<?php endif; ?>

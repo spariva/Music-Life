@@ -35,26 +35,6 @@ unset($_SESSION['userNameLogin']);
 // }
 
 ?>
-
-        <?php if (isset($msg)): ?>
-            <div class="alert alert-danger w-25 text-center mx-auto d-block mt-2">
-                <?php echo $msg;
-                unset($msg);
-                ?>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <!--<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>-->
-                    <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank">Info</a></li>
-                    <li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
     <?php if (isset($msg)) : ?>
         <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
             <?php echo $msg;
@@ -62,6 +42,7 @@ unset($_SESSION['userNameLogin']);
             ?>
         </div>
     <?php endif; ?>
+
     <div id="ubicador">
         <div class="contenedor">
             <span class="contenedor__efectos"></span>
@@ -82,15 +63,7 @@ unset($_SESSION['userNameLogin']);
                 </div>
 
                 <!--Login errors display-->
-                <?php if (count($errorsLogin) > 0) : ?>
-                    <div class="alert alert-danger">
-                        <?php foreach ($errorsLogin as $error) : ?>
-                            <li>
-                                <?php echo $error; ?>
-                            </li>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                
                 <div class="inputBox">
                     <input type="submit" class="botonConectarse" value="Conectarse" name="submit">
                 </div>
@@ -138,7 +111,15 @@ unset($_SESSION['userNameLogin']);
 
         </div>
     </div>
-
+    <?php if (count($errorsLogin) > 0) : ?>
+        <div class="alert alert-danger">
+            <?php foreach ($errorsLogin as $error) : ?>
+                <li>
+                    <?php echo $error; ?>
+                </li>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 
     <!--SignUp errors display-->
     <?php if (count($errorsSignUp) > 0) { ?>
@@ -149,7 +130,7 @@ unset($_SESSION['userNameLogin']);
                 </li>
             <?php endforeach; ?>
         </div>
-    <?php } endif ?>
+    <?php } ?>
     </div>
 </body>
 

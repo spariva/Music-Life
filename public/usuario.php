@@ -39,7 +39,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
                 <div id="infoDesplegable">
                     <p>Introduce el nombre de usuario de la persona que quieras para enviarle una solicitud de amistad</p>
-                    <p>Si la solicitud es aceptada, pasaréis a ser amigues :)</p>
+                    <p>Si la solicitud es aceptada, pasareis a ser amigxs :)</p>
                 </div>
 
                 <script>
@@ -101,7 +101,7 @@ if (!isset($_SESSION['user'])) {
                       ?>
                                     <div class="valoracion">
                                         <form action="./editarValoracion.php" method="post">
-                                            <div class="<?= $active ?> ">
+                                            <div class="valoracionesBuscador <?= $active ?> ">
                                                 <iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0" allowfullscreen=""
                                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
                                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -130,8 +130,8 @@ if (!isset($_SESSION['user'])) {
                                             </div>
                                         </form>
                                         <div class="btnsValoracion">
-                                            <button class="btnEditarValoracion"><i class="bi bi-pencil-square"></i></button>
-                                            <button class="btnEliminarValoracion"><i class="bi bi-trash3-fill"></i></button>
+                                            <button class="btnEditarValoracion" aria-label="editar"><i class="bi bi-pencil-square"></i></button>
+                                            <button class="btnEliminarValoracion" aria-label="eliminar"><i class="bi bi-trash3-fill"></i></button>
                                         </div>
                                     </div>
 <!-- //                         echo '<div class="valoracion ' . $active . '">';

@@ -76,7 +76,7 @@ body {
 }
 
 .lab-form{
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -184,6 +184,13 @@ body {
   width: 50%;
   padding: 3%;
   margin: 0 1%;
+}
+
+.lab-intro{
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  z-index: 2;
 }
 
 /* .lab-resultado-container {

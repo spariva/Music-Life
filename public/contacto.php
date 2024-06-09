@@ -42,7 +42,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <!--<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>-->
+                    
                     <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
                     <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
@@ -74,7 +74,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
                 </div>
 
                 <label for="nombre">Nombre:</label>
-                <input class="casilla" type="text" id="nombre" name="nombre" value="<?= $nombre ?>" placeholder="Nombre" required><br>
+                <input class="casilla" type="text" id="nombre" name="nombre" value="<?= $nombre ?>" placeholder="escribe tu nombre" required><br>
                 <?php if (isset($errores['nombre'])) { ?>
                     <span class="error">
                         <?= $errores['nombre'] ?>
@@ -83,7 +83,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 
 
                 <label for="userMail">Correo Electrónico:</label>
-                <input class="casilla" type="email" id="email" name="userMail" value="<?= $userMail ?>" required><br>
+                <input class="casilla" type="email" id="email" name="userMail" value="<?= $userMail ?>" placeholder="tuCorreo@correo.com" required><br>
                 <?php if (isset($errores['nombre'])) { ?>
                     <span class="error">
                         <?= $errores['nombre'] ?>

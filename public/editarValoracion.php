@@ -12,9 +12,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nuevaValoracion']) && i
         $sanitizer = new Sanitizer();
         $stmt = $db->prepare("UPDATE rating SET TEXT = ?, SCORE = ? WHERE USER_NAME = ? AND LINK = ?");
         $result = $stmt->execute([
-            $sanitizer->sanitizeString($nuevoComment), 
+            $sanitizer->sanitize($nuevoComment), 
             $sanitizer->sanitize($nuevoRating), 
-            $sanitizer->sanitizeString($username), 
+            $sanitizer->sanitize($username), 
             $sanitizer->sanitize($enlace)]);
 
         if($result){
@@ -33,8 +33,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nuevaValoracion']) && i
 
     try{
         $db = DbConnection::getInstance()->getConnection();
+        $sanitizer = new Sanitizer();
         $stmt = $db->prepare("DELETE FROM rating WHERE USER_NAME = ? AND LINK = ?");
-        $result = $stmt->execute([$username, $enlace]);
+        $result = $stmt->execute([
+            $sanitizer->sanitize($username), 
+            $sanitizer->sanitize($enlace)]);
 
         if($result){
             echo "borrado";
