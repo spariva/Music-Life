@@ -56,7 +56,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
         <div class="content" id="formContacto">
             <h2 class="textoContacto">Formulario de Contacto</h2><br>
 
-            <form class="textoContacto" action="" method="POST">
+            <form class="textoContacto" action="mailer3.php" method="POST">
                 <label for="motivo">Motivo de Contacto:</label>
                 <select class="casilla " id="motivo" name="motivo" required>
                     <option value="" disabled selected>Selecciona un motivo</option>
