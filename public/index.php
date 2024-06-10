@@ -325,7 +325,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							$active = '';
 						}
 					} else {
-						echo '<p>Tus amigos son unos sosos y aún no han subido playlists :(</p>';
+						echo '<p style="text-align:center">Tus amigos son unos sosos y aún no han subido playlists :(</p>';
 					}
 					?>
 				</div>

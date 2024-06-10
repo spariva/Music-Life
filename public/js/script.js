@@ -83,10 +83,10 @@ function setModoOnLoad() {
             }
         } else {
             videoFondo.src = './img/FondoIndexOscuro.mp4';
-            logoCargar.style.setProperty('color', 'white', 'important');
+            //logoCargar.style.setProperty('color', 'white', 'important');
 
             console.log('aaa');
-            console.log(logoCargar);
+            //console.log(logoCargar);
             //navbar[0].style.color = 'white';
 
 
