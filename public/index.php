@@ -36,33 +36,22 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 }
 ?>
 <div id="contenido">
-<div id="mensaje">
+
 		<?php
 		if (isset($_GET['mensaje'])) {
+			echo '<div id="mensaje">';
 			echo $_GET['mensaje'];
+			echo '</div>';
 		}
-		?></div>
+		?>
+
 	<script>
-		setTimeout(function() {
-			document.getElementById('mensaje').style.display = 'none';
-		}, 3000);
-	</script>
-	<!--<script>
 		var mensaje = document.getElementById('mensaje');
 		if (mensaje) {
 			mensaje.style.display = 'block';
 			setTimeout(function() {
 				mensaje.style.display = 'none';
-			}, 4000);
-		}
-	</script>-->
-	<script>
-		var mensaje = document.getElementById('mensaje');
-		if (mensaje) {
-			mensaje.style.display = 'block';
-			setTimeout(function () {
-				mensaje.style.display = 'none';
-			}, 4000);
+			}, 5000);
 		}
 	</script>
 	<div class="contenedor" id="recomendado">
@@ -423,6 +412,21 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		</div>
 	</div>
 </div>
+
+
+
+<!-- < ?php if (isset($_SESSION['user'])) { 
+	}else{?>
+
+<div class="bloque" id="avisoUser">
+		<div id="avisoCookies">
+			<h4>¿Y tú quién eres?<h4>
+		</div>
+		<p>Para poder disfrutar a tope de nuestra web te recomendamos que Inicies Sesión</p>
+		<p>Busca usuario en el menú</p>
+		</div>
+	</div>
+< ?php } ?> -->
 
 
 <?php if ($mostrarWarning == true) { ?>

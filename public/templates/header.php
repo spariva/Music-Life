@@ -71,11 +71,11 @@ unset($_SESSION['userNameLogin']);
 		</nav>
 		</header>
 
-		<?php if (isset($mensaje)) : ?>
+		<?php if (isset($msg)) : ?>
 			<div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
 				<?php 
-					echo $mensaje;
-					unset($mensaje);
+					echo $msg;
+					unset($msg);
 				?>
 			</div>
 		<?php endif; ?>

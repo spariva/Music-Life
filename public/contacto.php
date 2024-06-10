@@ -58,7 +58,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 
             <form class="textoContacto" action="" method="POST">
                 <label for="motivo">Motivo de Contacto:</label>
-                <select class="casilla" id="motivo" name="motivo" required>
+                <select class="casilla " id="motivo" name="motivo" required>
                     <option value="" disabled selected>Selecciona un motivo</option>
                     <option value="sugerencia">Sugerencia</option>
                     <option value="fallo_pagina">Fallo en la página</option>
@@ -74,7 +74,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
                 </div>
 
                 <label for="nombre">Nombre:</label>
-                <input class="casilla" type="text" id="nombre" name="nombre" value="<?= $nombre ?>" placeholder="escribe tu nombre" required><br>
+                <input class="casilla formOscuro" type="text" id="nombre" name="nombre" value="<?= $nombre ?>" placeholder="escribe tu nombre" required><br>
                 <?php if (isset($errores['nombre'])) { ?>
                     <span class="error">
                         <?= $errores['nombre'] ?>
@@ -83,7 +83,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
 
 
                 <label for="userMail">Correo Electrónico:</label>
-                <input class="casilla" type="email" id="email" name="userMail" value="<?= $userMail ?>" placeholder="tuCorreo@correo.com" required><br>
+                <input class="casilla formOscuro" type="email" id="email" name="userMail" value="<?= $userMail ?>" placeholder="tuCorreo@correo.com" required><br>
                 <?php if (isset($errores['nombre'])) { ?>
                     <span class="error">
                         <?= $errores['nombre'] ?>
@@ -93,7 +93,7 @@ if (isset($_POST["enviar"]) && (empty($errores))) {
                 <!-- <label for="mensaje">Mensaje:</label>
                 <textarea id="mensaje" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br> -->
                 <label for="mensaje-contacto">Mensaje:</label>
-                <textarea id="mensaje-contacto" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
+                <textarea class="formOscuro" id="mensaje-contacto" name="mensajeExtra" rows="4" cols="50" required></textarea><br><br>
 
                 <button type="submit">Enviar</button>
             </form>

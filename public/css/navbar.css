@@ -193,6 +193,8 @@ video {
 #mensaje {
   display: none;
   text-align: center;
+  font-weight: bold;
+  background-color: grey;
   z-index: 100;
   position: absolute;
   top: 5%;
