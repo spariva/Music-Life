@@ -40,7 +40,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		var mensaje = document.getElementById('mensaje');
 		if (mensaje) {
 			mensaje.style.display = 'block';
-			setTimeout(function() {
+			setTimeout(function () {
 				mensaje.style.display = 'none';
 			}, 4000);
 		}
@@ -59,8 +59,9 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						width="100%" height="152" frameBorder="0" allowfullscreen=""
 						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 						loading="lazy"></iframe>';
-
-			$username = $_SESSION['user'];
+			if (isset($_SESSION['user'])) {
+				$username = $_SESSION['user'];
+			}
 			if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 				$pdo2 = DbConnection::getInstance();
 				$rating = $pdo2->showUserRatings($username, $url);
@@ -70,7 +71,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 					echo '<p>' . $rating['SCORE'] . '/5 ⭐</p>';
 					echo '</div>';
 				} else {
-		?>
+					?>
 
 					<div class="valoracionesBuscador">
 						<div class="contenedorSoporteParaValoraciones w-100">
@@ -87,7 +88,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 											<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
 											<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
 										</div>
-										<p><textarea name="comment" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+										<p><textarea name="comment" class="comment"
+												placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
 										<input type="hidden" name="rating" class="rating-value" required>
 										<p><button type="submit" class="submit-button">Enviar</button></p>
 										<p class="listaComentarios"></p>
@@ -96,7 +98,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							</div>
 						</div>
 					</div>
-		<?php
+					<?php
 				}
 			} else {
 				echo '<div class="valoracionExistente">';
@@ -129,7 +131,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							<span class="dot dot-6"></span>
 							<span class="dot dot-7"></span>
 							<span id="botonBuscar" class="button btn btn-lg rounded-pill btn-primary-subtle">
-								<button id="botonBuscar" class="btn btn-primary-subtle rounded-pill btnBuscar">Buscar</button>
+								<button id="botonBuscar"
+									class="btn btn-primary-subtle rounded-pill btnBuscar">Buscar</button>
 							</span>
 						</a>
 					</form>
@@ -142,15 +145,17 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 							<button id="botonGuardar">Compartir playlist</button>
 						</form>
 
-						<?php }  ?>
+					<?php } ?>
 
 
 
 					<iframe id="iframeBusqueda" style="border-radius:12px" src="<?php if (isset($_GET['playlist'])) {
-																					echo $_GET['playlist'];
-																				} else {
-																					echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
-																				}    ?>" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+						echo $_GET['playlist'];
+					} else {
+						echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
+					} ?>" width="100%" height="152" frameborder="0" allowfullscreen=""
+						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+						loading="lazy"></iframe>
 
 
 
@@ -172,15 +177,21 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 												echo $_GET['playlist'];
 											} else {
 												echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
-											}    ?>">
+											} ?>">
 											<div class="star-rating">
-												<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
-												<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
-												<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
-												<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
-												<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+												<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png"
+													alt="Estrella 1">
+												<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png"
+													alt="Estrella 2">
+												<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png"
+													alt="Estrella 3">
+												<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png"
+													alt="Estrella 4">
+												<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png"
+													alt="Estrella 5">
 											</div>
-											<p><textarea name="comment" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+											<p><textarea name="comment" class="comment"
+													placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
 											<input type="hidden" name="rating" class="rating-value">
 											<p><button type="submit" class="submit-button">Enviar</button></p>
 											<p class="listaComentarios"></p>
@@ -227,7 +238,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								// 		allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 								// 		loading="lazy"></iframe>';
 								// echo '<div id="verValoracion" class="valoracionExistente">';
-
+						
 								// foreach ($ratings as $rating) {
 								// 	echo '<p>' . $rating['USER_NAME'] . ' - ' . $rating['SCORE'] . ': ' . $rating['TEXT'] . '</p>';
 								// 	//echo '</div>';
@@ -235,11 +246,14 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								// echo '</div>';
 								// echo '</div>';
 								// $active = '';
-						?>
+								?>
 								<div class="valoracion carousel-item">
 									<form action="./editarValoracion.php" method="post">
 										<div class="<?= $active ?> ">
-											<iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0" allowfullscreen="" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+											<iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0"
+												allowfullscreen="" width="100%" height="152" frameBorder="0" allowfullscreen=""
+												allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+												loading="lazy"></iframe>
 											<div class="valoracionExistente verValoracion">
 												<p><?= $rating['SCORE'] ?> /5</p>
 												<p><?= $rating['TEXT'] ?></p>
@@ -248,14 +262,20 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 												<div class="cerrar">X</div>
 												<div class="editarValoracionCont">
 													<div class="star-rating">
-														<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
-														<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
-														<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
-														<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
-														<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+														<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png"
+															alt="Estrella 1">
+														<img class="star" data-rating="2" src="./img/star/EstrellaVacia.png"
+															alt="Estrella 2">
+														<img class="star" data-rating="3" src="./img/star/EstrellaVacia.png"
+															alt="Estrella 3">
+														<img class="star" data-rating="4" src="./img/star/EstrellaVacia.png"
+															alt="Estrella 4">
+														<img class="star" data-rating="5" src="./img/star/EstrellaVacia.png"
+															alt="Estrella 5">
 													</div>
 													<input type="hidden" name="url" value="<?= $rating['LINK'] ?>">
-													<p><textarea name="nuevaValoracion" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+													<p><textarea name="nuevaValoracion" class="comment"
+															placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
 													<input type="hidden" name="nuevoRating" class="rating-value">
 													<p><button type="submit" class="submit-button">Editar</button></p>
 												</div>
@@ -268,7 +288,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 										<button class="btnEliminarValoracion"><i class="bi bi-trash3-fill"></i></button>
 									</div>
 								</div>
-						<?php
+								<?php
 							}
 						} else {
 							echo '<p>Todavia no tienes valoraciones</p>';
@@ -298,10 +318,10 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 					$pdo4 = DbConnection::getInstance();
 					$listasAmigos = $pdo4->showFriendsPlaylists($username, 5);
 					/*foreach ($listasAmigos as $lista) {
-									foreach ($lista as $clave => $valor) {
-										echo "Clave: $clave; Valor: $valor<br>";
-									}
-								}*/
+												   foreach ($lista as $clave => $valor) {
+													   echo "Clave: $clave; Valor: $valor<br>";
+												   }
+											   }*/
 					$active = 'active';
 
 					if ($listasAmigos) {
@@ -390,8 +410,10 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		<div id="avisoCookies">
 			<h4>Aviso de Cookies<h4>
 		</div>
-		<div id="textoCookies">Para mejorar tu experiencia en la web recogemos algunas cookies, nos sirven para acordarnos de si preferias
-			modo oscuro o claro, de quien eras (para no tener que iniciar sesión cada vez) y para algunos datos de configuración más.<br>
+		<div id="textoCookies">Para mejorar tu experiencia en la web recogemos algunas cookies, nos sirven para acordarnos
+			de si preferias
+			modo oscuro o claro, de quien eras (para no tener que iniciar sesión cada vez) y para algunos datos de
+			configuración más.<br>
 			No recogemos ni recopilamos ningún tipo de dato sensible.
 			Y tranqui, con nosotres tus cookies están a salvo.
 		</div>
