@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         if ($result) {
             // Redirect to index.php on success
-            header("Location: ./index.php?playlist=".$url."&mensaje=Playlist añadida correctamente");
+            header("Location: ./index.php?mensaje=Playlist añadida correctamente");
             exit();
         } else {
             // Echo error message on failure

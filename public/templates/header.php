@@ -74,8 +74,8 @@ unset($_SESSION['userNameLogin']);
 		<?php if (isset($msg)) : ?>
 			<div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
 				<?php 
-					echo $msg;
-					unset($msg);
+					echo $mensaje;
+					unset($mensaje);
 				?>
 			</div>
 		<?php endif; ?>

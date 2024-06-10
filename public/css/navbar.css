@@ -149,6 +149,7 @@ video {
     /* Ajusta el padding aquí */
     padding: 0px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    height: 50px;
   }
 
   #navbarNav ul {
@@ -160,6 +161,7 @@ video {
   .navbar a {
     font-size: 20px;
     text-decoration: none;
+    padding: 0;
   }
 
   .nav-item {
