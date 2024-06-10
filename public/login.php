@@ -35,6 +35,24 @@ require_once 'templates/header.php';
 // }
 
 ?>
+		<?php
+		if (isset($_GET['mensaje'])) {
+			echo '<div id="mensaje">';
+			echo $_GET['mensaje'];
+			echo '</div>';
+		}
+		?>
+
+	<script>
+		var mensaje = document.getElementById('mensaje');
+		if (mensaje) {
+			mensaje.style.display = 'block';
+			setTimeout(function() {
+				mensaje.style.display = 'none';
+			}, 5000);
+		}
+	</script>
+    
     <?php if (isset($msg)) : ?>
         <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
             <?php echo $msg;

@@ -24,43 +24,36 @@ try {
     if ($stmt->rowCount() > 0) { //Comprobamos si ese usuario existe, si no pues no seguimos
 
         try {
-            echo "Procesando peticion";
             $sql = 'DELETE FROM tokens WHERE TIPO = "RECOVERY" AND USERID = :USERID';
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':USERID', $CORREO, PDO::PARAM_STR); //ESTO FALTA OBTENER DEL FORMULARIO EL CORREO
-            echo ".";
             $stmt->execute();
-            echo ".";
         
             $sql = "INSERT INTO tokens (TOKEN, USERID, EXPIRES,TIPO) VALUES(:TOKEN, :USERID, :EXPIRES, 'RECOVERY')";
             $stmt = $conn->prepare($sql);
-            echo ".";
         
-            // Asignar valores a los parámetros
             $stmt->bindParam(':TOKEN', $token, PDO::PARAM_STR);
             $stmt->bindParam(':USERID', $CORREO, PDO::PARAM_STR);
             $stmt->bindParam(':EXPIRES', $fechaExpiracion, PDO::PARAM_STR);
-            echo ".";
         
             $stmt->execute();
-            echo ".";
 
             $creacionToken = true;
-            echo ".";
         
         } catch (PDOException $pe) {
-            die("No se pudo generar el token de usuario: " . $pe->getMessage());
+            header ("Location: ./login.php?mensaje=No se pudo generar el token de usuario :(");
+            exit();
         } 
     
     } else {
-        echo "No se encontró ese correo entre nuestros usuarios";
-        echo $CORREO;
+        header ("Location: ./login.php?mensaje=Mail no encontrado :(");
+        exit();
     }
 
 }catch (PDOException $pe) {
-    die("No se pudo comprobar si el usuario existe: " . $pe->getMessage());
+    header ("Location: ./login.php?mensaje=No encontramos al usuario :(");
+    exit();
 } finally {
-    //echo "Cerramos la conexion";
     $db->closeConnection();
 }
 

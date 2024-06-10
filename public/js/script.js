@@ -48,6 +48,8 @@ const formaSpotify = document.getElementsByClassName('formaSpotify');
 var textoContacto = document.getElementsByClassName('textoContacto');
 var inputBusqueda = document.getElementById('inputBusqueda');
 var navBar = document.getElementsByClassName('navBar');
+var mensaje = document.getElementById('mensaje');
+var buscadorUsuarios = document.getElementById('buscadorUsuarios');
 
 var textoSpotify = document.getElementsByClassName('textoSpotify');
 var apartado = document.querySelectorAll('#apartado');
@@ -117,6 +119,14 @@ function setModoOnLoad() {
             textElements[i].style.color = 'white';
         }
 
+        if(mensaje){
+            mensaje.style.backgroundColor = 'rgb(50,50,50)';
+        }       
+
+        if(buscadorUsuarios){
+            buscadorUsuarios.style.backgroundColor = 'rgb(50,50,50)';
+        }
+
     } else {
         if (pagina === 'spotify.html') {
             videoFondo.src = './img/FondoSpotifyClaro.mp4';
@@ -164,6 +174,12 @@ function setModoOnLoad() {
         }
         if(inputBusqueda){
             inputBusqueda.style.backgroundColor = 'white';
+        }
+        if(mensaje){
+            mensaje.style.backgroundColor = 'rgb(255,255,255)';
+        }
+        if(buscadorUsuarios){
+            buscadorUsuarios.style.backgroundColor = 'rgb(255,255,255)';
         }
 
         //textoCabecera.style.color = 'black';
