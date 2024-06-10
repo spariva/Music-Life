@@ -7,7 +7,9 @@
   --title-text: #f9fbfad5;
   --background-user: #d4d5d6;
 }
-
+.ocultar{
+  display: none; 
+}
 body {
   background-color: var(--white);
   width: 100%;
@@ -71,9 +73,6 @@ body {
 
 .valoraciones {
   grid-area: valoraciones;
-  max-height: 1000px;
-  overflow-y: auto;
-  padding: 10px;
 }
 
 .valoracion {
@@ -84,37 +83,29 @@ body {
   background-color: rgba(255, 255, 255, 0.211);
   padding: 10px;
 }
-
-.btnsValoracion {
-  width: 100%;
+.btnsValoracion{
   margin: 0 10px;
 }
-
-.btnEditarValoracion,
-.btnEliminarValoracion {
+.btnEditarValoracion, .btnEliminarValoracion{
   border-radius: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: auto;
+  padding: 10px 20px;
+  margin: 1%;
   opacity: 0.8;
   border: 0;
   text-align: center;
   background-color: #ffffff;
 }
-
-.btnEliminarValoracion {
+.btnEliminarValoracion{
   background-color: #ff9497;
 }
-
-.cerrar {
+.cerrar{
   margin: 2% 4%;
   text-align: right;
   color: #0f2832;
   font-weight: 500;
   font-size: 1.3rem;
 }
-
-.cerrar:hover {
+.cerrar:hover{
   font-weight: 800;
   cursor: pointer;
   transition: ease-in-out 0.2s;
@@ -122,10 +113,6 @@ body {
 
 .musica {
   grid-area: musica;
-  max-height: 1000px;
-  overflow-y: auto;
-  padding: 10px;
-
 }
 
 .playlists {
@@ -147,7 +134,7 @@ body {
 }
 
 #botonSolicitarAmistad,
-#soisAmigos {
+#soisAmigos{
   border: 0;
   border-radius: 10px;
   margin: 15px;
@@ -156,13 +143,13 @@ body {
   padding: 5px;
 }
 
-#tituloBuscarAmigos {
+#tituloBuscarAmigos{
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
 
-#buscadorUsuarios {
+#buscadorUsuarios{
   border: 0;
   width: 60%;
   text-align: center;
@@ -187,7 +174,7 @@ body {
   margin: 15px;
 }
 
-.verPlaylists {
+.verPlaylists{
   display: flex;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
@@ -196,7 +183,7 @@ body {
   flex-wrap: wrap;
 }
 
-.bloquePV {
+.bloquePV{
   margin: 25px;
   width: 30%;
 }
@@ -247,6 +234,7 @@ body {
     /* background-color: rgba(255, 255, 255, 0.239);
     border-radius: 50px 50px 5px 5px; */
     padding: 10px;
+    margin-bottom: 30px;
   }
 
   .valoraciones {
@@ -255,9 +243,6 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 10px;
   }
 
   .valoracion {
@@ -275,9 +260,6 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    max-height: 600px;
-    overflow-y: auto;
-    padding: 10px;
   }
 
   .playlists {
@@ -286,19 +268,16 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 10px;
   }
 
-  .verPlaylists {
+  .verPlaylists{
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 100%;
   }
 
-  .bloquePV {
+  .bloquePV{
     margin: 0;
     margin-bottom: 10px;
     width: 100%;

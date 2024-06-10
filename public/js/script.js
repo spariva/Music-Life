@@ -1,5 +1,5 @@
-const textoEnlaceModoOscuro = document.getElementById('modo-oscuro');
-const logoModoOscuro = document.getElementById('logo-modo-oscuro');
+var textoEnlaceModoOscuro = document.getElementById('modo-oscuro');
+var logoModoOscuro = document.getElementById('logo-modo-oscuro');
 textoEnlaceModoOscuro.addEventListener("click", toggleModoOscuro);
 var fondoNavBar = document.getElementById('navbar');
 
@@ -39,12 +39,12 @@ function toggleModoOscuro() {
 
 
 //var login
-const body = document.querySelector('body');
+var body = document.querySelector('body');
 // var modo oscuro:
-const videoFondo = document.getElementById('videoFondo');
-const elementosNavbar = document.getElementsByClassName('textoCabecera');
-const logoCargar = document.getElementById('logo');
-const formaSpotify = document.getElementsByClassName('formaSpotify');
+var videoFondo = document.getElementById('videoFondo');
+var elementosNavbar = document.getElementsByClassName('textoCabecera');
+var logoCargar = document.getElementById('logo');
+var formaSpotify = document.getElementsByClassName('formaSpotify');
 var textoContacto = document.getElementsByClassName('textoContacto');
 var inputBusqueda = document.getElementById('inputBusqueda');
 var navBar = document.getElementsByClassName('navBar');
@@ -83,10 +83,10 @@ function setModoOnLoad() {
             }
         } else {
             videoFondo.src = './img/FondoIndexOscuro.mp4';
-            logoCargar.style.setProperty('color', 'white', 'important');
+            //logoCargar.style.setProperty('color', 'white', 'important');
 
             console.log('aaa');
-            console.log(logoCargar);
+            //console.log(logoCargar);
             //navbar[0].style.color = 'white';
 
 
@@ -109,7 +109,10 @@ function setModoOnLoad() {
                 textoContacto[i].style.backgroundColor = 'rgba(80,80,80, 1)';
             }
         }
-        inputBusqueda.style.backgroundColor = 'rgb(50,50,50)';
+        if(inputBusqueda){
+            inputBusqueda.style.backgroundColor = 'rgb(50,50,50)';
+        }
+
 
         for (var i = 0; i < textElements.length; i++) {
             textElements[i].style.color = 'white';
@@ -160,7 +163,9 @@ function setModoOnLoad() {
         for (var i = 0; i < textElements.length; i++) {
             textElements[i].style.color = 'black';
         }
+        if(inputBusqueda){
         inputBusqueda.style.backgroundColor = 'white';
+        }
 
         //textoCabecera.style.color = 'black';
     }

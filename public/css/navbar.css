@@ -46,9 +46,13 @@ video {
 #logo {
   display: block;
   font-size: 32px;
-  text-decoration: none; 
+  text-decoration: none;
   font-weight: 550;
   font-family: popText, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.textoCabecera {
+  color: black;
 }
 
 /* Para poder hacer el navbar de bootstrap transparente */
@@ -85,6 +89,7 @@ video {
 #modo-oscuro {
   cursor: pointer;
 }
+
 
 /*Modo para moviles*/
 /* Media query para pantallas pequeñas */
@@ -179,7 +184,12 @@ video {
   text-align: center;
 }
 
+#botonBuscar {
+  padding: 10px;
+}
+
 #mensaje {
+  display: none;
   text-align: center;
   z-index: 100;
   position: absolute;

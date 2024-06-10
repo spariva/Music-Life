@@ -3,31 +3,31 @@
 require_once 'templates/header.php';
 
 
-//If there's a msg in the url, it's because the user tried to access the user page without logging in
-if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    unset($_GET['msg']);
-}
+// //If there's a msg in the url, it's because the user tried to access the user page without logging in
+// if (isset($_GET['msg'])) {
+//     $msg = $_GET['msg'];
+//     unset($_GET['msg']);
+// }
 
-$errorsLogin = $_SESSION['errorsLogin'] ?? [];
-// es lo mismo que isset($_SESSION['errorsLogin']) ? $_SESSION['errorsLogin'] : [];
-unset($_SESSION['errorsLogin']);
+// $errorsLogin = $_SESSION['errorsLogin'] ?? [];
+// // es lo mismo que isset($_SESSION['errorsLogin']) ? $_SESSION['errorsLogin'] : [];
+// unset($_SESSION['errorsLogin']);
 
-$errorsSignUp = $_SESSION['errorsSignUp'] ?? [];
-unset($_SESSION['errorsSignUp']);
+// $errorsSignUp = $_SESSION['errorsSignUp'] ?? [];
+// unset($_SESSION['errorsSignUp']);
 
-//Si hay errores en el SignUp para que se cargue el Registro en vez del Login
-$bodyClass = $_SESSION['bodyClass'] ?? "";
-unset($_SESSION['bodyClass']);
-//Recupera los datos del formulario de registro
-$userNameSignUp = $_SESSION['userNameSignUp'] ?? "";
-$userMailSignUp = $_SESSION['userMailSignUp'] ?? "";
-unset($_SESSION['userNameSignUp']);
-unset($_SESSION['userMailSignUp']);
+// //Si hay errores en el SignUp para que se cargue el Registro en vez del Login
+// $bodyClass = $_SESSION['bodyClass'] ?? "";
+// unset($_SESSION['bodyClass']);
+// //Recupera los datos del formulario de registro
+// $userNameSignUp = $_SESSION['userNameSignUp'] ?? "";
+// $userMailSignUp = $_SESSION['userMailSignUp'] ?? "";
+// unset($_SESSION['userNameSignUp']);
+// unset($_SESSION['userMailSignUp']);
 
-//Recupera los datos del formulario de crear cuenta
-$userNameLogin = $_SESSION['userNameLogin'] ?? "";
-unset($_SESSION['userNameLogin']);
+// //Recupera los datos del formulario de crear cuenta
+// $userNameLogin = $_SESSION['userNameLogin'] ?? "";
+// unset($_SESSION['userNameLogin']);
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
 //     $mailer = Mailer::obtenerInstancia();
@@ -35,26 +35,6 @@ unset($_SESSION['userNameLogin']);
 // }
 
 ?>
-
-        <?php if (isset($msg)): ?>
-            <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
-                <?php echo $msg;
-                unset($msg);
-                ?>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <!--<li class="nav-item"><a class="nav-link" href="./login.php">Cuenta</a></li>-->
-                    <li class="nav-item"><a class="nav-link" href="./usuario.php">Usuario</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./spotify.html">Spotify</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contacto.php">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://github.com/spariva/Music-Life" target="_blank">Info</a></li>
-                    <li class="nav-item"><a class="nav-link" id="modo-oscuro">Modo Oscuro</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
     <?php if (isset($msg)) : ?>
         <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
             <?php echo $msg;
@@ -62,6 +42,7 @@ unset($_SESSION['userNameLogin']);
             ?>
         </div>
     <?php endif; ?>
+
     <div id="ubicador">
         <div class="contenedor">
             <span class="contenedor__efectos"></span>
@@ -82,15 +63,7 @@ unset($_SESSION['userNameLogin']);
                 </div>
 
                 <!--Login errors display-->
-                <?php if (count($errorsLogin) > 0) : ?>
-                    <div class="alert alert-danger">
-                        <?php foreach ($errorsLogin as $error) : ?>
-                            <li>
-                                <?php echo $error; ?>
-                            </li>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                
                 <div class="inputBox">
                     <input type="submit" class="botonConectarse" value="Conectarse" name="submit">
                 </div>
@@ -122,23 +95,31 @@ unset($_SESSION['userNameLogin']);
             </form>
 
 
-            <form id="recuperarPSWD" action="./mailer/recuperarPsswd.php" method="post">
+            <form id="recuperarPSWD" action="./recuperarPsswd.php" method="post">
                 <h3 class="formulario__titulo">Recupera tu contraseña</h3>
                 <div class="inputBox">
-                    <p>Email: <input type="email" id="email" name="email" required></p>
+                    <p>Email</p><p><input type="email" id="email" name="email" required></p>
 
                 </div>
                 <div class="botonesPsswd">
                     <div class=" botonesRecuperar">
                         <button type="submit" id="enviarRecuperar">Solicitar cambio</button>
-                        <button type="button" onclick="window.location.href='http://music-life.es/login.php'" id="closeModal">Cerrar</button>
+                        <!-- <button type="button" onclick="window.location.href='http://music-life.es/login.php'" id="closeModal">Cerrar</button> -->
                     </div>
                 </div>
             </form>
 
         </div>
     </div>
-
+    <?php if (count($errorsLogin) > 0) : ?>
+        <div class="alert alert-danger">
+            <?php foreach ($errorsLogin as $error) : ?>
+                <li>
+                    <?php echo $error; ?>
+                </li>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 
     <!--SignUp errors display-->
     <?php if (count($errorsSignUp) > 0) { ?>
@@ -149,8 +130,9 @@ unset($_SESSION['userNameLogin']);
                 </li>
             <?php endforeach; ?>
         </div>
-    <?php } endif ?>
+    <?php } ?>
     </div>
+    <script src="./js/login.js" defer></script>
 </body>
 
 </html>

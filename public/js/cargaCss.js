@@ -1,6 +1,5 @@
 /**----------> Carga de css*/
 let head = document.head;
-console.log(head);
 
 /**Se comprueba la url de la página que acabamos de cargar
  * y se va añadiendo al head el css correspondiente

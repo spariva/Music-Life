@@ -20,7 +20,7 @@ body {
 
 .contenedor-principal-lab {
   position: absolute;
-  margin: 1% 5% 4%;
+  margin: 5px;
   display: grid;
   grid-template-areas: "usuario listas";
   grid-template-columns: 2fr 4fr;
@@ -36,7 +36,6 @@ body {
   color: var(--white);
   flex-direction: column;
   align-items: center;
-  /* background-color: rgba(255, 255, 255, 0.1); */
   background-color: rgba(232, 253, 243, 0.1);
   border-radius: 90px;
   display: flex;
@@ -76,7 +75,7 @@ body {
 }
 
 .lab-form{
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -184,6 +183,13 @@ body {
   width: 50%;
   padding: 3%;
   margin: 0 1%;
+}
+
+.lab-intro{
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  z-index: 2;
 }
 
 /* .lab-resultado-container {

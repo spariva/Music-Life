@@ -1,19 +1,6 @@
 <?php
-//require_once '../config/init.php';
 require_once 'templates/header.php';
-
-
-$username = $_SESSION['user'];
-$perfil = $_GET['name'];
-
-
-if (!isset($_SESSION['user'])) {
-    $msg = "No hay usuario logueado";
-    header("Location: ./login.php?msg=$msg");
-    exit();
-}
 ?>
-
     <div class="contenedor-principal-menuUsuario">
 
         <div class="usuario" id="menuUsuario__izquierda">
@@ -109,7 +96,7 @@ if (!isset($_SESSION['user'])) {
                 ?>
             </div>
             <div class="playlists">
-                <h2>Todas sus Playlists</h2>
+                <h2>Playlists compartidas</h2>
                 <?php
                 $pdo3 = DbConnection::getInstance();
                 $links = $pdo3->showUserPlaylistsRandom($perfil, 0);
@@ -136,7 +123,12 @@ if (!isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/usuario.css">
+    <script src="./js/usuario.js" defer></script>
+    <script src="./js/star-rating.js" defer></script>
+    <script src="./js/script.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>

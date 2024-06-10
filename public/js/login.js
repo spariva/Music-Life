@@ -3,6 +3,9 @@ window.onload = function() {
     const videoFondo = document.getElementById('videoFondo');
     const crearCuenta = document.getElementById('crearCuenta');
     const conectarCuenta = document.getElementById('conectarCuenta');
+    const navBar = document.getElementById('navbar');
+
+
     // si tiene que mostrar errores del SignUp
     // var urlSignUp = new URLSearchParams(window.location.search);
 

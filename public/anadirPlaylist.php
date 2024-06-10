@@ -6,22 +6,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
 
     // Extract the URL between src=" and "
-    preg_match('/src="([^"]*)"/', $url, $matches);
-    $url = $matches[1] ?? '';
+    //preg_match('/src="([^"]*)"/', $url, $matches);
+    //$url = $matches[1] ?? '';
 
     echo 'Esta playlist ya ha sido añadida por otro usuario.';
+
+    try{
+        $db = DbConnection::getInstance()->getConnection();
+        $stmt = $db->prepare("INSERT INTO playlist VALUES (?, ?)");
+        $result = $stmt->execute([$url, $username]);
     
-
-    $db = DbConnection::getInstance()->getConnection();
-    $stmt = $db->prepare("INSERT INTO playlist VALUES (?, ?)");
-    $result = $stmt->execute([$url, $username]);
-
-    if ($result) {
-        // Redirect to index.php on success
-        header("Location: ./index.php?playlist=".$url."&mensaje=Playlist añadida correctamente");
-        exit();
-    } else {
-        // Echo error message on failure
-        echo "Error: " . $stmt->errorInfo()[2];
+        if ($result) {
+            // Redirect to index.php on success
+            header("Location: ./index.php?playlist=".$url."&mensaje=Playlist añadida correctamente");
+            exit();
+        } else {
+            // Echo error message on failure
+            header("Location: ./index.php?playlist=".$url."&error=Esta playlist ya ha sido añadida por otro usuario");
+            echo "Error: " . $stmt->errorInfo()[2];
+        }
+    }catch(error){
+        echo "Error: " . $error;
     }
+    header("Location: ./index.php?playlist=".$url."&error=Esta playlist ya ha sido añadida por otro usuario");
+
 }

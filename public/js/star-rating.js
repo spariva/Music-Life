@@ -7,17 +7,35 @@ valoraciones.forEach(valoracion => {
     const commentInput = valoracion.querySelector('.comment');
     const submitButton = valoracion.querySelector('.submit-button');
     const ratingValue = valoracion.querySelector('.rating-value');
-    const botonDesplegable = valoracion.querySelector('.botonDesplegable');
+    // const botonDesplegable = valoracion.querySelector('.botonDesplegable');
     const sectorComentarios = valoracion.querySelector('.listaComentarios');
     var selectedRating = null;
 
-    botonDesplegable.addEventListener('click', () => {
-        if (ratingDropdown.style.display === 'none' || ratingDropdown.style.display === '') {
-            ratingDropdown.style.display = 'block';
-        } else {
-            ratingDropdown.style.display = 'none';
-        }
-    });
+    if(valoracion.querySelector('.botonDesplegable')){
+        const botonDesplegable = valoracion.querySelector('.botonDesplegable');
+        botonDesplegable.addEventListener('click', () => {
+            if (ratingDropdown.style.display === 'none' || ratingDropdown.style.display === '') {
+                ratingDropdown.style.display = 'block';
+            } else {
+                ratingDropdown.style.display = 'none';
+            }
+        });
+    }
+
+    if(valoracion.querySelector('.btnsValoracion') || valoracion.querySelector('.editarValoracionCont')){
+        let btnEdit = valoracion.parentNode.parentNode.querySelector('.btnEditarValoracion');
+        btnEdit.addEventListener('click', (e)=>{
+            if(e.target.matches('button') || e.target.matches('i')){
+                let ratingActual = valoracion.querySelector('.valoracionExistente').firstElementChild.textContent;
+                let indice = ratingActual.substring(0, 1);
+                console.log(indice);
+                selectedRating = indice;
+                updateRating();
+            }
+        });   
+    }
+
+    
 
     stars.forEach((star, index) => {
         star.addEventListener('mouseover', () => {
@@ -59,14 +77,17 @@ valoraciones.forEach(valoracion => {
         });
     }
 
-    submitButton.addEventListener('click', () => {
-        const comment = commentInput.value;
-        if (selectedRating !== null && comment.trim() !== '') {
-            ratingValue.textContent = ('¡Gracias por tu puntuación y comentario!');
-            botonDesplegable.textContent = selectedRating + "/5 " + '\u2605';
-            sectorComentarios.textContent = comment;
-        } else {
-            ratingValue.textContent = ('Por favor, selecciona una puntuación y escribe un comentario antes de enviar.');
-        }
-    });
+    if(valoracion.querySelector('.botonDesplegable')){
+        submitButton.addEventListener('click', () => {
+            const comment = commentInput.value;
+            if (selectedRating !== null && comment.trim() !== '') {
+                ratingValue.textContent = ('¡Gracias por tu puntuación y comentario!');
+                botonDesplegable.textContent = selectedRating + "/5 " + '\u2605';
+                sectorComentarios.textContent = comment;
+            } else {
+                ratingValue.textContent = ('Por favor, selecciona una puntuación y escribe un comentario antes de enviar.');
+            }
+        });
+    }
+    
 });
