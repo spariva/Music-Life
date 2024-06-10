@@ -181,12 +181,12 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 											<input type="hidden" name="username" value="
 											<?php echo $_SESSION['user'];
 											?>">
-											<input type="hidden" name="url" value="
+											<input type="hidden" name="url" id="urlPlaylist2" value="
 											<?php if (isset($_GET['playlist'])) {
-												echo $_GET['playlist'];
-											} else {
-												echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
-											} ?>">
+													echo $_GET['playlist'];
+												} else {
+													echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
+												} ?>">
 											<div class="star-rating">
 												<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png"
 													alt="Estrella 1">

@@ -67,7 +67,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
         var urlPlaylist = document.getElementById('urlPlaylist');
+        var urlPlaylist2 = document.getElementById('urlPlaylist2');
         urlPlaylist.value = `https://open.spotify.com/embed/playlist/${playlistID}`;
+        urlPlaylist2.value = `https://open.spotify.com/embed/playlist/${playlistID}`;
 
             userCookie = document.cookie.split('; ').find(row => row.startsWith('USER'));
             if (userCookie) {
