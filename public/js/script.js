@@ -1,5 +1,5 @@
-const textoEnlaceModoOscuro = document.getElementById('modo-oscuro');
-const logoModoOscuro = document.getElementById('logo-modo-oscuro');
+var textoEnlaceModoOscuro = document.getElementById('modo-oscuro');
+var logoModoOscuro = document.getElementById('logo-modo-oscuro');
 textoEnlaceModoOscuro.addEventListener("click", toggleModoOscuro);
 var fondoNavBar = document.getElementById('navbar');
 
@@ -39,12 +39,12 @@ function toggleModoOscuro() {
 
 
 //var login
-const body = document.querySelector('body');
+var body = document.querySelector('body');
 // var modo oscuro:
-const videoFondo = document.getElementById('videoFondo');
-const elementosNavbar = document.getElementsByClassName('textoCabecera');
-const logoCargar = document.getElementById('logo');
-const formaSpotify = document.getElementsByClassName('formaSpotify');
+var videoFondo = document.getElementById('videoFondo');
+var elementosNavbar = document.getElementsByClassName('textoCabecera');
+var logoCargar = document.getElementById('logo');
+var formaSpotify = document.getElementsByClassName('formaSpotify');
 var textoContacto = document.getElementsByClassName('textoContacto');
 var inputBusqueda = document.getElementById('inputBusqueda');
 var navBar = document.getElementsByClassName('navBar');
