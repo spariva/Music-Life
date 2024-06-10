@@ -65,6 +65,7 @@ try {
             height: 100%;
             object-fit: cover;
             z-index: -1;
+            pointer-events: none;
         }
 
         #ubicador {

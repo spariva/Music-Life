@@ -52,8 +52,8 @@ unset($_SESSION['userNameLogin']);
             <video src="./img/FondoSpotifyClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
                 disablePictureInPicture></video>
         <?php else: ?>
-            <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
-                disablePictureInPicture></video>
+			<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay muted loop playsinline disablePictureInPicture></video>
+
         <?php endif ?>
 		<header id="header">
 		<a class="textoCabecera" href="./index.php" id="logo2">Music-Life</a>
