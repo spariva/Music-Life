@@ -13,14 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userMail = $_POST["userMail"];
     $mensajeExtra = $_POST["mensajeExtra"];
 
-    $body = "<h1>Motivo de contacto: $motivo</h1>";
+    $body = "<h3>Motivo de contacto:</h3>  <p>$motivo</p>";
     if ($motivo === 'otro') {
-        $body .= "<h2>Especificar:</h2>";
+        $body .= "<p>Especificar:</p>";
         $body .= "<p>$otroMotivoTexto</p>";
     }
-    $body .= "<h2>Nombre: $nombre</h2>";
-    $body .= "<h2>Correo Electrónico: $userMail</h2>";
-    $body .= "<h2>Mensaje:</h2>";
+    $body .= "<h3>Nombre:</h3> <p>$nombre</p>";
+    $body .= "<h3>Correo:</h3> <p> $userMail</p>";
+    $body .= "<h3>Mensaje:</h3>";
     $body .= "<p>$mensajeExtra</p>";
 
 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
-        header("Location: http://music-life.es?mensaje=Correo enviado, por favor revisa tu bandeja de entrada :)");
+        header("Location: http://music-life.es/index.php?mensaje=Correo enviado, por favor revisa tu bandeja de entrada :)");
         exit();
 
     } catch (Exception $e) {
