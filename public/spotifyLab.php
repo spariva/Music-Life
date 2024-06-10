@@ -126,7 +126,7 @@ if (isset($_SESSION['accessToken'])) {
                 if (isset($api)){
                     $playlists = $api->getUserPlaylists($spotifyUser['id']);
                     $counter = 0;
-                    $maxIterations = 2;
+                    $maxIterations = 1;
                     foreach ($playlists->items as $playlist) {
                         if ($counter == $maxIterations) {
                             break;
