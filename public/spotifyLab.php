@@ -8,6 +8,13 @@ if (isset($_SESSION['accessToken'])) {
     $accessToken = $_SESSION['accessToken'];
     $api->setAccessToken($accessToken);
 
+    try {
+        setcookie('labsToken', $accessToken, time() + 3600, '/');
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to retrieve access token', 'message' => $e->getMessage()]);
+    }
+
     // Fetch user data
     $spotifyUserResponse = $api->me();
     $spotifyUser = [
@@ -82,11 +89,11 @@ if (isset($_SESSION['accessToken'])) {
         <?php endif; ?>
                 <!-- aqui las opciones del panel -->
                 <form action="" class="lab-form">
-                    <label for="limite-canciones">Limite de canciones: </label>
+                    <label for="limite-canciones">Límite de canciones: </label>
                     <input type="number" name="limite-canciones" id="limite-canciones" min="0" placeholder="introduce un número"><br>
-                    <label for="cod-artistas">Codigo de artista: </label>
+                    <label for="cod-artistas">Código de artista: </label>
                     <input type="text" name="cod-artistas" id="cod-artistas"><br>
-                    <label for="generos">Generos musicales (5 max): </label>
+                    <label for="generos">Géneros musicales (5 max): </label>
                     <div id="cont-generos">
                         <input type="text" name="generos" id="generos" readonly><br>
                         <div class="cont-btn-generos">
@@ -98,14 +105,14 @@ if (isset($_SESSION['accessToken'])) {
                             <span class="genero-item">Indie</span>
                         </div>
                     </div>
-                    <label for="canciones">Muestra de canciones (codigo): </label>
+                    <label for="canciones">Muestra de canciones: </label>
                     <input type="text" name="canciones" id="canciones"><br>
-                    <label for="tempo">Ritmo de la cancion: </label>
+                    <label for="tempo" >Ritmo de la cancion: </label>
                     <!-- hay que buscar cuales son los valores limite -->
                     <input type="range" name="tempo" id="tempo" min="0" max="200" step="1" value="0">
                     <span id="valorTempo">0</span>
 
-                    <button type="submit">enviar</button>
+                    <button >Generar Playlist</button>
                 </form>
             </div>
 
@@ -113,14 +120,11 @@ if (isset($_SESSION['accessToken'])) {
                 <!-- aqui el resultado de la busqueda -->
                 <div class="lab-resultado">
         <div class="mis-playlists">
-            <h2>Mis Playlist de Spotify</h2>
+            <h3>Mis Playlist de Spotify</h3>
             <div class="spotify-playlists">
                 <?php 
                 if (isset($api)){
                     $playlists = $api->getUserPlaylists($spotifyUser['id']);
-                    foreach ($playlists->items as $playlist) {
-                        echo '<a href="' . $playlist->external_urls->spotify . '">' . $playlist->name . '</a> <br>';
-                    }
                     $counter = 0;
                     $maxIterations = 2;
                     foreach ($playlists->items as $playlist) {
@@ -129,8 +133,7 @@ if (isset($_SESSION['accessToken'])) {
                         }
                         echo '<div class="spotify-playlist">';
                         echo '<img src="' . $playlist->images[0]->url . '" alt="playlist-imagen">';
-                        echo '<h3>' . $playlist->name . '</h3>';
-                        echo '<p>' . $playlist->owner->followers . '</p>';
+                        echo '<h5>' . $playlist->name . '</h5>';
                         echo '<a href="' . $playlist->external_urls->spotify . '" target="_blank" class="btn btn-outline-info btn-lg rounded-pill" role="button">Escuchar</a>';
                         echo '</div><br>';
                         $counter++;
@@ -141,10 +144,11 @@ if (isset($_SESSION['accessToken'])) {
         </div>
         <!-- aqui el resultado de la busqueda -->
         <div class="lab-resultado-canciones">
-            <h2>Canciones</h2>
+            <h3 id="btnEnviar">Tu nueva playlist:</h3>
             <div class="cancion">
-                <iframe src="https://open.spotify.com/embed/track/6y0igZArWVi6Iz0rj35c1Y" width="300" height="380"
-                    frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <div id="playlistContainer"></div>
+                <!-- <iframe src="https://open.spotify.com/embed/track/6y0igZArWVi6Iz0rj35c1Y" width="300" height="380"
+                    frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
             </div>
                 <div class="lab-intro">
                     <span id="getInfo">?</span>
