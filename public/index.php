@@ -171,7 +171,10 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 					<!--<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->
 					<?php if (isset($_SESSION['user'])) { ?>
-
+						<!-- <div class="btnsValoracion">
+								<button class="btnEditarValoracion" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button>
+								<button class="btnFavValoracion bi bi-arrow-through-heart" aria-label="Añadir a playlist favoritas"><i style="color:white"> Fav</i></button>
+						</div> -->
 						<div class="valoracionesBuscador">
 							<div class="contenedorSoporteParaValoraciones w-100">
 								<div class="cuadrado botonDesplegable">Sin Valoración</div>
