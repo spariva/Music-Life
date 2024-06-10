@@ -3,31 +3,31 @@
 require_once 'templates/header.php';
 
 
-//If there's a msg in the url, it's because the user tried to access the user page without logging in
-if (isset($_GET['mensaje'])) {
-    $msg = $_GET['mensaje'];
-    unset($_GET['mensaje']);
-}
+// //If there's a msg in the url, it's because the user tried to access the user page without logging in
+// if (isset($_GET['msg'])) {
+//     $msg = $_GET['msg'];
+//     unset($_GET['msg']);
+// }
 
-$errorsLogin = $_SESSION['errorsLogin'] ?? [];
-// es lo mismo que isset($_SESSION['errorsLogin']) ? $_SESSION['errorsLogin'] : [];
-unset($_SESSION['errorsLogin']);
+// $errorsLogin = $_SESSION['errorsLogin'] ?? [];
+// // es lo mismo que isset($_SESSION['errorsLogin']) ? $_SESSION['errorsLogin'] : [];
+// unset($_SESSION['errorsLogin']);
 
-$errorsSignUp = $_SESSION['errorsSignUp'] ?? [];
-unset($_SESSION['errorsSignUp']);
+// $errorsSignUp = $_SESSION['errorsSignUp'] ?? [];
+// unset($_SESSION['errorsSignUp']);
 
-//Si hay errores en el SignUp para que se cargue el Registro en vez del Login
-$bodyClass = $_SESSION['bodyClass'] ?? "";
-unset($_SESSION['bodyClass']);
-//Recupera los datos del formulario de registro
-$userNameSignUp = $_SESSION['userNameSignUp'] ?? "";
-$userMailSignUp = $_SESSION['userMailSignUp'] ?? "";
-unset($_SESSION['userNameSignUp']);
-unset($_SESSION['userMailSignUp']);
+// //Si hay errores en el SignUp para que se cargue el Registro en vez del Login
+// $bodyClass = $_SESSION['bodyClass'] ?? "";
+// unset($_SESSION['bodyClass']);
+// //Recupera los datos del formulario de registro
+// $userNameSignUp = $_SESSION['userNameSignUp'] ?? "";
+// $userMailSignUp = $_SESSION['userMailSignUp'] ?? "";
+// unset($_SESSION['userNameSignUp']);
+// unset($_SESSION['userMailSignUp']);
 
-//Recupera los datos del formulario de crear cuenta
-$userNameLogin = $_SESSION['userNameLogin'] ?? "";
-unset($_SESSION['userNameLogin']);
+// //Recupera los datos del formulario de crear cuenta
+// $userNameLogin = $_SESSION['userNameLogin'] ?? "";
+// unset($_SESSION['userNameLogin']);
 
 // if(isset($_POST["enviar"]) && (empty($comprobator->errors))){ 
 //     $mailer = Mailer::obtenerInstancia();
@@ -132,7 +132,7 @@ unset($_SESSION['userNameLogin']);
         </div>
     <?php } ?>
     </div>
-    <script src="./js/login.js"></script>
+    <script src="./js/login.js" defer></script>
 </body>
 
 </html>
