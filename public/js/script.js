@@ -50,6 +50,7 @@ var inputBusqueda = document.getElementById('inputBusqueda');
 var navBar = document.getElementsByClassName('navBar');
 var mensaje = document.getElementById('mensaje');
 var buscadorUsuarios = document.getElementById('buscadorUsuarios');
+var btnEditarIcono = document.getElementById('btnEditarIcono');
 
 var textoSpotify = document.getElementsByClassName('textoSpotify');
 var apartado = document.querySelectorAll('#apartado');
@@ -127,6 +128,10 @@ function setModoOnLoad() {
             buscadorUsuarios.style.backgroundColor = 'rgb(50,50,50)';
         }
 
+        if(btnEditarIcono){
+            btnEditarIcono.style.backgroundColor = 'rgb(50,50,50)';
+        }
+
     } else {
         if (pagina === 'spotify.html') {
             videoFondo.src = './img/FondoSpotifyClaro.mp4';
@@ -180,6 +185,9 @@ function setModoOnLoad() {
         }
         if(buscadorUsuarios){
             buscadorUsuarios.style.backgroundColor = 'rgb(255,255,255)';
+        }
+        if(btnEditarIcono){
+            btnEditarIcono.style.backgroundColor = 'rgb(255,255,255)';
         }
 
         //textoCabecera.style.color = 'black';

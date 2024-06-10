@@ -143,7 +143,7 @@ if (!isset($_SESSION['user'])) {
                                                         <input type="hidden" name="url" value="<?= $rating['LINK'] ?>">
                                                         <p><textarea name="nuevaValoracion" class="comment" placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
                                                         <input type="hidden" name="nuevoRating" class="rating-value">
-                                                        <p><button type="submit" class="submit-button">Editar</button></p>
+                                                        <p><button id="btnEditarIcono" type="submit" class="submit-button">Editar</button></p>
                                                     </div>
                                                 </div>
                                                 
