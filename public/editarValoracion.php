@@ -1,55 +1,56 @@
 <?php
 require_once '../config/init.php';
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nuevaValoracion']) && isset($_POST['editar'])){
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nuevaValoracion']) && isset($_POST['editar'])) {
     $enlace = $_POST['url'];
     $nuevoRating = $_POST['nuevoRating'];
     $nuevoComment = $_POST['nuevaValoracion'];
     $username = $_SESSION['user'];
 
-    try{
+    try {
         $db = DbConnection::getInstance()->getConnection();
-        $sanitizer = new Sanitizer();
+
         $stmt = $db->prepare("UPDATE rating SET TEXT = ?, SCORE = ? WHERE USER_NAME = ? AND LINK = ?");
         $result = $stmt->execute([
-            $sanitizer->sanitizeString($nuevoComment), 
-            $sanitizer->sanitizeInt($nuevoRating), 
-            $sanitizer->sanitizeString($username), 
-            $sanitizer->sanitizeUrl($enlace)]);
+            Sanitizer::sanitizeString($nuevoComment),
+            Sanitizer::sanitizeInt($nuevoRating),
+            Sanitizer::sanitizeString($username),
+            Sanitizer::sanitizeUrl($enlace)
+        ]);
 
-        if($result){
+        if ($result) {
             echo "bien";
             header("Location: ./usuario.php");
             exit();
-        }else{
+        } else {
             echo "Error: " . $stmt->errorInfo()[2];
         }
-    }catch(PDOException $e){
+    } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
     }
-}elseif($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['eliminar']) && isset($_POST['url'])){  
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['eliminar']) && isset($_POST['url'])) {
     $enlace = $_POST['url'];
     $username = $_SESSION['user'];
 
-    try{
+    try {
         $db = DbConnection::getInstance()->getConnection();
         $stmt = $db->prepare("DELETE FROM rating WHERE USER_NAME = ? AND LINK = ?");
         $result = $stmt->execute([
-            $sanitizer->sanitize($username), 
-            $sanitizer->sanitize($enlace)]);
+            Sanitizer::sanitize($username),
+            Sanitizer::sanitize($enlace)
+        ]);
 
-        if($result){
+        if ($result) {
             echo "borrado";
             header("Location: ./usuario.php");
             exit();
-        }else{
+        } else {
             echo "Error: " . $stmt->errorInfo()[2];
         }
-    }catch(PDOException $e){
+    } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
     }
-}else{
+} else {
     echo "Error";
 }
 
-?>
