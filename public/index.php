@@ -36,6 +36,26 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 }
 ?>
 <div id="contenido">
+<div id="mensaje">
+		<?php
+		if (isset($_GET['mensaje'])) {
+			echo $_GET['mensaje'];
+		}
+		?></div>
+	<script>
+		setTimeout(function() {
+			document.getElementById('mensaje').style.display = 'none';
+		}, 3000);
+	</script>
+	<!--<script>
+		var mensaje = document.getElementById('mensaje');
+		if (mensaje) {
+			mensaje.style.display = 'block';
+			setTimeout(function() {
+				mensaje.style.display = 'none';
+			}, 4000);
+		}
+	</script>-->
 	<script>
 		var mensaje = document.getElementById('mensaje');
 		if (mensaje) {
