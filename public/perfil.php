@@ -1,5 +1,15 @@
 <?php
 require_once 'templates/header.php';
+
+$username = $_SESSION['user'];
+$perfil = $_GET['name'];
+
+
+if (!isset($_SESSION['user'])) {
+    $msg = "No hay usuario logueado";
+    header("Location: ./login.php?mensaje=$msg");
+    exit();
+}
 ?>
     <div class="contenedor-principal-menuUsuario">
 
@@ -123,6 +133,8 @@ require_once 'templates/header.php';
             </div>
         </div>
     </div>
+    <link rel="stylesheet" href="./css/usuario.css">
+    <link rel="stylesheet" type="text/css" href="./css/star-rating.css">
     <script src="./js/star-rating.js" defer></script>
     <script src="./js/script.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
