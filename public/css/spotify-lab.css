@@ -28,6 +28,7 @@ body {
   height: 75vh;
   width: 90%;
   z-index: 1;
+  margin-bottom: 60px;
 }
 
 .lab-panel {

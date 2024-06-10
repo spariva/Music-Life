@@ -235,7 +235,7 @@ body {
     /* background-color: rgba(255, 255, 255, 0.239);
     border-radius: 50px 50px 5px 5px; */
     padding: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 120px;
   }
 
   .valoraciones {
@@ -269,6 +269,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 50px;
   }
 
   .verPlaylists{
