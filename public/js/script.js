@@ -1,5 +1,5 @@
-var textoEnlaceModoOscuro = document.getElementById('modo-oscuro');
-var logoModoOscuro = document.getElementById('logo-modo-oscuro');
+const textoEnlaceModoOscuro = document.getElementById('modo-oscuro');
+const logoModoOscuro = document.getElementById('logo-modo-oscuro');
 textoEnlaceModoOscuro.addEventListener("click", toggleModoOscuro);
 var fondoNavBar = document.getElementById('navbar');
 
@@ -39,16 +39,15 @@ function toggleModoOscuro() {
 
 
 //var login
-var body = document.querySelector('body');
+const body = document.querySelector('body');
 // var modo oscuro:
-var videoFondo = document.getElementById('videoFondo');
-var elementosNavbar = document.getElementsByClassName('textoCabecera');
-var logoCargar = document.getElementById('logo');
-var formaSpotify = document.getElementsByClassName('formaSpotify');
+const videoFondo = document.getElementById('videoFondo');
+const elementosNavbar = document.getElementsByClassName('textoCabecera');
+//const logoCargar = document.getElementById('logo');
+const formaSpotify = document.getElementsByClassName('formaSpotify');
 var textoContacto = document.getElementsByClassName('textoContacto');
 var inputBusqueda = document.getElementById('inputBusqueda');
 var navBar = document.getElementsByClassName('navBar');
-//var formOscuro = document.getElementsByClassName('formOscuro');
 
 var textoSpotify = document.getElementsByClassName('textoSpotify');
 var apartado = document.querySelectorAll('#apartado');
@@ -114,13 +113,6 @@ function setModoOnLoad() {
             inputBusqueda.style.backgroundColor = 'rgb(50,50,50)';
         }
 
-        /*if(formOscuro){
-            for (var i = 0; i < formOscuro.length; i++) {
-                formOscuro[i].style.backgroundColor = 'rgb(50,50,50)';
-            }
-        }*/
-
-
         for (var i = 0; i < textElements.length; i++) {
             textElements[i].style.color = 'white';
         }
@@ -171,14 +163,8 @@ function setModoOnLoad() {
             textElements[i].style.color = 'black';
         }
         if(inputBusqueda){
-        inputBusqueda.style.backgroundColor = 'white';
+            inputBusqueda.style.backgroundColor = 'white';
         }
-
-        /*if(formOscuro){
-            for (var i = 0; i < formOscuro.length; i++) {
-                formOscuro[i].style.backgroundColor = 'white';
-            }
-        }*/
 
         //textoCabecera.style.color = 'black';
     }
