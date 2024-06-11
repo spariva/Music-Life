@@ -243,23 +243,23 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								$groupedRatings[$link][] = $rating;
 							}
 							foreach ($groupedRatings as $link => $ratingsForLink) {
-								// echo '<div class="carousel-item ' . $active . '">';
-								// echo '<iframe style="border-radius:12px"
-								// 		src="' . $rating['LINK'] . '?utm_source=generator"
-								// 		width="100%" height="152" frameBorder="0" allowfullscreen=""
-								// 		allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-								// 		loading="lazy"></iframe>';
-								// echo '<div id="verValoracion" class="valoracionExistente">';
+								 echo '<div class="carousel-item ' . $active . '">';
+								 echo '<iframe style="border-radius:12px"
+								 		src="' . $rating['LINK'] . '?utm_source=generator"
+								 		width="100%" height="152" frameBorder="0" allowfullscreen=""
+								 		allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+								 		loading="lazy"></iframe>';
+								 echo '<div id="verValoracion" class="valoracionExistente">';
 						
-								// foreach ($ratings as $rating) {
-								// 	echo '<p>' . $rating['USER_NAME'] . ' - ' . $rating['SCORE'] . ': ' . $rating['TEXT'] . '</p>';
-								// 	//echo '</div>';
-								// }
-								// echo '</div>';
-								// echo '</div>';
-								// $active = '';
+								 foreach ($ratings as $rating) {
+								 	echo '<p>' . $rating['USER_NAME'] . ' - ' . $rating['SCORE'] . ': ' . $rating['TEXT'] . '</p>';
+								 	//echo '</div>';
+								 }
+								 echo '</div>';
+								 echo '</div>';
+								 $active = '';
 								?>
-								<div class="valoracion carousel-item">
+								<!--<div class="valoracion carousel-item">
 									<form action="./editarValoracion.php" method="post">
 										<div class="<?= $active ?> ">
 											<iframe src="<?= $rating['LINK'] ?>?utm_source=generator" frameborder="0"
@@ -299,7 +299,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 										<button class="btnEditarValoracion"><i class="bi bi-pencil-square"></i></button>
 										<button class="btnEliminarValoracion"><i class="bi bi-trash3-fill"></i></button>
 									</div>
-								</div>
+								</div>-->
 								<?php
 							}
 						} else {
