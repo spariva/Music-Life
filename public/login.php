@@ -52,14 +52,6 @@ require_once 'templates/header.php';
 			}, 5000);
 		}
 	</script>
-    
-    <?php if (isset($msg)) : ?>
-        <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
-            <?php echo $msg;
-            unset($msg);
-            ?>
-        </div>
-    <?php endif; ?>
 
     <div id="ubicador">
         <div class="contenedor">
@@ -130,7 +122,7 @@ require_once 'templates/header.php';
         </div>
     </div>
     <?php if (count($errorsLogin) > 0) : ?>
-        <div class="alert alert-danger">
+        <div class="alert alert-danger w-25 text-center mx-auto d-block mt-2">
             <?php foreach ($errorsLogin as $error) : ?>
                 <li>
                     <?php echo $error; ?>
@@ -141,7 +133,7 @@ require_once 'templates/header.php';
 
     <!--SignUp errors display-->
     <?php if (count($errorsSignUp) > 0) { ?>
-        <div class="alert alert-danger">
+        <div class="alert alert-danger w-25 text-center mx-auto d-block mt-2">
             <?php foreach ($errorsSignUp as $error) : ?>
                 <li>
                     <?php echo $error; ?>

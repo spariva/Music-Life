@@ -70,12 +70,3 @@ unset($_SESSION['userNameLogin']);
 			<a class="nav-link" id="modo-oscuro"><i id="logo-modo-oscuro" class="fa-solid"></i><span class="nav-text">Modo Oscuro</span></a>
 		</nav>
 		</header>
-
-		<?php if (isset($msg)) : ?>
-			<div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
-				<?php 
-					echo $msg;
-					unset($msg);
-				?>
-			</div>
-		<?php endif; ?>
