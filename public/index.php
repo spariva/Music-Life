@@ -185,7 +185,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 											<input type="hidden" name="username" value="
 											<?php echo $_SESSION['user'];
 											?>">
-											<input type="hidden" name="url"  value="
+											<input type="hidden" name="url" id="urlPlaylist2" value="
 											<?php if (isset($_GET['playlist'])) {
 													echo $_GET['playlist'];
 												} else {
@@ -206,7 +206,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 											<p><textarea name="comment" class="comment"
 													placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
 											<input type="hidden" id="rating" name="rating" class=" rating-value">
-											<input type="hidden" name="url2" id="urlPlaylist2">
+											<!-- <input type="hidden" name="url2" id="urlPlaylist2"> -->
 											<!-- <p><button type="submit" class="submit-button">Enviar</button></p> -->
 											<!-- <p><button type="submit" class="btnEditarValoracion submit-button" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button></p>  -->
 											<p><button type="submit" id="guardaNuevaValoracion" class="submit-button" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button></p> 

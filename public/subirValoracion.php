@@ -2,7 +2,7 @@
 require_once '../config/init.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $url = $_POST['url2'];
+    $url = $_POST['url'];
     $rating = $_POST['rating'];
     $comment = $_POST['comment'];
     $username = $_SESSION['user'];
