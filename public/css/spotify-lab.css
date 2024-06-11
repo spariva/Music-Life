@@ -225,6 +225,15 @@ body {
   grid-area: musica;
 }
 
+.spotify-playlists{
+  display : flex;
+  flex: wrap;
+  justify-items: center;
+  }
+  .spotify-playlist{
+  width: 40%;
+  }
+
 
 @media screen and (max-width: 1200px) {
 
@@ -300,5 +309,4 @@ body {
   .musica {
     grid-area: musica;
   }
-
 }
