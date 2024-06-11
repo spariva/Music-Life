@@ -115,21 +115,77 @@ if (!isset($_SESSION['user'])) {
                 if ($links) {
                     echo '<div class="verPlaylists">';
                     foreach ($links as $link) {
-                        //echo '<div class="bloquePV">';
-                        echo '<iframe  class="bloquePV" style="border-radius:12px"
+                        echo '<div class="playlistPerfil">';
+
+                        echo '<iframe  class="bloquePV2" style="border-radius:12px"
 											src="' . $link . '?utm_source=generator"
-											width="30%" height="152" frameBorder="0" allowfullscreen=""
+											width="100%" height="152" frameBorder="0" allowfullscreen=""
 											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 											loading="lazy"></iframe>';
-                        //$active = '';
-                        //echo '</div>';
-                    }
-                    echo '</div>';
+
+
+
+
+                                            if (isset($_SESSION['user'])) {
+                                                $username = $_SESSION['user'];
+                                            }
+                                            if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+                                                $pdo2 = DbConnection::getInstance();
+                                                $rating = $pdo2->showUserRatings($username, $link);
+                                
+                                                if ($rating) {
+                                                    echo '<div class="valoracionExistente">';
+                                                    echo '<p>' . $rating['SCORE'] . '/5 ⭐</p>';
+                                                    echo '</div>';
+                                                } else {
+                                                    ?>
+
+                                                    						<!-- <div class="btnsValoracion">
+								<button class="btnEditarValoracion" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button>
+								<button class="btnFavValoracion bi bi-arrow-through-heart" aria-label="Añadir a playlist favoritas"><i style="color:white"> Fav</i></button>
+						</div> -->
+                                
+                                                    <div class="valoracionesBuscador">
+                                                        <div class="contenedorSoporteParaValoraciones w-100">
+                                                            <div class="cuadrado botonDesplegable">Sin Valoración aún</div>
+                                                            <div class="ratingDropdown dropdown" style="display: none;">
+                                                                <form action="./subirValoracion.php" method="post">
+                                                                    <div class="ratingBlock">
+                                                                        <input type="hidden" name="username" value="<?php echo $username; ?>" required>
+                                                                        <input type="hidden" name="url" value="<?php echo $link; ?>" required>
+                                                                        <div class="star-rating">
+                                                                            <img class="star" data-rating="1" src="./img/star/EstrellaVacia.png" alt="Estrella 1">
+                                                                            <img class="star" data-rating="2" src="./img/star/EstrellaVacia.png" alt="Estrella 2">
+                                                                            <img class="star" data-rating="3" src="./img/star/EstrellaVacia.png" alt="Estrella 3">
+                                                                            <img class="star" data-rating="4" src="./img/star/EstrellaVacia.png" alt="Estrella 4">
+                                                                            <img class="star" data-rating="5" src="./img/star/EstrellaVacia.png" alt="Estrella 5">
+                                                                        </div>
+                                                                        <p><textarea name="comment" class="comment"
+                                                                                placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
+                                                                        <input type="hidden" name="rating" class="rating-value" required>
+                                                                        <p><button type="submit" class="submit-button">Enviar</button></p>
+                                                                        <p class="listaComentarios"></p>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                }
+                                            } else {
+                                                echo '<div class="valoracionExistente">';
+                                                echo '<p>Debes estar logueado para valorar</p>';
+                                                echo '</div>';
+                                            }
+                                            echo '</div>';
+                            }
 
                 } else {
                     echo 'Todavia no ha subido ninguna playlist!';
                 }
+                echo '</div>';
                 ?>
+
             </div>
         </div>
     </div>

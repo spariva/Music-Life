@@ -449,8 +449,11 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		<div id="imgCookies2"><img class="imgCookies" src="./img/cookies.png" alt="cookie2"></div>
 	</div>
 <?php } ?>
+    <link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
+    <link rel="stylesheet" type="text/css" href="./css/star-rating.css">
 <!-- <script src="./js/BusquedaSpotify.js" defer></script> -->
 <script src="./js/playlistsAPI.js" defer></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" defer></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 <script src="./js/star-rating.js" defer></script>
