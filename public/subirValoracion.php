@@ -2,11 +2,13 @@
 require_once '../config/init.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $url = $_POST['url'];
+    $url = $_POST['url2'];
     $rating = $_POST['rating'];
     $comment = $_POST['comment'];
-    // $username = $_POST['username'];
     $username = $_SESSION['user'];
+
+    // $url = $_POST['url'];
+    // $username = $_POST['username'];
 
     if (empty($username) || empty($url) || empty($rating)) {
         // Handle the error here. For example, you can redirect back with an error message

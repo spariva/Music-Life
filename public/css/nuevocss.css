@@ -1,7 +1,9 @@
 body {
   background-color: grey;
 }
-
+.ocultar{
+  display: none;
+}
 /* CUERPO */
 
 #apartado {
@@ -627,7 +629,7 @@ iframe {
   margin: 0 10px;
 }
 
-.btnEditarValoracion, .btnFavValoracion {
+.btnEditarValoracion, .btnFavValoracion, .btnAnadirValoracion {
   border-radius: 100px;
   padding: 10px 20px;
   margin: 1%;
@@ -639,7 +641,7 @@ iframe {
   transition: opacity 0.5s, transform 0.5s; /* Añadir transición aquí */
 }
 
-.btnEditarValoracion:hover, .btnFavValoracion:hover {
+.btnEditarValoracion:hover, .btnFavValoracion:hover, .btnAnadirValoracion:hover {
   cursor: pointer;
   opacity: 1;
   transform: scale(1.1);

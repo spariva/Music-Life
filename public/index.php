@@ -151,7 +151,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						<form id="buscador3" action="./anadirPlaylist.php" method="post">
 							<input type="hidden" name="username" value="<?php echo $username; ?>">
 							<input type="hidden" id="urlPlaylist" class="inputBuscador" name="urlPlaylist">
-							<button id="botonGuardar">Compartir playlist</button>
+							<button id="btnGuardar" class="ocultar">Compartir playlist</button>
+							<!-- <button id="botonGuardar" class="ocultar">Compartir playlist</button> -->
 						</form>
 
 					<?php } ?>
@@ -170,7 +171,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 
 					<!--<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->
-					<?php if (isset($_SESSION['user'])) { ?>
+						<?php if (isset($_SESSION['user'])) { ?>
 						<!-- <div class="btnsValoracion">
 								<button class="btnEditarValoracion" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button>
 								<button class="btnFavValoracion bi bi-arrow-through-heart" aria-label="Añadir a playlist favoritas"><i style="color:white"> Fav</i></button>
@@ -178,13 +179,13 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						<div class="valoracionesBuscador">
 							<div class="contenedorSoporteParaValoraciones w-100">
 								<div class="cuadrado botonDesplegable">Sin Valoración</div>
-								<div class="ratingDropdown dropdown" style="display: none;">
-									<form action="./subirValoracion.php" method="post">
+								<div class="ratingDropdown ocultar">
+									<form id="valoracionBuscador" action="./subirValoracion.php" method="post">
 										<div class="ratingBlock">
 											<input type="hidden" name="username" value="
 											<?php echo $_SESSION['user'];
 											?>">
-											<input type="hidden" name="url" id="urlPlaylist2" value="
+											<input type="hidden" name="url"  value="
 											<?php if (isset($_GET['playlist'])) {
 													echo $_GET['playlist'];
 												} else {
@@ -204,12 +205,20 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 											</div>
 											<p><textarea name="comment" class="comment"
 													placeholder="Escribe tu comentario aquí (opcional)"></textarea></p>
-											<input type="hidden" name="rating" class="rating-value">
-											<p><button type="submit" class="submit-button">Enviar</button></p>
+											<input type="hidden" id="rating" name="rating" class=" rating-value">
+											<input type="hidden" name="url2" id="urlPlaylist2">
+											<!-- <p><button type="submit" class="submit-button">Enviar</button></p> -->
+											<!-- <p><button type="submit" class="btnEditarValoracion submit-button" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button></p>  -->
+											<p><button type="submit" id="guardaNuevaValoracion" class="submit-button" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button></p> 
 											<p class="listaComentarios"></p>
 
 										</div>
 									</form>
+									
+								</div>
+								<div class="btnsValoracion">
+									<button class="btnAnadirValoracion" aria-label="Valorar playlist"><i class="bi bi-pencil-square"> Edit</i></button>
+									<button class="btnFavValoracion bi bi-arrow-through-heart" aria-label="Añadir a playlist favoritas"><i style="color:white"> Fav</i></button>
 								</div>
 							</div>
 						</div>
