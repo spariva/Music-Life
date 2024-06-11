@@ -15,12 +15,17 @@ $session = new SpotifyWebAPI\Session(
 // Later, after Spotify redirects to your redirect URI
 if (isset($_GET['code'])) {
     $state = $_GET['state'];
+    //console log de php
+
     $storedState = $_SESSION['state'];
     // Fetch the stored state value from somewhere. A session for example
     if ($state !== $storedState) {
+        echo "<script>console.log('falló lo del state...');</script>";
         // The state returned isn't the same as the one we've stored, we shouldn't continue
-        header('Location: ' . DOC_ROOT . '/public/index.php');
-        die('State mismatch');
+        // $msje = "Error al conectar con Spotify";
+        // $mensajeCodificado = urlencode($msj);
+        // header("Location: http://music-life.es/index.php?mensaje=" . $mensajeCodificado);
+        // die('State mismatch');
     }
 
     // Request an access token using the code from Spotify

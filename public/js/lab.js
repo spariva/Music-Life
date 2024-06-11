@@ -8,11 +8,10 @@ for(let genero of arrGeneros){
         let currentValues = inpGenero.value ? inpGenero.value.split(',') : [];
         let value = e.target.textContent.toLowerCase();
 
-        if(currentValues.length < 5 && !currentValues.includes(value)){
+        if(currentValues.length < 2 && !currentValues.includes(value)){
             currentValues.push(value);
             inpGenero.value = currentValues.join(',');
         }
-
     });
 }
 
@@ -28,42 +27,37 @@ function limpiarCadenaGenero(){
 /**-----------> Colores aleatorios boton */
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    // const buttons = document.querySelectorAll('.genero-item')
     for(let btn of arrGeneros){
         const greenShade = getRandomGreenShade();
         btn.style.backgroundColor = greenShade;
     }
 });
 
-
 function getRandomGreenShade(){
     const r = 200 + Math.floor(Math.random()*55);
     const g = 200 + Math.floor(Math.random()*55);
     const b = 200 + Math.floor(Math.random()*55);
     const color = `rgb(${r}, ${g}, ${b})`
-
     return color;
 }
 
 /**-----------> Slider tempo */
-
 let inpTempo = document.getElementById('tempo');
 inpTempo.addEventListener('click', ()=>{
     let tempoValue = inpTempo.value;
     let tempoSpan = document.getElementById('valorTempo');
     tempoSpan.textContent = tempoValue;
-    // tempoSpan.innerHTML = tempoValue;
+    console.log(tempoValue);
 });
 
 /**-----------> Boton info */
-
 const btnInfo = document.getElementById('getInfo');
 const infoModal = document.getElementById('info');
 btnInfo.addEventListener('click', ()=>{
     infoModal.classList.toggle('ocultar');
 });
-  
 
+/**-----------> API */
 let codeFlowToken;
 
 async function getAccessToken() {
@@ -104,7 +98,7 @@ async function fetchWebApi(endpoint, method, body = null) {
 }
 
 async function getTopTracks() {
-    const response = await fetchWebApi('v1/me/top/tracks?time_range=long_term&limit=5', 'GET');
+    const response = await fetchWebApi('v1/me/top/tracks?time_range=long_term&limit=3', 'GET');
     if (response && response.items) {
         console.log(response.items);
         return response.items;
@@ -114,16 +108,23 @@ async function getTopTracks() {
     }
 }
 
-async function getRecommendations(seedTracksIds) {
-    if (!Array.isArray(seedTracksIds) || seedTracksIds.length === 0) {
-        console.error('Invalid seed tracks IDs');
-        return [];
+async function getRecommendations(seedTracksIds, seedGenres, targetEnergy) {
+ 
+    let endpoint = `v1/recommendations?limit=15`;
+    
+    if (seedGenres && seedGenres.length > 0) {
+        endpoint += `&seed_genres=${encodeURIComponent(seedGenres.join(','))}`;
     }
-    // v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA
-    // v1/recommendations?limit=9&seed_tracks=${seedTracksIds.join(',')}
-    const response = await fetchWebApi(
-        `v1/recommendations?limit=9&seed_tracks=${seedTracksIds.join(',')}`, 'GET'
-    );
+    
+    if (Array.isArray(seedTracksIds) && seedTracksIds.length != 0) {
+        endpoint += `&seed_tracks=${encodeURIComponent(seedTracksIds.join(','))}`;
+    }
+
+    if (targetEnergy) {
+        endpoint += `&target_energy=${targetEnergy}`;
+    }
+    
+    const response = await fetchWebApi(endpoint, 'GET');
     if (response && response.tracks) {
         console.log(response.tracks);
         return response.tracks;
@@ -139,11 +140,12 @@ async function createPlaylist(tracksUri) {
         console.error('Failed to fetch user info');
         return null;
     }
-
+    let playlistName = document.getElementById('playlistName').value;
+    console.log('playlistName:', playlistName);
     const userId = userResponse.id;
     const playlistResponse = await fetchWebApi(
         `v1/users/${userId}/playlists`, 'POST', {
-            "name": "Music-Life Lab recommendations",
+            "name": playlistName || "Music-Life Lab",
             "description": "Playlist created in the Music-Life Lab",
             "public": false
         }
@@ -164,6 +166,7 @@ async function createPlaylist(tracksUri) {
 }
 
 async function generatePlaylist() {
+    console.log('generando playlist');
     await getAccessToken(); // Ensure token is obtained
     if (!codeFlowToken) {
         console.error('No valid token found');
@@ -185,7 +188,10 @@ async function generatePlaylist() {
     }
     console.log('topTracksIds:', topTracksIds);
 
-    const recommendedTracks = await getRecommendations(topTracksIds);
+    let seedGenres = inpGenero.value ? inpGenero.value.split(',') : null;
+    let targetEnergy = inpTempo.value ? parseFloat(inpTempo.value) : null;
+
+    const recommendedTracks = await getRecommendations(topTracksIds, seedGenres, targetEnergy);
     if (recommendedTracks.length === 0) {
         console.error('No recommendations available');
         return;
@@ -206,12 +212,23 @@ async function generatePlaylist() {
         title="Spotify Embed: Recommendation Playlist"
         src="https://open.spotify.com/embed/playlist/${createdPlaylist.id}?utm_source=generator&theme=1"
         width="100%"
-        height="320"
+        height="380"
         frameBorder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>`;
 }
 
-
 btnEnviar.addEventListener('click', generatePlaylist);
+
+// https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA
+
+// https://api.spotify.com/v1/recommendations?seed_genres=classical%2Ctechno&seed_tracks=0c6xIDDpzE81m2q797ordA%2CC0nLMjIuOsMjEq4IKuJ2twa%2C57dlsdCfq4XUf2AvIMk1jS&target_tempo=0.85
+
+// https://api.spotify.com/v1/recommendations?limit=15&seed_genres=jazz%2Cindie%2Crock&seed_tracks=5lxZ3KmRdRn6iW5tE1Fwjp%2C5tMLIgw6yxobsAyIVvfHo5%2C0GdiWLQt5VYtMEcero6AOW%2C0nLMjIuOsMjEq4IKuJ2twa%2C57dlsdCfq4XUf2AvIMk1jS&target_energy=0.75
+
+
+// https://api.spotify.com/v1/recommendations?seed_genres=classical%2Ctechno&seed_tracks=%275lxZ3KmRdRn6iW5tE1Fwjp%27%2C+%275tMLIgw6yxobsAyIVvfHo5%27%2C+%270GdiWLQt5VYtMEcero6AOW%27%2C+%270nLMjIuOsMjEq4IKuJ2twa%27%2C+%2757dlsdCfq4XUf2AvIMk1jS%27&target_tempo=0.85
+
+// https://api.spotify.com/v1/recommendations?seed_genres=classical%2Cindie&seed_tracks=5lxZ3KmRdRn6iW5tE1Fwjp%2C5tMLIgw6yxobsAyIVvfHo5%2C0GdiWLQt5VYtMEcero6AOW%2C0nLMjIuOsMjEq4IKuJ2twa%2C57dlsdCfq4XUf2AvIMk1jS
+
