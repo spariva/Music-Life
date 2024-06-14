@@ -52,8 +52,8 @@ unset($_SESSION['userNameLogin']);
             <video src="./img/FondoSpotifyClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
                 disablePictureInPicture></video>
         <?php else: ?>
-            <video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay="true" muted="true" loop="true"
-                disablePictureInPicture></video>
+			<video src="./img/FondoIndexClaro.mp4" id="videoFondo" autoplay muted loop playsinline disablePictureInPicture></video>
+
         <?php endif ?>
 		<header id="header">
 		<a class="textoCabecera" href="./index.php" id="logo2">Music-Life</a>
@@ -70,12 +70,3 @@ unset($_SESSION['userNameLogin']);
 			<a class="nav-link" id="modo-oscuro"><i id="logo-modo-oscuro" class="fa-solid"></i><span class="nav-text">Modo Oscuro</span></a>
 		</nav>
 		</header>
-
-		<?php if (isset($msg)) : ?>
-			<div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
-				<?php 
-					echo $msg;
-					unset($msg);
-				?>
-			</div>
-		<?php endif; ?>

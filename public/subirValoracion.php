@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $url = $_POST['url'];
     $rating = $_POST['rating'];
     $comment = $_POST['comment'];
-    $username = $_POST['username'];
+    $username = $_SESSION['user'];
 
     if (empty($username) || empty($url) || empty($rating)) {
         // Handle the error here. For example, you can redirect back with an error message

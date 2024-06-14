@@ -1,6 +1,13 @@
 let btnsEditarValoracion = document.getElementsByClassName('btnEditarValoracion');
 let btnEliminarValoracion = document.getElementsByClassName('btnEliminarValoracion');
 let valoracionPreview = document.getElementsByClassName('verValoracion');
+let formLike = document.getElementById('buscador3');
+let formValorarBuscador = document.getElementById('valoracionBuscador');
+let btnNewValoracion = document.querySelector('.btnAnadirValoracion');
+// formValorarBuscador.addEventListener('submit', (e)=>{
+//     e.preventDefault();
+//     console.log(formValorarBuscador);
+// });
 
 document.addEventListener('DOMContentLoaded', ()=>{
     
@@ -83,7 +90,38 @@ document.addEventListener('DOMContentLoaded', ()=>{
             
         });
     }
+    //esto habra que cambiarlo en caso de añadir el fav en mas sitios
+    // formLike.addEventListener('submit', (e)=>{
+    //     e.preventDefault();
+    //     console.log(formLike);
+    // });
 
 
+    btnNewValoracion.addEventListener('click', (e)=>{
+        const urlPlaylistCont = document.getElementById('iframeBusqueda');
+        
+        if(e.target.matches('button')){
+            let urlPlaylist2 = document.getElementById('urlPlaylist2');
+            urlPlaylist2.value = urlPlaylistCont.src;
+            formValorarBuscador.parentNode.classList.toggle('ocultar');
+        }else if(e.target.matches('i')){
+            let urlPlaylist2 = document.getElementById('urlPlaylist2');
+            urlPlaylist2.value = urlPlaylistCont.src;
+            formValorarBuscador.parentNode.classList.toggle('ocultar');
+        }
+    });
 
+    const favValoracion = document.querySelector('.btnFavValoracion');
+    const urlPlaylist = formLike.querySelector('#urlPlaylist');
+    favValoracion.addEventListener('click', (e)=>{
+        const urlPlaylistCont = document.getElementById('iframeBusqueda');
+        urlPlaylist.value = urlPlaylistCont.src;
+        if(e.target.matches('button')){
+            const btnGuardar = document.getElementById('btnGuardar');
+            btnGuardar.click();
+        }else if(e.target.matches('i')){
+            const btnGuardar = document.getElementById('btnGuardar');
+            btnGuardar.click();
+        }  
+    });
 });

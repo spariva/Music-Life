@@ -5,13 +5,18 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPAR
 Dotenv\Dotenv::createImmutable(dirname(__DIR__))->load();
 if ($_ENV['TEST'] === false) {
     throw new Exception("Environment variables not loaded");
+} else if ($_ENV['APP_ENV'] === 'local') {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+} else {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+    ini_set('log_errors', 1);
 }
 
 session_start();
 
 define('DOC_ROOT', dirname(__DIR__));
-
-require DOC_ROOT . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 
 spl_autoload_register(function ($class) {
     $file = str_replace("\\", DIRECTORY_SEPARATOR, $class);

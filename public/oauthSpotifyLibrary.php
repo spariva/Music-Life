@@ -15,11 +15,15 @@ $session = new SpotifyWebAPI\Session(
 // Later, after Spotify redirects to your redirect URI
 if (isset($_GET['code'])) {
     $state = $_GET['state'];
+    //console log de php
+
     $storedState = $_SESSION['state'];
     // Fetch the stored state value from somewhere. A session for example
     if ($state !== $storedState) {
         // The state returned isn't the same as the one we've stored, we shouldn't continue
-        header('Location: ' . DOC_ROOT . '/public/index.php');
+        $msje = "Error al conectar con Spotify";
+        $mensajeCodificado = urlencode($msj);
+        header("Location: http://music-life.es/index.php?mensaje=" . $mensajeCodificado);
         die('State mismatch');
     }
 
@@ -33,7 +37,10 @@ if (isset($_GET['code'])) {
     $_SESSION['accessToken'] = $accessToken;
     $_SESSION['refreshToken'] = $refreshToken;
     $userName = $_SESSION['user'];
-    
+
+    //TODO save tokens to database, if $_SESSION['user'] is set
+    // and flag the user as spotifyOAuthed true. so next time the user logs in, we can check if the user is already connected to spotify
+
     // $mdb = DbConnection::getInstance();
     // $mdb->saveTokensToDatabase($userName, $accessToken, $refreshToken);
 
@@ -46,10 +53,11 @@ if (isset($_GET['code'])) {
     $_SESSION['state'] = $state;
     $options = [
         'scope' => [
-            'user-read-email', 
-            'user-read-private',  
+            'user-read-email',
+            'user-read-private',
+            'user-top-read',
             'playlist-read-private',
-            'playlist-read-collaborative', 
+            'playlist-read-collaborative',
             'playlist-modify-private',
             'playlist-modify-public',
         ],

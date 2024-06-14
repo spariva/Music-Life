@@ -8,12 +8,14 @@ require_once '../../config/init.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class Mailer {
+class Mailer
+{
     private static $mailer;
     private $mail;
 
-    private function __construct() {
-        $this->mail = new PHPMailer(true); 
+    private function __construct()
+    {
+        $this->mail = new PHPMailer(true);
 
         // Configura las opciones de SMTP
         $this->mail->isSMTP();
@@ -25,19 +27,21 @@ class Mailer {
         $this->mail->Port = 587;
     }
 
-    public static function obtenerInstancia() {
+    public static function obtenerInstancia()
+    {
         if (self::$mailer === null) {
             self::$mailer = new self();
         }
         return self::$mailer;
     }
 
-    public function enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra) {
+    public function enviarCorreo($userMail, $motivo, $nombre, $mensajeExtra)
+    {
         try {
             $this->mail->setFrom($userMail);
             $this->mail->addAddress('support@music-life.es');
             $this->mail->Subject = 'Formulario Contacto';
-            $this->mail->isHTML(true);  
+            $this->mail->isHTML(true);
             $this->mail->CharSet = 'UTF-8';
             $this->mail->Body = "<!DOCTYPE html>
             <html lang='es'>

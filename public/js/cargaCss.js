@@ -10,12 +10,15 @@ if(window.location.href.includes('spotifyLab')){
     <link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
     <link rel="stylesheet" type="text/css" href="./css/spotify-lab.css">
     `;
-}else if(window.location.href.includes('index') || window.location.href === 'music-lifes.es'){
+}
+/*else if(window.location.href.includes('index') || window.location.href === 'http://www.music-life.es' 
+|| window.location.href === 'http://localhost/ML5/public/'){
     head.innerHTML += `
     <link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
     <link rel="stylesheet" type="text/css" href="./css/star-rating.css">
     `;
-}else if(window.location.href.includes('login')){
+}*/
+else if(window.location.href.includes('login')){
     head.innerHTML += `
     <link rel="stylesheet" href="./css/login.css">
     `;

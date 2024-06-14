@@ -7,7 +7,6 @@ valoraciones.forEach(valoracion => {
     const commentInput = valoracion.querySelector('.comment');
     const submitButton = valoracion.querySelector('.submit-button');
     const ratingValue = valoracion.querySelector('.rating-value');
-    // const botonDesplegable = valoracion.querySelector('.botonDesplegable');
     const sectorComentarios = valoracion.querySelector('.listaComentarios');
     var selectedRating = null;
 
@@ -24,15 +23,17 @@ valoraciones.forEach(valoracion => {
 
     if(valoracion.querySelector('.btnsValoracion') || valoracion.querySelector('.editarValoracionCont')){
         let btnEdit = valoracion.parentNode.parentNode.querySelector('.btnEditarValoracion');
-        btnEdit.addEventListener('click', (e)=>{
-            if(e.target.matches('button') || e.target.matches('i')){
-                let ratingActual = valoracion.querySelector('.valoracionExistente').firstElementChild.textContent;
-                let indice = ratingActual.substring(0, 1);
-                console.log(indice);
-                selectedRating = indice;
-                updateRating();
-            }
-        });   
+        if(btnEdit){
+            btnEdit.addEventListener('click', (e)=>{
+                if(e.target.matches('button') || e.target.matches('i')){
+                    let ratingActual = valoracion.querySelector('.valoracionExistente').firstElementChild.textContent;
+                    let indice = ratingActual.substring(0, 1);
+                    console.log(indice);
+                    selectedRating = indice;
+                    updateRating();
+                }
+            });
+        }  
     }
 
     
