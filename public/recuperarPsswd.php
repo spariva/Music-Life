@@ -18,7 +18,7 @@ try {
     $stmt = $conn->prepare($sql);
 
     $stmt->bindParam(':USERID', $CORREO, PDO::PARAM_STR); //ESTO FALTA OBTENER DEL FORMULARIO EL CORREO
-                            
+
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) { //Comprobamos si ese usuario existe, si no pues no seguimos
@@ -28,30 +28,30 @@ try {
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':USERID', $CORREO, PDO::PARAM_STR); //ESTO FALTA OBTENER DEL FORMULARIO EL CORREO
             $stmt->execute();
-        
+
             $sql = "INSERT INTO tokens (TOKEN, USERID, EXPIRES,TIPO) VALUES(:TOKEN, :USERID, :EXPIRES, 'RECOVERY')";
             $stmt = $conn->prepare($sql);
-        
+
             $stmt->bindParam(':TOKEN', $token, PDO::PARAM_STR);
             $stmt->bindParam(':USERID', $CORREO, PDO::PARAM_STR);
             $stmt->bindParam(':EXPIRES', $fechaExpiracion, PDO::PARAM_STR);
-        
+
             $stmt->execute();
 
             $creacionToken = true;
-        
+
         } catch (PDOException $pe) {
-            header ("Location: ./login.php?mensaje=No se pudo generar el token de usuario :(");
+            header("Location: ./login.php?mensaje=No se pudo generar el token de usuario :(");
             exit();
-        } 
-    
+        }
+
     } else {
-        header ("Location: ./login.php?mensaje=Mail no encontrado :(");
+        header("Location: ./login.php?mensaje=Mail no encontrado :(");
         exit();
     }
 
-}catch (PDOException $pe) {
-    header ("Location: ./login.php?mensaje=No encontramos al usuario :(");
+} catch (PDOException $pe) {
+    header("Location: ./login.php?mensaje=No encontramos al usuario :(");
     exit();
 } finally {
     $db->closeConnection();
@@ -69,7 +69,7 @@ if ($creacionToken == true) {
     //http://localhost:3000/src/php/recuperarPsswd.php
     $redirection = "index.php";
 
-$redirection = "index.php";
+    $redirection = "index.php";
 
     // Crear un formulario dinámicamente con campos ocultos
     echo '<form id="formRedirect" action="mailer2.php" method="post">';
@@ -78,7 +78,7 @@ $redirection = "index.php";
     echo '<input type="hidden" name="redireccion" value="' . $redirection . '">';
     echo '<input type="hidden" name="email" value="' . $CORREO . '">';
     echo '</form>';
-    
+
     // Agregar JavaScript para enviar el formulario automáticamente
     echo '<script>document.getElementById("formRedirect").submit();</script>';
     exit;

@@ -37,19 +37,19 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 ?>
 <div id="contenido">
 
-		<?php
-		if (isset($_GET['mensaje'])) {
-			echo '<div id="mensaje">';
-			echo $_GET['mensaje'];
-			echo '</div>';
-		}
-		?>
+	<?php
+	if (isset($_GET['mensaje'])) {
+		echo '<div id="mensaje">';
+		echo $_GET['mensaje'];
+		echo '</div>';
+	}
+	?>
 
 	<script>
 		var mensaje = document.getElementById('mensaje');
 		if (mensaje) {
 			mensaje.style.display = 'block';
-			setTimeout(function() {
+			setTimeout(function () {
 				mensaje.style.display = 'none';
 			}, 5000);
 		}
@@ -60,7 +60,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 		$pdo = DbConnection::getInstance();
 		// $urls = $pdo->showAllPlaylists();
-		$urls = $pdo->showAllPlaylistsRandom(4);
+		$urls = $pdo->showAllPlaylistsRandom(3);
 		// Generar los iframes con las URLs seleccionadas
 		foreach ($urls as $url) {
 			echo '<iframe style="border-radius:12px"
@@ -84,7 +84,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 
 					<div class="valoracionesBuscador">
 						<div class="contenedorSoporteParaValoraciones w-100">
-							<div class="cuadrado botonDesplegable">Sin Valoración aún</div>
+							<div class="cuadrado botonDesplegable">Click para valorar</div>
 							<div class="ratingDropdown dropdown" style="display: none;">
 								<form action="./subirValoracion.php" method="post">
 									<div class="ratingBlock">
@@ -167,11 +167,7 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 						loading="lazy"></iframe>
 
-
-
-
-					<!--<iframe id="iframeBusqueda" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->
-						<?php if (isset($_SESSION['user'])) { ?>
+					<?php if (isset($_SESSION['user'])) { ?>
 						<!-- <div class="btnsValoracion">
 								<button class="btnEditarValoracion" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button>
 								<button class="btnFavValoracion bi bi-arrow-through-heart" aria-label="Añadir a playlist favoritas"><i style="color:white"> Fav</i></button>
@@ -187,10 +183,10 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 											?>">
 											<input type="hidden" name="url" id="urlPlaylist2" value="
 											<?php if (isset($_GET['playlist'])) {
-													echo $_GET['playlist'];
-												} else {
-													echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
-												} ?>">
+												echo $_GET['playlist'];
+											} else {
+												echo 'https://open.spotify.com/embed/playlist/6lHivMtxlldZdqEvpwGRxZ?utm_source=generator';
+											} ?>">
 											<div class="star-rating">
 												<img class="star" data-rating="1" src="./img/star/EstrellaVacia.png"
 													alt="Estrella 1">
@@ -209,16 +205,20 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 											<!-- <input type="hidden" name="url2" id="urlPlaylist2"> -->
 											<!-- <p><button type="submit" class="submit-button">Enviar</button></p> -->
 											<!-- <p><button type="submit" class="btnEditarValoracion submit-button" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button></p>  -->
-											<p><button type="submit" id="guardaNuevaValoracion" class="submit-button" aria-label="Editar playlist"><i class="bi bi-pencil-square"> Edit</i></button></p> 
+											<p><button type="submit" id="guardaNuevaValoracion" class="submit-button"
+													aria-label="Editar playlist"><i class="bi bi-pencil-square">
+														Edit</i></button></p>
 											<p class="listaComentarios"></p>
 
 										</div>
 									</form>
-									
+
 								</div>
 								<div class="btnsValoracion">
-									<button class="btnAnadirValoracion" aria-label="Valorar playlist"><i class="bi bi-pencil-square"> Edit</i></button>
-									<button class="btnFavValoracion bi bi-arrow-through-heart" aria-label="Añadir a playlist favoritas"><i style="color:white"> Fav</i></button>
+									<button class="btnAnadirValoracion" aria-label="Valorar playlist"><i
+											class="bi bi-pencil-square"> Edit</i></button>
+									<button class="btnFavValoracion bi bi-arrow-through-heart"
+										aria-label="Añadir a playlist favoritas"><i style="color:white"> Fav</i></button>
 								</div>
 							</div>
 						</div>
@@ -252,21 +252,21 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 								$groupedRatings[$link][] = $rating;
 							}
 							foreach ($groupedRatings as $link => $ratingsForLink) {
-								 echo '<div class="carousel-item ' . $active . '">';
-								 echo '<iframe style="border-radius:12px"
+								echo '<div class="carousel-item ' . $active . '">';
+								echo '<iframe style="border-radius:12px"
 								 		src="' . $rating['LINK'] . '?utm_source=generator"
 								 		width="100%" height="152" frameBorder="0" allowfullscreen=""
 								 		allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 								 		loading="lazy"></iframe>';
-								 echo '<div id="verValoracion" class="valoracionExistente">';
-						
-								 foreach ($ratings as $rating) {
-								 	echo '<p>' . $rating['USER_NAME'] . ' - ' . $rating['SCORE'] . ': ' . $rating['TEXT'] . '</p>';
-								 	//echo '</div>';
-								 }
-								 echo '</div>';
-								 echo '</div>';
-								 $active = '';
+								echo '<div id="verValoracion" class="valoracionExistente">';
+
+								foreach ($ratings as $rating) {
+									echo '<p>' . $rating['USER_NAME'] . ' - ' . $rating['SCORE'] . ': ' . $rating['TEXT'] . '</p>';
+									//echo '</div>';
+								}
+								echo '</div>';
+								echo '</div>';
+								$active = '';
 								?>
 								<!--<div class="valoracion carousel-item">
 									<form action="./editarValoracion.php" method="post">
@@ -339,10 +339,10 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 					$pdo4 = DbConnection::getInstance();
 					$listasAmigos = $pdo4->showFriendsPlaylists($username, 5);
 					/*foreach ($listasAmigos as $lista) {
-												   foreach ($lista as $clave => $valor) {
-													   echo "Clave: $clave; Valor: $valor<br>";
-												   }
-											   }*/
+																  foreach ($lista as $clave => $valor) {
+																	  echo "Clave: $clave; Valor: $valor<br>";
+																  }
+															  }*/
 					$active = 'active';
 
 					if ($listasAmigos) {
@@ -458,8 +458,8 @@ if (isset($_COOKIE['aceptadas']) && $_COOKIE['aceptadas'] == true) {
 		<div id="imgCookies2"><img class="imgCookies" src="./img/cookies.png" alt="cookie2"></div>
 	</div>
 <?php } ?>
-    <link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
-    <link rel="stylesheet" type="text/css" href="./css/star-rating.css">
+<link rel="stylesheet" type="text/css" href="./css/nuevocss.css">
+<link rel="stylesheet" type="text/css" href="./css/star-rating.css">
 <!-- <script src="./js/BusquedaSpotify.js" defer></script> -->
 <script src="./js/playlistsAPI.js" defer></script>
 

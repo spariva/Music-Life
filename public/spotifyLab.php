@@ -140,7 +140,8 @@ if (isset($_SESSION['accessToken'])) {
             <!-- aqui el resultado de la busqueda -->
             <div class="lab-resultado-canciones">
                 <?php if (isset($api)): ?>
-                    <h3 id="btnEnviar" class="rounded-pill mt-2 mb-2">Crea tu playlist <i class="bi bi-music-note-beamed"></i></h3>
+                    <h3 id="btnEnviar" class="rounded-pill mt-2 mb-2">Crea tu playlist <i
+                            class="bi bi-music-note-beamed"></i></h3>
                 <?php endif; ?>
                 <div class="cancion">
                     <div id="playlistContainer"></div>

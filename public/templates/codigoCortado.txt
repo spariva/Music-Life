@@ -9,12 +9,6 @@
     <?php endif ?>
 
 ------- LOGIN linea 39
-    <?php if (isset($msg)): ?>
-    <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
-        <?php echo $msg;
-        unset($msg);
-        ?>
-    </div>
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
@@ -28,17 +22,11 @@
     </div>
 </nav>
 </header>
-<?php if (isset($msg)) : ?>
-<div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
-    <?php echo $msg;
-    unset($msg);
-    ?>
-</div>
-<?php endif; ?>
+
 
 ---------LOGIN linea 60
 <?php if (count($errorsLogin) > 0) : ?>
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger w-25 text-center mx-auto d-block mt-5">
                         <?php foreach ($errorsLogin as $error) : ?>
                             <li>
                                 <?php echo $error; ?>

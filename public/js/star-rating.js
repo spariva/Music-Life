@@ -7,7 +7,6 @@ valoraciones.forEach(valoracion => {
     const commentInput = valoracion.querySelector('.comment');
     const submitButton = valoracion.querySelector('.submit-button');
     const ratingValue = valoracion.querySelector('.rating-value');
-    // const botonDesplegable = valoracion.querySelector('.botonDesplegable');
     const sectorComentarios = valoracion.querySelector('.listaComentarios');
     var selectedRating = null;
 

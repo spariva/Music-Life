@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    try{
+    try {
         $db = DbConnection::getInstance()->getConnection();
         $stmt = $db->prepare("INSERT INTO requests (REQUEST_USER, REQUESTED_USER) VALUES (:username, :search)");
         $result = $stmt->execute([':username' => $username, ':search' => $search]);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ./usuario.php?mensaje=El usuario introducido no existe :(");
             exit();
         }
-    }catch(Exception $error){
+    } catch (Exception $error) {
         header("Location: ./usuario.php?mensaje=El usuario introducido no existe :(");
         exit();
     }

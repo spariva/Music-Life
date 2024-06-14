@@ -2,6 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
 require './../vendor/autoload.php';
 
 $mail = new PHPMailer(true);
@@ -25,23 +26,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     try {
-        $mail->SMTPDebug = false; 
+        $mail->SMTPDebug = false;
         $mail->isSMTP();
-        $mail->Host       = 'smtp-relay.brevo.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'sergiosahi25@gmail.com';
-        $mail->Password   = 'CDLYQwFST8gPJa32';
+        $mail->Host = 'smtp-relay.brevo.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'sergiosahi25@gmail.com';
+        $mail->Password = 'CDLYQwFST8gPJa32';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->Port = 587;
 
         $mail->setFrom('music-life@support.es', 'Soporte Music Life');
 
-        $mail->addAddress('sergiosahi25@gmail.com'); 
+        $mail->addAddress('sergiosahi25@gmail.com');
         $mail->addReplyTo('support@music-life.es', 'Reply');
 
-        $mail->isHTML(true);  
+        $mail->isHTML(true);
         $mail->Subject = 'Soporte M-L';
-        $mail->Body    = $body;
+        $mail->Body = $body;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
