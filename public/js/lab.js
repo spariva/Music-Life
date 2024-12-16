@@ -191,14 +191,14 @@ async function generatePlaylist() {
     let seedGenres = inpGenero.value ? inpGenero.value.split(',') : null;
     let targetEnergy = inpTempo.value ? parseFloat(inpTempo.value) : null;
 
-    const recommendedTracks = await getRecommendations(topTracksIds, seedGenres, targetEnergy);
-    if (recommendedTracks.length === 0) {
-        console.error('No recommendations available');
-        return;
-    }
-    console.log('recomendaciones bien');
+    // const recommendedTracks = await getRecommendations(topTracksIds, seedGenres, targetEnergy);
+    // if (recommendedTracks.length === 0) {
+    //     console.error('No recommendations available');
+    //     return;
+    // }
+    // console.log('recomendaciones bien');
 
-    const tracksUri = recommendedTracks.map(track => track.uri);
+    const tracksUri = topTracksIds.map(track => track.uri);
     const createdPlaylist = await createPlaylist(tracksUri);
     if (!createdPlaylist) {
         console.error('Playlist creation failed');

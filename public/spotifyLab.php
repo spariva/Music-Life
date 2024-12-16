@@ -120,6 +120,7 @@ if (isset($_SESSION['accessToken'])) {
                     <?php
                     if (isset($api)) {
                         $playlists = $api->getUserPlaylists($spotifyUser['id']);
+                        $artists = $api->getMyTop('artists');
                         $counter = 0;
                         $maxIterations = 3;
                         foreach ($playlists->items as $playlist) {
@@ -131,6 +132,13 @@ if (isset($_SESSION['accessToken'])) {
                             echo '<h5>' . $playlist->name . '</h5>';
                             echo '<a href="' . $playlist->external_urls->spotify . '" target="_blank" class="btn btn-outline-info btn-lg rounded-pill" role="button">Escuchar</a>';
                             echo '</div><br>';
+                            $counter++;
+                        }
+                        foreach ($artists->items as $artist) {
+                            if ($counter == $maxIterations) {
+                                break;
+                            }
+                            echo '<p>artist: ' . $artist->name . '</p>';
                             $counter++;
                         }
                     }
