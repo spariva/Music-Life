@@ -134,13 +134,6 @@ if (isset($_SESSION['accessToken'])) {
                             echo '</div><br>';
                             $counter++;
                         }
-                        foreach ($artists->items as $artist) {
-                            if ($counter == $maxIterations) {
-                                break;
-                            }
-                            echo '<p>artist: ' . $artist->name . '</p>';
-                            $counter++;
-                        }
                     }
                     ?>
                 </div>
